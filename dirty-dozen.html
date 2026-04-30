@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Dirty Dozen — Lighten Your Load</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dirty:#b5341a;--dirty-mid:#f4c4b8;--dirty-lt:#fdf1ee;
+  --tread:#5a3d9a;--tread-mid:#c4b4e8;
+  --clean:#2d6a4f;--clean-mid:#b7dfc9;
+  --gold:#c8a050;
+  --ink:#1a1a1a;--muted:#6b6b6b;--rule:#d0cdc8;--bg:#faf9f6;
+}
+@media print{body{background:white!important}}
+body{font-family:'DM Sans',sans-serif;background:#e0dcd4;padding:0;margin:0}
+
+/* ── SITE NAV ── */
+.site-nav{background:var(--ink);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100}
+.site-nav .logo{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;text-decoration:none}
+.site-nav .logo span{color:var(--gold)}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{font-size:12px;font-weight:500;color:#888;text-decoration:none;padding:6px 12px;border-radius:3px;transition:all .2s}
+.nav-links a:hover{color:white;background:rgba(255,255,255,.08)}
+.nav-links a.active{color:white;background:rgba(255,255,255,.12)}
+.nav-links a.active-dirty{color:#f4c4b8;background:rgba(181,52,26,.25)}
+.nav-links a.active-tread{color:#c4b4e8;background:rgba(90,61,154,.25)}
+.nav-links a.active-clean{color:#b7dfc9;background:rgba(45,106,79,.25)}
+
+/* ── PAGE WRAPPER ── */
+.page{background:var(--bg);max-width:860px;margin:0 auto;box-shadow:0 4px 32px rgba(0,0,0,.14)}
+
+/* ── PAGE HEADER ── */
+.page-header{background:var(--dirty);color:white;padding:32px 40px 28px}
+.page-header .kicker{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px}
+.page-header h1{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;line-height:1.1;margin-bottom:8px}
+.page-header .desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.6;max-width:540px}
+
+/* ── CAVEAT ── */
+.caveat{margin:16px 40px 0;padding:10px 14px;border:1px solid var(--rule);border-left:3px solid #c9a84c;font-size:11px;color:#5a4a2a;line-height:1.5}
+.caveat strong{color:#8a6520}
+
+/* ── LIST ── */
+.list-section{padding:20px 40px 0}
+
+.produce-list{list-style:none;display:flex;flex-direction:column;gap:0}
+.produce-item{display:grid;grid-template-columns:24px 1fr auto;align-items:baseline;gap:6px;padding:8px 10px;border-radius:3px;border-bottom:1px solid var(--rule)}
+.produce-item:last-child{border-bottom:none}
+.produce-item:hover{background:rgba(0,0,0,.02)}
+.num{font-size:10px;font-weight:700;color:var(--dirty);text-align:right;line-height:1.6;font-family:'DM Mono',monospace}
+.name{font-size:13px;font-weight:600;color:var(--ink);line-height:1.35}
+.name .sub-items{font-size:11px;font-weight:400;color:var(--muted);display:block;margin-top:1px;font-style:italic}
+.name .sub-items .inline{display:inline;font-size:11px;font-style:italic;color:var(--muted)}
+.badge{font-size:9.5px;font-weight:700;letter-spacing:.2px;padding:2px 7px;border-radius:2px;white-space:nowrap;line-height:1.5}
+.badge-high{background:var(--dirty);color:white}
+.badge-yes{background:var(--dirty-mid);color:#7a1a08}
+.note{font-size:11px;color:var(--muted);grid-column:2/-1;margin-top:2px;line-height:1.4}
+
+/* ── INFO BOX ── */
+.info-box{margin:16px 40px 0;border:1px solid var(--rule);border-left:3px solid var(--dirty);padding:12px 14px}
+.info-box h4{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--dirty);margin-bottom:8px;font-family:'DM Mono',monospace}
+.info-box ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.info-box li{font-size:12px;color:var(--ink);line-height:1.5;padding-left:14px;position:relative}
+.info-box li::before{content:'→';position:absolute;left:0;color:var(--muted);font-size:10px;top:1px}
+
+/* ── ALSO WATCH ── */
+.also-watch{margin:16px 40px 0;padding:10px 14px;background:#f5f0e8;border-radius:3px;font-size:11.5px;color:var(--ink);line-height:1.6}
+.also-watch strong{color:#7a5a20;font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;font-family:'DM Mono',monospace;margin-right:6px}
+
+/* ── GUIDE NAV ── */
+.guide-nav{margin:20px 40px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.guide-nav-card{display:block;padding:14px 16px;border:1px solid var(--rule);border-radius:3px;text-decoration:none;transition:all .2s}
+.guide-nav-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
+.guide-nav-card .card-kicker{font-size:9.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:4px}
+.guide-nav-card h3{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.guide-nav-card p{font-size:11px;color:var(--muted);line-height:1.4}
+.card-tread .card-kicker{color:var(--tread)}
+.card-clean .card-kicker{color:var(--clean)}
+
+/* ── FOOTER ── */
+.page-footer{background:var(--ink);color:#666;padding:10px 40px;display:flex;justify-content:space-between;align-items:center;font-size:9.5px;letter-spacing:.3px;margin-top:20px}
+.page-footer span:last-child{color:#888;font-style:italic}
+</style>
+</head>
+<body>
+
+<!-- SITE NAV -->
+<nav class="site-nav">
+  <a href="index.html" class="logo">Lighten <span>Your Load</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="dirty-dozen.html" class="active-dirty">🚨 Dirty Dozen</a></li>
+    <li><a href="tread-careful-ten.html">⚠️ Tread Careful Ten</a></li>
+    <li><a href="cleaner-by-far.html">✅ Cleaner by Far</a></li>
+    <li><a href="beyond-produce.html">🌾 Beyond Produce</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <div class="page-header">
+    <div class="kicker">Lighten Your Load · Produce Guide</div>
+    <h1>🚨 The Dirty Dozen</h1>
+    <p class="desc">The 12 Australian produce items with the highest evidence of pesticide contamination. Ranked approximately by strength of Australian-specific evidence — prioritise organic versions, especially for children and during pregnancy.</p>
+  </div>
+
+  <div class="caveat"><strong>⚠ Data note:</strong> Australia has no equivalent to the US Environmental Working Group (EWG) Dirty Dozen program. This guide synthesises all available AU data plus international findings where AU data is absent. Rankings are informed estimates, not definitive science. Absence of AU data does not mean absence of risk — it often means absence of independent investigation.</div>
+
+  <div class="list-section">
+    <ul class="produce-list">
+      <li class="produce-item">
+        <span class="num">1</span>
+        <span class="name">🍓 Strawberries</span>
+        <span class="badge badge-high">Buy Organic</span>
+        <span class="note">Highest AU detection rate. Up to 90× MRL found in suppressed govt FOI data (2013). Dimethoate detected — banned EU 2019, possible human carcinogen.</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">2</span>
+        <span class="name">🍎 Apples</span>
+        <span class="badge badge-high">Buy Organic</span>
+        <span class="note">Top AU pesticide detection count 2000–2011. 1,500+ approved chemicals — more than any other produce. Post-harvest diphenylamine common (banned EU).</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">3</span>
+        <span class="name">🥬 Spinach &amp; leafy greens</span>
+        <span class="badge badge-high">Buy Organic</span>
+        <span class="note">Large surface area absorbs systemic pesticides that cannot be washed off. Consistent highest-risk class globally and in AU monitoring data.</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">4</span>
+        <span class="name">🍇 Grapes</span>
+        <span class="badge badge-high">Buy Organic</span>
+        <span class="note">6.4% of all AU pesticide detections 2000–2011. Multiple fungicides applied repeatedly. Thin skin — cannot be peeled.</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">5</span>
+        <span class="name">🍑🍒 Stone fruit
+          <span class="sub-items">peaches, nectarines, apricots, plums, cherries <span class="inline">(most stone fruit: limited AU data)</span></span>
+        </span>
+        <span class="badge badge-high">Buy Organic</span>
+        <span class="note">Fenthion at unacceptable levels in AU peaches (suppressed FOI data, 2013). PFAS fludioxonil found on 90% of peach &amp; plum samples (EWG 2026).</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">6</span>
+        <span class="name">🍐 Pears</span>
+        <span class="badge badge-high">Buy Organic</span>
+        <span class="note">9.5% of all AU pesticide detections 2000–2011 — second only to apples. High fungicide use. Diphenylamine post-harvest (banned EU).</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">7</span>
+        <span class="name">🫐 Blueberries</span>
+        <span class="badge badge-high">Buy Organic</span>
+        <span class="note">Chlorpyrifos &amp; thiometon detected in AU specifically. Southern Cross University 2025: dimethoate found at levels exceeding safe daily intake. APVMA proposed suspension (2025).</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">8</span>
+        <span class="name">🫐 Blackberries &amp; raspberries</span>
+        <span class="badge badge-yes">Buy Organic</span>
+        <span class="note">91% of blackberry samples had detectable pesticides, avg 4+ per sample (EWG 2026). PFAS bifenthrin detected. Same APVMA dimethoate suspension covers raspberries &amp; blackberries (2025).</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">9</span>
+        <span class="name">🥬 Lettuce</span>
+        <span class="badge badge-yes">Buy Organic</span>
+        <span class="note">4.1% of all AU pesticide detections 2000–2011. Named in Friends of the Earth Australia report. No outer skin — entire surface is eaten.</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">10</span>
+        <span class="name">🫑 Capsicum / bell peppers</span>
+        <span class="badge badge-yes">Buy Organic</span>
+        <span class="note">Named in AU ATDS monitoring data. Thin edible skin. Ranks just below the Dirty Dozen globally on overall pesticide toxicity.</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">11</span>
+        <span class="name">🌿 Celery</span>
+        <span class="badge badge-yes">Buy Organic</span>
+        <span class="note">Named in AU ATDS data. No outer peel — every stalk surface is exposed. Very high surface area-to-volume ratio. 64 different pesticides detected internationally.</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">12</span>
+        <span class="name">🥬 Kale &amp; Asian greens</span>
+        <span class="badge badge-yes">Buy Organic</span>
+        <span class="note">High pest pressure, systemic pesticide use documented. Limited AU-specific testing but biology identical to highest-risk leafy class. Tops EWG 2026 on toxicity weighting.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-box">
+    <h4>🚨 Prioritise Organic When…</h4>
+    <ul>
+      <li>Your children eat it regularly — children absorb more and eliminate pesticides less efficiently than adults</li>
+      <li>It's imported AND on this list — source countries may permit chemicals banned in Australia</li>
+      <li>You are pregnant — especially strawberries, leafy greens, and stone fruit</li>
+      <li>You eat it daily — start with your most frequent items first</li>
+      <li>Budget is limited — focus on items #1–6 where the AU evidence is strongest</li>
+    </ul>
+  </div>
+
+  <div class="also-watch">
+    <strong>Also Watch:</strong>
+    Cherries 🍒 (similar biology to stone fruit, limited AU data) · Wheat &amp; bread (2nd highest AU pesticide detection category, FoE 2012 — post-harvest storage treatments) · Imported snap peas &amp; green beans (AQIS flagged high residues)
+  </div>
+
+  <!-- NAVIGATE TO OTHER GUIDES -->
+  <div class="guide-nav">
+    <a href="tread-careful-ten.html" class="guide-nav-card card-tread">
+      <div class="card-kicker">Next guide →</div>
+      <h3>⚠️ Tread Careful Ten</h3>
+      <p>Not Dirty Dozen but worth knowing — citrus, potatoes, ginger, garlic and more</p>
+    </a>
+    <a href="cleaner-by-far.html" class="guide-nav-card card-clean">
+      <div class="card-kicker">Also see →</div>
+      <h3>✅ Cleaner by Far</h3>
+      <p>22 produce items where conventional is generally a safe choice</p>
+    </a>
+  </div>
+
+  <div class="page-footer">
+    <span>Sources: FSANZ ATDS · Friends of the Earth AU (2012) · CHOICE · NRS · APVMA · EWG (2026) · Guardian AU FOI · Southern Cross University (2025)</span>
+    <span>Lighten Your Load · lightenyourload.info · April 2026</span>
+  </div>
+
+</div>
+</body>
+</html>

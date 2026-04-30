@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cleaner by Far — Lighten Your Load</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dirty:#b5341a;--dirty-mid:#f4c4b8;
+  --tread:#5a3d9a;--tread-mid:#c4b4e8;
+  --clean:#2d6a4f;--clean-mid:#b7dfc9;--clean-lt:#eef7f2;
+  --gold:#c8a050;
+  --ink:#1a1a1a;--muted:#6b6b6b;--rule:#d0cdc8;--bg:#faf9f6;
+}
+@media print{body{background:white!important}}
+body{font-family:'DM Sans',sans-serif;background:#e0dcd4;padding:0;margin:0}
+.site-nav{background:var(--ink);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100}
+.site-nav .logo{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;text-decoration:none}
+.site-nav .logo span{color:var(--gold)}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{font-size:12px;font-weight:500;color:#888;text-decoration:none;padding:6px 12px;border-radius:3px;transition:all .2s}
+.nav-links a:hover{color:white;background:rgba(255,255,255,.08)}
+.nav-links a.active-dirty{color:#f4c4b8;background:rgba(181,52,26,.25)}
+.nav-links a.active-tread{color:#c4b4e8;background:rgba(90,61,154,.25)}
+.nav-links a.active-clean{color:#b7dfc9;background:rgba(45,106,79,.25)}
+.page{background:var(--bg);max-width:860px;margin:0 auto;box-shadow:0 4px 32px rgba(0,0,0,.14)}
+.page-header{background:var(--clean);color:white;padding:32px 40px 28px}
+.page-header .kicker{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px}
+.page-header h1{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;line-height:1.1;margin-bottom:8px}
+.page-header .desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.6;max-width:540px}
+.caveat{margin:16px 40px 0;padding:10px 14px;border:1px solid var(--rule);border-left:3px solid var(--clean);font-size:11px;color:#1a4a2a;line-height:1.5}
+.caveat strong{color:var(--clean)}
+.list-section{padding:20px 40px 0}
+.produce-list{list-style:none;display:flex;flex-direction:column;gap:0}
+.produce-item{display:grid;grid-template-columns:24px 1fr auto;align-items:baseline;gap:6px;padding:8px 10px;border-radius:3px;border-bottom:1px solid var(--rule)}
+.produce-item:last-child{border-bottom:none}
+.produce-item:hover{background:rgba(0,0,0,.02)}
+.num{font-size:10px;font-weight:700;color:var(--clean);text-align:right;line-height:1.6;font-family:'DM Mono',monospace}
+.name{font-size:13px;font-weight:600;color:var(--ink);line-height:1.35}
+.badge{font-size:9.5px;font-weight:700;letter-spacing:.2px;padding:2px 7px;border-radius:2px;white-space:nowrap;line-height:1.5}
+.badge-ok{background:var(--clean-mid);color:#1a4a30}
+.badge-clean{background:var(--clean);color:white}
+.note{font-size:11px;color:var(--muted);grid-column:2/-1;margin-top:2px;line-height:1.4}
+.info-box{margin:16px 40px 0;border:1px solid var(--rule);border-left:3px solid var(--clean);padding:12px 14px}
+.info-box h4{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--clean);margin-bottom:8px;font-family:'DM Mono',monospace}
+.info-box ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.info-box li{font-size:12px;color:var(--ink);line-height:1.5;padding-left:14px;position:relative}
+.info-box li::before{content:'→';position:absolute;left:0;color:var(--muted);font-size:10px;top:1px}
+.guide-nav{margin:20px 40px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.guide-nav-card{display:block;padding:14px 16px;border:1px solid var(--rule);border-radius:3px;text-decoration:none;transition:all .2s}
+.guide-nav-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
+.guide-nav-card .card-kicker{font-size:9.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:4px}
+.guide-nav-card h3{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.guide-nav-card p{font-size:11px;color:var(--muted);line-height:1.4}
+.card-dirty .card-kicker{color:var(--dirty)}
+.card-tread .card-kicker{color:var(--tread)}
+.card-pantry .card-kicker{color:#8a6520}
+.page-footer{background:var(--ink);color:#666;padding:10px 40px;display:flex;justify-content:space-between;align-items:center;font-size:9.5px;letter-spacing:.3px;margin-top:20px}
+.page-footer span:last-child{color:#888;font-style:italic}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="logo">Lighten <span>Your Load</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="dirty-dozen.html" class="active-dirty">🚨 Dirty Dozen</a></li>
+    <li><a href="tread-careful-ten.html" class="active-tread">⚠️ Tread Careful Ten</a></li>
+    <li><a href="cleaner-by-far.html" class="active-clean">✅ Cleaner by Far</a></li>
+    <li><a href="beyond-produce.html">🌾 Beyond Produce</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <div class="page-header">
+    <div class="kicker">Lighten Your Load · Produce Guide</div>
+    <h1>✅ Cleaner by Far</h1>
+    <p class="desc">22 produce items with the lowest evidence of pesticide risk in the Australian context. Conventional versions are generally a reasonable choice — saving your organic budget for the Dirty Dozen.</p>
+  </div>
+
+  <div class="caveat"><strong>✅ Good news:</strong> "Cleaner by Far" does not mean pesticide-free — it means lower risk relative to other produce. More fresh produce of any kind is always better than less. These rankings are about making the best choices within that, not creating fear.</div>
+
+  <div class="list-section">
+    <ul class="produce-list">
+      <li class="produce-item"><span class="num">1</span><span class="name">🥑 Avocados</span><span class="badge badge-clean">Cleanest</span><span class="note">Thick inedible skin. Less than 2% of samples globally show any residues. Consistently the cleanest item on any produce list.</span></li>
+      <li class="produce-item"><span class="num">2</span><span class="name">🍌 Bananas</span><span class="badge badge-ok">Safe</span><span class="note">Peeled before eating — flesh well protected. 2026 EWG Clean Fifteen. Note: conventional banana skins carry post-harvest fungicide residues — avoid feeding peels to wildlife.</span></li>
+      <li class="produce-item"><span class="num">3</span><span class="name">🟣 Beetroot</span><span class="badge badge-ok">Safe</span><span class="note">Underground crop, thick skin almost always peeled. Low pest pressure. Low residues internationally.</span></li>
+      <li class="produce-item"><span class="num">4</span><span class="name">🥬 Cabbage</span><span class="badge badge-ok">Safe</span><span class="note">Outer leaves discarded. Produces glucosinolates that naturally deter insects, reducing how much spraying is needed.</span></li>
+      <li class="produce-item"><span class="num">5</span><span class="name">🥕 Carrots</span><span class="badge badge-ok">Safe</span><span class="note">Underground crop, skin discarded. On 2026 EWG Clean Fifteen. Low residue data in AU and globally.</span></li>
+      <li class="produce-item"><span class="num">6</span><span class="name">⚪ Cauliflower</span><span class="badge badge-ok">Safe</span><span class="note">Dense tightly packed head, outer leaves discarded. Low residues in all available data. Predominantly AU-grown.</span></li>
+      <li class="produce-item"><span class="num">7</span><span class="name">🍆 Eggplant</span><span class="badge badge-ok">Safe</span><span class="note">Thick skin, lower pest pressure than thin-skinned crops. Low detection rates. Predominantly AU-grown.</span></li>
+      <li class="produce-item"><span class="num">8</span><span class="name">🫛 Frozen garden peas (shelled)</span><span class="badge badge-ok">Safe</span><span class="note">Protective pod discarded before freezing. Very low residues. Distinct from snow peas — the whole pod is not eaten.</span></li>
+      <li class="produce-item"><span class="num">9</span><span class="name">🟢 Frozen green beans</span><span class="badge badge-ok">Safe</span><span class="note">Blanching before freezing degrades many residues. AU-grown and processed. Significantly lower risk than fresh green beans.</span></li>
+      <li class="produce-item"><span class="num">10</span><span class="name">🥝 Kiwifruit</span><span class="badge badge-ok">Safe</span><span class="note">Skin not consumed. 82% of samples globally had zero detectable residues in the flesh.</span></li>
+      <li class="produce-item"><span class="num">11</span><span class="name">🌿 Leeks</span><span class="badge badge-ok">Safe</span><span class="note">Allium family — outer layers discarded. Low pest pressure. Predominantly AU-grown. Consistent with onion and shallot residue profile.</span></li>
+      <li class="produce-item"><span class="num">12</span><span class="name">🥭 Mangoes</span><span class="badge badge-ok">Safe</span><span class="note">Thick inedible skin, low residues. Buy local QLD/NT where possible — interstate transit treatment applies to some mangoes.</span></li>
+      <li class="produce-item"><span class="num">13</span><span class="name">🍄 Mushrooms</span><span class="badge badge-ok">Safe</span><span class="note">Grown in controlled indoor environments in AU. Low pesticide use. Generally low residues in available data.</span></li>
+      <li class="produce-item"><span class="num">14</span><span class="name">🧅 Onions</span><span class="badge badge-ok">Safe</span><span class="note">Papery outer skin. Low pest pressure. Very low residues in AU data. Allium family consistently clean.</span></li>
+      <li class="produce-item"><span class="num">15</span><span class="name">🥭 Papaya / Pawpaw</span><span class="badge badge-ok">Safe</span><span class="note">Thick skin, flesh well-protected. Low detection rates. Both AU-grown and imported perform well globally.</span></li>
+      <li class="produce-item"><span class="num">16</span><span class="name">🍍 Pineapples</span><span class="badge badge-ok">Safe</span><span class="note">Very thick inedible skin — near-zero residue detections globally. Mainly imported but flesh is well protected.</span></li>
+      <li class="produce-item"><span class="num">17</span><span class="name">🎃 Pumpkin</span><span class="badge badge-ok">Safe</span><span class="note">Thick inedible skin. Low pest pressure. Flesh consistently clean globally. Predominantly AU-grown.</span></li>
+      <li class="produce-item"><span class="num">18</span><span class="name">🍈 Rockmelon</span><span class="badge badge-ok">Safe</span><span class="note">Thick inedible rind. 61% of samples globally had zero detectable residues. Flesh well-protected.</span></li>
+      <li class="produce-item"><span class="num">19</span><span class="name">🌱 Shallots &amp; spring onions</span><span class="badge badge-ok">Safe</span><span class="note">Allium family — papery layers, low pest pressure. Short-cycle crop, predominantly AU-grown. Low residues.</span></li>
+      <li class="produce-item"><span class="num">20</span><span class="name">🌽 Sweet corn</span><span class="badge badge-ok">Safe</span><span class="note">Husk protection. Very low residues. AU sweet corn is non-GMO unlike many US equivalents.</span></li>
+      <li class="produce-item"><span class="num">21</span><span class="name">🍠 Sweet potato</span><span class="badge badge-ok">Safe</span><span class="note">Underground crop, skin usually peeled. Low residue rates. A common AU kitchen staple with a reassuring profile.</span></li>
+      <li class="produce-item"><span class="num">22</span><span class="name">🍉 Watermelon</span><span class="badge badge-ok">Safe</span><span class="note">Very thick rind. Flesh well insulated from chemicals. Low residues across all global studies consistently.</span></li>
+    </ul>
+  </div>
+
+  <div class="info-box">
+    <h4>✅ General Practices</h4>
+    <ul>
+      <li>Check country of origin — AU-grown Dirty Dozen items are preferable to imported equivalents</li>
+      <li>Soak in baking soda solution (1 tsp per 2 cups water, 15 minutes) then rinse — reduces surface residues more effectively than water alone</li>
+      <li>Farmers markets — ask about spray practices; many small AU farms use organic methods without formal certification</li>
+      <li>Grow your own — focus effort on Dirty Dozen crops: strawberries, leafy greens, kale, and berries</li>
+    </ul>
+  </div>
+
+  <div class="guide-nav">
+    <a href="dirty-dozen.html" class="guide-nav-card card-dirty">
+      <div class="card-kicker">← Also see</div>
+      <h3>🚨 The Dirty Dozen</h3>
+      <p>12 items with the highest contamination evidence — prioritise organic</p>
+    </a>
+    <a href="beyond-produce.html" class="guide-nav-card card-pantry">
+      <div class="card-kicker">Next guide →</div>
+      <h3>🌾 Beyond the Produce Aisle</h3>
+      <p>Grains, nuts, tea, coffee, dried fruit — the pantry guide</p>
+    </a>
+  </div>
+
+  <div class="page-footer">
+    <span>Sources: FSANZ ATDS · Friends of the Earth AU (2012) · NRS · APVMA · EWG Shopper's Guide (2026) · Pesticide Action Australia</span>
+    <span>Lighten Your Load · lightenyourload.info · April 2026</span>
+  </div>
+
+</div>
+</body>
+</html>

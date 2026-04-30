@@ -629,7 +629,7 @@ nav {
 
 .method-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 2px;
   margin-top: 40px;
   background: var(--rule);
@@ -797,9 +797,10 @@ footer {
   <div class="nav-logo">Lighten <span>Your Load</span></div>
   <ul class="nav-links">
     <li><a href="#guides">Guides</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#methodology">Methodology</a></li>
-    <li><a href="#support">Support the Research</a></li>
+    <li><a href="dirty-dozen.html">🚨 Dirty Dozen</a></li>
+    <li><a href="tread-careful-ten.html">⚠️ Tread Careful</a></li>
+    <li><a href="cleaner-by-far.html">✅ Cleaner by Far</a></li>
+    <li><a href="beyond-produce.html">🌾 Beyond Produce</a></li>
     <li><a href="#support" class="nav-cta">Get the PDFs</a></li>
   </ul>
 </nav>
@@ -879,7 +880,7 @@ footer {
 
   <div class="guides-grid">
 
-    <a href="#" class="guide-card card-dirty">
+    <a href="dirty-dozen.html" class="guide-card card-dirty">
       <div class="guide-tag tag-dirty">🚨 Produce guide</div>
       <h3>The Dirty Dozen</h3>
       <p>The 12 Australian produce items with the highest evidence of pesticide contamination. Ranked by strength of Australian-specific evidence.</p>
@@ -889,7 +890,7 @@ footer {
       </div>
     </a>
 
-    <a href="#" class="guide-card card-tread">
+    <a href="tread-careful-ten.html" class="guide-card card-tread">
       <div class="guide-tag tag-tread">⚠️ Produce guide</div>
       <h3>Tread Careful Ten</h3>
       <p>Ten commonly eaten items that don't belong on the Dirty Dozen — but carry specific concerns worth knowing. Citrus, potatoes, ginger, garlic and more.</p>
@@ -899,7 +900,7 @@ footer {
       </div>
     </a>
 
-    <a href="#" class="guide-card card-clean">
+    <a href="cleaner-by-far.html" class="guide-card card-clean">
       <div class="guide-tag tag-clean">✅ Produce guide</div>
       <h3>Cleaner by Far</h3>
       <p>22 produce items with the lowest evidence of pesticide risk in the Australian context. When conventional is generally a reasonable choice.</p>
@@ -913,7 +914,7 @@ footer {
 
   <div class="guides-grid-bottom">
 
-    <a href="#" class="guide-card card-pantry">
+    <a href="beyond-produce.html" class="guide-card card-pantry">
       <div class="guide-tag tag-pantry">🌾 Pantry guide</div>
       <h3>Beyond the Produce Aisle</h3>
       <p>Grains, bread, oats, nuts, tea, coffee, dried fruit. What the Australian Total Diet Study actually found — and what it didn't look for.</p>
@@ -990,6 +991,40 @@ footer {
       <div class="method-num">04</div>
       <h4>Confidence ratings throughout</h4>
       <p>Every item is rated by evidence strength. ★★★★ strong AU data. ★★★ reasonable. ★★ international proxy. ★ inference only. We never hide uncertainty.</p>
+    </div>
+    <div class="method-cell">
+      <div class="method-num">05</div>
+      <h4>Rankings reflect the flesh you eat</h4>
+      <p>Following standard testing practice, produce is washed or peeled before residue testing — so rankings reflect what reaches you when eating normally. Skins and peels may carry higher residues than the flesh. For example, banana skins carry post-harvest fungicide residues not reflected in the flesh ranking.</p>
+    </div>
+  </div>
+
+  <!-- CONFIDENCE RATING KEY -->
+  <div style="margin-top:24px;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--surface)">
+    <div style="background:#f0ece4;padding:10px 20px;border-bottom:1px solid var(--rule)">
+      <span style="font-family:'DM Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ink-muted)">Data Confidence Rating Key</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0">
+      <div style="padding:16px 20px;border-right:1px solid var(--rule)">
+        <div style="font-size:16px;letter-spacing:2px;margin-bottom:6px;color:#2d6a4f">★★★★</div>
+        <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:3px">Strong AU data</div>
+        <div style="font-size:11.5px;color:var(--ink-muted);line-height:1.5">Direct Australian testing — FSANZ ATDS, NRS, FOI-obtained government data, or peer-reviewed AU research</div>
+      </div>
+      <div style="padding:16px 20px;border-right:1px solid var(--rule)">
+        <div style="font-size:16px;letter-spacing:2px;margin-bottom:6px;color:#d4700a">★★★<span style="color:var(--rule)">★</span></div>
+        <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:3px">Reasonable AU data</div>
+        <div style="font-size:11.5px;color:var(--ink-muted);line-height:1.5">Some Australian data exists, supplemented by strong international findings from EWG, EFSA or CFIA</div>
+      </div>
+      <div style="padding:16px 20px;border-right:1px solid var(--rule)">
+        <div style="font-size:16px;letter-spacing:2px;margin-bottom:6px;color:#c8a000">★★<span style="color:var(--rule)">★★</span></div>
+        <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:3px">International proxy</div>
+        <div style="font-size:11.5px;color:var(--ink-muted);line-height:1.5">No meaningful AU data available — ranking draws on international research and clearly labels this limitation</div>
+      </div>
+      <div style="padding:16px 20px">
+        <div style="font-size:16px;letter-spacing:2px;margin-bottom:6px;color:#aaa9a4">★<span style="color:var(--rule)">★★★</span></div>
+        <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:3px">Biology-based inference</div>
+        <div style="font-size:11.5px;color:var(--ink-muted);line-height:1.5">Very thin data globally — ranking based on skin type, pest pressure, and systemic pesticide use patterns</div>
+      </div>
     </div>
   </div>
 </section>

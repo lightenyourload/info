@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beyond the Produce Aisle — Lighten Your Load</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  /* SITE NAV */
+  .site-nav{background:#1a1a18;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100;font-family:'DM Sans',sans-serif}
+  .site-nav .logo{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;text-decoration:none}
+  .site-nav .logo span{color:#c8a050}
+  .nav-links{display:flex;gap:4px;list-style:none}
+  .nav-links a{font-size:12px;font-weight:500;color:#888;text-decoration:none;padding:6px 12px;border-radius:3px;transition:all .2s}
+  .nav-links a:hover{color:white;background:rgba(255,255,255,.08)}
+  .nav-links a.active-dirty{color:#f4c4b8;background:rgba(181,52,26,.25)}
+  .nav-links a.active-tread{color:#c4b4e8;background:rgba(90,61,154,.25)}
+  .nav-links a.active-clean{color:#b7dfc9;background:rgba(45,106,79,.25)}
+  .nav-links a.active-pantry{color:#e8d090;background:rgba(138,101,32,.25)}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --light: #9a9a9a;
+    --rule: #e0ddd8;
+    --bg: #f7f5f0;
+    --paper: #ffffff;
+
+    /* Category colours */
+    --grain-dk:   #5a3e1b;
+    --grain-mid:  #c8882a;
+    --grain-lt:   #fdf3e3;
+    --grain-rule: #e8c07a;
+
+    --nut-dk:     #2e4a2e;
+    --nut-mid:    #5a9e5a;
+    --nut-lt:     #eef6ee;
+    --nut-rule:   #a8d4a8;
+
+    --risk-dk:    #7a1f1f;
+    --risk-mid:   #c0392b;
+    --risk-lt:    #fdf0f0;
+    --risk-rule:  #e8a8a8;
+
+    --caution-dk: #5a4a1a;
+    --caution-mid:#c09030;
+    --caution-lt: #fdf8ea;
+    --caution-rule:#e8d090;
+
+    --low-dk:     #1a4a5a;
+    --low-mid:    #2980a0;
+    --low-lt:     #eaf4f8;
+    --low-rule:   #90cde8;
+  }
+
+  @media print {
+    body { background: white !important; }
+    .page { box-shadow: none !important; }
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #ddd9d0;
+    min-height: 100vh;
+    padding: 36px 16px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page {
+    background: var(--bg);
+    width: 100%;
+    max-width: 980px;
+    box-shadow: 0 10px 56px rgba(0,0,0,0.16);
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: var(--ink);
+    color: white;
+    padding: 30px 44px 26px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.3px;
+  }
+
+  .header h1 em {
+    font-style: normal;
+    color: #d4a84a;
+  }
+
+  .header .sub {
+    font-size: 13px;
+    font-weight: 300;
+    color: #aaa;
+    margin-top: 5px;
+    letter-spacing: 0.3px;
+  }
+
+  .header-meta {
+    text-align: right;
+    font-size: 11px;
+    color: #777;
+    line-height: 1.7;
+  }
+
+  .companion-tag {
+    display: inline-block;
+    background: #333;
+    color: #c8a050;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    margin-bottom: 6px;
+  }
+
+  /* ─── INTRO STRIP ─── */
+  .intro {
+    padding: 18px 44px;
+    background: #f0ece4;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .intro p {
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #444;
+  }
+
+  .intro p strong { color: var(--ink); }
+
+  .confidence-key {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+  }
+
+  .conf-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 2px;
+  }
+
+  .conf-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    color: var(--ink);
+  }
+
+  .stars { letter-spacing: 1px; font-size: 13px; }
+  .stars .lit { /* colour set per level */ }
+  .stars .dim { color: #d4d0c8; }
+  .conf-strong    .stars .lit { color: #2d6a4f; }
+  .conf-reasonable .stars .lit { color: #d4700a; }
+  .conf-limited   .stars .lit { color: #c8a000; }
+  .conf-thin      .stars .lit { color: #aaa9a4; }
+  .conf-strong    { background: #eef7f2; border-radius: 3px; padding: 3px 8px 3px 5px; }
+  .conf-reasonable{ background: #fff3e8; border-radius: 3px; padding: 3px 8px 3px 5px; }
+  .conf-limited   { background: #fffbe6; border-radius: 3px; padding: 3px 8px 3px 5px; }
+  .conf-thin      { background: #f2f1ef; border-radius: 3px; padding: 3px 8px 3px 5px; }
+
+  /* ─── SECTION ─── */
+  .section {
+    border-bottom: 1px solid var(--rule);
+    padding: 0 44px 28px;
+  }
+
+  .section:last-of-type { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 22px 0 14px;
+    border-bottom: 2px solid;
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  /* Confidence badges — use confidence-level colours regardless of section */
+  .section-header .conf { font-size: 10.5px; font-weight: 600; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 2px; }
+  .section-header .conf.conf-strong     { background: #d4eddf; color: #1a5c36; }
+  .section-header .conf.conf-reasonable { background: #ffe8cc; color: #8a4000; }
+  .section-header .conf.conf-limited    { background: #fff5c0; color: #6a5000; }
+  .section-header .conf.conf-thin       { background: #ebebeb; color: #666; }
+
+  .section-header .source-note {
+    font-size: 11px;
+    font-style: italic;
+    color: var(--light);
+    margin-left: auto;
+  }
+
+  /* Grain */
+  .section.grain .section-header { border-color: var(--grain-mid); color: var(--grain-dk); }
+
+  /* Nuts */
+  .section.nuts .section-header { border-color: var(--nut-mid); color: var(--nut-dk); }
+
+  /* Risk beverages */
+  .section.beverages .section-header { border-color: var(--risk-mid); color: var(--risk-dk); }
+
+  /* Caution */
+  .section.caution .section-header { border-color: var(--caution-mid); color: var(--caution-dk); }
+
+  /* Low risk */
+  .section.low .section-header { border-color: var(--low-mid); color: var(--low-dk); }
+
+  /* ─── ITEM GRID ─── */
+  .item-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .item-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+  .item-grid.one { grid-template-columns: 1fr; }
+
+  .item {
+    padding: 12px 14px;
+    border-radius: 3px;
+    border-left: 3px solid;
+  }
+
+  .item.concern { background: var(--risk-lt); border-color: var(--risk-mid); }
+  .item.caution { background: var(--caution-lt); border-color: var(--caution-mid); }
+  .item.ok      { background: var(--low-lt);    border-color: var(--low-mid); }
+  .item.grain-item { background: var(--grain-lt); border-color: var(--grain-mid); }
+  .item.nut-item   { background: var(--nut-lt);   border-color: var(--nut-mid); }
+
+  .item-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .item-name .emoji { font-size: 15px; }
+
+  .risk-pill {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 1px 6px;
+    border-radius: 2px;
+    margin-left: auto;
+  }
+
+  .pill-high   { background: var(--risk-mid);    color: white; }
+  .pill-mod    { background: var(--caution-mid);  color: white; }
+  .pill-low    { background: var(--low-mid);      color: white; }
+  .pill-ok     { background: var(--nut-mid);      color: white; }
+
+  .item-body {
+    font-size: 11.5px;
+    color: #444;
+    line-height: 1.5;
+  }
+
+  .item-body strong { color: var(--ink); font-weight: 600; }
+
+  .item-action {
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(0,0,0,0.07);
+    color: var(--ink);
+  }
+
+  /* ─── THE KEY INSIGHT BOX ─── */
+  .insight {
+    margin: 14px 0 0;
+    padding: 12px 14px;
+    background: var(--ink);
+    color: #ddd;
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .insight strong { color: #f0c060; }
+
+  /* ─── SUMMARY TABLE ─── */
+  .summary-section {
+    padding: 24px 44px 28px;
+    background: #f0ece4;
+    border-top: 2px solid var(--rule);
+  }
+
+  .summary-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .summary-table th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 6px 10px;
+    background: #e8e2d8;
+    border-bottom: 2px solid var(--rule);
+  }
+
+  .summary-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+    vertical-align: top;
+    line-height: 1.4;
+  }
+
+  .summary-table tr:last-child td { border-bottom: none; }
+  .summary-table tr:nth-child(even) td { background: rgba(255,255,255,0.5); }
+
+  .priority { font-weight: 600; }
+  .priority.high   { color: var(--risk-dk); }
+  .priority.mod    { color: var(--caution-dk); }
+  .priority.low    { color: var(--low-dk); }
+  .priority.fine   { color: var(--nut-dk); }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--ink);
+    color: #666;
+    padding: 10px 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 0.3px;
+  }
+
+  .footer span:last-child { color: #888; font-style: italic; }
+
+  /* ─── CALLOUT ─── */
+  .callout {
+    background: var(--grain-lt);
+    border: 1px solid var(--grain-rule);
+    border-radius: 3px;
+    padding: 10px 14px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--grain-dk);
+    margin: 12px 0 0;
+  }
+
+  .callout strong { font-weight: 600; }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="index.html" class="logo">Lighten <span>Your Load</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="dirty-dozen.html" class="active-dirty">🚨 Dirty Dozen</a></li>
+    <li><a href="tread-careful-ten.html" class="active-tread">⚠️ Tread Careful Ten</a></li>
+    <li><a href="cleaner-by-far.html" class="active-clean">✅ Cleaner by Far</a></li>
+    <li><a href="beyond-produce.html" class="active-pantry">🌾 Beyond Produce</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <h1>Beyond the Fresh Produce Aisle:<br><em>Grains, Nuts, Tea & More</em></h1>
+      <p class="sub">A companion guide to the Australian Produce Pesticide Guide — the pantry & dry goods edition</p>
+    </div>
+    <div class="header-meta">
+      <span class="companion-tag">Companion Guide</span><br>
+      Working Draft · April 2026<br>
+      FSANZ ATDS · NRS · FoE AU<br>
+      International data where AU absent
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>Fresh produce gets all the attention — but Australians eat grains, nuts, dried goods and beverages every single day, often in larger quantities by weight. <strong>Bread alone is the single largest contributor to glyphosate dietary exposure in Australia</strong>, according to the FSANZ 25th Total Diet Study. This guide covers what we know — and honestly, what we don't — about pesticide residues in the rest of the shopping basket.</p>
+    <div class="confidence-key">
+      <div class="conf-label">Data confidence ratings</div>
+      <div class="conf-row conf-strong"><span class="stars"><span class="lit">★★★★</span></span> Strong AU-specific data (NRS, ATDS, FoE)</div>
+      <div class="conf-row conf-reasonable"><span class="stars"><span class="lit">★★★</span><span class="dim">★</span></span> Reasonable AU data + strong international</div>
+      <div class="conf-row conf-limited"><span class="stars"><span class="lit">★★</span><span class="dim">★★</span></span> Limited AU data, international proxy</div>
+      <div class="conf-row conf-thin"><span class="stars"><span class="lit">★</span><span class="dim">★★★</span></span> Very thin — biology-based inference only</div>
+    </div>
+  </div>
+
+  <!-- ───────────── GRAINS ───────────── -->
+  <div class="section grain">
+    <div class="section-header">
+      <h2>🌾 Grains, Bread & Cereals</h2>
+      <span class="conf conf-strong"><span class="stars"><span class="lit">★★★★</span></span> Strong AU data</span>
+      <span class="source-note">FSANZ 25th ATDS · FoE AU 2012 · NRS · NZ MPI testing</span>
+    </div>
+
+    <div class="item-grid">
+
+      <div class="item concern">
+        <div class="item-name"><span class="emoji">🌾</span>Oats (rolled, instant, muesli) <span class="risk-pill pill-high">High concern</span></div>
+        <div class="item-body">
+          <strong>The highest-residue grain.</strong> Oats are routinely treated with glyphosate as a pre-harvest desiccant — sprayed directly onto the crop days before harvest to accelerate drying. This means residues end up in the grain itself, not just on leaves. Residue levels in conventionally grown oats are consistently among the highest recorded for any cereal crop internationally. <strong>Oat bran concentrates residues</strong> even further — research shows 44–83% of pesticides in oats accumulate in the bran fraction, meaning "wholegrain" oats carry more than refined.
+        </div>
+        <div class="item-action">→ Buy organic oats, especially for children and daily consumers. Rolled oats, muesli, oat-based cereals and porridge all apply.</div>
+      </div>
+
+      <div class="item concern">
+        <div class="item-name"><span class="emoji">🍞</span>Wheat, bread & flour <span class="risk-pill pill-high">High concern</span></div>
+        <div class="item-body">
+          <strong>Confirmed in Australian ATDS data.</strong> FSANZ found glyphosate in multigrain, wholemeal, spelt, rye and white breads, plus savoury biscuits and crackers. Bread is officially the <strong>single largest contributor</strong> to glyphosate dietary exposure for Australians. Wheat was also the <strong>2nd highest pesticide detection category</strong> in FoE Australia's 2012 report (13.2% of all AU detections), largely driven by post-harvest storage treatments (chlorpyrifos-methyl, pirimiphos-methyl, deltamethrin). These storage chemicals are highly persistent. Wholegrain and bran-based products carry more than white flour.
+        </div>
+        <div class="item-action">→ Organic bread or flour for daily users. Sourdough does not remove glyphosate. White flour has lower bran-fraction residues than wholemeal.</div>
+      </div>
+
+      <div class="item caution">
+        <div class="item-name"><span class="emoji">🍚</span>Rice <span class="risk-pill pill-mod">Moderate</span></div>
+        <div class="item-body">
+          FSANZ found glyphosate in rice-based breakfast cereals, rice flour, crackers and infant rice cereal. Infant cereal was specifically named — relevant given it's often a baby's first solid food. Rice itself is also grown in standing water which concentrates some contaminants. <strong>Imported rice</strong> (most rice sold in Australia comes from Thailand, Pakistan, India) may carry different chemical profiles than Australian-grown.
+        </div>
+        <div class="item-action">→ Worth buying organic for infants. For general use, Australian-grown rice where available.</div>
+      </div>
+
+      <div class="item caution">
+        <div class="item-name"><span class="emoji">🫘</span>Pulses (lentils, chickpeas, dried beans) <span class="risk-pill pill-mod">Moderate</span></div>
+        <div class="item-body">
+          Glyphosate is used as a desiccant on pulses in Australia (lentils, chickpeas, canola). Canadian testing found glyphosate in 20–45% of pulse products, with highest levels in chickpeas and lentils. The NRS covers Australian pulses for export compliance but consumer-facing residue data is limited. <strong>Imported pulses from India and the US</strong> carry higher risk given different application practices.
+        </div>
+        <div class="item-action">→ AU-grown preferred. Organic if pulses are a daily staple. Canned pulses: lower residue than dry (water leaches some out).</div>
+      </div>
+
+    </div>
+
+    <div class="callout">
+      <strong>The wholegrain paradox:</strong> Choosing wholegrain over refined is nutritionally sound — but it means accepting higher pesticide residue loads from the bran fraction, where chemicals concentrate. If you eat wholegrain bread, oats or bran-based cereals daily, this is the strongest case for switching those specific items to organic. The residue reduction in refined (white) grain products is real but comes at a nutritional cost. Organic wholegrain is the ideal — it gets you both.
+    </div>
+  </div>
+
+  <!-- ───────────── NUTS ───────────── -->
+  <div class="section nuts">
+    <div class="section-header">
+      <h2>🥜 Nuts & Seeds</h2>
+      <span class="conf conf-reasonable"><span class="stars"><span class="lit">★★★</span><span class="dim">★</span></span> Reasonable data</span>
+      <span class="source-note">NRS (AU almonds, macadamias) · FSANZ ATDS · international data</span>
+    </div>
+
+    <div class="item-grid three">
+
+      <div class="item concern">
+        <div class="item-name"><span class="emoji">🥜</span>Peanuts <span class="risk-pill pill-high">Higher risk</span></div>
+        <div class="item-body">Grown underground in direct soil contact, with high fungicide and insecticide use. Flagged internationally for higher pesticide loads. Also the primary aflatoxin risk nut in Australia — <strong>aflatoxin from India and China sources</strong> is well-monitored by FSANZ's Imported Food Inspection Scheme. Most peanuts and peanut butter sold in AU are imported.</div>
+        <div class="item-action">→ Organic peanut butter for regular use. Check country of origin.</div>
+      </div>
+
+      <div class="item caution">
+        <div class="item-name"><span class="emoji">🫘</span>Cashews <span class="risk-pill pill-mod">Moderate</span></div>
+        <div class="item-body">All cashews sold in Australia are imported (primarily India, Vietnam, Ivory Coast). Significant pesticide use in growing regions. However, the shelling and roasting process removes most surface residues — <strong>studies show 93–97% reduction</strong> from shelling and roasting. Residue risk lower in finished cashews than raw agricultural crop.</div>
+        <div class="item-action">→ Conventional is reasonably fine. Organic worth it if eating very large quantities.</div>
+      </div>
+
+      <div class="item caution">
+        <div class="item-name"><span class="emoji">🫘</span>Pistachios <span class="risk-pill pill-mod">Moderate</span></div>
+        <div class="item-body">Flagged internationally for higher pesticide loads. All imported into Australia (Iran, USA, Turkey are main sources). EU data shows 25% MRL exceedance rate in Brazil nuts; pistachio data less clear but sourcing from Iran and Turkey warrants caution. Aflatoxin monitoring applies.</div>
+        <div class="item-action">→ Moderate caution. Rinse before eating.</div>
+      </div>
+
+      <div class="item nut-item">
+        <div class="item-name"><span class="emoji">🌰</span>Almonds <span class="risk-pill pill-ok">Lower risk (AU)</span></div>
+        <div class="item-body">AU-grown almonds are covered by the NRS with good compliance data. Australian almonds generally have lower residue loads than imported US almonds (which have high fungicide use). <strong>Check origin</strong> — imported almonds (mainly USA) carry higher risk than AU-grown (Sunraysia/SA regions).</div>
+        <div class="item-action">→ Buy Australian-grown where labelled. Organic worthwhile for US-imported almonds.</div>
+      </div>
+
+      <div class="item nut-item">
+        <div class="item-name"><span class="emoji">🌰</span>Macadamias <span class="risk-pill pill-ok">Lower risk</span></div>
+        <div class="item-body">Australian-grown, NRS monitored, strong compliance record. Hard shell protects kernel. One of the lower-risk nuts available in Australian supermarkets. Most macadamias sold in AU are domestically produced (QLD, NSW).</div>
+        <div class="item-action">→ Conventional Australian macadamias are generally fine.</div>
+      </div>
+
+      <div class="item nut-item">
+        <div class="item-name"><span class="emoji">🌰</span>Walnuts, hazelnuts, pecans <span class="risk-pill pill-ok">Moderate-low</span></div>
+        <div class="item-body">Mainly imported (USA, Europe, Turkey). Hard shells provide good protection of the kernel. No specific AU testing data — international data suggests lower residue loads than peanuts or cashews. EU heavy metal data flags pecan for lead and Hg, but pesticide residues not a primary concern.</div>
+        <div class="item-action">→ Generally fine conventional. Rinse before eating.</div>
+      </div>
+
+    </div>
+
+    <div class="insight">
+      <strong>Seeds note:</strong> Sesame seeds (mostly imported, often from Ethiopia, India, Nigeria) have been flagged internationally for ethylene oxide contamination — a fumigation chemical linked to cancer. This is a distinct issue from pesticides but worth noting for tahini and hummus consumers. EU has issued major recalls of sesame from these origins. Organic or certified-clean sesame products are advisable.
+    </div>
+  </div>
+
+  <!-- ───────────── BEVERAGES ───────────── -->
+  <div class="section beverages">
+    <div class="section-header">
+      <h2>🍵 Tea & Coffee</h2>
+      <span class="conf conf-limited"><span class="stars"><span class="lit">★★</span><span class="dim">★★</span></span> International data, limited AU testing</span>
+      <span class="source-note">EU EFSA · Canadian CBC · Greenpeace India · US FDA · FSANZ (limited)</span>
+    </div>
+
+    <div class="item-grid">
+
+      <div class="item concern">
+        <div class="item-name"><span class="emoji">🍵</span>Black & green tea (imported) <span class="risk-pill pill-high">High concern</span></div>
+        <div class="item-body">
+          <strong>One of the highest-risk imported foods.</strong> Tea leaves are never washed before consumption — you brew them directly. Multiple major international investigations have found widespread pesticide contamination: Canadian CBC testing (2014) found over half of major brands exceeded legal limits; Greenpeace India testing found DDT in 67% of Indian tea samples despite being banned. <strong>EU data specifically flags chlorpyrifos in teas from China</strong> as a recurring exceedance. Australian MRL for tea is 0.01 ppm (same as EU default) but testing frequency in AU is low.
+        </div>
+        <div class="item-action">→ Certified organic tea is the clearest risk-reduction step. Particularly for daily tea drinkers. Loose-leaf from certified sources or known organic brands preferred.</div>
+      </div>
+
+      <div class="item caution">
+        <div class="item-name"><span class="emoji">☕</span>Coffee <span class="risk-pill pill-mod">Moderate</span></div>
+        <div class="item-body">
+          Coffee is grown in tropical regions with high pesticide use. However, <strong>roasting significantly degrades many pesticide residues</strong> — the high heat of roasting (200°C+) breaks down most organophosphates and pyrethroids. Ground coffee and espresso therefore carry lower residue loads than the raw bean suggests. Instant coffee and cold brew carry somewhat higher risk as the roasting/heat degradation is the primary reduction mechanism. <strong>Decaf coffee</strong> can carry additional solvents from the decaffeination process.
+        </div>
+        <div class="item-action">→ Organic coffee worth it for daily drinkers. Standard roasted coffee is lower risk than the growing conditions suggest.</div>
+      </div>
+
+    </div>
+
+    <div class="insight">
+      <strong>The brewing problem:</strong> Unlike food where you eat the flesh and discard skin, with tea you brew the leaves and drink the water. Pesticides that are water-soluble migrate directly into your cup. A 3-minute brew of a contaminated tea bag can transfer a meaningful fraction of residues into the drink. Organic certification is essentially the only practical consumer protection here — there's no way to reduce residue at the brewing stage.
+    </div>
+  </div>
+
+  <!-- ───────────── DRIED FRUIT ───────────── -->
+  <div class="section caution">
+    <div class="section-header">
+      <h2>🍇 Dried Fruit</h2>
+      <span class="conf conf-limited"><span class="stars"><span class="lit">★★</span><span class="dim">★★</span></span> Limited AU data, international proxy</span>
+      <span class="source-note">EU EFSA · EWG · ATDS (limited) · processing factor research</span>
+    </div>
+
+    <div class="item-grid">
+
+      <div class="item concern">
+        <div class="item-name"><span class="emoji">🍇</span>Raisins & sultanas <span class="risk-pill pill-high">High concern</span></div>
+        <div class="item-body">Grapes are already on the fresh produce Dirty Dozen. <strong>Drying concentrates pesticide residues</strong> by removing water while leaving chemicals behind — meaning dried grapes carry proportionally higher residue loads per gram than fresh. EU data shows dried fruit among the highest exceedance rate categories. Most raisins and sultanas in Australian supermarkets are imported (Turkey, USA, South Africa) or domestic. Both warrant attention.</div>
+        <div class="item-action">→ Organic raisins/sultanas strongly recommended, especially for children's snacks and baking.</div>
+      </div>
+
+      <div class="item caution">
+        <div class="item-name"><span class="emoji">🍑</span>Dried apricots, peaches, prunes <span class="risk-pill pill-mod">Moderate-high</span></div>
+        <div class="item-body">Stone fruit is on the fresh Dirty Dozen. Drying concentrates residues. Dried apricots from Turkey (the dominant source globally) have historically been treated with sulphur dioxide as a preservative (separate issue) but also carry pesticide residues from source country practices. Most dried stone fruit sold in Australia is imported.</div>
+        <div class="item-action">→ Organic preferred, particularly for sulphite-sensitive individuals and children.</div>
+      </div>
+
+      <div class="item caution">
+        <div class="item-name"><span class="emoji">🫐</span>Dried cranberries & blueberries <span class="risk-pill pill-mod">Moderate</span></div>
+        <div class="item-body">Both berries carry high pesticide loads fresh (blueberries on the Dirty Dozen). Concentration effect from drying applies. Most dried berries sold in Australia are imported from the US or Canada.</div>
+        <div class="item-action">→ Organic preferred for regular use.</div>
+      </div>
+
+      <div class="item ok">
+        <div class="item-name"><span class="emoji">🥭</span>Dried mango, pineapple, coconut <span class="risk-pill pill-low">Lower risk</span></div>
+        <div class="item-body">The underlying fresh fruit (mango, pineapple) is on the Clean Fifteen — thick skin, lower pesticide loads. Drying still concentrates what residues exist, but the starting point is much lower. Coconut is generally very low risk. Check for added sugar and sulphites as a separate health consideration.</div>
+        <div class="item-action">→ Generally fine conventional. Check for added sugar and sulphites.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ───────────── LOW RISK ───────────── -->
+  <div class="section low">
+    <div class="section-header">
+      <h2>✅ Lower Risk Pantry Staples</h2>
+      <span class="conf conf-reasonable"><span class="stars"><span class="lit">★★★</span><span class="dim">★</span></span> Reasonable confidence</span>
+      <span class="source-note">NRS · ATDS · international data · processing factor research</span>
+    </div>
+
+    <div class="item-grid three">
+
+      <div class="item ok">
+        <div class="item-name"><span class="emoji">🧂</span>Salt, pepper, vinegar</div>
+        <div class="item-body">Mineral and fermentation products — negligible pesticide exposure.</div>
+      </div>
+
+      <div class="item ok">
+        <div class="item-name"><span class="emoji">🧈</span>Butter & animal fats</div>
+        <div class="item-body">Fat-soluble pesticides (organochlorines) can concentrate in fat, but Australia's dairy industry has low historical DDT/organochlorine levels. Generally low concern.</div>
+      </div>
+
+      <div class="item ok">
+        <div class="item-name"><span class="emoji">🍯</span>Honey</div>
+        <div class="item-body">Australian honey has excellent residue compliance in NRS data. Systemic neonicotinoids in bees are an environmental concern but translate to very low residue in honey itself.</div>
+      </div>
+
+      <div class="item ok">
+        <div class="item-name"><span class="emoji">🫒</span>Olive oil</div>
+        <div class="item-body">Australian-grown and Italian/Spanish imports both have low pesticide residue profiles. The oil extraction process leaves most residues behind in the pomace.</div>
+      </div>
+
+      <div class="item ok">
+        <div class="item-name"><span class="emoji">🌽</span>Corn / maize products</div>
+        <div class="item-body">The husk is removed before processing, which removes the majority of pesticide residues. Low residue in corn flour, polenta, corn-based cereals (non-oat).</div>
+      </div>
+
+      <div class="item ok">
+        <div class="item-name"><span class="emoji">🥚</span>Eggs</div>
+        <div class="item-body">Australian egg industry has low pesticide residue levels in NRS data. Free-range and organic hens still eat some grains but overall residue in eggs is very low.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ───────────── SUMMARY TABLE ───────────── -->
+  <div class="summary-section">
+    <h2>Quick Reference — Beyond Fresh Produce</h2>
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Risk Level</th>
+          <th>Key Issue (AU context)</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Oats</strong> (rolled, muesli, porridge)</td>
+          <td><span class="priority high">High</span></td>
+          <td>Glyphosate desiccation; bran concentrates residues</td>
+          <td>Buy organic, esp. for children</td>
+        </tr>
+        <tr>
+          <td><strong>Bread &amp; wheat flour</strong></td>
+          <td><span class="priority high">High</span></td>
+          <td>#2 AU pesticide detection category (FoE 2012); glyphosate confirmed in ATDS</td>
+          <td>Organic bread/flour for daily consumers</td>
+        </tr>
+        <tr>
+          <td><strong>Tea</strong> (black, green, herbal)</td>
+          <td><span class="priority high">High</span></td>
+          <td>Never washed; residues brew directly into cup; chlorpyrifos from China</td>
+          <td>Certified organic tea</td>
+        </tr>
+        <tr>
+          <td><strong>Raisins &amp; sultanas</strong></td>
+          <td><span class="priority high">High</span></td>
+          <td>Grapes = Dirty Dozen; drying concentrates residues</td>
+          <td>Organic, esp. for children's snacks</td>
+        </tr>
+        <tr>
+          <td><strong>Peanuts &amp; peanut butter</strong></td>
+          <td><span class="priority mod">Moderate-High</span></td>
+          <td>Soil contact, high fungicide use; aflatoxin risk (imports)</td>
+          <td>Organic PB for regular use</td>
+        </tr>
+        <tr>
+          <td><strong>Rice &amp; rice products</strong></td>
+          <td><span class="priority mod">Moderate</span></td>
+          <td>Glyphosate in infant cereal (ATDS); imported varieties vary</td>
+          <td>Organic for infants; AU-grown preferred</td>
+        </tr>
+        <tr>
+          <td><strong>Pulses</strong> (dried lentils, chickpeas)</td>
+          <td><span class="priority mod">Moderate</span></td>
+          <td>Glyphosate desiccation on AU pulses; imported risk higher</td>
+          <td>AU-grown preferred; organic if daily staple</td>
+        </tr>
+        <tr>
+          <td><strong>Dried stone fruit</strong> (apricots, prunes)</td>
+          <td><span class="priority mod">Moderate</span></td>
+          <td>Drying concentrates residues from stone fruit (Dirty Dozen)</td>
+          <td>Organic preferred</td>
+        </tr>
+        <tr>
+          <td><strong>Coffee</strong></td>
+          <td><span class="priority mod">Moderate</span></td>
+          <td>High-input crop; roasting degrades most residues</td>
+          <td>Organic for daily drinkers</td>
+        </tr>
+        <tr>
+          <td><strong>Cashews, pistachios</strong></td>
+          <td><span class="priority mod">Moderate</span></td>
+          <td>All imported; processing removes most surface residues</td>
+          <td>Conventional generally ok; rinse before eating</td>
+        </tr>
+        <tr>
+          <td><strong>AU almonds &amp; macadamias</strong></td>
+          <td><span class="priority low">Lower</span></td>
+          <td>NRS monitored, good compliance</td>
+          <td>AU-grown conventional fine</td>
+        </tr>
+        <tr>
+          <td><strong>Honey, olive oil, eggs, butter</strong></td>
+          <td><span class="priority fine">Low</span></td>
+          <td>Generally low residues; AU data reassuring</td>
+          <td>Conventional generally fine</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>Sources: FSANZ ATDS (25th) · NRS 2023-24 · Friends of the Earth AU 2012 · EU EFSA 2020 · Canadian CFIA 2021-2 · Greenpeace India · NZ MPI · processing factor research (PubMed)</span>
+    <span>Companion to Australian Produce Pesticide Guide · Working Draft · April 2026</span>
+  </div>
+
+</div>
+
+</body>
+</html>

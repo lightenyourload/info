@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tread Careful Ten — Lighten Your Load</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dirty:#b5341a;--dirty-mid:#f4c4b8;
+  --tread:#5a3d9a;--tread-mid:#c4b4e8;--tread-lt:#f5f2fd;
+  --clean:#2d6a4f;--clean-mid:#b7dfc9;
+  --gold:#c8a050;
+  --ink:#1a1a1a;--muted:#6b6b6b;--rule:#d0cdc8;--bg:#faf9f6;
+}
+@media print{body{background:white!important}}
+body{font-family:'DM Sans',sans-serif;background:#e0dcd4;padding:0;margin:0}
+.site-nav{background:var(--ink);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100}
+.site-nav .logo{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;text-decoration:none}
+.site-nav .logo span{color:var(--gold)}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{font-size:12px;font-weight:500;color:#888;text-decoration:none;padding:6px 12px;border-radius:3px;transition:all .2s}
+.nav-links a:hover{color:white;background:rgba(255,255,255,.08)}
+.nav-links a.active-dirty{color:#f4c4b8;background:rgba(181,52,26,.25)}
+.nav-links a.active-tread{color:#c4b4e8;background:rgba(90,61,154,.25)}
+.nav-links a.active-clean{color:#b7dfc9;background:rgba(45,106,79,.25)}
+.page{background:var(--bg);max-width:860px;margin:0 auto;box-shadow:0 4px 32px rgba(0,0,0,.14)}
+.page-header{background:var(--tread);color:white;padding:32px 40px 28px}
+.page-header .kicker{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px}
+.page-header h1{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;line-height:1.1;margin-bottom:8px}
+.page-header .desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.6;max-width:540px}
+.caveat{margin:16px 40px 0;padding:10px 14px;border:1px solid var(--rule);border-left:3px solid #c9a84c;font-size:11px;color:#5a4a2a;line-height:1.5}
+.caveat strong{color:#8a6520}
+.list-section{padding:20px 40px 0}
+.produce-list{list-style:none;display:flex;flex-direction:column;gap:0}
+.produce-item{display:grid;grid-template-columns:24px 1fr auto;align-items:baseline;gap:6px;padding:8px 10px;border-radius:3px;border-bottom:1px solid var(--rule)}
+.produce-item:last-child{border-bottom:none}
+.produce-item:hover{background:rgba(0,0,0,.02)}
+.num{font-size:10px;font-weight:700;color:var(--tread);text-align:right;line-height:1.6;font-family:'DM Mono',monospace}
+.name{font-size:13px;font-weight:600;color:var(--ink);line-height:1.35}
+.badge{font-size:9.5px;font-weight:700;letter-spacing:.2px;padding:2px 7px;border-radius:2px;white-space:nowrap;line-height:1.5}
+.badge-tread{background:var(--tread-mid);color:#2a1a5a}
+.note{font-size:11px;color:var(--muted);grid-column:2/-1;margin-top:2px;line-height:1.4}
+.info-box{margin:16px 40px 0;border:1px solid var(--rule);border-left:3px solid var(--tread);padding:12px 14px}
+.info-box h4{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--tread);margin-bottom:8px;font-family:'DM Mono',monospace}
+.info-box ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.info-box li{font-size:12px;color:var(--ink);line-height:1.5;padding-left:14px;position:relative}
+.info-box li::before{content:'→';position:absolute;left:0;color:var(--muted);font-size:10px;top:1px}
+.guide-nav{margin:20px 40px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.guide-nav-card{display:block;padding:14px 16px;border:1px solid var(--rule);border-radius:3px;text-decoration:none;transition:all .2s}
+.guide-nav-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
+.guide-nav-card .card-kicker{font-size:9.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:4px}
+.guide-nav-card h3{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.guide-nav-card p{font-size:11px;color:var(--muted);line-height:1.4}
+.card-dirty .card-kicker{color:var(--dirty)}
+.card-clean .card-kicker{color:var(--clean)}
+.page-footer{background:var(--ink);color:#666;padding:10px 40px;display:flex;justify-content:space-between;align-items:center;font-size:9.5px;letter-spacing:.3px;margin-top:20px}
+.page-footer span:last-child{color:#888;font-style:italic}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="logo">Lighten <span>Your Load</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="dirty-dozen.html" class="active-dirty">🚨 Dirty Dozen</a></li>
+    <li><a href="tread-careful-ten.html" class="active-tread">⚠️ Tread Careful Ten</a></li>
+    <li><a href="cleaner-by-far.html">✅ Cleaner by Far</a></li>
+    <li><a href="beyond-produce.html">🌾 Beyond Produce</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <div class="page-header">
+    <div class="kicker">Lighten Your Load · Produce Guide</div>
+    <h1>⚠️ The Tread Careful Ten</h1>
+    <p class="desc">Ten commonly eaten items that don't belong on the Dirty Dozen — but carry specific concerns worth knowing about. Simple actions reduce risk significantly for most of these.</p>
+  </div>
+
+  <div class="caveat"><strong>⚠ Data note:</strong> "Tread Careful" does not mean avoid — it means be informed. For most items here, simple actions (peeling, buying local, washing well) meaningfully reduce risk. Organic is advisable where the item is eaten daily or frequently by children.</div>
+
+  <div class="list-section">
+    <ul class="produce-list">
+      <li class="produce-item">
+        <span class="num">1</span>
+        <span class="name">🍊 Oranges &amp; citrus</span>
+        <span class="badge badge-tread">Buy AU-grown</span>
+        <span class="note">Post-harvest imazalil fungicide (linked to hormone disruption) penetrates the peel into the flesh. Found on ~90% of peeled samples. Imported citrus carries 4× higher levels than AU-grown.</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">2</span>
+        <span class="name">🍅 Tomatoes</span>
+        <span class="badge badge-tread">Buy local</span>
+        <span class="note">QLD produce is legally required to be treated with a systemic insecticide dip before interstate transit. Buy locally grown where possible and check origin labelling.</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">3</span>
+        <span class="name">🫚 Ginger</span>
+        <span class="badge badge-tread">Organic</span>
+        <span class="note">Underground tuber absorbs residual soil pesticides during growth. Almost entirely imported into Australia. Clothianidin detected at high rates in Chinese ginger. Washing is largely ineffective.</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">4</span>
+        <span class="name">🧄 Garlic</span>
+        <span class="badge badge-tread">Buy AU-grown</span>
+        <span class="note">Most supermarket garlic is imported from China. Friends of the Earth AU: China accounts for ~40% of all AQIS pesticide MRL breaches. Papery skin offers some protection — buy Australian-grown where labelled.</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">5</span>
+        <span class="name">🥔 Potatoes</span>
+        <span class="badge badge-tread">Peel well</span>
+        <span class="note">90% of samples contain chlorpropham — a post-harvest sprout inhibitor banned in the EU since 2019, still approved in Australia. Concentrated in the skin — peel thoroughly.</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">6</span>
+        <span class="name">🫘 Fresh green beans</span>
+        <span class="badge badge-tread">Wash well</span>
+        <span class="note">Thin edible pod, high pest pressure. Acephate residues found internationally despite a decade-old ban. AU-specific data is limited but biology is comparable. Frozen green beans are lower risk.</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">7</span>
+        <span class="name">🫛 Snow peas &amp; sugar snap peas</span>
+        <span class="badge badge-tread">Wash well</span>
+        <span class="note">Whole edible pod eaten fresh — no pesticide barrier. Predominantly AU-grown. Only industry-funded residue data available; independent testing is limited.</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">8</span>
+        <span class="name">🥒 Cucumbers</span>
+        <span class="badge badge-tread">Peel</span>
+        <span class="note">Named in AU ATDS monitoring data. Thin edible skin with moderate pesticide use. Sits in the middle of global rankings — not Dirty Dozen but not clean. Peeling removes most surface residues.</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">9</span>
+        <span class="name">🥒 Zucchini</span>
+        <span class="badge badge-tread">Wash well</span>
+        <span class="note">Thin edible skin, moderate pesticide use. Similar biology and risk profile to cucumbers. Generally AU-grown with limited independent residue data available.</span>
+      </li>
+      <li class="produce-item">
+        <span class="num">10</span>
+        <span class="name">🥦 Broccoli &amp; broccolini</span>
+        <span class="badge badge-tread">Wash well</span>
+        <span class="note">Lower risk than leafy greens but not negligible. Dense head provides some protection. Wash in running water getting into the florets. Organic worthwhile if eaten daily.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="info-box">
+    <h4>⚠️ Tread Careful Actions</h4>
+    <ul>
+      <li>Peel potatoes &amp; cucumbers thoroughly — removes most surface residues effectively</li>
+      <li>Buy AU-grown garlic &amp; citrus — significantly lower chemical load than imported equivalents</li>
+      <li>Buy local tomatoes — avoids the QLD mandatory interstate transit insecticide treatment</li>
+      <li>Organic ginger worthwhile for daily users — soil absorption makes washing largely ineffective</li>
+      <li>Choose frozen green beans over fresh — blanching before freezing degrades residues meaningfully</li>
+    </ul>
+  </div>
+
+  <div class="guide-nav">
+    <a href="dirty-dozen.html" class="guide-nav-card card-dirty">
+      <div class="card-kicker">← Previous guide</div>
+      <h3>🚨 The Dirty Dozen</h3>
+      <p>12 items with the highest contamination evidence — prioritise organic</p>
+    </a>
+    <a href="cleaner-by-far.html" class="guide-nav-card card-clean">
+      <div class="card-kicker">Next guide →</div>
+      <h3>✅ Cleaner by Far</h3>
+      <p>22 produce items where conventional is generally a safe choice</p>
+    </a>
+  </div>
+
+  <div class="page-footer">
+    <span>Sources: FSANZ ATDS · Friends of the Earth AU (2012) · CHOICE · NRS · APVMA · EWG (2026) · Guardian AU FOI · Hort Innovation (2025)</span>
+    <span>Lighten Your Load · lightenyourload.info · April 2026</span>
+  </div>
+
+</div>
+</body>
+</html>
