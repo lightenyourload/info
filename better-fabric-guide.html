@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Better Fabric Guide — Lighten Your Load</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --fabric:#1a5a7a;--fabric-mid:#7ab8d0;--fabric-lt:#eaf4f8;
+  --dirty:#b5341a;--tread:#5a3d9a;--clean:#2d6a4f;
+  --gold:#c8a050;
+  --ink:#1a1a1a;--muted:#6b6b6b;--rule:#d0cdc8;--bg:#faf9f6;
+}
+@media print{body{background:white!important}}
+body{font-family:'DM Sans',sans-serif;background:#d4dde0;padding:0;margin:0}
+
+.site-nav{background:var(--ink);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100}
+.site-nav .logo{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;text-decoration:none}
+.site-nav .logo span{color:var(--gold)}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{font-size:12px;font-weight:500;color:#888;text-decoration:none;padding:6px 12px;border-radius:3px;transition:all .2s}
+.nav-links a:hover{color:white;background:rgba(255,255,255,.08)}
+.nav-links a.active-fabric{color:#a8d8ea;background:rgba(26,90,122,.35)}
+
+.page{background:var(--bg);max-width:860px;margin:0 auto;box-shadow:0 4px 32px rgba(0,0,0,.14)}
+
+.page-header{background:var(--fabric);color:white;padding:32px 40px 28px}
+.page-header .kicker{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px}
+.page-header h1{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;line-height:1.1;margin-bottom:8px}
+.page-header .desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.6;max-width:540px}
+
+.download-section{padding:32px 40px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:32px;background:var(--fabric-lt)}
+.download-icon{font-size:48px;flex-shrink:0}
+.download-text h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.download-text p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px;max-width:480px}
+.btn-download{display:inline-flex;align-items:center;gap:8px;background:var(--fabric);color:white;padding:12px 24px;border-radius:3px;font-size:14px;font-weight:600;text-decoration:none;transition:background .2s}
+.btn-download:hover{background:#154e6b}
+.btn-download .btn-icon{font-size:16px}
+
+.info-section{padding:28px 40px;border-bottom:1px solid var(--rule)}
+.info-section h3{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--fabric);margin-bottom:16px}
+.info-section p{font-size:13px;color:var(--ink);line-height:1.7;margin-bottom:10px}
+.info-section p:last-child{margin-bottom:0}
+
+.caveat{margin:0 40px;padding:10px 14px;border:1px solid var(--rule);border-left:3px solid var(--fabric);font-size:11px;color:#1a3a4a;line-height:1.5;margin-top:20px}
+.caveat strong{color:var(--fabric)}
+
+.guide-nav{margin:20px 40px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.guide-nav-card{display:block;padding:14px 16px;border:1px solid var(--rule);border-radius:3px;text-decoration:none;transition:all .2s}
+.guide-nav-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
+.guide-nav-card .card-kicker{font-size:9.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:4px}
+.guide-nav-card h3{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.guide-nav-card p{font-size:11px;color:var(--muted);line-height:1.4}
+.card-dirty .card-kicker{color:var(--dirty)}
+.card-tread .card-kicker{color:var(--tread)}
+.card-clean .card-kicker{color:var(--clean)}
+
+.page-footer{background:var(--ink);color:#666;padding:10px 40px;display:flex;justify-content:space-between;align-items:center;font-size:9.5px;letter-spacing:.3px;margin-top:20px}
+.page-footer span:last-child{color:#888;font-style:italic}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="logo">Lighten <span>Your Load</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="dirty-dozen.html">🚨 Dirty Dozen</a></li>
+    <li><a href="tread-careful-ten.html">⚠️ Tread Careful Ten</a></li>
+    <li><a href="cleaner-by-far.html">✅ Cleaner by Far</a></li>
+    <li><a href="better-fabric-guide.html" class="active-fabric">🧵 Better Fabric Guide</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <div class="page-header">
+    <div class="kicker">Lighten Your Load · Consumer Guide</div>
+    <h1>🧵 Better Fabric Guide</h1>
+    <p class="desc">A practical guide to understanding what's in your clothing and textiles — and how to make more informed choices for your family and the environment.</p>
+  </div>
+
+  <div class="download-section">
+    <div class="download-icon">📄</div>
+    <div class="download-text">
+      <h2>Download the 2026 Guide</h2>
+      <p>The full Better Fabric Guide as a beautifully formatted, print-ready PDF. Free to download, share, and print.</p>
+      <a href="Better-Fabric-Guide-2026.pdf" class="btn-download" download>
+        <span class="btn-icon">⬇</span> Download PDF — Free
+      </a>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <h3>About this guide</h3>
+    <p>Most of us spend very little time thinking about what our clothes are made from — yet the fabrics we wear sit against our skin all day, and the chemicals used to produce, treat, and finish textiles can matter for health and environmental reasons.</p>
+    <p>This guide cuts through the noise to give you practical, sourced information about common fabric types, what to look for, and where the evidence is strongest.</p>
+  </div>
+
+  <div class="caveat" style="margin-bottom:0">
+    <strong>📋 Note:</strong> This guide is general information only. Not medical or dietary advice. Always consider your own circumstances when making purchasing decisions.
+  </div>
+
+  <div class="guide-nav">
+    <a href="dirty-dozen.html" class="guide-nav-card card-dirty">
+      <div class="card-kicker">Also see →</div>
+      <h3>🚨 The Dirty Dozen</h3>
+      <p>The 12 Australian produce items with the highest evidence of pesticide contamination</p>
+    </a>
+    <a href="cleaner-by-far.html" class="guide-nav-card card-clean">
+      <div class="card-kicker">Also see →</div>
+      <h3>✅ Cleaner by Far</h3>
+      <p>22 produce items where conventional is generally a safe choice</p>
+    </a>
+  </div>
+
+  <div class="page-footer">
+    <span>Lighten Your Load · lightenyourload.info</span>
+    <span>2026 edition · Free to share with attribution</span>
+  </div>
+
+</div>
+</body>
+</html>
