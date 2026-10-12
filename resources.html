@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources &amp; Sources — Lighten Your Load</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --res:#1a5a7a;--res-lt:#eaf4f8;
+  --dirty:#b5341a;--tread:#5a3d9a;--clean:#2d6a4f;
+  --gold:#c8a050;
+  --ink:#1a1a1a;--muted:#6b6b6b;--rule:#d0cdc8;--bg:#faf9f6;
+}
+@media print{body{background:white!important}}
+body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
+
+.site-nav{background:var(--ink);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100}
+.site-nav .logo{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;text-decoration:none}
+.site-nav .logo span{color:var(--gold)}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{font-size:12px;font-weight:500;color:#888;text-decoration:none;padding:6px 12px;border-radius:3px;transition:all .2s}
+.nav-links a:hover{color:white;background:rgba(255,255,255,.08)}
+.nav-links a.active{color:white;background:rgba(255,255,255,.12)}
+
+.page{background:var(--bg);max-width:860px;margin:0 auto;box-shadow:0 4px 32px rgba(0,0,0,.14)}
+
+.page-header{background:var(--res);color:white;padding:32px 40px 28px}
+.page-header .kicker{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px}
+.page-header h1{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;line-height:1.1;margin-bottom:8px}
+.page-header .desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.6;max-width:560px}
+
+/* PAA callout */
+.paa-callout{margin:24px 40px 0;border:1px solid var(--rule);border-left:4px solid #2d6a4f;padding:20px 24px;background:#f2f8f5;display:flex;gap:20px;align-items:flex-start}
+.paa-callout .paa-icon{font-size:32px;flex-shrink:0;line-height:1}
+.paa-callout h3{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.paa-callout p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:10px}
+.paa-callout a.paa-link{display:inline-flex;align-items:center;gap:6px;background:#2d6a4f;color:white;padding:9px 18px;border-radius:3px;font-size:13px;font-weight:600;text-decoration:none;transition:background .2s}
+.paa-callout a.paa-link:hover{background:#245a40}
+
+/* Section headings */
+.section{padding:28px 40px 0}
+.section h2{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--res);margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+
+/* Source entries */
+.source-list{display:flex;flex-direction:column;gap:0}
+.source-entry{padding:14px 0;border-bottom:1px solid var(--rule)}
+.source-entry:last-child{border-bottom:none}
+.source-name{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.source-name a{color:var(--ink);text-decoration:underline;text-underline-offset:2px;text-decoration-color:var(--rule)}
+.source-name a:hover{color:var(--res)}
+.source-meta{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.source-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.source-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.tag{font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 7px;border-radius:2px;font-family:'DM Mono',monospace}
+.tag-dd{background:#f4c4b8;color:#7a1a08}
+.tag-tct{background:#c4b4e8;color:#2a1a5a}
+.tag-ll{background:#b7dfc9;color:#1a4a30}
+
+/* Further reading */
+.reading-list{display:flex;flex-direction:column;gap:10px}
+.reading-item{display:flex;align-items:baseline;gap:12px;padding:12px 14px;border:1px solid var(--rule);border-radius:3px;text-decoration:none;transition:all .2s}
+.reading-item:hover{box-shadow:0 2px 10px rgba(0,0,0,.06);border-color:#bbb}
+.reading-item .r-arrow{font-size:14px;color:var(--res);flex-shrink:0}
+.reading-item .r-body{}
+.reading-item .r-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.reading-item .r-desc{font-size:12px;color:var(--muted);line-height:1.5}
+
+.page-footer{background:var(--ink);color:#bbb;padding:18px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;font-size:11px;letter-spacing:.3px;margin-top:28px;gap:6px}
+.page-footer span:last-child{color:#ccc;font-style:italic}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="logo">Lighten <span>Your Load</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="dirty-dozen.html">🚨 Dirty Dozen</a></li>
+    <li><a href="tread-careful-ten.html">⚠️ Tread Careful Ten</a></li>
+    <li><a href="cleaner-by-far.html">✅ Lighter Load</a></li>
+    <li><a href="resources.html" class="active">📚 Resources</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <div class="page-header">
+    <div class="kicker">Lighten Your Load · Sources &amp; Further Reading</div>
+    <h1>📚 Resources</h1>
+    <p class="desc">The data behind our guides comes from Australian government monitoring, independent research, and advocacy organisations. Here's what we used and where to go next.</p>
+  </div>
+
+  <!-- PAA CALLOUT -->
+  <div class="paa-callout">
+    <div class="paa-icon">🌿</div>
+    <div>
+      <h3>Pesticide Action Australia</h3>
+      <p>The peak body advocating for the reduction of pesticide use in Australia. PAA monitors government policy, supports independent research, and campaigns for safer food systems. Their work underpins much of the advocacy context in our guides.</p>
+      <a href="https://pesticideaction.org.au/" class="paa-link" target="_blank" rel="noopener">Visit pesticideaction.org.au ↗</a>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="section" style="margin-top:8px">
+    <h2>Data Sources</h2>
+    <div class="source-list">
+
+      <div class="source-entry">
+        <div class="source-name">FSANZ Australian Total Diet Study (ATDS)</div>
+        <div class="source-meta">Food Standards Australia New Zealand · Government monitoring</div>
+        <div class="source-desc">The primary Australian government program that measures dietary exposure to pesticide residues. Analyses a market basket of commonly eaten foods to estimate actual consumer exposure. Used as the baseline for Australian-specific residue data across all three guides.</div>
+        <div class="source-tags"><span class="tag tag-dd">Dirty Dozen</span><span class="tag tag-tct">Tread Careful Ten</span><span class="tag tag-ll">Lighter Load</span></div>
+      </div>
+
+      <div class="source-entry">
+        <div class="source-name">Friends of the Earth Australia — Pesticide Residues in Australian Food (2012)</div>
+        <div class="source-meta">Friends of the Earth AU · Independent research</div>
+        <div class="source-desc">A landmark independent analysis of 12 years of FSANZ ATDS data (2000–2011) identifying which produce items carried the highest detection rates and chemical loads in Australia. One of the few systematic AU-specific rankings available and a foundational source for the Dirty Dozen and Tread Careful Ten.</div>
+        <div class="source-tags"><span class="tag tag-dd">Dirty Dozen</span><span class="tag tag-tct">Tread Careful Ten</span><span class="tag tag-ll">Lighter Load</span></div>
+      </div>
+
+      <div class="source-entry">
+        <div class="source-name">CHOICE Australia</div>
+        <div class="source-meta">CHOICE · Consumer advocacy</div>
+        <div class="source-desc">Australia's leading independent consumer organisation. CHOICE has conducted and published investigations into pesticide residues in Australian-bought produce, including testing of imported garlic and other high-risk items. Used to supplement government data with independent consumer-focused findings.</div>
+        <div class="source-tags"><span class="tag tag-dd">Dirty Dozen</span><span class="tag tag-tct">Tread Careful Ten</span><span class="tag tag-ll">Lighter Load</span></div>
+      </div>
+
+      <div class="source-entry">
+        <div class="source-name">National Residue Survey (NRS)</div>
+        <div class="source-meta">Australian Department of Agriculture · Government monitoring</div>
+        <div class="source-desc">Government program monitoring chemical residues in Australian agricultural produce, primarily for export compliance purposes. Provides data on what AU-grown produce carries at the farm gate, complementing the ATDS market basket data.</div>
+        <div class="source-tags"><span class="tag tag-dd">Dirty Dozen</span><span class="tag tag-tct">Tread Careful Ten</span><span class="tag tag-ll">Lighter Load</span></div>
+      </div>
+
+      <div class="source-entry">
+        <div class="source-name">APVMA — Australian Pesticides and Veterinary Medicines Authority</div>
+        <div class="source-meta">Federal regulator · Approval &amp; review data</div>
+        <div class="source-desc">The federal body responsible for approving and reviewing agricultural chemicals in Australia. APVMA's proposed and completed suspension decisions — such as the 2025 dimethoate review affecting blueberries, raspberries and blackberries — are cited directly in the Dirty Dozen guide.</div>
+        <div class="source-tags"><span class="tag tag-dd">Dirty Dozen</span><span class="tag tag-tct">Tread Careful Ten</span><span class="tag tag-ll">Lighter Load</span></div>
+      </div>
+
+      <div class="source-entry">
+        <div class="source-name">EWG Shopper's Guide to Pesticides in Produce (2026)</div>
+        <div class="source-meta">Environmental Working Group (US) · Annual report</div>
+        <div class="source-desc">The US Environmental Working Group's annual analysis of USDA pesticide testing data, producing the widely-cited Dirty Dozen and Clean Fifteen lists. Used in our guides as international comparative data and specifically for chemicals such as PFAS (bifenthrin, fludioxonil) where AU-specific data is absent. US rankings are not directly applicable to Australia but provide relevant context where AU data gaps exist.</div>
+        <div class="source-tags"><span class="tag tag-dd">Dirty Dozen</span><span class="tag tag-tct">Tread Careful Ten</span><span class="tag tag-ll">Lighter Load</span></div>
+      </div>
+
+      <div class="source-entry">
+        <div class="source-name">The Guardian Australia — FOI investigation</div>
+        <div class="source-meta">The Guardian AU · Investigative journalism · FOI documents</div>
+        <div class="source-desc">Freedom of Information documents obtained by The Guardian Australia revealing suppressed government pesticide testing data, including detections of fenthion at unacceptable levels in peaches and dimethoate up to 90× the MRL in strawberries (2013 data). This reporting uncovered data the government had not proactively disclosed.</div>
+        <div class="source-tags"><span class="tag tag-dd">Dirty Dozen</span><span class="tag tag-tct">Tread Careful Ten</span><span class="tag tag-ll">Lighter Load</span></div>
+      </div>
+
+      <div class="source-entry">
+        <div class="source-name">Southern Cross University — Dimethoate research (2025)</div>
+        <div class="source-meta">Southern Cross University · Academic research · Dirty Dozen specific</div>
+        <div class="source-desc">2025 research from Southern Cross University finding dimethoate residues in Australian blueberries at levels exceeding safe daily intake estimates. A key piece of AU-specific evidence cited in the Dirty Dozen blueberry entry and context for the APVMA suspension proposal.</div>
+        <div class="source-tags"><span class="tag tag-dd">Dirty Dozen</span></div>
+      </div>
+
+      <div class="source-entry">
+        <div class="source-name">Hort Innovation — Residue and production data (2025)</div>
+        <div class="source-meta">Hort Innovation · Industry body · Tread Careful Ten specific</div>
+        <div class="source-desc">Australia's horticulture industry research and development body. Hort Innovation data on production practices and residue profiles for specific vegetable and citrus categories informs context in the Tread Careful Ten guide, particularly for snow peas and domestic growing practices.</div>
+        <div class="source-tags"><span class="tag tag-tct">Tread Careful Ten</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FURTHER READING -->
+  <div class="section" style="margin-top:28px;padding-bottom:4px">
+    <h2>Further Reading</h2>
+    <div class="reading-list">
+
+      <a href="https://pesticideaction.org.au/" class="reading-item" target="_blank" rel="noopener">
+        <span class="r-arrow">↗</span>
+        <div class="r-body">
+          <div class="r-title">Pesticide Action Australia</div>
+          <div class="r-desc">Campaigns, research summaries and policy updates on pesticide use in Australia.</div>
+        </div>
+      </a>
+
+      <a href="https://www.foodstandards.gov.au/science-data/monitoringnutrients/pesticideresidues" class="reading-item" target="_blank" rel="noopener">
+        <span class="r-arrow">↗</span>
+        <div class="r-body">
+          <div class="r-title">FSANZ Pesticide Residues Monitoring</div>
+          <div class="r-desc">Official FSANZ page for the Australian Total Diet Study and ongoing pesticide residue monitoring data.</div>
+        </div>
+      </a>
+
+      <a href="https://www.ewg.org/foodnews/full-list.php" class="reading-item" target="_blank" rel="noopener">
+        <span class="r-arrow">↗</span>
+        <div class="r-body">
+          <div class="r-title">EWG Full Pesticide Residue List (2026)</div>
+          <div class="r-desc">The complete Environmental Working Group ranking of 46 fruits and vegetables by pesticide load. US data — use as context, not a direct AU equivalent.</div>
+        </div>
+      </a>
+
+      <a href="https://www.apvma.gov.au/node/10811" class="reading-item" target="_blank" rel="noopener">
+        <span class="r-arrow">↗</span>
+        <div class="r-body">
+          <div class="r-title">APVMA Dimethoate Review</div>
+          <div class="r-desc">The APVMA's proposed suspension and review of dimethoate in Australian horticulture — directly relevant to blueberries, raspberries and blackberries.</div>
+        </div>
+      </a>
+
+      <a href="https://www.choice.com.au/food-and-drink/fruit-and-vegetables/fruit/articles/pesticide-residues-in-fruit-and-vegetables" class="reading-item" target="_blank" rel="noopener">
+        <span class="r-arrow">↗</span>
+        <div class="r-body">
+          <div class="r-title">CHOICE — Pesticide Residues in Australian Produce</div>
+          <div class="r-desc">CHOICE's consumer-focused investigation and explainer on pesticide residues in produce bought in Australia.</div>
+        </div>
+      </a>
+
+      <a href="https://www.theguardian.com/australia-news/2014/jan/22/secret-government-tests-reveal-pesticide-levels-strawberries" class="reading-item" target="_blank" rel="noopener">
+        <span class="r-arrow">↗</span>
+        <div class="r-body">
+          <div class="r-title">The Guardian AU — Secret government tests reveal pesticide levels in strawberries</div>
+          <div class="r-desc">The original Guardian Australia investigation revealing suppressed FSANZ testing data showing pesticide exceedances in strawberries and stone fruit.</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Sources: FSANZ ATDS · Friends of the Earth AU (2012) · CHOICE · NRS · APVMA · EWG Shopper's Guide (2026) · Guardian AU FOI · Southern Cross University (2025) · Hort Innovation (2025) · <a href="https://pesticideaction.org.au/" style="color:inherit;text-decoration:underline;text-underline-offset:2px;opacity:.8" target="_blank" rel="noopener">Pesticide Action Australia</a></span>
+    <span>Lighten Your Load · lightenyourload.info · October 2026</span>
+  </div>
+
+</div>
+</body>
+</html>
