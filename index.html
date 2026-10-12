@@ -9,9 +9,9 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root {
-  --ink:       #2a2e1a;
-  --ink-mid:   #556b2f;
-  --ink-muted: #8a9a5b;
+  --ink:       #141510;
+  --ink-mid:   #1a1a1a;
+  --ink-muted: #3d3d3d;
   --bg:        #f8f6f0;
   --surface:   #ffffff;
   --rule:      #dddad2;
@@ -89,7 +89,7 @@ nav {
 
 /* ── HERO ── */
 .hero {
-  background: #003b00;
+  background: #141510;
   color: white;
   padding: 80px 48px 72px;
   display: grid;
@@ -481,7 +481,7 @@ nav {
 .about-strip p {
   font-size: 14px;
   font-weight: 300;
-  color: #aaa;
+  color: white;
   line-height: 1.75;
   margin-bottom: 14px;
 }
@@ -507,7 +507,7 @@ nav {
 
 .principle p {
   font-size: 13px;
-  color: #888;
+  color: white;
   margin-bottom: 0;
   line-height: 1.6;
 }
@@ -857,7 +857,7 @@ footer {
 <section class="section" id="guides">
   <div class="section-kicker">The guides</div>
   <h2 class="section-title">Simple guides. Real data. Free for everyone.</h2>
-  <p class="section-desc">Every guide is based on the best available Australian data, supplemented by international research where Australian data doesn't exist. All sources listed. All caveats stated. Designed for families, not scientists.</p>
+  <p class="section-desc">Every guide is based on the best available Australian data, supplemented by international research where Australian data doesn't exist. All sources listed. All caveats stated.</p>
 
   <div class="guides-grid">
 
@@ -922,9 +922,9 @@ footer {
 <!-- ABOUT STRIP -->
 <section class="about-strip" id="about">
   <div>
-    <h2>Built for families.<br><em>Backed by data.</em></h2>
-    <p>Australia has no consumer-facing produce pesticide program. No equivalent to the US Environmental Working Group's (EWG) Shopper's Guide. No coordinated annual testing across all states and retail channels. The data exists — fragmented across FSANZ, APVMA, state programs, FOI requests, and academic studies — but it has never been compiled in one accessible place.</p>
-    <p>Lighten Your Load does that. Not to frighten — to inform. Everything here is sourced, caveated, and updated. No advertising. Not funded by industry. We tell you what we don't know as clearly as what we do.</p>
+    <h2>Built for <em>Australian</em> families.</h2>
+    <p>Australia has no consumer-facing produce pesticide program. No equivalent to the US Environmental Working Group's (EWG) Shopper's Guide. No coordinated annual testing across all states and retail channels. The data exists — fragmented across FSANZ, APVMA, state programs, FOI requests, academic studies — but until the recent Pesticide Action Australia report this information has never been compiled in one accessible place.</p>
+    <p>Lighten Your Load was created with Australians in mind. To inform rather than frighten. Everything here is sourced, caveated, and updated when new information comes to light. We always tell you what we don't know as clearly as we can so you can be informed better than ever before.</p>
     <a href="#methodology" class="btn btn-ghost" style="margin-top:8px">See the methodology →</a>
   </div>
   <div class="about-principles">
@@ -983,28 +983,28 @@ footer {
 
   <!-- CONFIDENCE RATING KEY -->
   <div style="margin-top:24px;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--surface)">
-    <div style="background:#f0ece4;padding:10px 20px;border-bottom:1px solid var(--rule)">
-      <span style="font-family:'DM Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ink-muted)">Data Confidence Rating Key</span>
+    <div style="background:var(--ink);padding:10px 20px;border-bottom:1px solid var(--rule)">
+      <span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:white">Data Confidence Rating Key</span>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0">
       <div style="padding:16px 20px;border-right:1px solid var(--rule)">
         <div style="font-size:16px;letter-spacing:2px;margin-bottom:6px;color:#2d6a4f">★★★★</div>
-        <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:3px">Strong AU data</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px">Strong AU data</div>
         <div style="font-size:14px;color:var(--ink-muted);line-height:1.5">Direct Australian testing — FSANZ ATDS, NRS, FOI-obtained government data, or peer-reviewed AU research</div>
       </div>
       <div style="padding:16px 20px;border-right:1px solid var(--rule)">
         <div style="font-size:16px;letter-spacing:2px;margin-bottom:6px;color:#d4700a">★★★<span style="color:var(--rule)">★</span></div>
-        <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:3px">Reasonable AU data</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px">Reasonable AU data</div>
         <div style="font-size:14px;color:var(--ink-muted);line-height:1.5">Some Australian data exists, supplemented by strong international findings from EWG, EFSA or CFIA</div>
       </div>
       <div style="padding:16px 20px;border-right:1px solid var(--rule)">
         <div style="font-size:16px;letter-spacing:2px;margin-bottom:6px;color:#c8a000">★★<span style="color:var(--rule)">★★</span></div>
-        <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:3px">International proxy</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px">International proxy</div>
         <div style="font-size:14px;color:var(--ink-muted);line-height:1.5">No meaningful AU data available — ranking draws on international research and clearly labels this limitation</div>
       </div>
       <div style="padding:16px 20px">
         <div style="font-size:16px;letter-spacing:2px;margin-bottom:6px;color:#aaa9a4">★<span style="color:var(--rule)">★★★</span></div>
-        <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:3px">Biology-based inference</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px">Biology-based inference</div>
         <div style="font-size:14px;color:var(--ink-muted);line-height:1.5">Very thin data globally — ranking based on skin type, pest pressure, and systemic pesticide use patterns</div>
       </div>
     </div>
