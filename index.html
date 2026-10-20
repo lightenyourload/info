@@ -26,13 +26,20 @@
   --fabric:    #1a5a7a;
   --fabric-lt: #eaf4f8;
   --gold:      #b8ddb0;
+  --green-bg:  #d4e8d0;   /* light strip colour */
+  --dark-cell: #1e1e1b;   /* card colour on dark strips */
+  --dark-rule: #2c2c28;   /* rules on dark strips */
+
+  /* ── IMAGES: swap these paths for your own files ── */
+  --hero-img:  url('images/hero-produce.jpg');
+  --about-img: url('images/about.jpg');
 }
 
 html { scroll-behavior: smooth; }
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background: #d4e8d0;
+  background: var(--green-bg);
   color: var(--ink);
   line-height: 1.6;
 }
@@ -77,19 +84,14 @@ nav {
 
 .nav-links a:hover { color: white; }
 
-.nav-cta {
-  background: var(--gold);
-  color: var(--ink) !important;
-  padding: 6px 16px;
-  border-radius: 3px;
-  font-weight: 600 !important;
-}
-
-.nav-cta:hover { background: #a8d49e; color: var(--ink) !important; }
-
-/* ── HERO ── */
+/* ── HERO (strip 1: photo) ── */
 .hero {
-  background: #141510;
+  /* dark overlay keeps the text readable over the photo;
+     if the image is missing, the plain dark colour shows */
+  background:
+    linear-gradient(90deg, rgba(20,21,16,.94) 0%, rgba(20,21,16,.80) 50%, rgba(20,21,16,.55) 100%),
+    var(--hero-img) center / cover no-repeat,
+    #141510;
   color: white;
   padding: 80px 48px 72px;
   display: grid;
@@ -98,16 +100,6 @@ nav {
   align-items: center;
   position: relative;
   overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -40px; right: -40px;
-  width: 340px; height: 340px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(200,160,80,0.12) 0%, transparent 70%);
-  pointer-events: none;
 }
 
 .hero-kicker {
@@ -134,13 +126,12 @@ nav {
   color: var(--gold);
 }
 
-.hero-desc {
-  font-size: 16px;
-  font-weight: 300;
-  color: #bbb;
-  line-height: 1.7;
-  max-width: 520px;
-  margin-bottom: 36px;
+.hero-sub {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255,255,255,.75);
+  margin-bottom: 28px;
+  line-height: 1.5;
 }
 
 .hero-actions {
@@ -168,16 +159,19 @@ nav {
 .btn-primary:hover { background: #a8d49e; }
 
 .btn-ghost {
-  border: 1px solid #444;
-  color: #ccc;
+  border: 1px solid #555;
+  color: #ddd;
+  background: rgba(20,21,16,.35);
 }
 
-.btn-ghost:hover { border-color: #888; color: white; }
+.btn-ghost:hover { border-color: #999; color: white; }
 
 /* HERO CARD */
 .hero-card {
-  background: #252522;
-  border: 1px solid #333;
+  background: rgba(37,37,34,.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid #3a3a36;
   border-radius: 6px;
   padding: 28px;
 }
@@ -188,7 +182,7 @@ nav {
   font-weight: 500;
   letter-spacing: 1.4px;
   text-transform: uppercase;
-  color: #666;
+  color: #777;
   margin-bottom: 18px;
 }
 
@@ -205,7 +199,7 @@ nav {
 .stat-num {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  color: #555;
+  color: #666;
   width: 18px;
   flex-shrink: 0;
 }
@@ -220,7 +214,7 @@ nav {
 .dot-dirty { background: var(--dirty); }
 .dot-tread { background: var(--tread); }
 .dot-clean { background: var(--clean); }
-.dot-pantry { background: var(--pantry); }
+.dot-soon  { background: #444; }
 
 .stat-label {
   font-size: 13px;
@@ -240,69 +234,46 @@ nav {
 .badge-live { background: rgba(45,106,79,0.3); color: #7dcca8; }
 .badge-soon { background: rgba(90,61,154,0.3); color: #b8a0e8; }
 
-/* ── DATA NOTE ── */
-.data-note {
-  background: #1e1e1b;
-  border-top: 1px solid #2a2a27;
-  padding: 14px 48px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+/* ── ABOUT STRIP (strip 2: dark) ── */
+.about-strip {
+  background: var(--ink);
+  color: white;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: stretch;
+  border-top: 1px solid var(--dark-rule);
 }
 
-.data-note-icon {
-  font-size: 14px;
-  flex-shrink: 0;
+.about-media {
+  background: var(--about-img) center / cover no-repeat, var(--dark-cell);
+  min-height: 420px;
 }
 
-.data-note p {
-  font-size: 12px;
-  color: #777;
-  line-height: 1.5;
+.about-body {
+  padding: 80px 64px;
+  max-width: 820px;
 }
 
-.data-note strong { color: #999; }
-
-/* ── QUOTE STRIP ── */
-.quote-strip {
-  background: var(--clean-lt);
-  border-top: 1px solid var(--clean);
-  border-bottom: 1px solid var(--clean);
-  padding: 32px 48px;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.quote-mark {
-  font-size: 40px;
-  line-height: 1;
-  flex-shrink: 0;
-  opacity: .85;
-  margin-top: 0;
-}
-
-.quote-text {
+.about-strip h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-style: italic;
-  color: var(--ink);
-  line-height: 1.5;
-  flex: 1;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin-bottom: 28px;
 }
 
-.quote-text strong {
-  font-style: normal;
-  color: var(--clean);
+.about-strip h2 em { font-style: italic; color: var(--gold); }
+
+.about-strip p {
+  font-size: 17.5px;
+  font-weight: 300;
+  color: rgba(255,255,255,.9);
+  line-height: 1.75;
+  margin-bottom: 18px;
 }
 
-.quote-sub {
-  font-size: 12px;
-  font-family: 'DM Mono', monospace;
-  color: var(--ink-muted);
-  margin-top: 8px;
-  letter-spacing: .4px;
-}
+.about-strip p:last-child { margin-bottom: 0; }
 
 /* ── SECTION HEADERS ── */
 .section {
@@ -336,7 +307,9 @@ nav {
   margin-bottom: 48px;
 }
 
-/* ── GUIDES GRID ── */
+/* ── GUIDES (strip 3: light green) ── */
+#guides { padding-bottom: 56px; }
+
 .guides-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -379,8 +352,6 @@ nav {
 .card-dirty::before   { background: var(--dirty); }
 .card-tread::before   { background: var(--tread); }
 .card-clean::before   { background: var(--clean); }
-.card-pantry::before  { background: var(--pantry); }
-.card-fabric::before  { background: var(--fabric); }
 .card-coming::before  { background: var(--rule); }
 
 .guide-tag {
@@ -398,8 +369,6 @@ nav {
 .tag-dirty   { color: var(--dirty); }
 .tag-tread   { color: var(--tread); }
 .tag-clean   { color: var(--clean); }
-.tag-pantry  { color: var(--pantry); }
-.tag-fabric  { color: var(--fabric); }
 .tag-coming  { color: var(--ink-muted); }
 
 .guide-card h3 {
@@ -445,206 +414,74 @@ nav {
 .action-dirty   { color: var(--dirty); }
 .action-tread   { color: var(--tread); }
 .action-clean   { color: var(--clean); }
-.action-pantry  { color: var(--pantry); }
-.action-fabric  { color: var(--fabric); }
 .action-coming  { color: var(--ink-muted); }
 
-/* COMING SOON card */
 .card-coming {
   opacity: .65;
   cursor: default;
 }
 .card-coming:hover { transform: none; box-shadow: none; }
 
-/* ── ABOUT STRIP ── */
-.about-strip {
-  background: var(--ink);
-  color: white;
-  padding: 64px 48px;
+/* ── PRINCIPLES (continues the light-green strip under the guides) ── */
+.principles-section {
+  padding: 0 48px 80px;
+}
+
+.principles-inner {
+  border-top: 1px solid rgba(20,21,16,.15);
+  padding-top: 48px;
+}
+
+.principles-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: start;
-}
-
-.about-strip h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.3px;
-  margin-bottom: 20px;
-}
-
-.about-strip h2 em { font-style: italic; color: var(--gold); }
-
-.about-strip p {
-  font-size: 14px;
-  font-weight: 300;
-  color: white;
-  line-height: 1.75;
-  margin-bottom: 14px;
-}
-
-.about-principles {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 8px;
 }
 
 .principle {
   padding-left: 20px;
-  border-left: 2px solid #333;
+  border-left: 2px solid var(--clean);
 }
 
 .principle h4 {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
-  color: var(--gold);
-  margin-bottom: 5px;
-  letter-spacing: 0.2px;
+  color: var(--clean);
+  margin-bottom: 8px;
+  letter-spacing: 0.1px;
+  line-height: 1.35;
 }
 
 .principle p {
-  font-size: 13px;
-  color: white;
-  margin-bottom: 0;
-  line-height: 1.6;
-}
-
-/* ── SUPPORT ── */
-.support-section {
-  padding: 64px 48px;
-  background: var(--surface);
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-
-.support-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.support-card {
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  padding: 28px;
-  text-align: center;
-}
-
-.support-card.featured {
-  border-color: var(--gold);
-  background: #fffbf3;
-}
-
-.support-icon {
-  font-size: 28px;
-  margin-bottom: 14px;
-  display: block;
-}
-
-.support-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 17px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.support-price {
-  font-family: 'DM Mono', monospace;
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--ink-muted);
-  margin-bottom: 12px;
+  line-height: 1.65;
 }
 
-.support-card p {
-  font-size: 13px;
-  color: var(--ink-muted);
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.support-card ul {
-  list-style: none;
-  text-align: left;
-  margin-bottom: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.support-card li {
-  font-size: 12.5px;
-  color: var(--ink-mid);
-  padding-left: 16px;
-  position: relative;
-  line-height: 1.4;
-}
-
-.support-card li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--clean);
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.btn-support {
-  display: block;
-  width: 100%;
-  padding: 11px 20px;
-  border-radius: 3px;
-  font-size: 13px;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  transition: all .2s;
-}
-
-.btn-coffee {
+/* ── METHODOLOGY (strip 4: dark) ── */
+.method-section {
   background: var(--ink);
   color: white;
+  padding: 72px 48px 80px;
 }
 
-.btn-coffee:hover { background: #333; }
-
-.btn-pdf {
-  background: var(--gold);
-  color: var(--ink);
-}
-
-.btn-pdf:hover { background: #a8d49e; }
-
-.btn-sponsor {
-  background: var(--clean);
-  color: white;
-}
-
-.btn-sponsor:hover { background: #245840; }
-
-/* ── METHODOLOGY ── */
-.method-section {
-  padding: 64px 48px 80px;
-}
+.method-section .section-kicker { color: #8a8a82; }
+.method-section .section-desc   { color: rgba(255,255,255,.72); }
 
 .method-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 2px;
+  gap: 1px;
   margin-top: 40px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
+  background: var(--dark-rule);
+  border: 1px solid var(--dark-rule);
   border-radius: 4px;
   overflow: hidden;
 }
 
 .method-cell {
-  background: var(--surface);
+  background: var(--dark-cell);
   padding: 24px;
 }
 
@@ -660,74 +497,41 @@ nav {
 .method-cell h4 {
   font-size: 13px;
   font-weight: 600;
-  color: var(--ink);
+  color: white;
   margin-bottom: 8px;
 }
 
 .method-cell p {
   font-size: 12px;
-  color: var(--ink-muted);
+  color: rgba(255,255,255,.68);
   line-height: 1.6;
 }
 
-/* ── SOCIAL STRIP ── */
-.social-strip {
-  background: var(--ink);
-  padding: 40px 48px;
+.stars {
+  list-style: none;
+  margin-top: 10px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  flex-direction: column;
+  gap: 3px;
 }
 
-.social-text h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 6px;
+.stars li {
+  font-size: 12px;
+  color: rgba(255,255,255,.68);
 }
 
-.social-text p {
-  font-size: 13px;
-  color: #888;
+.stars span {
+  color: var(--gold);
+  letter-spacing: 1px;
+  display: inline-block;
+  min-width: 56px;
 }
-
-.social-links {
-  display: flex;
-  gap: 12px;
-}
-
-.social-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  border: 1px solid #333;
-  border-radius: 3px;
-  font-size: 13px;
-  font-weight: 500;
-  color: #ccc;
-  text-decoration: none;
-  transition: all .2s;
-}
-
-.social-btn:hover { border-color: #666; color: white; }
 
 /* ── FOOTER ── */
 footer {
   background: #111110;
-  padding: 56px 48px 32px;
-  width: 100%;
-  margin-top: 0;
+  padding: 56px 48px 40px;
   border-top: 4px solid var(--gold);
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 40px;
 }
 
 .footer-brand h3 {
@@ -735,7 +539,7 @@ footer {
   font-size: 16px;
   font-weight: 700;
   color: white;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .footer-brand h3 span { color: var(--gold); }
@@ -744,63 +548,24 @@ footer {
   font-size: 12px;
   color: #bbb;
   line-height: 1.7;
-  max-width: 260px;
+  max-width: 560px;
 }
 
-.footer-col h4 {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #bbb;
-  margin-bottom: 14px;
-}
+.footer-brand p + p { margin-top: 6px; }
 
-.footer-col ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+.footer-brand a { color: inherit; text-decoration: underline; text-underline-offset: 2px; opacity: .85; }
 
-.footer-col a {
-  font-size: 12.5px;
-  color: #ccc;
-  text-decoration: none;
-  transition: color .2s;
-}
-
-.footer-col a:hover { color: #aaa; }
-
-.footer-rule {
-  border: none;
-  border-top: 1px solid #222;
-  margin-bottom: 20px;
-}
-
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-bottom p {
-  font-size: 11px;
-  color: #bbb;
-}
-
-.footer-disclaimer {
-  font-size: 11px;
-  color: #bbb;
-  max-width: 480px;
-  text-align: right;
-  line-height: 1.5;
+/* ── TABLET ── */
+@media (max-width: 1100px) {
+  .principles-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 40px; }
+  .method-grid { grid-template-columns: repeat(3, 1fr); }
+  .about-body { padding: 64px 40px; }
+  .about-strip h2 { font-size: 36px; }
 }
 
 /* ── MOBILE ── */
 @media (max-width: 767px) {
 
-  /* Nav */
   nav {
     padding: 0 16px;
     height: 48px;
@@ -815,75 +580,46 @@ footer {
     font-size: 11px;
     white-space: nowrap;
   }
-  .nav-cta { display: none; }
 
-  /* Hero */
   .hero {
     grid-template-columns: 1fr;
     padding: 48px 20px 40px;
     gap: 32px;
+    background:
+      linear-gradient(180deg, rgba(20,21,16,.90) 0%, rgba(20,21,16,.82) 100%),
+      var(--hero-img) center / cover no-repeat,
+      #141510;
   }
   .hero h1 { font-size: 34px; letter-spacing: -0.5px; }
-  .hero-desc { font-size: 14px; margin-bottom: 24px; }
   .hero-card { padding: 20px; }
   .btn { padding: 11px 20px; font-size: 14px; }
 
-  /* Data note */
-  .data-note { padding: 12px 16px; }
+  .about-strip { grid-template-columns: 1fr; }
+  .about-media { min-height: 220px; }
+  .about-body { padding: 44px 20px 48px; }
+  .about-strip h2 { font-size: 28px; margin-bottom: 20px; }
+  .about-strip p { font-size: 16px; }
 
-  /* Quote strip */
-  .quote-strip { padding: 24px 20px; flex-direction: column; gap: 8px; }
-  .quote-text { font-size: 16px; }
-  .quote-mark { display: none; }
-
-  /* Sections */
   .section { padding: 48px 20px; }
   .section-title { font-size: 26px; }
   .section-desc { font-size: 14px; margin-bottom: 32px; }
 
-  /* Guide cards */
   .guides-grid { grid-template-columns: 1fr; }
   .guides-grid-bottom { grid-template-columns: 1fr; max-width: 100%; }
   .guide-card { padding: 20px; }
 
-  /* About strip */
-  .about-strip {
-    grid-template-columns: 1fr;
-    padding: 48px 20px;
-    gap: 32px;
-  }
-  .about-strip h2 { font-size: 24px; }
+  .principles-section { padding: 0 20px 56px; }
+  .principles-inner { padding-top: 36px; }
+  .principles-grid { grid-template-columns: 1fr; gap: 24px; }
 
-  /* DCR key section */
-  .confidence-section { padding: 48px 20px; }
-
-  /* Support section */
-  .support-section { padding: 48px 20px; }
-  .support-grid { grid-template-columns: 1fr; margin-top: 28px; }
-  .support-card { padding: 20px; }
-
-  /* Methodology */
   .method-section { padding: 48px 20px; }
   .method-grid { grid-template-columns: 1fr 1fr; }
 
-  /* Social strip */
-  .social-strip {
-    flex-direction: column;
-    padding: 32px 20px;
-    gap: 20px;
-    align-items: flex-start;
-  }
-  .social-links { flex-wrap: wrap; }
-
-  /* Footer */
   footer { padding: 40px 20px 28px; }
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
-  .footer-bottom {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
-  }
-  .footer-disclaimer { text-align: center; max-width: 100%; }
+}
+
+@media (max-width: 420px) {
+  .method-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -899,12 +635,12 @@ footer {
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- 1 · HERO (photo) -->
 <section class="hero">
   <div class="hero-left">
     <div class="hero-kicker">Free Australian food safety guides · lightenyourload.info</div>
     <h1><em>"Australian food is the cleanest in the world."</em><br>Is that really true?</h1>
-    <p style="font-size:15px;font-weight:400;color:rgba(255,255,255,.7);margin-bottom:28px;line-height:1.5">We went looking for the evidence. Here's what we found.</p>
+    <p class="hero-sub">I went looking for the evidence. Here's what I found.</p>
     <div class="hero-actions">
       <a href="#guides" class="btn btn-primary">Browse the guides</a>
       <a href="#methodology" class="btn btn-ghost">Methodology</a>
@@ -932,48 +668,32 @@ footer {
     </div>
     <div class="hero-stat-row">
       <span class="stat-num">04</span>
-      <span class="stat-dot" style="background:#444"></span>
+      <span class="stat-dot dot-soon"></span>
       <span class="stat-label">Beyond the Produce Aisle</span>
       <span class="stat-badge badge-soon">Coming</span>
     </div>
     <div class="hero-stat-row">
       <span class="stat-num">05</span>
-      <span class="stat-dot" style="background:#444"></span>
+      <span class="stat-dot dot-soon"></span>
       <span class="stat-label">Better Fabric Guide</span>
       <span class="stat-badge badge-soon">Coming</span>
     </div>
   </div>
 </section>
 
-<!-- ABOUT STRIP -->
+<!-- 2 · ABOUT (dark, full width, image left) -->
 <section class="about-strip" id="about">
-  <div>
+  <div class="about-media" aria-hidden="true"></div>
+  <div class="about-body">
     <h2>Built for <em>Australian</em> families.</h2>
     <p>Australia has no consumer-facing produce pesticide program. No equivalent to the US Environmental Working Group's (EWG) Shopper's Guide. No coordinated annual testing across all states and retail channels. The data exists - fragmented across FSANZ, APVMA, state programs, FOI requests, academic studies - but until the recent Pesticide Action Australia report this information has never been compiled in one accessible place.</p>
-    <p>Lighten Your Load was created with Australians in mind. To inform rather than frighten. Everything here is sourced, caveated, and updated when new information comes to light. We always tell you what we don't know as clearly as we can so you can be informed better than ever before.</p>
-    <a href="#methodology" class="btn btn-ghost" style="margin-top:8px">See the methodology →</a>
+    <p>I started Lighten Your Load because I couldn't find any straight answers to my question: 'What's on the food we eat in Australia?' So I went on a deep dive, and this is what I found.</p>
+    <p>Everything is sourced, information gaps are named, and the guides get updated as new data comes in.</p>
+    <p>The aim of this project is to help us all be more informed and make better choices for our families and ourselves. I'm hopeful this will also drive regulatory change that makes these concerns redundant.</p>
   </div>
-  <div class="about-principles">
-    <div class="principle">
-      <h4>Absence of data ≠ absence of risk</h4>
-      <p>When Australia hasn't tested something, we say so - and explain why the gap itself is significant.</p>
-    </div>
-    <div class="principle">
-      <h4>Free, always</h4>
-      <p>The guides are free. No paywall. No email gate. Printable PDFs are available for a small contribution to fund continued research.</p>
-    </div>
-    <div class="principle">
-      <h4>No advertising</h4>
-      <p>We are not funded by organic food companies, supermarkets, or any food industry body. Our only funding is direct reader support.</p>
-    </div>
-    <div class="principle">
-      <h4>Regularly updated</h4>
-      <p>Guides are reviewed when new Australian data is published, when major international studies are released, or when regulatory decisions change the picture.</p>
-    </div>
-  </div>
-</section>  
-  
-<!-- GUIDES -->
+</section>
+
+<!-- 3 · GUIDES (light green) -->
 <section class="section" id="guides">
   <div class="section-kicker">The guides</div>
   <h2 class="section-title">Simple guides. Real data. Free for everyone.</h2>
@@ -1038,7 +758,32 @@ footer {
   </div>
 </section>
 
-<!-- METHODOLOGY -->
+<!-- 3b · PRINCIPLES (same light green, four columns under the guides) -->
+<section class="principles-section" aria-label="Our principles">
+  <div class="principles-inner">
+    <div class="section-kicker">Our principles</div>
+    <div class="principles-grid">
+      <div class="principle">
+        <h4>Absence of data ≠ absence of risk</h4>
+        <p>When Australia hasn't tested something, we say so - and explain why the gap itself is significant.</p>
+      </div>
+      <div class="principle">
+        <h4>Free, always</h4>
+        <p>The guides are free. No paywall. No email gate. Printable PDFs are available for a small contribution to fund continued research.</p>
+      </div>
+      <div class="principle">
+        <h4>No advertising</h4>
+        <p>We are not funded by organic food companies, supermarkets, or any food industry body. Our only funding is direct reader support.</p>
+      </div>
+      <div class="principle">
+        <h4>Regularly updated</h4>
+        <p>Guides are reviewed when new Australian data is published, when major international studies are released, or when regulatory decisions change the picture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · METHODOLOGY (dark) -->
 <section class="method-section" id="methodology">
   <div class="section-kicker">How we work</div>
   <h2 class="section-title">Methodology</h2>
@@ -1063,11 +808,13 @@ footer {
     <div class="method-cell">
       <div class="method-num">04</div>
       <h4>Confidence ratings throughout</h4>
-      <p>Every item is rated by evidence strength. 
-      <p>★★★★ strong AU data</p>
-      <p>★★★ reasonable</p>
-      <p>★★ international proxy</p>
-      <p>★ inference only</p>
+      <p>Every item is rated by evidence strength.</p>
+      <ul class="stars">
+        <li><span>★★★★</span> strong AU data</li>
+        <li><span>★★★</span> reasonable</li>
+        <li><span>★★</span> international proxy</li>
+        <li><span>★</span> inference only</li>
+      </ul>
     </div>
     <div class="method-cell">
       <div class="method-num">05</div>
@@ -1075,8 +822,11 @@ footer {
       <p>Following standard testing practice, produce is washed or peeled before residue testing - so rankings reflect what reaches you when eating normally. Skins and peels may carry higher residues than the flesh. For example, banana skins carry post-harvest fungicide residues not reflected in the flesh ranking.</p>
     </div>
   </div>
+</section>
 
-  <!-- CONFIDENCE RATING KEY 
+<!-- ═══════════ PARKED BLOCKS (hidden, kept for later) ═══════════
+
+CONFIDENCE RATING KEY
   <div style="margin-top:24px;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--surface)">
     <div style="background:var(--ink);padding:10px 20px;border-bottom:1px solid var(--rule)">
       <span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:white">Data Confidence Rating Key</span>
@@ -1104,61 +854,42 @@ footer {
       </div>
     </div>
   </div>
-</section> -->
 
-<!-- SUPPORT 
+SUPPORT SECTION
 <section class="support-section" id="support">
   <div class="section-kicker">Support the research</div>
   <h2 class="section-title">Help us keep going.</h2>
   <p class="section-desc">The guides are free and will stay that way. Reader support funds ongoing research, data updates, FOI requests, and new guides — so every Australian family can make more informed choices.</p>
-
   <div class="support-grid">
-
     <div class="support-card">
       <span class="support-icon">☕</span>
       <h3>Buy me a coffee</h3>
       <div class="support-price">One-off · Any amount</div>
       <p>A simple thank you that helps keep the lights on and the research moving.</p>
-      <ul>
-        <li>No account required</li>
-        <li>One-off, no commitment</li>
-        <li>Direct to the researcher</li>
-      </ul>
+      <ul><li>No account required</li><li>One-off, no commitment</li><li>Direct to the researcher</li></ul>
       <a href="https://www.paypal.com/ncp/payment/A8HM5QCLVZCZS" class="btn-support btn-coffee">Custom contribution</a>
     </div>
-
     <div class="support-card featured">
       <span class="support-icon">📄</span>
       <h3>Printable PDF Bundle</h3>
       <div class="support-price">From $9 — one-off</div>
       <p>All four guides as beautifully formatted, print-optimised PDFs — including the wallet reference card.</p>
-      <ul>
-        <li>All current guides included</li>
-        <li>Print-optimised, toner-friendly</li>
-        <li>Wallet card included</li>
-        <li>Updated versions free forever</li>
-      </ul>
+      <ul><li>All current guides included</li><li>Print-optimised, toner-friendly</li><li>Wallet card included</li><li>Updated versions free forever</li></ul>
       <a href="#" class="btn-support btn-pdf">Get the PDF bundle</a>
     </div>
-
     <div class="support-card">
       <span class="support-icon">🔬</span>
       <h3>Research Sponsor</h3>
       <div class="support-price">From $8/month</div>
       <p>Fund ongoing research — new guides, FOI requests, data verification, and access to expert sources.</p>
-      <ul>
-        <li>Early access to new guides</li>
-        <li>Monthly research update</li>
-        <li>Named in acknowledgements</li>
-        <li>Cancel any time</li>
-      </ul>
+      <ul><li>Early access to new guides</li><li>Monthly research update</li><li>Named in acknowledgements</li><li>Cancel any time</li></ul>
       <a href="#" class="btn-support btn-sponsor">Become a sponsor</a>
     </div>
-
   </div>
 </section>
--->
-<!-- SOCIAL STRIP 
+(Its CSS — .support-section, .support-grid, .support-card, .btn-support etc. — was unused and has been removed; ask Claude to restore it when you bring this back.)
+
+SOCIAL STRIP
 <section class="social-strip">
   <div class="social-text">
     <h3>Follow for updates</h3>
@@ -1171,47 +902,20 @@ footer {
     <a href="#" class="social-btn">📘 Facebook</a>
   </div>
 </section>
-  -->
 
-<!-- FOOTER -->
+FOOTER LINK COLUMNS
+  Guides: The Dirty Dozen · Tread Careful Ten · Fill your basket · Beyond the Produce Aisle · Better Fabric Guide
+  About: Methodology · Data sources · Corrections policy · About the researcher · Contact
+  Support: PDF bundle · Buy me a coffee · Research sponsorship · For health practitioners
+
+═══════════════════════════════════════════════════════════════ -->
+
+<!-- FOOTER (dark) -->
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <h3>Lighten <span>Your Load</span></h3><span>© 2026 · Shared under <a href="https://creativecommons.org/licenses/by-nc/4.0/" style="color:inherit;text-decoration:underline;text-underline-offset:2px;opacity:.8" target="_blank" rel="noopener">CC BY-NC 4.0</a> · Last updated October 2026</span>
-<span>Disclaimer: General information only, not medical or dietary advice. Talk to a qualified health professional about your own diet.</span>    
-   </div>
-   <div class="footer-col">
-      <!-- <h4>Guides</h4>
-      <ul>
-        <li><a href="#">The Dirty Dozen</a></li>
-        <li><a href="#">Tread Careful Ten</a></li>
-        <li><a href="#">Fill your basket</a></li>
-        <li><a href="#">Beyond the Produce Aisle</a></li>
-        <li><a href="#">Better Fabric Guide</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>About</h4>
-      <ul>
-        <li><a href="#">Methodology</a></li>
-        <li><a href="#">Data sources</a></li>
-        <li><a href="#">Corrections policy</a></li>
-        <li><a href="#">About the researcher</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Support</h4>
-      <ul>
-        <li><a href="#">PDF bundle</a></li>
-        <li><a href="#">Buy me a coffee</a></li>
-        <li><a href="#">Research sponsorship</a></li>
-        <li><a href="#">For health practitioners</a></li>
-      </ul>
-    </div>
-  </div>
-  <hr class="footer-rule">
-  <div class="footer-bottom"> -->
+  <div class="footer-brand">
+    <h3>Lighten <span>Your Load</span></h3>
+    <p>© 2026 · Shared under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a> · Last updated October 2026</p>
+    <p>Disclaimer: General information only, not medical or dietary advice. Talk to a qualified health professional about your own diet.</p>
   </div>
 </footer>
 
