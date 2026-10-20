@@ -59,6 +59,55 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .card-pantry .card-kicker{color:#8a6520}
 .page-footer{background:var(--ink);color:#bbb;padding:18px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;font-size:11px;letter-spacing:.3px;margin-top:20px;gap:6px}
 .page-footer span:last-child{color:#ccc;font-style:italic}
+
+/* ════ READABILITY LAYER (Oct 2026) — overrides the compact print-style rules above ════ */
+.page{max-width:880px}
+.page-header{padding:44px 48px 40px}
+.page-header .kicker{font-size:12px;color:rgba(255,255,255,.7)}
+.page-header h1{font-size:42px;margin-bottom:14px}
+.page-header .desc{font-size:17px;font-weight:400;color:rgba(255,255,255,.92);line-height:1.65;max-width:620px}
+.caveat{margin:28px 48px 0;padding:16px 20px;font-size:14.5px;line-height:1.65}
+.list-section{padding:12px 48px 0}
+.produce-item{grid-template-columns:28px 56px minmax(0,1fr) auto;align-items:start;column-gap:16px;row-gap:4px;padding:22px 4px;border-radius:0}
+.produce-item:hover{background:transparent}
+.num{grid-row:1;font-size:15px;line-height:1.5;padding-top:2px}
+.icon{grid-column:2;grid-row:1 / span 2;width:56px;height:56px;border-radius:8px;background:#efece4;display:flex;align-items:center;justify-content:center;font-size:30px;line-height:1;object-fit:cover}
+.name{grid-column:3;font-size:19px;font-weight:600;line-height:1.35}
+.name .sub-items,.name .sub-items .inline{font-size:15px;margin-top:3px}
+.badge{grid-column:4;grid-row:1;font-size:12px;padding:4px 10px;border-radius:3px}
+.note{grid-column:3 / -1;font-size:16px;color:#474747;line-height:1.65;margin-top:2px;max-width:62ch}
+.info-box{margin:32px 48px 0;padding:22px 24px}
+.info-box h4{font-size:13px;margin-bottom:14px}
+.info-box ul{gap:10px}
+.info-box li{font-size:16px;line-height:1.6;padding-left:22px}
+.info-box li::before{font-size:13px;top:3px}
+.also-watch{margin:24px 48px 0;padding:16px 20px;font-size:15px;line-height:1.65}
+.guide-nav{margin:40px 48px 0;gap:16px}
+.guide-nav-card{padding:20px 22px}
+.guide-nav-card .card-kicker{font-size:11.5px;margin-bottom:8px}
+.guide-nav-card h3{font-size:20px;margin-bottom:6px}
+.guide-nav-card p{font-size:15px;line-height:1.55}
+.page-footer{padding:28px 48px;font-size:13px;line-height:1.7;margin-top:48px}
+.nav-links a{font-size:13px}
+
+@media (max-width:640px){
+  .site-nav{padding:0 12px}
+  .site-nav .logo{display:none}
+  .nav-links{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .nav-links a{white-space:nowrap;padding:6px 10px;font-size:12px}
+  .page-header{padding:32px 20px 28px}
+  .page-header h1{font-size:32px}
+  .page-header .desc{font-size:16px}
+  .caveat,.info-box,.also-watch{margin-left:16px;margin-right:16px}
+  .list-section{padding:4px 16px 0}
+  .produce-item{grid-template-columns:22px 48px minmax(0,1fr);column-gap:12px;row-gap:6px;padding:20px 0}
+  .icon{width:48px;height:48px;font-size:26px}
+  .name{font-size:18px}
+  .badge{grid-column:3;grid-row:2;justify-self:start}
+  .note{grid-column:3;font-size:15.5px}
+  .guide-nav{grid-template-columns:1fr;margin:32px 16px 0}
+  .page-footer{padding:24px 20px}
+}
 </style>
 </head>
 <body>
@@ -84,28 +133,50 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   <div class="caveat"><strong>✅ More fresh produce is always better than less!</strong> These carry lower residues than most, so fill your basket, and spend your organic dollars where they count most.</div>
 
   <div class="list-section">
+    <!-- ICONS: each produce row has <span class="icon">emoji</span>. To use a photo, replace it with <img class="icon" src="photo.jpg" alt=""> (square crop, ~120×120px). -->
     <ul class="produce-list">
-      <li class="produce-item"><span class="num">1</span><span class="name">🌿 Asparagus</span><span class="badge badge-clean">Cleanest</span><span class="note">Consistently on the EWG Clean Fifteen — fewer than 11% of samples globally show any detectable residues. Short growing season limits spray applications, and thick stalks offer natural protection. Buy AU-grown in season (Sept–Feb) where available.</span></li>
-      <li class="produce-item"><span class="num">2</span><span class="name">🥑 Avocados</span><span class="badge badge-clean">Cleanest</span><span class="note">Thick inedible skin. Less than 2% of samples globally show any residues. Consistently the cleanest item on any produce list.</span></li>
-      <li class="produce-item"><span class="num">3</span><span class="name">🍌 Bananas</span><span class="badge badge-ok">Safe</span><span class="note">Peeled before eating — flesh well protected. 2026 EWG Clean Fifteen. Note: conventional banana skins carry post-harvest fungicide residues — avoid feeding peels to wildlife.</span></li>
-      <li class="produce-item"><span class="num">4</span><span class="name">🟣 Beetroot</span><span class="badge badge-ok">Safe</span><span class="note">Underground crop, thick skin almost always peeled. Low pest pressure. Low residues internationally.</span></li>
-      <li class="produce-item"><span class="num">5</span><span class="name">🥬 Cabbage</span><span class="badge badge-ok">Safe</span><span class="note">Outer leaves discarded. Produces glucosinolates that naturally deter insects, reducing how much spraying is needed.</span></li>
-      <li class="produce-item"><span class="num">6</span><span class="name">🥕 Carrots</span><span class="badge badge-ok">Safe</span><span class="note">Underground crop, skin discarded. On 2026 EWG Clean Fifteen. Low residue data in AU and globally.</span></li>
-      <li class="produce-item"><span class="num">7</span><span class="name">⚪ Cauliflower</span><span class="badge badge-ok">Safe</span><span class="note">Dense tightly packed head, outer leaves discarded. Low residues in all available data. Predominantly AU-grown.</span></li>
-      <li class="produce-item"><span class="num">8</span><span class="name">🍆 Eggplant</span><span class="badge badge-ok">Safe</span><span class="note">Thick skin, lower pest pressure than thin-skinned crops. Low detection rates. Predominantly AU-grown.</span></li>
-      <li class="produce-item"><span class="num">9</span><span class="name">🫛 Frozen garden peas (shelled)</span><span class="badge badge-ok">Safe</span><span class="note">Protective pod discarded before freezing. Very low residues. Distinct from snow peas — the whole pod is not eaten.</span></li>
-      <li class="produce-item"><span class="num">10</span><span class="name">🥝 Kiwifruit</span><span class="badge badge-ok">Safe</span><span class="note">Skin not consumed. 82% of samples globally had zero detectable residues in the flesh.</span></li>
-      <li class="produce-item"><span class="num">11</span><span class="name">🌿 Leeks</span><span class="badge badge-ok">Safe</span><span class="note">Allium family — outer layers discarded. Low pest pressure. Predominantly AU-grown. Consistent with onion and shallot residue profile.</span></li>
-      <li class="produce-item"><span class="num">12</span><span class="name">🥭 Mangoes</span><span class="badge badge-ok">Safe</span><span class="note">Thick inedible skin, low residues. Buy local QLD/NT where possible — interstate transit treatment applies to some mangoes.</span></li>
-      <li class="produce-item"><span class="num">13</span><span class="name">🍄 Mushrooms</span><span class="badge badge-ok">Safe</span><span class="note">Grown in controlled indoor environments in AU. Low pesticide use. Generally low residues in available data.</span></li>
-      <li class="produce-item"><span class="num">14</span><span class="name">🧅 Onions</span><span class="badge badge-ok">Safe</span><span class="note">Papery outer skin. Low pest pressure. Very low residues in AU data. Allium family consistently clean.</span></li>
-      <li class="produce-item"><span class="num">15</span><span class="name">🥭 Papaya / Pawpaw</span><span class="badge badge-ok">Safe</span><span class="note">Thick skin, flesh well-protected. Low detection rates. Both AU-grown and imported perform well globally.</span></li>
-      <li class="produce-item"><span class="num">16</span><span class="name">🍍 Pineapples</span><span class="badge badge-ok">Safe</span><span class="note">Very thick inedible skin — near-zero residue detections globally. Mainly imported but flesh is well protected.</span></li>
-      <li class="produce-item"><span class="num">17</span><span class="name">🎃 Pumpkin</span><span class="badge badge-ok">Safe</span><span class="note">Thick inedible skin. Low pest pressure. Flesh consistently clean globally. Predominantly AU-grown.</span></li>
-      <li class="produce-item"><span class="num">18</span><span class="name">🌱 Shallots &amp; spring onions</span><span class="badge badge-ok">Safe</span><span class="note">Allium family — papery layers, low pest pressure. Short-cycle crop, predominantly AU-grown. Low residues.</span></li>
-      <li class="produce-item"><span class="num">19</span><span class="name">🌽 Sweet corn</span><span class="badge badge-ok">Safe</span><span class="note">Husk protection. Very low residues. AU sweet corn is non-GMO unlike many US equivalents.</span></li>
-      <li class="produce-item"><span class="num">20</span><span class="name">🍠 Sweet potato</span><span class="badge badge-ok">Safe</span><span class="note">Underground crop, skin usually peeled. Low residue rates. A common AU kitchen staple with a reassuring profile.</span></li>
-      <li class="produce-item"><span class="num">21</span><span class="name">🍉 Watermelon</span><span class="badge badge-ok">Safe</span><span class="note">Very thick rind. Flesh well insulated from chemicals. Low residues across all global studies consistently.</span></li>
+      <li class="produce-item"><span class="num">1</span><span class="icon" aria-hidden="true">🌿</span>
+        <span class="name">Asparagus</span><span class="badge badge-clean">Cleanest</span><span class="note">Consistently on the EWG Clean Fifteen — fewer than 11% of samples globally show any detectable residues. Short growing season limits spray applications, and thick stalks offer natural protection. Buy AU-grown in season (Sept–Feb) where available.</span></li>
+      <li class="produce-item"><span class="num">2</span><span class="icon" aria-hidden="true">🥑</span>
+        <span class="name">Avocados</span><span class="badge badge-clean">Cleanest</span><span class="note">Thick inedible skin. Less than 2% of samples globally show any residues. Consistently the cleanest item on any produce list.</span></li>
+      <li class="produce-item"><span class="num">3</span><span class="icon" aria-hidden="true">🍌</span>
+        <span class="name">Bananas</span><span class="badge badge-ok">Safe</span><span class="note">Peeled before eating — flesh well protected. 2026 EWG Clean Fifteen. Note: conventional banana skins carry post-harvest fungicide residues — avoid feeding peels to wildlife.</span></li>
+      <li class="produce-item"><span class="num">4</span><span class="icon" aria-hidden="true">🟣</span>
+        <span class="name">Beetroot</span><span class="badge badge-ok">Safe</span><span class="note">Underground crop, thick skin almost always peeled. Low pest pressure. Low residues internationally.</span></li>
+      <li class="produce-item"><span class="num">5</span><span class="icon" aria-hidden="true">🥬</span>
+        <span class="name">Cabbage</span><span class="badge badge-ok">Safe</span><span class="note">Outer leaves discarded. Produces glucosinolates that naturally deter insects, reducing how much spraying is needed.</span></li>
+      <li class="produce-item"><span class="num">6</span><span class="icon" aria-hidden="true">🥕</span>
+        <span class="name">Carrots</span><span class="badge badge-ok">Safe</span><span class="note">Underground crop, skin discarded. On 2026 EWG Clean Fifteen. Low residue data in AU and globally.</span></li>
+      <li class="produce-item"><span class="num">7</span><span class="icon" aria-hidden="true">⚪</span>
+        <span class="name">Cauliflower</span><span class="badge badge-ok">Safe</span><span class="note">Dense tightly packed head, outer leaves discarded. Low residues in all available data. Predominantly AU-grown.</span></li>
+      <li class="produce-item"><span class="num">8</span><span class="icon" aria-hidden="true">🍆</span>
+        <span class="name">Eggplant</span><span class="badge badge-ok">Safe</span><span class="note">Thick skin, lower pest pressure than thin-skinned crops. Low detection rates. Predominantly AU-grown.</span></li>
+      <li class="produce-item"><span class="num">9</span><span class="icon" aria-hidden="true">🫛</span>
+        <span class="name">Frozen garden peas (shelled)</span><span class="badge badge-ok">Safe</span><span class="note">Protective pod discarded before freezing. Very low residues. Distinct from snow peas — the whole pod is not eaten.</span></li>
+      <li class="produce-item"><span class="num">10</span><span class="icon" aria-hidden="true">🥝</span>
+        <span class="name">Kiwifruit</span><span class="badge badge-ok">Safe</span><span class="note">Skin not consumed. 82% of samples globally had zero detectable residues in the flesh.</span></li>
+      <li class="produce-item"><span class="num">11</span><span class="icon" aria-hidden="true">🌿</span>
+        <span class="name">Leeks</span><span class="badge badge-ok">Safe</span><span class="note">Allium family — outer layers discarded. Low pest pressure. Predominantly AU-grown. Consistent with onion and shallot residue profile.</span></li>
+      <li class="produce-item"><span class="num">12</span><span class="icon" aria-hidden="true">🥭</span>
+        <span class="name">Mangoes</span><span class="badge badge-ok">Safe</span><span class="note">Thick inedible skin, low residues. Buy local QLD/NT where possible — interstate transit treatment applies to some mangoes.</span></li>
+      <li class="produce-item"><span class="num">13</span><span class="icon" aria-hidden="true">🍄</span>
+        <span class="name">Mushrooms</span><span class="badge badge-ok">Safe</span><span class="note">Grown in controlled indoor environments in AU. Low pesticide use. Generally low residues in available data.</span></li>
+      <li class="produce-item"><span class="num">14</span><span class="icon" aria-hidden="true">🧅</span>
+        <span class="name">Onions</span><span class="badge badge-ok">Safe</span><span class="note">Papery outer skin. Low pest pressure. Very low residues in AU data. Allium family consistently clean.</span></li>
+      <li class="produce-item"><span class="num">15</span><span class="icon" aria-hidden="true">🥭</span>
+        <span class="name">Papaya / Pawpaw</span><span class="badge badge-ok">Safe</span><span class="note">Thick skin, flesh well-protected. Low detection rates. Both AU-grown and imported perform well globally.</span></li>
+      <li class="produce-item"><span class="num">16</span><span class="icon" aria-hidden="true">🍍</span>
+        <span class="name">Pineapples</span><span class="badge badge-ok">Safe</span><span class="note">Very thick inedible skin — near-zero residue detections globally. Mainly imported but flesh is well protected.</span></li>
+      <li class="produce-item"><span class="num">17</span><span class="icon" aria-hidden="true">🎃</span>
+        <span class="name">Pumpkin</span><span class="badge badge-ok">Safe</span><span class="note">Thick inedible skin. Low pest pressure. Flesh consistently clean globally. Predominantly AU-grown.</span></li>
+      <li class="produce-item"><span class="num">18</span><span class="icon" aria-hidden="true">🌱</span>
+        <span class="name">Shallots &amp; spring onions</span><span class="badge badge-ok">Safe</span><span class="note">Allium family — papery layers, low pest pressure. Short-cycle crop, predominantly AU-grown. Low residues.</span></li>
+      <li class="produce-item"><span class="num">19</span><span class="icon" aria-hidden="true">🌽</span>
+        <span class="name">Sweet corn</span><span class="badge badge-ok">Safe</span><span class="note">Husk protection. Very low residues. AU sweet corn is non-GMO unlike many US equivalents.</span></li>
+      <li class="produce-item"><span class="num">20</span><span class="icon" aria-hidden="true">🍠</span>
+        <span class="name">Sweet potato</span><span class="badge badge-ok">Safe</span><span class="note">Underground crop, skin usually peeled. Low residue rates. A common AU kitchen staple with a reassuring profile.</span></li>
+      <li class="produce-item"><span class="num">21</span><span class="icon" aria-hidden="true">🍉</span>
+        <span class="name">Watermelon</span><span class="badge badge-ok">Safe</span><span class="note">Very thick rind. Flesh well insulated from chemicals. Low residues across all global studies consistently.</span></li>
     </ul>
   </div>
 

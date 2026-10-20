@@ -57,6 +57,55 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .card-clean .card-kicker{color:var(--clean)}
 .page-footer{background:var(--ink);color:#bbb;padding:18px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;font-size:11px;letter-spacing:.3px;margin-top:20px;gap:6px}
 .page-footer span:last-child{color:#ccc;font-style:italic}
+
+/* ════ READABILITY LAYER (Oct 2026) — overrides the compact print-style rules above ════ */
+.page{max-width:880px}
+.page-header{padding:44px 48px 40px}
+.page-header .kicker{font-size:12px;color:rgba(255,255,255,.7)}
+.page-header h1{font-size:42px;margin-bottom:14px}
+.page-header .desc{font-size:17px;font-weight:400;color:rgba(255,255,255,.92);line-height:1.65;max-width:620px}
+.caveat{margin:28px 48px 0;padding:16px 20px;font-size:14.5px;line-height:1.65}
+.list-section{padding:12px 48px 0}
+.produce-item{grid-template-columns:28px 56px minmax(0,1fr) auto;align-items:start;column-gap:16px;row-gap:4px;padding:22px 4px;border-radius:0}
+.produce-item:hover{background:transparent}
+.num{grid-row:1;font-size:15px;line-height:1.5;padding-top:2px}
+.icon{grid-column:2;grid-row:1 / span 2;width:56px;height:56px;border-radius:8px;background:#efece4;display:flex;align-items:center;justify-content:center;font-size:30px;line-height:1;object-fit:cover}
+.name{grid-column:3;font-size:19px;font-weight:600;line-height:1.35}
+.name .sub-items,.name .sub-items .inline{font-size:15px;margin-top:3px}
+.badge{grid-column:4;grid-row:1;font-size:12px;padding:4px 10px;border-radius:3px}
+.note{grid-column:3 / -1;font-size:16px;color:#474747;line-height:1.65;margin-top:2px;max-width:62ch}
+.info-box{margin:32px 48px 0;padding:22px 24px}
+.info-box h4{font-size:13px;margin-bottom:14px}
+.info-box ul{gap:10px}
+.info-box li{font-size:16px;line-height:1.6;padding-left:22px}
+.info-box li::before{font-size:13px;top:3px}
+.also-watch{margin:24px 48px 0;padding:16px 20px;font-size:15px;line-height:1.65}
+.guide-nav{margin:40px 48px 0;gap:16px}
+.guide-nav-card{padding:20px 22px}
+.guide-nav-card .card-kicker{font-size:11.5px;margin-bottom:8px}
+.guide-nav-card h3{font-size:20px;margin-bottom:6px}
+.guide-nav-card p{font-size:15px;line-height:1.55}
+.page-footer{padding:28px 48px;font-size:13px;line-height:1.7;margin-top:48px}
+.nav-links a{font-size:13px}
+
+@media (max-width:640px){
+  .site-nav{padding:0 12px}
+  .site-nav .logo{display:none}
+  .nav-links{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .nav-links a{white-space:nowrap;padding:6px 10px;font-size:12px}
+  .page-header{padding:32px 20px 28px}
+  .page-header h1{font-size:32px}
+  .page-header .desc{font-size:16px}
+  .caveat,.info-box,.also-watch{margin-left:16px;margin-right:16px}
+  .list-section{padding:4px 16px 0}
+  .produce-item{grid-template-columns:22px 48px minmax(0,1fr);column-gap:12px;row-gap:6px;padding:20px 0}
+  .icon{width:48px;height:48px;font-size:26px}
+  .name{font-size:18px}
+  .badge{grid-column:3;grid-row:2;justify-self:start}
+  .note{grid-column:3;font-size:15.5px}
+  .guide-nav{grid-template-columns:1fr;margin:32px 16px 0}
+  .page-footer{padding:24px 20px}
+}
 </style>
 </head>
 <body>
@@ -82,70 +131,82 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   <div class="caveat"><strong>⚠ Data note:</strong> "Tread Careful" does not mean avoid - it means be informed. For most items here, simple actions (peeling, buying local, washing well) meaningfully reduce risk. Organic is advisable where the item is eaten daily or frequently by children.</div>
 
   <div class="list-section">
+    <!-- ICONS: each produce row has <span class="icon">emoji</span>. To use a photo, replace it with <img class="icon" src="photo.jpg" alt=""> (square crop, ~120×120px). -->
     <ul class="produce-list">
       <li class="produce-item">
         <span class="num">1</span>
-        <span class="name">🥦 Broccoli &amp; broccolini</span>
+        <span class="icon" aria-hidden="true">🥦</span>
+        <span class="name">Broccoli &amp; broccolini</span>
         <span class="badge badge-tread">Wash well</span>
         <span class="note">Lower risk than leafy greens but not negligible. Dense head provides some protection. Wash in running water getting into the florets. Organic worthwhile if eaten daily.</span>
       </li>
       <li class="produce-item">
         <span class="num">2</span>
-        <span class="name">🥒 Cucumbers</span>
+        <span class="icon" aria-hidden="true">🥒</span>
+        <span class="name">Cucumbers</span>
         <span class="badge badge-tread">Peel</span>
         <span class="note">Named in AU ATDS monitoring data. Thin edible skin with moderate pesticide use. Sits in the middle of global rankings - not Dirty Dozen but not clean. Peeling removes most surface residues.</span>
       </li>
       <li class="produce-item">
         <span class="num">3</span>
-        <span class="name">🧄 Garlic</span>
+        <span class="icon" aria-hidden="true">🧄</span>
+        <span class="name">Garlic</span>
         <span class="badge badge-tread">Buy AU-grown</span>
         <span class="note">Most supermarket garlic is imported from China. Friends of the Earth AU: China accounts for ~40% of all AQIS pesticide MRL breaches. Papery skin offers some protection - buy Australian-grown where labelled.</span>
       </li>
       <li class="produce-item">
         <span class="num">4</span>
-        <span class="name">🫚 Ginger</span>
+        <span class="icon" aria-hidden="true">🫚</span>
+        <span class="name">Ginger</span>
         <span class="badge badge-tread">Organic</span>
         <span class="note">Underground tuber absorbs residual soil pesticides during growth. Almost entirely imported into Australia. Clothianidin detected at high rates in Chinese ginger. Washing is largely ineffective.</span>
       </li>
       <li class="produce-item">
         <span class="num">5</span>
-        <span class="name">🫛 Green beans</span>
+        <span class="icon" aria-hidden="true">🫛</span>
+        <span class="name">Green beans</span>
         <span class="badge badge-tread">Wash well</span>
         <span class="note">Thin edible pod, high pest pressure. Acephate residues found internationally despite a decade-old ban. AU-specific data is limited but biology is comparable. Frozen green beans are lower risk.</span>
       </li>
       <li class="produce-item">
         <span class="num">6</span>
-        <span class="name">🍊 Oranges &amp; citrus</span>
+        <span class="icon" aria-hidden="true">🍊</span>
+        <span class="name">Oranges &amp; citrus</span>
         <span class="badge badge-tread">Buy AU-grown</span>
         <span class="note">Post-harvest imazalil fungicide (linked to hormone disruption) penetrates the peel into the flesh. Found on ~90% of peeled samples. Imported citrus carries 4× higher levels than AU-grown.</span>
       </li>
       <li class="produce-item">
         <span class="num">7</span>
-        <span class="name">🥔 Potatoes</span>
+        <span class="icon" aria-hidden="true">🥔</span>
+        <span class="name">Potatoes</span>
         <span class="badge badge-tread">Peel well</span>
         <span class="note">90% of samples contain chlorpropham — a post-harvest sprout inhibitor banned in the EU since 2019, still approved in Australia. Concentrated in the skin — peel thoroughly.</span>
       </li>
       <li class="produce-item">
         <span class="num">8</span>
-        <span class="name">🍈 Rockmelon</span>
+        <span class="icon" aria-hidden="true">🍈</span>
+        <span class="name">Rockmelon</span>
         <span class="badge badge-tread">Scrub before cutting</span>
         <span class="note">Recent testing found three pesticides on rockmelon, including a systemic neonicotinoid not approved in the EU, and a post-harvest fungicide. The netted rind traps surface residues. Scrub it before cutting so the knife doesn't drag them into the flesh.</span>
       </li>
       <li class="produce-item">
         <span class="num">9</span>
-        <span class="name">🫛 Snow peas &amp; sugar snap peas</span>
+        <span class="icon" aria-hidden="true">🫛</span>
+        <span class="name">Snow peas &amp; sugar snap peas</span>
         <span class="badge badge-tread">Wash well</span>
         <span class="note">Whole edible pod eaten fresh - no pesticide barrier. Predominantly AU-grown. Only industry-funded residue data available; independent testing is limited.</span>
       </li>
       <li class="produce-item">
         <span class="num">10</span>
-        <span class="name">🍅 Tomatoes</span>
+        <span class="icon" aria-hidden="true">🍅</span>
+        <span class="name">Tomatoes</span>
         <span class="badge badge-tread">Buy local</span>
         <span class="note">QLD produce is legally required to be treated with a systemic insecticide dip before interstate transit. Buy locally grown where possible and check origin labelling.</span>
       </li>
       <li class="produce-item">
         <span class="num">11</span>
-        <span class="name">🥒 Zucchini</span>
+        <span class="icon" aria-hidden="true">🥒</span>
+        <span class="name">Zucchini</span>
         <span class="badge badge-tread">Wash well</span>
         <span class="note">Thin edible skin, moderate pesticide use. Similar biology and risk profile to cucumbers. Generally AU-grown with limited independent residue data available.</span>
       </li>

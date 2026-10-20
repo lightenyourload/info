@@ -82,6 +82,55 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 /* ── FOOTER ── */
 .page-footer{background:var(--ink);color:#bbb;padding:18px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;font-size:11px;letter-spacing:.3px;margin-top:20px;gap:6px}
 .page-footer span:last-child{color:#ccc;font-style:italic}
+
+/* ════ READABILITY LAYER (Oct 2026) — overrides the compact print-style rules above ════ */
+.page{max-width:880px}
+.page-header{padding:44px 48px 40px}
+.page-header .kicker{font-size:12px;color:rgba(255,255,255,.7)}
+.page-header h1{font-size:42px;margin-bottom:14px}
+.page-header .desc{font-size:17px;font-weight:400;color:rgba(255,255,255,.92);line-height:1.65;max-width:620px}
+.caveat{margin:28px 48px 0;padding:16px 20px;font-size:14.5px;line-height:1.65}
+.list-section{padding:12px 48px 0}
+.produce-item{grid-template-columns:28px 56px minmax(0,1fr) auto;align-items:start;column-gap:16px;row-gap:4px;padding:22px 4px;border-radius:0}
+.produce-item:hover{background:transparent}
+.num{grid-row:1;font-size:15px;line-height:1.5;padding-top:2px}
+.icon{grid-column:2;grid-row:1 / span 2;width:56px;height:56px;border-radius:8px;background:#efece4;display:flex;align-items:center;justify-content:center;font-size:30px;line-height:1;object-fit:cover}
+.name{grid-column:3;font-size:19px;font-weight:600;line-height:1.35}
+.name .sub-items,.name .sub-items .inline{font-size:15px;margin-top:3px}
+.badge{grid-column:4;grid-row:1;font-size:12px;padding:4px 10px;border-radius:3px}
+.note{grid-column:3 / -1;font-size:16px;color:#474747;line-height:1.65;margin-top:2px;max-width:62ch}
+.info-box{margin:32px 48px 0;padding:22px 24px}
+.info-box h4{font-size:13px;margin-bottom:14px}
+.info-box ul{gap:10px}
+.info-box li{font-size:16px;line-height:1.6;padding-left:22px}
+.info-box li::before{font-size:13px;top:3px}
+.also-watch{margin:24px 48px 0;padding:16px 20px;font-size:15px;line-height:1.65}
+.guide-nav{margin:40px 48px 0;gap:16px}
+.guide-nav-card{padding:20px 22px}
+.guide-nav-card .card-kicker{font-size:11.5px;margin-bottom:8px}
+.guide-nav-card h3{font-size:20px;margin-bottom:6px}
+.guide-nav-card p{font-size:15px;line-height:1.55}
+.page-footer{padding:28px 48px;font-size:13px;line-height:1.7;margin-top:48px}
+.nav-links a{font-size:13px}
+
+@media (max-width:640px){
+  .site-nav{padding:0 12px}
+  .site-nav .logo{display:none}
+  .nav-links{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .nav-links a{white-space:nowrap;padding:6px 10px;font-size:12px}
+  .page-header{padding:32px 20px 28px}
+  .page-header h1{font-size:32px}
+  .page-header .desc{font-size:16px}
+  .caveat,.info-box,.also-watch{margin-left:16px;margin-right:16px}
+  .list-section{padding:4px 16px 0}
+  .produce-item{grid-template-columns:22px 48px minmax(0,1fr);column-gap:12px;row-gap:6px;padding:20px 0}
+  .icon{width:48px;height:48px;font-size:26px}
+  .name{font-size:18px}
+  .badge{grid-column:3;grid-row:2;justify-self:start}
+  .note{grid-column:3;font-size:15.5px}
+  .guide-nav{grid-template-columns:1fr;margin:32px 16px 0}
+  .page-footer{padding:24px 20px}
+}
 </style>
 </head>
 <body>
@@ -108,34 +157,40 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   <div class="caveat"><strong>⚠ Data note:</strong> Australia has no equivalent to the US Environmental Working Group (EWG) Dirty Dozen program. This guide synthesises all available AU data plus international findings where AU data is absent. Rankings are informed estimates, not definitive science. Absence of AU data does not mean absence of risk — it often means absence of independent investigation.</div>
 
   <div class="list-section">
+    <!-- ICONS: each produce row has <span class="icon">emoji</span>. To use a photo, replace it with <img class="icon" src="photo.jpg" alt=""> (square crop, ~120×120px). -->
     <ul class="produce-list">
       <li class="produce-item">
         <span class="num">1</span>
-        <span class="name">🍓 Strawberries</span>
+        <span class="icon" aria-hidden="true">🍓</span>
+        <span class="name">Strawberries</span>
         <span class="badge badge-high">Buy Organic</span>
         <span class="note">Highest AU detection rate. Up to 90× MRL found in suppressed govt FOI data (2013). Dimethoate detected — banned EU 2019, possible human carcinogen.</span>
       </li>
       <li class="produce-item">
         <span class="num">2</span>
-        <span class="name">🍎 Apples</span>
+        <span class="icon" aria-hidden="true">🍎</span>
+        <span class="name">Apples</span>
         <span class="badge badge-high">Buy Organic</span>
         <span class="note">Top AU pesticide detection count 2000–2011. 1,500+ approved chemicals — more than any other produce. Post-harvest diphenylamine common (banned EU).</span>
       </li>
       <li class="produce-item">
         <span class="num">3</span>
-        <span class="name">🥬 Spinach &amp; leafy greens</span>
+        <span class="icon" aria-hidden="true">🥬</span>
+        <span class="name">Spinach &amp; leafy greens</span>
         <span class="badge badge-high">Buy Organic</span>
         <span class="note">Large surface area absorbs systemic pesticides that cannot be washed off. Consistent highest-risk class globally and in AU monitoring data.</span>
       </li>
       <li class="produce-item">
         <span class="num">4</span>
-        <span class="name">🍇 Grapes</span>
+        <span class="icon" aria-hidden="true">🍇</span>
+        <span class="name">Grapes</span>
         <span class="badge badge-high">Buy Organic</span>
         <span class="note">6.4% of all AU pesticide detections 2000–2011. Multiple fungicides applied repeatedly. Thin skin — cannot be peeled.</span>
       </li>
       <li class="produce-item">
         <span class="num">5</span>
-        <span class="name">🍑🍒 Stone fruit
+        <span class="icon" aria-hidden="true">🍑</span>
+        <span class="name">Stone fruit
           <span class="sub-items">peaches, nectarines, apricots, plums, cherries <span class="inline">(most stone fruit: limited AU data)</span></span>
         </span>
         <span class="badge badge-high">Buy Organic</span>
@@ -143,43 +198,50 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
       </li>
       <li class="produce-item">
         <span class="num">6</span>
-        <span class="name">🫐 Blueberries</span>
+        <span class="icon" aria-hidden="true">🫐</span>
+        <span class="name">Blueberries</span>
         <span class="badge badge-high">Buy Organic</span>
         <span class="note">Chlorpyrifos &amp; thiometon detected in AU specifically. Southern Cross University 2025: dimethoate found at levels exceeding safe daily intake. APVMA proposed suspension (2025).</span>
       </li>
       <li class="produce-item">
         <span class="num">7</span>
-        <span class="name">🍐 Pears</span>
+        <span class="icon" aria-hidden="true">🍐</span>
+        <span class="name">Pears</span>
         <span class="badge badge-high">Buy Organic</span>
         <span class="note">9.5% of all AU pesticide detections 2000–2011 — second only to apples. High fungicide use. Diphenylamine post-harvest (banned EU).</span>
       </li>
       <li class="produce-item">
         <span class="num">8</span>
-        <span class="name">🍓 Raspberries &amp; blackberries</span>
+        <span class="icon" aria-hidden="true">🍓</span>
+        <span class="name">Raspberries &amp; blackberries</span>
         <span class="badge badge-yes">Buy Organic</span>
         <span class="note">91% of blackberry samples had detectable pesticides, avg 4+ per sample (EWG 2026). PFAS bifenthrin detected. Same APVMA dimethoate suspension covers raspberries &amp; blackberries (2025).</span>
       </li>
       <li class="produce-item">
         <span class="num">9</span>
-        <span class="name">🥬 Lettuce</span>
+        <span class="icon" aria-hidden="true">🥬</span>
+        <span class="name">Lettuce</span>
         <span class="badge badge-yes">Buy Organic</span>
         <span class="note">4.1% of all AU pesticide detections 2000–2011. Named in Friends of the Earth Australia report. No outer skin — entire surface is eaten.</span>
       </li>
       <li class="produce-item">
         <span class="num">10</span>
-        <span class="name">🫑 Capsicum / bell peppers</span>
+        <span class="icon" aria-hidden="true">🫑</span>
+        <span class="name">Capsicum / bell peppers</span>
         <span class="badge badge-yes">Buy Organic</span>
         <span class="note">Named in AU ATDS monitoring data. Thin edible skin. Ranks just below the Dirty Dozen globally on overall pesticide toxicity.</span>
       </li>
       <li class="produce-item">
         <span class="num">11</span>
-        <span class="name">🌿 Celery</span>
+        <span class="icon" aria-hidden="true">🌿</span>
+        <span class="name">Celery</span>
         <span class="badge badge-yes">Buy Organic</span>
         <span class="note">Named in AU ATDS data. No outer peel — every stalk surface is exposed. Very high surface area-to-volume ratio. 64 different pesticides detected internationally.</span>
       </li>
       <li class="produce-item">
         <span class="num">12</span>
-        <span class="name">🥬 Kale &amp; Asian greens</span>
+        <span class="icon" aria-hidden="true">🥬</span>
+        <span class="name">Kale &amp; Asian greens</span>
         <span class="badge badge-yes">Buy Organic</span>
         <span class="note">High pest pressure, systemic pesticide use documented. Limited AU-specific testing but biology identical to highest-risk leafy class. Tops EWG 2026 on toxicity weighting.</span>
       </li>
