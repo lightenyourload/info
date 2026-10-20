@@ -308,8 +308,6 @@ nav {
 }
 
 /* ── GUIDES (strip 3: light green) ── */
-#guides { padding-bottom: 56px; }
-
 .guides-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -422,66 +420,61 @@ nav {
 }
 .card-coming:hover { transform: none; box-shadow: none; }
 
-/* ── PRINCIPLES (continues the light-green strip under the guides) ── */
+/* ── PRINCIPLES (strip 4: dark) ── */
 .principles-section {
-  padding: 0 48px 80px;
-}
-
-.principles-inner {
-  border-top: 1px solid rgba(20,21,16,.15);
-  padding-top: 48px;
-}
-
-.principles-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  margin-top: 8px;
-}
-
-.principle {
-  padding-left: 20px;
-  border-left: 2px solid var(--clean);
-}
-
-.principle h4 {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--clean);
-  margin-bottom: 8px;
-  letter-spacing: 0.1px;
-  line-height: 1.35;
-}
-
-.principle p {
-  font-size: 13.5px;
-  color: var(--ink-muted);
-  line-height: 1.65;
-}
-
-/* ── METHODOLOGY (strip 4: dark) ── */
-.method-section {
   background: var(--ink);
   color: white;
   padding: 72px 48px 80px;
 }
 
-.method-section .section-kicker { color: #8a8a82; }
-.method-section .section-desc   { color: rgba(255,255,255,.72); }
+.principles-section .section-kicker { color: #8a8a82; margin-bottom: 28px; }
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.principle {
+  padding-left: 22px;
+  border-left: 2px solid var(--gold);
+}
+
+.principle h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+  letter-spacing: -0.2px;
+  line-height: 1.25;
+}
+
+.principle p {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,.88);
+  line-height: 1.7;
+}
+
+/* ── METHODOLOGY (strip 5: light green) ── */
+.method-section {
+  padding: 72px 48px 80px;
+}
 
 .method-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1px;
   margin-top: 40px;
-  background: var(--dark-rule);
-  border: 1px solid var(--dark-rule);
+  background: var(--rule);
+  border: 1px solid var(--rule);
   border-radius: 4px;
   overflow: hidden;
 }
 
 .method-cell {
-  background: var(--dark-cell);
+  background: var(--surface);
   padding: 24px;
 }
 
@@ -489,7 +482,7 @@ nav {
   font-family: 'DM Mono', monospace;
   font-size: 28px;
   font-weight: 500;
-  color: var(--gold);
+  color: var(--clean);
   margin-bottom: 10px;
   line-height: 1;
 }
@@ -497,13 +490,13 @@ nav {
 .method-cell h4 {
   font-size: 13px;
   font-weight: 600;
-  color: white;
+  color: var(--ink);
   margin-bottom: 8px;
 }
 
 .method-cell p {
   font-size: 12px;
-  color: rgba(255,255,255,.68);
+  color: var(--ink-muted);
   line-height: 1.6;
 }
 
@@ -517,11 +510,11 @@ nav {
 
 .stars li {
   font-size: 12px;
-  color: rgba(255,255,255,.68);
+  color: var(--ink-muted);
 }
 
 .stars span {
-  color: var(--gold);
+  color: var(--clean);
   letter-spacing: 1px;
   display: inline-block;
   min-width: 56px;
@@ -608,8 +601,9 @@ footer {
   .guides-grid-bottom { grid-template-columns: 1fr; max-width: 100%; }
   .guide-card { padding: 20px; }
 
-  .principles-section { padding: 0 20px 56px; }
-  .principles-inner { padding-top: 36px; }
+  .principles-section { padding: 48px 20px 56px; }
+  .principle h4 { font-size: 19px; }
+  .principle p { font-size: 15px; }
   .principles-grid { grid-template-columns: 1fr; gap: 24px; }
 
   .method-section { padding: 48px 20px; }
@@ -758,7 +752,7 @@ footer {
   </div>
 </section>
 
-<!-- 3b · PRINCIPLES (same light green, four columns under the guides) -->
+<!-- 4 · PRINCIPLES (dark) -->
 <section class="principles-section" aria-label="Our principles">
   <div class="principles-inner">
     <div class="section-kicker">Our principles</div>
@@ -783,7 +777,7 @@ footer {
   </div>
 </section>
 
-<!-- 4 · METHODOLOGY (dark) -->
+<!-- 5 · METHODOLOGY (light green) -->
 <section class="method-section" id="methodology">
   <div class="section-kicker">How we work</div>
   <h2 class="section-title">Methodology</h2>
