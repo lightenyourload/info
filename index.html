@@ -89,7 +89,7 @@ nav {
   /* dark overlay keeps the text readable over the photo;
      if the image is missing, the plain dark colour shows */
   background:
-    linear-gradient(90deg, rgba(20,21,16,.94) 0%, rgba(20,21,16,.80) 50%, rgba(20,21,16,.55) 100%),
+    linear-gradient(90deg, rgba(20,21,16,.78) 0%, rgba(20,21,16,.50) 55%, rgba(20,21,16,.22) 100%),
     var(--hero-img) center / cover no-repeat,
     #141510;
   color: white;
@@ -97,8 +97,8 @@ nav {
   min-height: min(calc(100vh - 56px), 900px);   /* fallback */
   min-height: min(calc(100svh - 56px), 900px);  /* fill the screen below the nav */
   display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 60px;
+  grid-template-columns: 1fr 380px;
+  gap: 48px;
   align-items: center;
   position: relative;
   overflow: hidden;
@@ -124,8 +124,10 @@ nav {
 }
 
 .hero h1 em {
+  display: block;
   font-style: italic;
   color: var(--gold);
+  text-wrap: balance;   /* if it must wrap, break into even lines (no orphaned "world.") */
 }
 
 .hero-sub {
@@ -608,7 +610,7 @@ footer {
     gap: 32px;
     min-height: calc(100svh - 48px);
     background:
-      linear-gradient(180deg, rgba(20,21,16,.90) 0%, rgba(20,21,16,.82) 100%),
+      linear-gradient(180deg, rgba(20,21,16,.80) 0%, rgba(20,21,16,.65) 100%),
       var(--hero-img) center / cover no-repeat,
       #141510;
   }
@@ -662,7 +664,7 @@ footer {
 <section class="hero">
   <div class="hero-left">
     <div class="hero-kicker">Free Australian food safety guides · lightenyourload.info</div>
-    <h1><em>"Australian food is the cleanest in the world."</em><br>Is that really true?</h1>
+    <h1><em>"Australian food is the cleanest in the world."</em>Is that really true?</h1>
     <p class="hero-sub">I went looking for the evidence. Here's what I found.</p>
     <div class="hero-actions">
       <a href="#guides" class="btn btn-primary">Browse the guides</a>
