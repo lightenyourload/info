@@ -609,6 +609,13 @@ nav {
   .hero::before { transform: none; }
 }
 
+@media print {
+  .js [data-reveal], .js .hero-kicker, .js .hero h1, .js .hero-sub, .js .hero-actions, .js .hero-card {
+    opacity: var(--reveal-to, 1) !important; transform: none !important; animation: none !important;
+  }
+  .hero::before { transform: none !important; }
+}
+
 /* ── FOOTER ── */
 footer {
   background: #111110;
