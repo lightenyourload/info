@@ -1,0 +1,182 @@
+/* ════ Download + pay-what-you-want block (shared by the guide pages) ════
+   Each page sets its accent colour on the section: style="--accent: var(--dirty)" */
+
+.dl {
+  margin: 40px 48px 0;
+  padding: 28px 28px 24px;
+  background: #fff;
+  border: 1px solid var(--rule, #d0cdc8);
+  border-top: 4px solid var(--accent, #2d6a4f);
+  border-radius: 4px;
+}
+
+.dl-kicker {
+  font-family: 'DM Mono', monospace;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--accent, #2d6a4f);
+  margin-bottom: 8px;
+}
+
+.dl h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.dl-intro {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #474747;
+  max-width: 62ch;
+  margin-bottom: 22px;
+}
+
+.dl-amounts {
+  border: 0;
+  margin: 0 0 20px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.dl-amounts legend {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+.dl-amounts label { position: relative; cursor: pointer; }
+
+.dl-amounts input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.dl-amounts label span {
+  display: inline-block;
+  min-width: 64px;
+  text-align: center;
+  padding: 10px 16px;
+  border: 1.5px solid var(--rule, #d0cdc8);
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  background: #faf9f6;
+  transition: border-color .15s, background .15s, color .15s;
+}
+
+.dl-amounts label:hover span { border-color: var(--accent, #2d6a4f); }
+
+.dl-amounts input:checked + span {
+  background: var(--accent, #2d6a4f);
+  border-color: var(--accent, #2d6a4f);
+  color: #fff;
+}
+
+.dl-amounts input:focus-visible + span {
+  outline: 2px solid var(--accent, #2d6a4f);
+  outline-offset: 2px;
+}
+
+.dl-other-wrap {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid var(--accent, #2d6a4f);
+  border-radius: 999px;
+  padding: 0 14px;
+  background: #fff;
+}
+
+.dl-other-wrap[hidden] { display: none; }
+
+.dl-other-wrap span { font-size: 15px; font-weight: 600; color: #474747; }
+
+.dl-other-input {
+  width: 72px;
+  border: 0;
+  padding: 10px 4px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  background: transparent;
+  color: #1a1a1a;
+}
+
+.dl-other-input:focus { outline: none; }
+
+.dl-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 22px;
+}
+
+.dl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent, #2d6a4f);
+  color: #fff;
+  padding: 13px 24px;
+  border-radius: 3px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: filter .2s;
+}
+
+.dl-btn:hover { filter: brightness(.9); }
+
+.dl-link {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--accent, #2d6a4f);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dl-note {
+  margin-top: 16px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #6b6b6b;
+}
+
+.dl-note.is-thanks { color: #1a1a1a; }
+
+.dl-jump {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  opacity: .9;
+}
+
+.dl-jump:hover { opacity: 1; }
+
+@media (max-width: 640px) {
+  .dl { margin: 32px 16px 0; padding: 22px 18px 20px; }
+  .dl h2 { font-size: 22px; }
+  .dl-intro { font-size: 15.5px; }
+  .dl-btn { width: 100%; justify-content: center; }
+}
+
+@media print {
+  .dl, .dl-jump { display: none !important; }
+}

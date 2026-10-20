@@ -131,7 +131,35 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   .guide-nav{grid-template-columns:1fr;margin:32px 16px 0}
   .page-footer{padding:24px 20px}
 }
+
+/* ════ PRINT / PDF ════ */
+@page { size: A4; margin: 14mm 13mm 16mm; }
+@media print {
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:white!important}
+  .site-nav,.guide-nav,.dl,noscript{display:none!important}
+  .page{max-width:none;box-shadow:none;background:white}
+  .page-header{padding:22px 24px 20px;border-radius:4px}
+  .page-header h1{font-size:30px;margin-bottom:8px}
+  .page-header .desc{font-size:12.5px;max-width:none}
+  .caveat{margin:14px 0 0;padding:10px 14px;font-size:10.5px}
+  .list-section{padding:6px 0 0}
+  .produce-item{grid-template-columns:22px 40px minmax(0,1fr) auto;column-gap:12px;padding:10px 0;break-inside:avoid}
+  .num{font-size:11px}
+  .icon{width:40px;height:40px;font-size:22px;border-radius:6px}
+  .name{font-size:13.5px}
+  .name .sub-items,.name .sub-items .inline{font-size:11px}
+  .badge{font-size:9.5px;padding:2px 7px}
+  .note{font-size:11.5px;line-height:1.55;max-width:none;color:#3d3d3d}
+  .info-box,.also-watch{margin:16px 0 0;padding:12px 16px;break-inside:avoid}
+  .info-box h4{font-size:10px;margin-bottom:8px}
+  .info-box li{font-size:11.5px}
+  .page-footer{background:none;color:#555;border-top:1px solid #d0cdc8;margin-top:18px;padding:12px 0 0;font-size:9.5px}
+  .page-footer span:last-child{color:#555}
+  .page-footer a{color:inherit}
+}
 </style>
+<link rel="stylesheet" href="download.css">
 </head>
 <body>
 
@@ -152,6 +180,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     <div class="kicker">Lighten Your Load · Australian Produce Guide</div>
     <h1>🚨 The Dirty Dozen</h1>
     <p class="desc">The 12 Australian produce items with the highest evidence of pesticide contamination. Ranked approximately by strength of Australian-specific evidence - prioritise organic versions, especially for children and during pregnancy.</p>
+    <a class="dl-jump" href="#download">Download &amp; print ↓</a>
   </div>
 
   <div class="caveat"><strong>⚠ Data note:</strong> Australia has no equivalent to the US Environmental Working Group (EWG) Dirty Dozen program. This guide synthesises all available AU data plus international findings where AU data is absent. Rankings are informed estimates, not definitive science. Absence of AU data does not mean absence of risk — it often means absence of independent investigation.</div>
@@ -260,6 +289,28 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   </div>
 
 
+  <!-- DOWNLOAD + PAY WHAT YOU WANT (styles: download.css, behaviour: download.js) -->
+  <section class="dl" id="download" style="--accent:var(--dirty)" data-stripe="https://donate.stripe.com/eVq14n8RN7KkeafaU41Nu00" data-guide="dirty-dozen">
+    <div class="dl-kicker">Download &amp; print</div>
+    <h2>Take this guide shopping</h2>
+    <p class="dl-intro">A printable two-page PDF of the Dirty Dozen, plus wallet-sized pocket cards covering all three produce guides. Pay what you want, including nothing. Contributions fund the research and keep the guides free for everyone.</p>
+    <fieldset class="dl-amounts">
+      <legend>Pay what you want (AUD)</legend>
+      <label><input type="radio" name="dl-amt" value="0"><span>Free</span></label>
+      <label><input type="radio" name="dl-amt" value="5" checked><span>$5</span></label>
+      <label><input type="radio" name="dl-amt" value="10"><span>$10</span></label>
+      <label><input type="radio" name="dl-amt" value="20"><span>$20</span></label>
+      <label><input type="radio" name="dl-amt" value="other"><span>Other</span></label>
+      <span class="dl-other-wrap" hidden><span>$</span><input class="dl-other-input" type="number" min="1" max="1000" step="1" inputmode="numeric" aria-label="Other amount in Australian dollars"></span>
+    </fieldset>
+    <div class="dl-actions">
+      <a class="dl-btn" href="Dirty-Dozen-Guide-Oct2026.pdf" download data-dl>Download</a>
+      <a class="dl-link" href="Dirty-Dozen-print-template-Oct2026.pdf" download data-dl>Pocket cards (PDF)</a>
+    </div>
+    <p class="dl-note" aria-live="polite">Contributions are handled securely by Stripe in a new tab. Your download starts either way.</p>
+    <noscript><p class="dl-note">Want to contribute? <a href="https://donate.stripe.com/eVq14n8RN7KkeafaU41Nu00" target="_blank" rel="noopener">Chip in via Stripe</a>.</p></noscript>
+  </section>
+
   <!-- NAVIGATE TO OTHER GUIDES -->
   <div class="guide-nav">
     <a href="tread-careful-ten.html" class="guide-nav-card card-tread">
@@ -280,5 +331,6 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   </div>
 
 </div>
+<script src="download.js"></script>
 </body>
 </html>
