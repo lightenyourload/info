@@ -1,6 +1,11 @@
 /* Download + pay-what-you-want.
    Nothing is ever blocked: the PDF downloads whatever amount is chosen.
-   If an amount above $0 is chosen, Stripe opens in a new tab with it prefilled. */
+
+   How the Stripe tab opens without being caught by popup blockers:
+   while an amount above $0 is selected (and Stripe hasn't been opened yet),
+   the download links become ordinary links to Stripe (target=_blank), which
+   browsers always allow. The PDF itself is then downloaded alongside it.
+   With Free selected, or once Stripe has been opened, they are plain downloads. */
 (function () {
   document.querySelectorAll('.dl').forEach(function (box) {
     var stripe = box.getAttribute('data-stripe');
@@ -10,7 +15,10 @@
     var otherWrap = box.querySelector('.dl-other-wrap');
     var otherInput = box.querySelector('.dl-other-input');
     var radios = [].slice.call(box.querySelectorAll('input[type="radio"]'));
+    var links = [].slice.call(box.querySelectorAll('[data-dl]'));
     var stripeOpened = false;
+
+    links.forEach(function (a) { a.setAttribute('data-file', a.getAttribute('href')); });
 
     function selected() {
       var r = radios.filter(function (x) { return x.checked; })[0];
@@ -22,11 +30,46 @@
       return Number(r.value);
     }
 
+    function stripeUrl(amt) {
+      return stripe + '?__prefilled_amount=' + (amt * 100) +
+             (guide ? '&client_reference_id=' + encodeURIComponent(guide) : '');
+    }
+
+    function downloadFile(file) {
+      var a = document.createElement('a');
+      a.href = file;
+      a.setAttribute('download', '');
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () { a.remove(); }, 1000);
+    }
+
+    // point each link at Stripe or at its file, depending on the current choice
+    function setLinks() {
+      var amt = selected();
+      var toStripe = amt > 0 && stripe && !stripeOpened;
+      links.forEach(function (a) {
+        if (toStripe) {
+          a.href = stripeUrl(amt);
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.removeAttribute('download');
+        } else {
+          a.href = a.getAttribute('data-file');
+          a.removeAttribute('target');
+          a.removeAttribute('rel');
+          a.setAttribute('download', '');
+        }
+      });
+    }
+
     function refresh() {
       var other = radios.some(function (x) { return x.checked && x.value === 'other'; });
       otherWrap.hidden = !other;
       var amt = selected();
       btn.textContent = isNaN(amt) ? 'Download' : amt > 0 ? 'Chip in $' + amt + ' & download' : 'Download free';
+      setLinks();
     }
 
     radios.forEach(function (r) {
@@ -37,8 +80,8 @@
     });
     otherInput.addEventListener('input', refresh);
 
-    box.querySelectorAll('[data-dl]').forEach(function (link) {
-      link.addEventListener('click', function (e) {
+    links.forEach(function (a) {
+      a.addEventListener('click', function (e) {
         var amt = selected();
         if (isNaN(amt)) {
           e.preventDefault();
@@ -47,12 +90,19 @@
           otherInput.focus();
           return;
         }
-        if (amt > 0 && stripe && !stripeOpened) {
-          var url = stripe + '?__prefilled_amount=' + (amt * 100) +
-                    (guide ? '&client_reference_id=' + encodeURIComponent(guide) : '');
-          window.open(url, '_blank', 'noopener');
+        if (a.getAttribute('target') === '_blank') {
+          // the link itself opens Stripe; start the PDF download alongside it
+          downloadFile(a.getAttribute('data-file'));
           stripeOpened = true;
-          note.textContent = 'Thank you! Your download has started, and Stripe has opened in a new tab to complete your $' + amt + ' contribution.';
+          setTimeout(setLinks, 0);   // later clicks are plain downloads
+          note.textContent = 'Thank you! Your download has started, and Stripe has opened in a new tab to complete your $' + amt + ' contribution. If you don\'t see it, ';
+          var retry = document.createElement('a');
+          retry.href = stripeUrl(amt);
+          retry.target = '_blank';
+          retry.rel = 'noopener';
+          retry.textContent = 'open Stripe here';
+          note.appendChild(retry);
+          note.appendChild(document.createTextNode('.'));
         } else {
           note.textContent = amt > 0
             ? 'Your download has started. Thank you for supporting the research.'
