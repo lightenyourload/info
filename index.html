@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lighten Your Load — Free Australian Food Safety Guides</title>
+<script>document.documentElement.classList.add('js');</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -88,10 +89,8 @@ nav {
 .hero {
   /* dark overlay keeps the text readable over the photo;
      if the image is missing, the plain dark colour shows */
-  background:
-    linear-gradient(90deg, rgba(20,21,16,.78) 0%, rgba(20,21,16,.50) 55%, rgba(20,21,16,.22) 100%),
-    var(--hero-img) center / cover no-repeat,
-    #141510;
+  background: #141510;
+  isolation: isolate;   /* keeps the photo/overlay layers inside the hero */
   color: white;
   padding: 80px 48px 72px;
   min-height: min(calc(100vh - 56px), 900px);   /* fallback */
@@ -102,6 +101,26 @@ nav {
   align-items: center;
   position: relative;
   overflow: hidden;
+}
+
+/* photo layer: drifts slower than the page on scroll (parallax) */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -18% 0 0 0;
+  background: var(--hero-img) center / cover no-repeat;
+  transform: translate3d(0, var(--parallax, 0px), 0);
+  will-change: transform;
+  z-index: -2;
+}
+
+/* overlay layer: keeps the text readable */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(20,21,16,.78) 0%, rgba(20,21,16,.50) 55%, rgba(20,21,16,.22) 100%);
+  z-index: -1;
 }
 
 .hero-kicker {
@@ -555,6 +574,41 @@ nav {
   line-height: 1.65;
 }
 
+/* ── MOTION ── */
+/* Hero eases in on load */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+.js .hero-kicker,
+.js .hero h1,
+.js .hero-sub,
+.js .hero-actions,
+.js .hero-card { animation: rise .9s cubic-bezier(.2,.65,.3,1) both; }
+.js .hero h1      { animation-delay: .08s; }
+.js .hero-sub     { animation-delay: .2s; }
+.js .hero-actions { animation-delay: .3s; }
+.js .hero-card    { animation-delay: .4s; }
+
+/* Sections fade up as they scroll into view; --i staggers siblings */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .8s cubic-bezier(.2,.65,.3,1), transform .8s cubic-bezier(.2,.65,.3,1);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.js [data-reveal].is-visible {
+  opacity: var(--reveal-to, 1);
+  transform: none;
+}
+.card-coming { --reveal-to: .65; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .hero-kicker, .js .hero h1, .js .hero-sub, .js .hero-actions, .js .hero-card { animation: none; }
+  .js [data-reveal] { opacity: var(--reveal-to, 1); transform: none; transition: none; }
+  .hero::before { transform: none; }
+}
+
 /* ── FOOTER ── */
 footer {
   background: #111110;
@@ -614,10 +668,9 @@ footer {
     padding: 48px 20px 40px;
     gap: 32px;
     min-height: calc(100svh - 48px);
-    background:
-      linear-gradient(180deg, rgba(20,21,16,.80) 0%, rgba(20,21,16,.65) 100%),
-      var(--hero-img) center / cover no-repeat,
-      #141510;
+  }
+  .hero::after {
+    background: linear-gradient(180deg, rgba(20,21,16,.80) 0%, rgba(20,21,16,.65) 100%);
   }
   .hero h1 { font-size: 34px; letter-spacing: -0.5px; }
   .hero-card { padding: 20px; }
@@ -714,7 +767,7 @@ footer {
 <!-- 2 · ABOUT (dark, full width, image left) -->
 <section class="about-strip" id="about">
   <div class="about-media" aria-hidden="true"></div>
-  <div class="about-body">
+  <div class="about-body" data-reveal style="--i:0">
     <h2>Built for <em>Australian</em> families.</h2>
     <p>Australia has no consumer-facing produce pesticide program. No equivalent to the US Environmental Working Group's (EWG) Shopper's Guide. No coordinated annual testing across all states and retail channels. The data exists - fragmented across FSANZ, APVMA, state programs, FOI requests, academic studies - but until the recent Pesticide Action Australia report this information has never been compiled in one accessible place.</p>
     <p>I started Lighten Your Load because I couldn't find any straight answers to my question: 'What's on the food we eat in Australia?' So I went on a deep dive, and this is what I found.</p>
@@ -725,13 +778,13 @@ footer {
 
 <!-- 3 · GUIDES (light green) -->
 <section class="section" id="guides">
-  <div class="section-kicker">The guides</div>
-  <h2 class="section-title">Simple guides. Real data. Free for everyone.</h2>
-  <p class="section-desc">Every guide is based on the best available Australian data, supplemented by international research where Australian data doesn't exist. All sources listed. All caveats stated.</p>
+  <div class="section-kicker" data-reveal>The guides</div>
+  <h2 class="section-title" data-reveal>Simple guides. Real data. Free for everyone.</h2>
+  <p class="section-desc" data-reveal>Every guide is based on the best available Australian data, supplemented by international research where Australian data doesn't exist. All sources listed. All caveats stated.</p>
 
   <div class="guides-grid">
 
-    <a href="dirty-dozen.html" class="guide-card card-dirty">
+    <a href="dirty-dozen.html" class="guide-card card-dirty" data-reveal style="--i:0">
       <div class="guide-tag tag-dirty">🚨 Produce guide</div>
       <h3>The Dirty Dozen</h3>
       <p>The 12 Australian produce items with the highest evidence of pesticide contamination. Ranked by strength of Australian-specific evidence.</p>
@@ -741,7 +794,7 @@ footer {
       </div>
     </a>
 
-    <a href="tread-careful-ten.html" class="guide-card card-tread">
+    <a href="tread-careful-ten.html" class="guide-card card-tread" data-reveal style="--i:1">
       <div class="guide-tag tag-tread">⚠️ Produce guide</div>
       <h3>Tread Careful</h3>
       <p>Commonly eaten items that don't belong on the Dirty Dozen - but carry specific concerns worth knowing. Citrus, potatoes, ginger, garlic and more.</p>
@@ -751,7 +804,7 @@ footer {
       </div>
     </a>
 
-    <a href="cleaner-by-far.html" class="guide-card card-clean">
+    <a href="cleaner-by-far.html" class="guide-card card-clean" data-reveal style="--i:2">
       <div class="guide-tag tag-clean">✅ Produce guide</div>
       <h3>Fill your basket</h3>
       <p>Produce items with the lowest evidence of pesticide risk in the Australian context. When conventional is generally a reasonable choice.</p>
@@ -765,7 +818,7 @@ footer {
 
   <div class="guides-grid-bottom">
 
-    <div class="guide-card card-coming">
+    <div class="guide-card card-coming" data-reveal style="--i:3">
       <div class="guide-tag tag-coming">🌾 Coming soon</div>
       <h3>Beyond the Produce Aisle</h3>
       <p>Grains, bread, oats, nuts, tea, coffee, dried fruit. What the Australian Total Diet Study actually found — and what it didn't look for.</p>
@@ -775,7 +828,7 @@ footer {
       </div>
     </div>
 
-    <div class="guide-card card-coming">
+    <div class="guide-card card-coming" data-reveal style="--i:4">
       <div class="guide-tag tag-coming">🧵 Coming soon</div>
       <h3>Better Fabric Guide</h3>
       <p>What's in your clothing and textiles — and how to make more informed choices for your family and the environment.</p>
@@ -791,21 +844,21 @@ footer {
 <!-- 4 · PRINCIPLES (dark) -->
 <section class="principles-section" aria-label="Principles">
   <div class="principles-inner">
-    <div class="section-kicker">Principles</div>
+    <div class="section-kicker" data-reveal>Principles</div>
     <div class="principles-grid">
-      <div class="principle">
+      <div class="principle" data-reveal style="--i:0">
         <h4>Absence of data ≠ absence of risk</h4>
         <p>When Australia hasn't tested something, I say so - and explain why the gap itself is significant.</p>
       </div>
-      <div class="principle">
+      <div class="principle" data-reveal style="--i:1">
         <h4>Free, always</h4>
         <p>The guides are free. No paywall. No email gate. Printable PDFs are available for a small contribution to fund continued research.</p>
       </div>
-      <div class="principle">
+      <div class="principle" data-reveal style="--i:2">
         <h4>No advertising</h4>
         <p>I'm not funded by organic food companies, supermarkets, or any food industry body. My only funding is direct reader support.</p>
       </div>
-      <div class="principle">
+      <div class="principle" data-reveal style="--i:3">
         <h4>Regularly updated</h4>
         <p>Guides are reviewed when new Australian data is published, when major international studies are released, or when regulatory decisions change the picture.</p>
       </div>
@@ -815,27 +868,27 @@ footer {
 
 <!-- 5 · METHODOLOGY (light green) -->
 <section class="method-section" id="methodology">
-  <div class="section-kicker">How I work</div>
-  <h2 class="section-title">Methodology</h2>
-  <p class="section-desc">Every ranking is based on the best available evidence, with a clear statement of confidence. I don't pretend the data is better than it is.</p>
+  <div class="section-kicker" data-reveal>How I work</div>
+  <h2 class="section-title" data-reveal>Methodology</h2>
+  <p class="section-desc" data-reveal>Every ranking is based on the best available evidence, with a clear statement of confidence. I don't pretend the data is better than it is.</p>
 
   <div class="method-grid">
-    <div class="method-cell">
+    <div class="method-cell" data-reveal style="--i:0">
       <div class="method-num">01</div>
       <h4>Australian data first</h4>
       <p>FSANZ Total Diet Studies, APVMA MRL register, National Residue Survey, FOI-obtained government data, Friends of the Earth AU, CHOICE, state-based monitoring programs, and Pesticide Action Australia's 2026 residue report.</p>
     </div>
-    <div class="method-cell">
+    <div class="method-cell" data-reveal style="--i:1">
       <div class="method-num">02</div>
       <h4>International proxy where AU data absent</h4>
       <p>When Australian data doesn't exist, I use EWG (US), EFSA (EU), Canadian CFIA, and peer-reviewed research — and clearly label every such instance.</p>
     </div>
-    <div class="method-cell">
+    <div class="method-cell" data-reveal style="--i:2">
       <div class="method-num">03</div>
       <h4>Biology-based inference</h4>
       <p>Where no residue data exists, I consider skin type, pest pressure, systemic vs. contact pesticide use, and post-harvest treatment practices.</p>
     </div>
-    <div class="method-cell">
+    <div class="method-cell" data-reveal style="--i:3">
       <div class="method-num">04</div>
       <h4>Confidence ratings throughout</h4>
       <p>Every item is rated by evidence strength.</p>
@@ -846,7 +899,7 @@ footer {
         <li><span>★</span> inference only</li>
       </ul>
     </div>
-    <div class="method-cell">
+    <div class="method-cell" data-reveal style="--i:4">
       <div class="method-num">05</div>
       <h4>Rankings reflect the flesh you eat</h4>
       <p>Following standard testing practice, produce is washed or peeled before residue testing - so rankings reflect what reaches you when eating normally. Skins and peels may carry higher residues than the flesh. For example, banana skins carry post-harvest fungicide residues not reflected in the flesh ranking.</p>
@@ -892,9 +945,9 @@ CONFIDENCE RATING KEY
 
 SUPPORT SECTION
 <section class="support-section" id="support">
-  <div class="section-kicker">Support the research</div>
-  <h2 class="section-title">Help keep this going.</h2>
-  <p class="section-desc">The guides are free and will stay that way. Reader support funds ongoing research, data updates, FOI requests, and new guides — so every Australian family can make more informed choices.</p>
+  <div class="section-kicker" data-reveal>Support the research</div>
+  <h2 class="section-title" data-reveal>Help keep this going.</h2>
+  <p class="section-desc" data-reveal>The guides are free and will stay that way. Reader support funds ongoing research, data updates, FOI requests, and new guides — so every Australian family can make more informed choices.</p>
   <div class="support-grid">
     <div class="support-card">
       <span class="support-icon">☕</span>
@@ -954,5 +1007,42 @@ FOOTER LINK COLUMNS
   </div>
 </footer>
 
+<script>
+/* Scroll reveal + hero parallax. Skipped entirely for reduced-motion users. */
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = [].slice.call(document.querySelectorAll('[data-reveal]'));
+
+  function done(el) {
+    el.classList.add('is-visible');
+    // hand the element back to its own hover transitions once it has arrived
+    el.addEventListener('transitionend', function () { el.removeAttribute('data-reveal'); }, { once: true });
+  }
+
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('is-visible'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { done(e.target); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    items.forEach(function (el) { io.observe(el); });
+  }
+
+  var hero = document.querySelector('.hero');
+  if (reduce || !hero) return;
+  var ticking = false;
+  function update() {
+    var y = Math.min(window.scrollY, hero.offsetHeight);
+    hero.style.setProperty('--parallax', (y * 0.3).toFixed(1) + 'px');
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+})();
+</script>
 </body>
 </html>
