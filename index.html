@@ -94,6 +94,8 @@ nav {
     #141510;
   color: white;
   padding: 80px 48px 72px;
+  min-height: min(calc(100vh - 56px), 900px);   /* fallback */
+  min-height: min(calc(100svh - 56px), 900px);  /* fill the screen below the nav */
   display: grid;
   grid-template-columns: 1fr 420px;
   gap: 60px;
@@ -604,6 +606,7 @@ footer {
     grid-template-columns: 1fr;
     padding: 48px 20px 40px;
     gap: 32px;
+    min-height: calc(100svh - 48px);
     background:
       linear-gradient(180deg, rgba(20,21,16,.90) 0%, rgba(20,21,16,.82) 100%),
       var(--hero-img) center / cover no-repeat,
