@@ -3,8 +3,8 @@
    FORM_ACTION: the form's ".../formResponse" URL
    ENTRY:       the Email question's field name, e.g. "entry.123456789" */
 (function () {
-  var FORM_ACTION = '';
-  var ENTRY = '';
+  var FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScwsA_Ni6pqvLFX9ePs814MkHTpt4sXL-PeXkxrmZyTN8QK7Q/formResponse';
+  var ENTRY = 'entry.1127642381';
 
   var ready = /^https:\/\/docs\.google\.com\/forms\/.+\/formResponse$/.test(FORM_ACTION) && /^entry\.\d+$/.test(ENTRY);
 
