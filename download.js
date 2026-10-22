@@ -35,6 +35,10 @@
              (guide ? '&client_reference_id=' + encodeURIComponent(guide) : '');
     }
 
+    function track(name, params) {
+      if (typeof window.gtag === 'function') window.gtag('event', name, params);
+    }
+
     function downloadFile(file) {
       var a = document.createElement('a');
       a.href = file;
@@ -90,7 +94,16 @@
           otherInput.focus();
           return;
         }
+        var file = a.getAttribute('data-file');
+        track('guide_download', {
+          guide: guide,
+          file_name: file,
+          download_type: a.classList.contains('dl-btn') ? 'guide_pdf' : 'pocket_cards',
+          amount_chosen: amt
+        });
+
         if (a.getAttribute('target') === '_blank') {
+          track('contribution_start', { guide: guide, value: amt, currency: 'AUD' });
           // the link itself opens Stripe; start the PDF download alongside it
           downloadFile(a.getAttribute('data-file'));
           stripeOpened = true;
