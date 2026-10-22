@@ -131,3 +131,6 @@
 }
 
 @media print { .signup-wrap { display: none !important; } }
+
+.signup-small a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.signup.is-done .signup-small { display: none; }
