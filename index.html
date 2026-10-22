@@ -713,6 +713,7 @@ footer {
   .method-grid { grid-template-columns: 1fr; }
 }
 </style>
+<link rel="stylesheet" href="signup.css">
 </head>
 <body>
 
@@ -1008,6 +1009,21 @@ FOOTER LINK COLUMNS
 
 <!-- FOOTER (dark) -->
 <footer>
+
+  <!-- EMAIL SIGN-UP (styles: signup.css, behaviour + form settings: signup.js) -->
+  <div class="signup-wrap signup-wrap--dark signup-wrap--footer" hidden>
+    <div class="signup-kicker">Stay in the loop</div>
+    <h3>Hear when guides are updated</h3>
+    <p class="signup-intro">An occasional email when new Australian data changes a guide or a new guide launches. A few times a year, no spam, unsubscribe any time.</p>
+    <form class="signup" data-location="home-footer" novalidate>
+      <div class="signup-row">
+        <label class="signup-hp" aria-hidden="true">Leave blank <input class="signup-hp" type="text" tabindex="-1" autocomplete="off"></label>
+        <input type="email" name="email" required autocomplete="email" placeholder="Your email address" aria-label="Email address">
+        <button type="submit">Sign me up</button>
+      </div>
+      <p class="signup-msg" aria-live="polite"></p>
+    </form>
+  </div>
   <div class="footer-brand">
     <h3>Lighten <span>Your Load</span></h3>
     <p>© 2026 · Shared under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a> · Last updated October 2026</p>
@@ -1052,5 +1068,6 @@ FOOTER LINK COLUMNS
   update();
 })();
 </script>
+<script src="signup.js"></script>
 </body>
 </html>

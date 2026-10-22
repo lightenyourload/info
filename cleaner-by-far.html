@@ -138,6 +138,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 }
 </style>
 <link rel="stylesheet" href="download.css">
+<link rel="stylesheet" href="signup.css">
 </head>
 <body>
 
@@ -242,6 +243,22 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     <noscript><p class="dl-note">Want to contribute? <a href="https://donate.stripe.com/eVq14n8RN7KkeafaU41Nu00" target="_blank" rel="noopener">Chip in via Stripe</a>.</p></noscript>
   </section>
 
+  <!-- EMAIL SIGN-UP (styles: signup.css, behaviour + form settings: signup.js) -->
+  <div class="signup-wrap signup-wrap--guide" style="--accent:var(--clean)" hidden>
+    <div class="signup-kicker">Stay in the loop</div>
+    <h3>Hear when guides are updated</h3>
+    <p class="signup-intro">An occasional email when new Australian data changes a guide or a new guide launches. A few times a year, no spam, unsubscribe any time.</p>
+    <form class="signup" data-location="fill-your-basket" novalidate>
+      <div class="signup-row">
+        <label class="signup-hp" aria-hidden="true">Leave blank <input class="signup-hp" type="text" tabindex="-1" autocomplete="off"></label>
+        <input type="email" name="email" required autocomplete="email" placeholder="Your email address" aria-label="Email address">
+        <button type="submit">Sign me up</button>
+      </div>
+      <p class="signup-msg" aria-live="polite"></p>
+    </form>
+  </div>
+
+
   <div class="guide-nav">
     <a href="dirty-dozen.html" class="guide-nav-card card-dirty">
       <div class="card-kicker">← Also see</div>
@@ -262,5 +279,6 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 
 </div>
 <script src="download.js"></script>
+<script src="signup.js"></script>
 </body>
 </html>
