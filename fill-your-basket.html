@@ -111,6 +111,19 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 }
 
 
+
+/* ════ PAGE BACKGROUND PHOTO (screen only). Swap the file to change it. ════ */
+@media screen {
+  body { background: rgb(10,22,14); }
+  body::before {
+    content: ''; position: fixed; inset: 0; z-index: -1;
+    background:
+      linear-gradient(rgba(10,22,14,.38), rgba(10,22,14,.38)),
+      url('bg-fill-your-basket.jpg') center / cover no-repeat;
+  }
+  .page { position: relative; }
+}
+
 /* ════ PRINT / PDF ════ */
 @page { size: A4; margin: 14mm 13mm 16mm; }
 @media print {
