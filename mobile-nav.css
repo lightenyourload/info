@@ -1,0 +1,59 @@
+/* ════ Mobile menu: replaces the dark nav bar on small screens with a menu button inside the coloured banner ════ */
+
+.mnav-btn, .mnav-panel { display: none; }
+
+@media (max-width: 767px) {
+  /* hide the dark nav bar */
+  .site-nav, body > nav { display: none !important; }
+
+  /* banners hold the button; only the lines beside it get a right margin, so nothing runs under it */
+  .page-header, .hero { position: relative; }
+  .page-header .kicker, .page-header h1, .hero .hero-kicker, .hero h1 { padding-right: 56px; }
+
+  .mnav-btn {
+    display: flex; flex-direction: column; justify-content: center; gap: 5px;
+    position: absolute; top: 18px; right: 16px; z-index: 5;
+    width: 44px; height: 44px; padding: 0 11px;
+    background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.38); border-radius: 6px;
+    cursor: pointer;
+  }
+  .mnav-btn span { display: block; height: 2px; background: #fff; border-radius: 2px; }
+  .mnav-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+  .mnav-panel {
+    display: flex; flex-direction: column;
+    position: fixed; inset: 0; z-index: 1000;
+    background: #141510; color: #fff;
+    padding: 18px 20px 32px;
+    opacity: 0; visibility: hidden; transform: translateY(-8px);
+    transition: opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+  }
+  .mnav-panel.is-open { opacity: 1; visibility: visible; transform: none; transition: opacity .25s ease, transform .25s ease; }
+
+  .mnav-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+  .mnav-brand { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: #fff; text-decoration: none; }
+  .mnav-brand span { color: #b8ddb0; }
+  .mnav-close {
+    width: 44px; height: 44px; border-radius: 6px; cursor: pointer;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.25); color: #fff;
+    font-size: 26px; line-height: 1;
+  }
+
+  .mnav-links { list-style: none; margin: 0; padding: 0; border-top: 1px solid #2a2a27; }
+  .mnav-links li { border-bottom: 1px solid #2a2a27; }
+  .mnav-links a {
+    display: flex; align-items: center; gap: 12px;
+    padding: 18px 4px; font-size: 20px; font-weight: 500; color: #e6e6e0; text-decoration: none;
+  }
+  .mnav-links a:hover, .mnav-links a:focus-visible { color: #fff; }
+  .mnav-links a[aria-current="page"] { color: #b8ddb0; }
+  .mnav-links .gdot { width: 11px; height: 11px; margin-right: 0; top: 0; }
+
+  body.mnav-locked { overflow: hidden; }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .mnav-panel, .mnav-panel.is-open { transition: none; transform: none; }
+}
+
+@media print { .mnav-btn, .mnav-panel { display: none !important; } }

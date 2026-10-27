@@ -73,8 +73,21 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 
 .page-footer{background:var(--ink);color:#bbb;padding:18px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;font-size:11px;letter-spacing:.3px;margin-top:28px;gap:6px}
 .page-footer span:last-child{color:#ccc;font-style:italic}
+
+/* ════ PAGE BACKGROUND PHOTO (screen only). Swap the file to change it. ════ */
+@media screen {
+  body { background: rgb(28,22,16); }
+  body::before {
+    content: ''; position: fixed; inset: 0; z-index: -1;
+    background:
+      linear-gradient(rgba(28,22,16,.38), rgba(28,22,16,.38)),
+      url('bg-resources.jpg') center / cover no-repeat;
+  }
+  .page { position: relative; }
+}
 </style>
 <link rel="stylesheet" href="dots.css">
+<link rel="stylesheet" href="mobile-nav.css">
 </head>
 <body>
 
@@ -247,5 +260,6 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   </div>
 
 </div>
+<script src="mobile-nav.js"></script>
 </body>
 </html>
