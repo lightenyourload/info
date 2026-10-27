@@ -243,11 +243,8 @@ div.hero-stat-row .stat-label { color: #8f8f88; }
 @keyframes neon-on {
   0%, 9%, 13%, 24%, 33%   { opacity: .18; box-shadow: none; }
   10%, 12%, 25%, 32%      { opacity: 1; box-shadow: 0 0 6px var(--glow); }
-  45%, 100%               { opacity: 1; box-shadow: 0 0 6px var(--glow), 0 0 16px var(--glow); }
-}
-@keyframes neon-hum {
-  0%, 100% { box-shadow: 0 0 6px var(--glow), 0 0 16px var(--glow); }
-  50%      { box-shadow: 0 0 4px var(--glow), 0 0 9px var(--glow); }
+  45%                     { opacity: 1; box-shadow: 0 0 6px var(--glow), 0 0 16px var(--glow); }
+  100%                    { opacity: 1; box-shadow: 0 0 0 transparent; }   /* glow fades, leaving the crisp dot */
 }
 @keyframes neon-on-badge {
   0%, 9%, 13%, 24%, 33%   { opacity: .25; text-shadow: none; box-shadow: none; }
@@ -258,14 +255,14 @@ div.hero-stat-row .stat-label { color: #8f8f88; }
   0%, 100% { text-shadow: 0 0 6px rgba(125,204,168,.75), 0 0 14px rgba(125,204,168,.35); box-shadow: 0 0 10px rgba(79,184,137,.25); }
   50%      { text-shadow: 0 0 4px rgba(125,204,168,.5),  0 0 9px rgba(125,204,168,.2);   box-shadow: 0 0 6px rgba(79,184,137,.15); }
 }
-a.hero-stat-row .stat-dot { opacity: .18; animation: neon-on 1.4s linear var(--d, .4s) forwards, neon-hum 3.6s ease-in-out calc(var(--d, .4s) + 1.4s) infinite; }
-a.hero-stat-row .badge-live { opacity: .25; animation: neon-on-badge 1.4s linear calc(var(--d, .4s) + .08s) forwards, neon-hum-badge 3.6s ease-in-out calc(var(--d, .4s) + 1.48s) infinite; }
+a.hero-stat-row .stat-dot { opacity: .18; animation: neon-on 2.2s linear var(--d, .4s) forwards; }
+a.hero-stat-row .badge-live { opacity: .25; animation: neon-on-badge 1.4s linear calc(var(--d, .4s) + .08s) forwards, neon-hum-badge 3.6s ease-in-out 3.4s infinite; }  /* once all three are lit, the Live markers glow up and down together */
 a.hero-stat-row:nth-child(2) { --d: .4s; }
 a.hero-stat-row:nth-child(3) { --d: 1.1s; }
 a.hero-stat-row:nth-child(4) { --d: 1.8s; }
 .badge-live { color: #8fdcb8; }
 @media (prefers-reduced-motion: reduce) {
-  a.hero-stat-row .stat-dot { animation: none; opacity: 1; box-shadow: 0 0 4px var(--glow), 0 0 10px var(--glow); }
+  a.hero-stat-row .stat-dot { animation: none; opacity: 1; }
   a.hero-stat-row .badge-live { animation: none; opacity: 1; text-shadow: 0 0 6px rgba(125,204,168,.6); }
 }
 
