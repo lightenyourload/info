@@ -1,0 +1,14 @@
+/* Guide colour dots (replace the 🚨 ⚠️ ✅ markers). Same colours as the homepage "Current guides" box. */
+.gdot{display:inline-block;width:clamp(8px,.45em,18px);height:clamp(8px,.45em,18px);border-radius:50%;margin-right:.45em;vertical-align:middle;position:relative;top:-.08em;flex-shrink:0}
+.gdot-dirty{background:#b5341a}
+.gdot-tread{background:#5a3d9a}
+.gdot-clean{background:#2d6a4f}
+.gdot-pantry{background:#8a6520}
+.gdot-fabric{background:#1a5a7a}
+.gdot-soon{background:#9a9a94}
+/* on the coloured guide headers the dot would vanish into its own colour, so it goes white */
+.page-header .gdot{background:#fff}
+/* on the dark nav, lift the darker colours slightly so they read */
+.site-nav .gdot-tread,nav .gdot-tread{background:#8a6fd0}
+.site-nav .gdot-clean,nav .gdot-clean{background:#4f9a75}
+.site-nav .gdot-fabric,nav .gdot-fabric{background:#3f8fb5}
