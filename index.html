@@ -477,16 +477,52 @@ div.hero-stat-row .stat-label { color: #8f8f88; }
 
 .principles-section .section-kicker { color: #8a8a82; margin-bottom: 28px; }
 
-/* "Why Lighten Your Load?" intro at the top of the Principles strip */
-.lyl-why { max-width: 760px; margin-bottom: 56px; padding-bottom: 48px; border-bottom: 1px solid #2c2c28; }
+/* "Why Lighten Your Load?" intro at the top of the Principles strip: text left, video right */
+.lyl-why { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 56px; align-items: start; margin-bottom: 56px; padding-bottom: 48px; border-bottom: 1px solid #2c2c28; }
 .lyl-why h2 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; line-height: 1.15; letter-spacing: -0.4px; color: #fff; margin-bottom: 20px; }
 .lyl-why p { font-size: 17px; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,.9); margin-bottom: 16px; }
-.lyl-why p:last-child { margin-bottom: 0; }
+.lyl-why-text p:last-child { margin-bottom: 0; }
+
+.lyl-video { margin: 64px 0 0; }
+.lyl-video-play, .lyl-video iframe {
+  display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 6px;
+}
+.lyl-video-play {
+  position: relative; cursor: pointer; text-align: left; padding: 22px 24px;
+  background:
+    radial-gradient(circle at 75% 30%, rgba(184,221,176,.18), transparent 60%),
+    linear-gradient(135deg, #2d6a4f 0%, #1e3d2f 100%);
+  color: #fff; font: inherit; box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 6px;
+  transition: transform .2s, box-shadow .2s;
+}
+.lyl-video-play:hover, .lyl-video-play:focus-visible { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(0,0,0,.45); }
+.lyl-video-play:focus-visible { outline: 2px solid #b8ddb0; outline-offset: 3px; }
+.lyl-video-icon {
+  position: absolute; top: 50%; left: 50%; width: 72px; height: 72px; margin: -46px 0 0 -36px;
+  border-radius: 50%; background: rgba(255,255,255,.95);
+}
+.lyl-video-icon::after {
+  content: ''; position: absolute; top: 50%; left: 54%; transform: translate(-50%, -50%);
+  border-style: solid; border-width: 13px 0 13px 21px; border-color: transparent transparent transparent #2d6a4f;
+}
+.lyl-video-title { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; line-height: 1.25; }
+.lyl-video-by { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: #b8ddb0; }
+.lyl-video figcaption { margin-top: 12px; font-size: 13.5px; line-height: 1.55; color: rgba(255,255,255,.65); }
+
+@media (max-width: 1000px) {
+  .lyl-why { grid-template-columns: 1fr; gap: 32px; }
+  .lyl-video { margin-top: 0; max-width: 640px; }
+}
 @media (max-width: 767px) {
   .lyl-why { margin-bottom: 40px; padding-bottom: 36px; }
   .lyl-why h2 { font-size: 27px; }
   .lyl-why p { font-size: 16px; }
+  .lyl-video-title { font-size: 17px; }
+  .lyl-video-icon { width: 54px; height: 54px; top: 30%; margin: -27px 0 0 -27px; }
+  .lyl-video-icon::after { border-width: 10px 0 10px 16px; }
 }
+@media print { .lyl-video { display: none; } }
 
 .principles-grid {
   display: grid;
@@ -912,10 +948,22 @@ footer {
 <section class="principles-section" aria-label="Why Lighten Your Load, and principles">
   <div class="principles-inner">
     <div class="lyl-why" id="why" data-reveal>
-      <h2>Why ‘Lighten Your Load’?</h2>
-      <p>The name was inspired by Dr Bruce Lanphear's work at Little Things Matter. Chemicals are usually tested for safety one at a time, rarely in combination with the many other contaminants we're exposed to every day. Yet studies show most of us carry measurable levels of many synthetic chemicals in our bodies, from our food, our water, our soils and our air.</p>
-      <p>The good news is that some of that load can be lightened by what we choose to take in. In one small Australian study, adults who switched to a mostly organic diet for just one week cut the pesticide residues measured in their urine by 89%.</p>
-      <p>My aim with this project is to help Australians be more informed so they can make choices that protect themselves and their families from the unseen risks hiding in plain sight. As access to timely, relevant information grows, we can all reduce our load by choosing spray-free, organic and less-contaminated produce, with the hope that, in time, this drives regulatory change that makes guides like these unnecessary.</p>
+      <div class="lyl-why-text">
+        <h2>Why ‘Lighten Your Load’?</h2>
+        <p>Chemicals are usually tested for safety one at a time, rarely in combination with the many other contaminants we're exposed to every day. Yet studies show most of us carry measurable levels of many synthetic chemicals in our bodies, from our food, our water, our soils and our air.</p>
+        <p>This is known as our “body burden”. The good news is that some of that load can be reduced by what we choose to take in.</p>
+        <p>Studies here and in the US have found that switching to a mostly organic diet for about a week can sharply cut the pesticide residues measured in people's urine, by 89% in one Australian study.</p>
+        <p>My aim with this project is to help Australians be more informed so they can make choices that protect themselves and their families from the unseen risks hiding in plain sight.</p>
+        <p>With these guides, you can lighten your body's load, and your family's, by choosing spray-free, organic and less-contaminated produce. The hope is that, in time, awareness and demand will drive regulatory change that makes guides like these unnecessary.</p>
+      </div>
+      <figure class="lyl-video">
+        <button class="lyl-video-play" type="button" data-video="M1R3tQwj538" aria-label="Play video: Going Organic: A Simple Choice that Can Change the World, by Little Things Matter (opens YouTube player)">
+          <span class="lyl-video-icon" aria-hidden="true"></span>
+          <span class="lyl-video-title">Going Organic: A Simple Choice that Can Change the World</span>
+          <span class="lyl-video-by">Little Things Matter · YouTube</span>
+        </button>
+        <figcaption>Little Things Matter (North America): what happens to pesticide levels when families switch to organic food.</figcaption>
+      </figure>
     </div>
     <div class="section-kicker" data-reveal>Principles</div>
     <div class="principles-grid">
@@ -1139,6 +1187,21 @@ FOOTER LINK COLUMNS
 })();
 </script>
 <script src="signup.js"></script>
+<script>
+/* Video loads only when someone presses play (no YouTube cookies until then) */
+document.querySelectorAll('.lyl-video-play').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var id = btn.getAttribute('data-video');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+    f.title = 'Going Organic: A Simple Choice that Can Change the World (Little Things Matter)';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    btn.replaceWith(f);
+    if (typeof window.gtag === 'function') window.gtag('event', 'video_play', { video: 'going-organic-ltm' });
+  });
+});
+</script>
 <script src="mobile-nav.js"></script>
 </body>
 </html>
