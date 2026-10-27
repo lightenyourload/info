@@ -477,6 +477,17 @@ div.hero-stat-row .stat-label { color: #8f8f88; }
 
 .principles-section .section-kicker { color: #8a8a82; margin-bottom: 28px; }
 
+/* "Why Lighten Your Load?" intro at the top of the Principles strip */
+.lyl-why { max-width: 760px; margin-bottom: 56px; padding-bottom: 48px; border-bottom: 1px solid #2c2c28; }
+.lyl-why h2 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; line-height: 1.15; letter-spacing: -0.4px; color: #fff; margin-bottom: 20px; }
+.lyl-why p { font-size: 17px; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,.9); margin-bottom: 16px; }
+.lyl-why p:last-child { margin-bottom: 0; }
+@media (max-width: 767px) {
+  .lyl-why { margin-bottom: 40px; padding-bottom: 36px; }
+  .lyl-why h2 { font-size: 27px; }
+  .lyl-why p { font-size: 16px; }
+}
+
 .principles-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -825,11 +836,10 @@ footer {
 <section class="about-strip" id="about">
   <div class="about-media" aria-hidden="true"></div>
   <div class="about-body" data-reveal style="--i:0">
-    <h2>Built for <em>Australian</em> families.</h2>
-    <p>Australia has no consumer-facing produce pesticide program. No equivalent to the US Environmental Working Group's (EWG) Shopper's Guide. No coordinated annual testing across all states and retail channels. The data exists - fragmented across FSANZ, APVMA, state programs, FOI requests, academic studies - but until the recent Pesticide Action Australia report this information has never been compiled in one accessible place.</p>
+    <h2>Built for <em>Australians</em>.</h2>
     <p>I started Lighten Your Load because I couldn't find any straight answers to my question: 'What's on the food we eat in Australia?' So I went on a deep dive, and this is what I found.</p>
-    <p>Everything is sourced, information gaps are named, and the guides get updated as new data comes in.</p>
-    <p>The aim of this project is to help us all be more informed and make better choices for our families and ourselves. I'm hopeful this will also drive regulatory change that makes these concerns redundant.</p>
+    <p>Australia has no consumer-facing produce pesticide program. No equivalent to the US Environmental Working Group's (EWG) Shopper's Guide. No coordinated annual testing across all states and retail channels. The data exists – fragmented across FSANZ, APVMA, state programs, FOI requests, academic studies – but until the recent Pesticide Action Australia report this information has never been compiled in one accessible place.</p>
+    <p>Everything on lightenyourload.info is sourced, information gaps are named, and the guides are updated as new data comes in.</p>
   </div>
 </section>
 
@@ -899,8 +909,14 @@ footer {
 </section>
 
 <!-- 4 · PRINCIPLES (dark) -->
-<section class="principles-section" aria-label="Principles">
+<section class="principles-section" aria-label="Why Lighten Your Load, and principles">
   <div class="principles-inner">
+    <div class="lyl-why" id="why" data-reveal>
+      <h2>Why ‘Lighten Your Load’?</h2>
+      <p>The name was inspired by Dr Bruce Lanphear's work at Little Things Matter. Chemicals are usually tested for safety one at a time, rarely in combination with the many other contaminants we're exposed to every day. Yet studies show most of us carry measurable levels of many synthetic chemicals in our bodies, from our food, our water, our soils and our air.</p>
+      <p>The good news is that some of that load can be lightened by what we choose to take in. In one small Australian study, adults who switched to a mostly organic diet for just one week cut the pesticide residues measured in their urine by 89%.</p>
+      <p>My aim with this project is to help Australians be more informed so they can make choices that protect themselves and their families from the unseen risks hiding in plain sight. As access to timely, relevant information grows, we can all reduce our load by choosing spray-free, organic and less-contaminated produce, with the ultimate hope that this drives regulatory change that makes all of these concerns redundant. One can hope!</p>
+    </div>
     <div class="section-kicker" data-reveal>Principles</div>
     <div class="principles-grid">
       <div class="principle" data-reveal style="--i:0">
