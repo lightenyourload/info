@@ -360,10 +360,10 @@ div.hero-stat-row .stat-label { color: #8f8f88; }
 #guides .section-desc { color: rgba(255,255,255,.82); }
 #guides .guide-card { border-color: transparent; color: var(--ink); }
 #guides .guide-card:hover { box-shadow: 0 10px 34px rgba(0,0,0,.45); }
-#guides .card-coming { opacity: 1; background: #d6d4ce; color: #3d3d3a; }
-#guides .card-coming p, #guides .card-coming .guide-meta, #guides .card-coming .tag-coming, #guides .card-coming .action-coming { color: #5e5e59; }
-#guides .card-coming .guide-card-footer { border-top-color: #bdbbb4; }
-#guides .card-coming::before { background: #a9a7a0; }
+#guides .card-coming { opacity: 1; background: rgba(212,232,208,.5); color: var(--ink); }  /* light strip green at 50% */
+#guides .card-coming p, #guides .card-coming .guide-meta, #guides .card-coming .tag-coming, #guides .card-coming .action-coming { color: var(--ink); }
+#guides .card-coming .guide-card-footer { border-top-color: rgba(20,21,16,.25); }
+#guides .card-coming::before { background: rgba(20,21,16,.25); }
 .guides-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -476,8 +476,8 @@ div.hero-stat-row .stat-label { color: #8f8f88; }
 }
 .card-coming:hover { transform: none; box-shadow: none; }
 
-/* ── WHY (strip 4: light cream) ── */
-.why-section { background: var(--bg); color: var(--ink); padding: 72px 48px 80px; }
+/* ── WHY (strip 4: light green) ── */
+.why-section { background: var(--green-bg); color: var(--ink); padding: 72px 48px 80px; }
 @media (max-width: 767px) { .why-section { padding: 48px 20px 56px; } }
 
 /* ── PRINCIPLES (strip 5: dark) ── */
@@ -955,7 +955,7 @@ footer {
   </div>
 </section>
 
-<!-- 4 · WHY LIGHTEN YOUR LOAD (light cream) -->
+<!-- 4 · WHY LIGHTEN YOUR LOAD (light green) -->
 <section class="why-section" aria-label="Why Lighten Your Load">
     <div class="lyl-why" id="why" data-reveal>
       <div class="lyl-why-text">
