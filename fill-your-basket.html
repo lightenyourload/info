@@ -168,6 +168,18 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   .produce-list.alpha .produce-item{grid-template-columns:40px minmax(0,1fr) auto}
   .list-order{margin:12px 0 0;font-size:9.5px}
 }
+
+/* Guide actions box: styled like the Download & print card, and placed at the top of the guide (screen only) */
+@media screen {
+  .info-box{margin:32px 48px 0;padding:28px 28px 24px;background:#fff;border:1px solid var(--rule);border-top:4px solid var(--accent);border-radius:4px}
+  .info-box h4{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;letter-spacing:0;text-transform:none;color:#1a1a1a;line-height:1.2;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .info-box ul{gap:10px}
+  .info-box li{font-size:16px;line-height:1.65;color:#474747}
+}
+@media screen and (max-width:640px){
+  .info-box{margin:24px 16px 0;padding:22px 18px 20px}
+  .info-box h4{font-size:22px}
+}
 </style>
 <link rel="stylesheet" href="download.css">
 <link rel="stylesheet" href="signup.css">
@@ -193,6 +205,16 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     <h1>Fill Your Basket</h1>
     <p class="desc"><em class="nod">Cleaner by far:</em> the Australian produce with the lowest evidence of pesticide risk. Conventional versions are generally a reasonable choice, saving your organic budget for the Dirty Dozen.</p>
     <a class="dl-jump" href="#download">Download &amp; print ↓</a>
+  </div>
+
+  <div class="info-box" style="--accent:var(--clean)">
+    <h4><span class="gdot gdot-clean" aria-hidden="true"></span>General Practices</h4>
+    <ul>
+      <li>Check country of origin - AU-grown Dirty Dozen items are preferable to imported equivalents</li>
+      <li>Soak in baking soda solution (1 tsp per 2 cups water, 15 minutes) then rinse - reduces surface residues more effectively than water alone</li>
+      <li>Farmers markets - ask about spray practices; many small AU farms use organic methods without formal certification</li>
+      <li>Grow your own - focus effort on Dirty Dozen crops: strawberries, leafy greens, kale, and berries</li>
+    </ul>
   </div>
 
   <div class="caveat"><strong><span class="gdot gdot-clean" aria-hidden="true"></span>More fresh produce is always better than less!</strong> These carry lower residues than most, so fill your basket, and spend your organic dollars where they count most.</div>
@@ -246,15 +268,6 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     </ul>
   </div>
 
-  <div class="info-box">
-    <h4><span class="gdot gdot-clean" aria-hidden="true"></span>General Practices</h4>
-    <ul>
-      <li>Check country of origin - AU-grown Dirty Dozen items are preferable to imported equivalents</li>
-      <li>Soak in baking soda solution (1 tsp per 2 cups water, 15 minutes) then rinse - reduces surface residues more effectively than water alone</li>
-      <li>Farmers markets - ask about spray practices; many small AU farms use organic methods without formal certification</li>
-      <li>Grow your own - focus effort on Dirty Dozen crops: strawberries, leafy greens, kale, and berries</li>
-    </ul>
-  </div>
 
   <!-- DOWNLOAD + PAY WHAT YOU WANT (styles: download.css, behaviour: download.js) -->
   <section class="dl" id="download" style="--accent:var(--clean)" data-stripe="https://donate.stripe.com/eVq14n8RN7KkeafaU41Nu00" data-guide="fill-your-basket">

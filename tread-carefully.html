@@ -165,6 +165,18 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   .produce-list.alpha .produce-item{grid-template-columns:40px minmax(0,1fr) auto}
   .list-order{margin:12px 0 0;font-size:9.5px}
 }
+
+/* Guide actions box: styled like the Download & print card, and placed at the top of the guide (screen only) */
+@media screen {
+  .info-box{margin:32px 48px 0;padding:28px 28px 24px;background:#fff;border:1px solid var(--rule);border-top:4px solid var(--accent);border-radius:4px}
+  .info-box h4{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;letter-spacing:0;text-transform:none;color:#1a1a1a;line-height:1.2;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .info-box ul{gap:10px}
+  .info-box li{font-size:16px;line-height:1.65;color:#474747}
+}
+@media screen and (max-width:640px){
+  .info-box{margin:24px 16px 0;padding:22px 18px 20px}
+  .info-box h4{font-size:22px}
+}
 </style>
 <link rel="stylesheet" href="download.css">
 <link rel="stylesheet" href="signup.css">
@@ -190,6 +202,17 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     <h1>Tread Carefully</h1>
     <p class="desc">Commonly eaten items that don't belong on the Dirty Dozen - but carry specific concerns worth knowing about. Simple actions reduce risk significantly for most of these.</p>
     <a class="dl-jump" href="#download">Download &amp; print ↓</a>
+  </div>
+
+  <div class="info-box" style="--accent:var(--tread)">
+    <h4><span class="gdot gdot-tread" aria-hidden="true"></span>Tread Carefully Actions</h4>
+    <ul>
+      <li>Peel potatoes &amp; cucumbers thoroughly - removes most surface residues effectively</li>
+      <li>Buy AU-grown garlic &amp; citrus - significantly lower chemical load than imported equivalents</li>
+      <li>Buy local tomatoes - avoids the QLD mandatory interstate transit insecticide treatment</li>
+      <li>Organic ginger worthwhile for daily users - soil absorption makes washing largely ineffective</li>
+      <li>Choose frozen green beans over fresh - blanching before freezing degrades residues meaningfully</li>
+    </ul>
   </div>
 
   <div class="caveat"><strong>⚠ Data note:</strong> "Tread Carefully" does not mean avoid - it means be informed. For most items here, simple actions (peeling, buying local, washing well) meaningfully reduce risk. Organic is advisable where the item is eaten daily or frequently by children.</div>
@@ -267,16 +290,6 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     </ul>
   </div>
 
-  <div class="info-box">
-    <h4><span class="gdot gdot-tread" aria-hidden="true"></span>Tread Carefully Actions</h4>
-    <ul>
-      <li>Peel potatoes &amp; cucumbers thoroughly - removes most surface residues effectively</li>
-      <li>Buy AU-grown garlic &amp; citrus - significantly lower chemical load than imported equivalents</li>
-      <li>Buy local tomatoes - avoids the QLD mandatory interstate transit insecticide treatment</li>
-      <li>Organic ginger worthwhile for daily users - soil absorption makes washing largely ineffective</li>
-      <li>Choose frozen green beans over fresh - blanching before freezing degrades residues meaningfully</li>
-    </ul>
-  </div>
 
   <!-- DOWNLOAD + PAY WHAT YOU WANT (styles: download.css, behaviour: download.js) -->
   <section class="dl" id="download" style="--accent:var(--tread)" data-stripe="https://donate.stripe.com/eVq14n8RN7KkeafaU41Nu00" data-guide="tread-carefully">
