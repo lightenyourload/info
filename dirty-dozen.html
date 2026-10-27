@@ -133,6 +133,17 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   .page-footer{padding:24px 20px}
 }
 
+
+/* ════ HEADER PHOTO (screen only): produce photo under the guide colour ════ */
+@media screen {
+  .page-header{
+    background:
+      linear-gradient(100deg, rgba(181,52,26,.93) 0%, rgba(181,52,26,.86) 55%, rgba(181,52,26,.72) 100%),
+      url('hero-produce.jpg') center 40% / cover no-repeat,
+      rgb(181,52,26);
+  }
+}
+
 /* ════ PRINT / PDF ════ */
 @page { size: A4; margin: 14mm 13mm 16mm; }
 @media print {
