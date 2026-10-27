@@ -360,10 +360,10 @@ div.hero-stat-row .stat-label { color: #8f8f88; }
 #guides .section-desc { color: rgba(255,255,255,.82); }
 #guides .guide-card { border-color: transparent; color: var(--ink); }
 #guides .guide-card:hover { box-shadow: 0 10px 34px rgba(0,0,0,.45); }
-#guides .card-coming { opacity: 1; background: var(--dark-cell); border-color: var(--dark-rule); color: #c9c9c2; }
-#guides .card-coming p, #guides .card-coming .guide-meta, #guides .card-coming .tag-coming, #guides .card-coming .action-coming { color: #8a8a82; }
-#guides .card-coming .guide-card-footer { border-top-color: var(--dark-rule); }
-#guides .card-coming::before { background: var(--dark-rule); }
+#guides .card-coming { opacity: 1; background: #d6d4ce; color: #3d3d3a; }
+#guides .card-coming p, #guides .card-coming .guide-meta, #guides .card-coming .tag-coming, #guides .card-coming .action-coming { color: #5e5e59; }
+#guides .card-coming .guide-card-footer { border-top-color: #bdbbb4; }
+#guides .card-coming::before { background: #a9a7a0; }
 .guides-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -476,17 +476,21 @@ div.hero-stat-row .stat-label { color: #8f8f88; }
 }
 .card-coming:hover { transform: none; box-shadow: none; }
 
-/* ── PRINCIPLES (strip 4: light cream, distinct from Methodology's green) ── */
+/* ── WHY (strip 4: light cream) ── */
+.why-section { background: var(--bg); color: var(--ink); padding: 72px 48px 80px; }
+@media (max-width: 767px) { .why-section { padding: 48px 20px 56px; } }
+
+/* ── PRINCIPLES (strip 5: dark) ── */
 .principles-section {
-  background: var(--bg);
-  color: var(--ink);
+  background: var(--ink);
+  color: white;
   padding: 72px 48px 80px;
 }
 
-.principles-section .section-kicker { color: var(--ink-muted); margin-bottom: 28px; }
+.principles-section .section-kicker { color: #8a8a82; margin-bottom: 28px; }
 
 /* "Why Lighten Your Load?" intro at the top of the Principles strip: text left, video right */
-.lyl-why { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 56px; align-items: start; margin-bottom: 56px; padding-bottom: 48px; border-bottom: 1px solid var(--rule); }
+.lyl-why { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 56px; align-items: start; }
 .lyl-why h2 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; line-height: 1.15; letter-spacing: -0.4px; color: var(--ink); margin-bottom: 20px; }
 .lyl-why p { font-size: 17px; font-weight: 400; line-height: 1.75; color: var(--ink-muted); margin-bottom: 16px; }
 .lyl-why-text p:last-child { margin-bottom: 0; }
@@ -523,7 +527,6 @@ div.hero-stat-row .stat-label { color: #8f8f88; }
   .lyl-video { margin-top: 0; max-width: 640px; }
 }
 @media (max-width: 767px) {
-  .lyl-why { margin-bottom: 40px; padding-bottom: 36px; }
   .lyl-why h2 { font-size: 27px; }
   .lyl-why p { font-size: 16px; }
   .lyl-video-title { font-size: 17px; }
@@ -540,14 +543,14 @@ div.hero-stat-row .stat-label { color: #8f8f88; }
 
 .principle {
   padding-left: 22px;
-  border-left: 2px solid var(--clean);
+  border-left: 2px solid var(--gold);
 }
 
 .principle h4 {
   font-family: 'Playfair Display', serif;
   font-size: 21px;
   font-weight: 700;
-  color: var(--clean);
+  color: var(--gold);
   margin-bottom: 12px;
   letter-spacing: -0.2px;
   line-height: 1.25;
@@ -555,8 +558,8 @@ div.hero-stat-row .stat-label { color: #8f8f88; }
 
 .principle p {
   font-size: 16px;
-  font-weight: 400;
-  color: var(--ink-muted);
+  font-weight: 300;
+  color: rgba(255,255,255,.88);
   line-height: 1.7;
 }
 
@@ -952,9 +955,8 @@ footer {
   </div>
 </section>
 
-<!-- 4 · PRINCIPLES (dark) -->
-<section class="principles-section" aria-label="Why Lighten Your Load, and principles">
-  <div class="principles-inner">
+<!-- 4 · WHY LIGHTEN YOUR LOAD (light cream) -->
+<section class="why-section" aria-label="Why Lighten Your Load">
     <div class="lyl-why" id="why" data-reveal>
       <div class="lyl-why-text">
         <h2>Why ‘Lighten Your Load’?</h2>
@@ -973,6 +975,11 @@ footer {
         <figcaption>Little Things Matter (North America): what happens to pesticide levels when families switch to organic food.</figcaption>
       </figure>
     </div>
+</section>
+
+<!-- 5 · PRINCIPLES (dark) -->
+<section class="principles-section" aria-label="Principles">
+  <div class="principles-inner">
     <div class="section-kicker" data-reveal>Principles</div>
     <div class="principles-grid">
       <div class="principle" data-reveal style="--i:0">
@@ -995,7 +1002,7 @@ footer {
   </div>
 </section>
 
-<!-- 5 · METHODOLOGY (light green) -->
+<!-- 6 · METHODOLOGY (light green) -->
 <section class="method-section" id="methodology">
   <div class="section-kicker" data-reveal>How I work</div>
   <h2 class="section-title" data-reveal>Methodology</h2>
