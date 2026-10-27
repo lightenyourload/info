@@ -134,14 +134,17 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 }
 
 
-/* ════ HEADER PHOTO (screen only): produce photo under the guide colour ════ */
+
+/* ════ PAGE BACKGROUND PHOTO (screen only). Swap the file to change it. ════ */
 @media screen {
-  .page-header{
+  body { background: #2a0f0b; }
+  body::before {
+    content: ''; position: fixed; inset: 0; z-index: -1;
     background:
-      linear-gradient(100deg, rgba(181,52,26,.93) 0%, rgba(181,52,26,.86) 55%, rgba(181,52,26,.72) 100%),
-      url('hero-produce.jpg') center 40% / cover no-repeat,
-      rgb(181,52,26);
+      linear-gradient(rgba(20,10,8,.38), rgba(20,10,8,.38)),
+      url('bg-dirty-dozen.jpg') center / cover no-repeat;
   }
+  .page { position: relative; }
 }
 
 /* ════ PRINT / PDF ════ */
