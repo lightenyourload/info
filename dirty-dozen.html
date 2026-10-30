@@ -67,6 +67,9 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .info-box li::before{content:'→';position:absolute;left:0;color:var(--muted);font-size:10px;top:1px}
 .info-box.tip{border-left-color:var(--clean)}
 .info-box.tip h4{color:var(--clean)}
+.info-box.tip{display:flex;gap:18px;align-items:center}
+.tip-img{width:120px;height:120px;object-fit:cover;border-radius:4px;flex-shrink:0;display:block}
+.tip-body{flex:1;min-width:0}
 .info-box p{font-size:12px;color:var(--ink);line-height:1.5}
 
 /* ── ALSO WATCH ── */
@@ -186,6 +189,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   .info-box h4{font-size:10px;margin-bottom:8px}
   .info-box li{font-size:11.5px}
   .info-box p{font-size:11.5px}
+  .tip-img{width:80px;height:80px}
   .page-footer{background:none;color:#555;border-top:1px solid #d0cdc8;margin-top:18px;padding:12px 0 0;font-size:9.5px}
   .page-footer span:last-child{color:#555}
   .page-footer a{color:inherit}
@@ -200,10 +204,14 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   .info-box p{font-size:16px;line-height:1.65;color:#474747}
   /* Tip callout: softer than the actions card */
   .info-box.tip{background:#f1f8f4;border:1px solid var(--clean-mid);border-left:4px solid var(--clean);padding:20px 24px}
+  .info-box.tip{gap:24px}
+  .tip-img{width:150px;height:150px}
   .info-box.tip h4{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--clean);margin-bottom:8px}
 }
 @media screen and (max-width:640px){
   .info-box{margin:24px 16px 0;padding:22px 18px 20px}
+  .info-box.tip{flex-direction:column;align-items:stretch;gap:14px;padding:16px}
+  .tip-img{width:100%;height:160px}
   .info-box h4{font-size:22px}
 }
 @media screen and (max-width:640px){.kicker-sep{display:none}.kicker-part{display:block;margin-top:2px}}
@@ -237,17 +245,16 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   </div>
 
   <div class="info-box" style="--accent:var(--dirty)">
-    <h4><span class="gdot gdot-dirty" aria-hidden="true"></span>Where to start</h4>
+    <h4>Where to start</h4>
     <ul>
-      <li><strong>Your kids eat it a lot.</strong> Children take in more for their size and clear pesticides more slowly than adults.</li>
-      <li><strong>You're pregnant.</strong> Strawberries, leafy greens and stone fruit especially.</li>
       <li><strong>You eat it every day.</strong> Your most frequent buys make the biggest difference.</li>
+      <li><strong>You're pregnant.</strong> Strawberries, leafy greens and stone fruit especially.</li>
+      <li><strong>Your kids eat it a lot.</strong> Children take in more for their size and clear pesticides more slowly than adults.</li>
       <li><strong>It's imported.</strong> Other countries may allow chemicals that are banned here.</li>
       <li><strong>Money's tight.</strong> Focus on #1–6, where the Australian evidence is strongest.</li>
     </ul>
   </div>
 
-  <div class="caveat"><strong>⚠ Data note:</strong> Australia has no equivalent to the US Environmental Working Group (EWG) Dirty Dozen program. This guide synthesises all available AU data plus international findings where AU data is absent. Rankings are informed estimates, not definitive science. Absence of AU data does not mean absence of risk — it often means absence of independent investigation.</div>
 
   <div class="list-section">
     <!-- ICONS: transparent 128×128 WebP photos in /icons (masters: 1000×1000 PNG in Canva "LYL produce icons"). -->
@@ -342,9 +349,14 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   </div>
 
   <div class="info-box tip">
+    <img class="tip-img" src="tip-greens.webp" alt="Silverbeet leaves growing in a garden" width="480" height="480" loading="lazy">
+    <div class="tip-body">
     <h4>Tip</h4>
     <p><strong>Grow your own greens.</strong> Spinach, lettuce, kale and silverbeet are among the easiest things to grow in a pot or a patch, and they're some of the hardest to clean of residues. A few pots of greens takes a big item off this list.</p>
+    </div>
   </div>
+
+  <div class="caveat"><strong>⚠ Data note:</strong> Australia has no equivalent to the US Environmental Working Group (EWG) Dirty Dozen program. This guide synthesises all available AU data plus international findings where AU data is absent. Rankings are informed estimates, not definitive science. Absence of AU data does not mean absence of risk — it often means absence of independent investigation.</div>
 
   <!-- DOWNLOAD + PAY WHAT YOU WANT (styles: download.css, behaviour: download.js) -->
   <section class="dl" id="download" style="--accent:var(--dirty)" data-stripe="https://donate.stripe.com/eVq14n8RN7KkeafaU41Nu00" data-guide="dirty-dozen">
