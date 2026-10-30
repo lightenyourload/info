@@ -110,6 +110,18 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 
 
 
+/* ════ BANNER ART (desktop only): produce cut-outs in the colour block ════ */
+.banner-art{display:none}
+@media screen and (min-width:900px){
+  .page-header{position:relative;overflow:hidden}
+  .page-header .desc{max-width:560px}
+  .banner-art{display:block;position:absolute;right:28px;top:50%;transform:translateY(-50%);width:230px;height:220px;pointer-events:none}
+  .banner-art img{position:absolute;height:auto;filter:drop-shadow(0 6px 10px rgba(0,0,0,.28))}
+  .banner-art .a1{width:150px;right:58px;top:0}
+  .banner-art .a2{width:118px;right:0;top:92px}
+  .banner-art .a3{width:132px;right:112px;top:108px}
+}
+
 /* ════ PAGE BACKGROUND PHOTO (screen only). Swap the file to change it. ════ */
 @media screen {
   body { background: rgb(20,14,30); }
@@ -203,6 +215,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     <h1>Tread Carefully</h1>
     <p class="desc">Commonly eaten items that don't belong on the Dirty Dozen - but carry specific concerns worth knowing about. Simple actions reduce risk significantly for most of these.</p>
     <a class="dl-jump" href="#download">Download &amp; print ↓</a>
+    <div class="banner-art" aria-hidden="true"><img class="a1" src="icons/lg/oranges-citrus.webp" alt=""><img class="a2" src="icons/lg/garlic.webp" alt=""><img class="a3" src="icons/lg/tomatoes.webp" alt=""></div>
   </div>
 
   <div class="info-box" style="--accent:var(--tread)">
