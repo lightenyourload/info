@@ -48,6 +48,12 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .info-box ul{list-style:none;display:flex;flex-direction:column;gap:5px}
 .info-box li{font-size:12px;color:var(--ink);line-height:1.5;padding-left:14px;position:relative}
 .info-box li::before{content:'→';position:absolute;left:0;color:var(--muted);font-size:10px;top:1px}
+.info-box.tip{border-left-color:#2d6a4f}
+.info-box.tip h4{color:#2d6a4f}
+.info-box.tip{display:flex;gap:18px;align-items:center}
+.tip-img{width:120px;height:120px;object-fit:contain;flex-shrink:0;display:block}
+.tip-body{flex:1;min-width:0}
+.info-box p{font-size:12px;color:var(--ink);line-height:1.5}
 .guide-nav{margin:20px 40px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .guide-nav-card{display:block;padding:14px 16px;border:1px solid var(--rule);border-radius:3px;text-decoration:none;transition:all .2s}
 .guide-nav-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
@@ -79,6 +85,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .info-box h4{font-size:13px;margin-bottom:14px}
 .info-box ul{gap:10px}
 .info-box li{font-size:16px;line-height:1.6;padding-left:22px}
+.info-box p{font-size:16px;line-height:1.6}
 .info-box li::before{font-size:13px;top:3px}
 .also-watch{margin:24px 48px 0;padding:16px 20px;font-size:15px;line-height:1.65}
 .guide-nav{margin:40px 48px 0;gap:16px}
@@ -156,6 +163,8 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   .info-box,.also-watch{margin:16px 0 0;padding:12px 16px;break-inside:avoid}
   .info-box h4{font-size:10px;margin-bottom:8px}
   .info-box li{font-size:11.5px}
+  .info-box p{font-size:11.5px}
+  .tip-img{width:80px;height:80px}
   .page-footer{background:none;color:#555;border-top:1px solid #d0cdc8;margin-top:18px;padding:12px 0 0;font-size:9.5px}
   .page-footer span:last-child{color:#555}
   .page-footer a{color:inherit}
@@ -184,9 +193,16 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   .info-box h4{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;letter-spacing:0;text-transform:none;color:#1a1a1a;line-height:1.2;margin-bottom:14px;display:flex;align-items:center;gap:10px}
   .info-box ul{gap:10px}
   .info-box li{font-size:16px;line-height:1.65;color:#474747}
+  .info-box p{font-size:16px;line-height:1.65;color:#474747}
+  /* Tip callout: softer than the actions card */
+  .info-box.tip{background:#f1f8f4;border:1px solid #b7dfc9;border-left:4px solid #2d6a4f;padding:20px 24px;gap:24px}
+  .tip-img{width:150px;height:150px}
+  .info-box.tip h4{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#2d6a4f;margin-bottom:8px}
 }
 @media screen and (max-width:640px){
   .info-box{margin:24px 16px 0;padding:22px 18px 20px}
+  .info-box.tip{flex-direction:column;align-items:stretch;gap:14px;padding:16px}
+  .tip-img{display:none}
   .info-box h4{font-size:22px}
 }
 @media screen and (max-width:640px){.kicker-sep{display:none}.kicker-part{display:block;margin-top:2px}}
@@ -219,13 +235,13 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   </div>
 
   <div class="info-box" style="--accent:var(--tread)">
-    <h4><span class="gdot gdot-tread" aria-hidden="true"></span>Tread Carefully Actions</h4>
+    <h4>Where to start</h4>
     <ul>
-      <li>Peel potatoes &amp; cucumbers thoroughly - removes most surface residues effectively</li>
-      <li>Buy AU-grown garlic &amp; citrus - significantly lower chemical load than imported equivalents</li>
-      <li>Buy local tomatoes - avoids the QLD mandatory interstate transit insecticide treatment</li>
-      <li>Organic ginger worthwhile for daily users - soil absorption makes washing largely ineffective</li>
-      <li>Choose frozen green beans over fresh - blanching before freezing degrades residues meaningfully</li>
+      <li><strong>Peel potatoes and cucumbers.</strong> Peeling removes most surface residues.</li>
+      <li><strong>Buy Australian garlic and citrus.</strong> Imported versions carry a much higher chemical load.</li>
+      <li><strong>Buy local tomatoes.</strong> Queensland tomatoes sent interstate have to be treated with insecticide first. Local ones skip that step.</li>
+      <li><strong>Use ginger every day? Go organic.</strong> It takes up residues from the soil, so washing doesn’t help much.</li>
+      <li><strong>Choose frozen green beans.</strong> Blanching before freezing breaks down residues.</li>
     </ul>
   </div>
 
@@ -303,6 +319,12 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     </ul>
   </div>
 
+  <div class="info-box tip">
+    <div class="tip-body">
+    <h4>Tip</h4>
+    <p><strong>Get to know your growers.</strong> At farmers and growers markets you can ask the person who grew your food how they grow it and what they spray. Crop swaps and community gardens go a step further. Swap your spare zucchini for a neighbour’s tomatoes, and you’ll know exactly where your food came from.</p>
+    </div>
+  </div>
 
   <!-- DOWNLOAD + PAY WHAT YOU WANT (styles: download.css, behaviour: download.js) -->
   <section class="dl" id="download" style="--accent:var(--tread)" data-stripe="https://donate.stripe.com/eVq14n8RN7KkeafaU41Nu00" data-guide="tread-carefully">
