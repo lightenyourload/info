@@ -70,7 +70,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .produce-item{grid-template-columns:28px 56px minmax(0,1fr) auto;align-items:start;column-gap:16px;row-gap:4px;padding:22px 4px;border-radius:0}
 .produce-item:hover{background:transparent}
 .num{grid-row:1;font-size:15px;line-height:1.5;padding-top:2px}
-.icon{grid-column:2;grid-row:1 / span 2;width:56px;height:56px;border-radius:8px;background:#efece4;display:flex;align-items:center;justify-content:center;font-size:30px;line-height:1;object-fit:cover}
+.icon{grid-column:2;grid-row:1 / span 2;width:56px;height:56px;border-radius:8px;background:#efece4;display:flex;align-items:center;justify-content:center;font-size:30px;line-height:1;object-fit:contain;padding:3px}
 .name{grid-column:3;font-size:19px;font-weight:600;line-height:1.35}
 .name .sub-items,.name .sub-items .inline{font-size:15px;margin-top:3px}
 .badge{grid-column:4;grid-row:1;font-size:12px;padding:4px 10px;border-radius:3px}
@@ -219,71 +219,71 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   <div class="caveat"><strong>⚠ Data note:</strong> "Tread Carefully" does not mean avoid - it means be informed. For most items here, simple actions (peeling, buying local, washing well) meaningfully reduce risk. Organic is advisable where the item is eaten daily or frequently by children.</div>
 
   <div class="list-section">
-    <!-- ICONS: each produce row has <span class="icon">emoji</span>. To use a photo, replace it with <img class="icon" src="photo.jpg" alt=""> (square crop, ~120×120px). -->
+    <!-- ICONS: transparent 128×128 WebP photos in /icons (masters: 1000×1000 PNG in Canva "LYL produce icons"). -->
     <p class="list-order">Listed in alphabetical order.</p>
     <ul class="produce-list alpha">
       <li class="produce-item">
-        <span class="icon" aria-hidden="true">🥦</span>
+        <img class="icon" src="icons/broccoli-broccolini.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Broccoli &amp; broccolini</span>
         <span class="badge badge-tread">Wash well</span>
         <span class="note">Lower risk than leafy greens but not negligible. Dense head provides some protection. Wash in running water getting into the florets. Organic worthwhile if eaten daily.</span>
       </li>
       <li class="produce-item">
-        <span class="icon" aria-hidden="true">🥒</span>
+        <img class="icon" src="icons/cucumbers.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Cucumbers</span>
         <span class="badge badge-tread">Peel</span>
         <span class="note">Named in AU ATDS monitoring data. Thin edible skin with moderate pesticide use. Sits in the middle of global rankings - not Dirty Dozen but not clean. Peeling removes most surface residues.</span>
       </li>
       <li class="produce-item">
-        <span class="icon" aria-hidden="true">🧄</span>
+        <img class="icon" src="icons/garlic.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Garlic</span>
         <span class="badge badge-tread">Buy AU-grown</span>
         <span class="note">Most supermarket garlic is imported from China. In 2010–11, China was second only to India for imported food breaching Australian chemical residue limits (Friends of the Earth Melbourne, 2012). Papery skin offers some protection - buy Australian-grown where labelled.</span>
       </li>
       <li class="produce-item">
-        <span class="icon" aria-hidden="true">🫚</span>
+        <img class="icon" src="icons/ginger.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Ginger</span>
         <span class="badge badge-tread">Organic</span>
         <span class="note">Underground tuber absorbs residual soil pesticides during growth. Almost entirely imported into Australia. Clothianidin detected at high rates in Chinese ginger. Washing is largely ineffective.</span>
       </li>
       <li class="produce-item">
-        <span class="icon" aria-hidden="true">🫛</span>
+        <img class="icon" src="icons/green-beans.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Green beans</span>
         <span class="badge badge-tread">Wash well</span>
         <span class="note">Thin edible pod, high pest pressure. Acephate residues found internationally despite a decade-old ban. AU-specific data is limited but biology is comparable. Frozen green beans are lower risk.</span>
       </li>
       <li class="produce-item">
-        <span class="icon" aria-hidden="true">🍊</span>
+        <img class="icon" src="icons/oranges-citrus.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Oranges &amp; citrus</span>
         <span class="badge badge-tread">Buy AU-grown</span>
         <span class="note">Post-harvest imazalil fungicide (linked to hormone disruption) penetrates the peel into the flesh. Found on ~90% of peeled samples. Imported citrus carries 4× higher levels than AU-grown.</span>
       </li>
       <li class="produce-item">
-        <span class="icon" aria-hidden="true">🥔</span>
+        <img class="icon" src="icons/potatoes.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Potatoes</span>
         <span class="badge badge-tread">Peel well</span>
         <span class="note">90% of samples contain chlorpropham — a post-harvest sprout inhibitor banned in the EU since 2019, still approved in Australia. Concentrated in the skin — peel thoroughly.</span>
       </li>
       <li class="produce-item">
-        <span class="icon" aria-hidden="true">🍈</span>
+        <img class="icon" src="icons/rockmelon.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Rockmelon</span>
         <span class="badge badge-tread">Scrub before cutting</span>
         <span class="note">Recent testing found three pesticides on rockmelon, including a systemic neonicotinoid not approved in the EU, and a post-harvest fungicide. The netted rind traps surface residues. Scrub it before cutting so the knife doesn't drag them into the flesh.</span>
       </li>
       <li class="produce-item">
-        <span class="icon" aria-hidden="true">🫛</span>
+        <img class="icon" src="icons/snow-snap-peas.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Snow peas &amp; sugar snap peas</span>
         <span class="badge badge-tread">Wash well</span>
         <span class="note">Whole edible pod eaten fresh - no pesticide barrier. Predominantly AU-grown. Only industry-funded residue data available; independent testing is limited.</span>
       </li>
       <li class="produce-item">
-        <span class="icon" aria-hidden="true">🍅</span>
+        <img class="icon" src="icons/tomatoes.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Tomatoes</span>
         <span class="badge badge-tread">Buy local</span>
         <span class="note">QLD produce is legally required to be treated with a systemic insecticide dip before interstate transit. Buy locally grown where possible and check origin labelling.</span>
       </li>
       <li class="produce-item">
-        <span class="icon" aria-hidden="true">🥒</span>
+        <img class="icon" src="icons/zucchini.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Zucchini</span>
         <span class="badge badge-tread">Wash well</span>
         <span class="note">Thin edible skin, moderate pesticide use. Similar biology and risk profile to cucumbers. Generally AU-grown with limited independent residue data available.</span>

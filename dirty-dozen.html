@@ -95,7 +95,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .produce-item{grid-template-columns:28px 56px minmax(0,1fr) auto;align-items:start;column-gap:16px;row-gap:4px;padding:22px 4px;border-radius:0}
 .produce-item:hover{background:transparent}
 .num{grid-row:1;font-size:15px;line-height:1.5;padding-top:2px}
-.icon{grid-column:2;grid-row:1 / span 2;width:56px;height:56px;border-radius:8px;background:#efece4;display:flex;align-items:center;justify-content:center;font-size:30px;line-height:1;object-fit:cover}
+.icon{grid-column:2;grid-row:1 / span 2;width:56px;height:56px;border-radius:8px;background:#efece4;display:flex;align-items:center;justify-content:center;font-size:30px;line-height:1;object-fit:contain;padding:3px}
 .name{grid-column:3;font-size:19px;font-weight:600;line-height:1.35}
 .name .sub-items,.name .sub-items .inline{font-size:15px;margin-top:3px}
 .badge{grid-column:4;grid-row:1;font-size:12px;padding:4px 10px;border-radius:3px}
@@ -228,39 +228,39 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   <div class="caveat"><strong>⚠ Data note:</strong> Australia has no equivalent to the US Environmental Working Group (EWG) Dirty Dozen program. This guide synthesises all available AU data plus international findings where AU data is absent. Rankings are informed estimates, not definitive science. Absence of AU data does not mean absence of risk — it often means absence of independent investigation.</div>
 
   <div class="list-section">
-    <!-- ICONS: each produce row has <span class="icon">emoji</span>. To use a photo, replace it with <img class="icon" src="photo.jpg" alt=""> (square crop, ~120×120px). -->
+    <!-- ICONS: transparent 128×128 WebP photos in /icons (masters: 1000×1000 PNG in Canva "LYL produce icons"). -->
     <ul class="produce-list">
       <li class="produce-item">
         <span class="num">1</span>
-        <span class="icon" aria-hidden="true">🍓</span>
+        <img class="icon" src="icons/strawberries.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Strawberries</span>
         <span class="badge badge-high">Buy Organic</span>
         <span class="note">10% of all AU pesticide detections 2000–2011, second only to apples among fresh produce (Friends of the Earth Melbourne, 2012). In CHOICE's 2008 test of strawberries from 31 growers, one sample exceeded the Australian legal limit and two more exceeded stricter EU limits for captan. Unpublished government data, obtained under FOI by Guardian Australia, showed dimethoate at up to 90× the Australian MRL. Dimethoate: banned in the EU since 2019; possible human carcinogen (US EPA).</span>
       </li>
       <li class="produce-item">
         <span class="num">2</span>
-        <span class="icon" aria-hidden="true">🍎</span>
+        <img class="icon" src="icons/apples.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Apples</span>
         <span class="badge badge-high">Buy Organic</span>
         <span class="note">Highest pesticide detection count in AU monitoring data 2000–2011 (Friends of the Earth Melbourne). The Food Standards Code sets apple residue limits for 136 chemicals. Post-harvest diphenylamine widely used (banned EU).</span>
       </li>
       <li class="produce-item">
         <span class="num">3</span>
-        <span class="icon" aria-hidden="true">🥬</span>
+        <img class="icon" src="icons/spinach-leafy-greens.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Spinach &amp; leafy greens</span>
         <span class="badge badge-high">Buy Organic</span>
         <span class="note">Large surface area absorbs systemic pesticides that cannot be washed off. Consistent highest-risk class globally and in AU monitoring data.</span>
       </li>
       <li class="produce-item">
         <span class="num">4</span>
-        <span class="icon" aria-hidden="true">🍇</span>
+        <img class="icon" src="icons/grapes.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Grapes</span>
         <span class="badge badge-high">Buy Organic</span>
         <span class="note">6.4% of all AU pesticide detections 2000–2011. Multiple fungicides applied repeatedly. Thin skin — cannot be peeled.</span>
       </li>
       <li class="produce-item">
         <span class="num">5</span>
-        <span class="icon" aria-hidden="true">🍑</span>
+        <img class="icon" src="icons/stone-fruit.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Stone fruit
           <span class="sub-items">peaches, nectarines, apricots, plums, cherries <span class="inline">(most stone fruit: limited AU data)</span></span>
         </span>
@@ -269,49 +269,49 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
       </li>
       <li class="produce-item">
         <span class="num">6</span>
-        <span class="icon" aria-hidden="true">🫐</span>
+        <img class="icon" src="icons/blueberries.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Blueberries</span>
         <span class="badge badge-high">Buy Organic</span>
         <span class="note">Chlorpyrifos &amp; thiometon detected in AU blueberries (FSANZ 2011). Southern Cross University (2025): 3 samples had dimethoate at levels that could exceed the safe daily intake if eaten daily. APVMA suspended dimethoate use on blueberries, raspberries and blackberries (November 2025).</span>
       </li>
       <li class="produce-item">
         <span class="num">7</span>
-        <span class="icon" aria-hidden="true">🍐</span>
+        <img class="icon" src="icons/pears.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Pears</span>
         <span class="badge badge-high">Buy Organic</span>
         <span class="note">9.5% of all AU pesticide detections 2000–2011 — third among fresh produce, after apples and strawberries (Friends of the Earth Melbourne, 2012). High fungicide use. Diphenylamine post-harvest (banned EU).</span>
       </li>
       <li class="produce-item">
         <span class="num">8</span>
-        <span class="icon" aria-hidden="true">🍓</span>
+        <img class="icon" src="icons/raspberries-blackberries.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Raspberries &amp; blackberries</span>
         <span class="badge badge-yes">Buy Organic</span>
         <span class="note">91% of blackberry samples had detectable pesticides, avg 4+ per sample (EWG 2026). PFAS bifenthrin detected. Same APVMA dimethoate suspension covers raspberries &amp; blackberries (2025).</span>
       </li>
       <li class="produce-item">
         <span class="num">9</span>
-        <span class="icon" aria-hidden="true">🥬</span>
+        <img class="icon" src="icons/lettuce.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Lettuce</span>
         <span class="badge badge-yes">Buy Organic</span>
         <span class="note">4.1% of all AU pesticide detections 2000–2011 (Friends of the Earth Melbourne, 2012). No outer skin — entire surface is eaten.</span>
       </li>
       <li class="produce-item">
         <span class="num">10</span>
-        <span class="icon" aria-hidden="true">🫑</span>
+        <img class="icon" src="icons/capsicum.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Capsicum / bell peppers</span>
         <span class="badge badge-yes">Buy Organic</span>
         <span class="note">Named in AU ATDS monitoring data. Thin edible skin. Ranks just below the Dirty Dozen globally on overall pesticide toxicity.</span>
       </li>
       <li class="produce-item">
         <span class="num">11</span>
-        <span class="icon" aria-hidden="true">🌿</span>
+        <img class="icon" src="icons/celery.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Celery</span>
         <span class="badge badge-yes">Buy Organic</span>
         <span class="note">Named in AU ATDS data. No outer peel — every stalk surface is exposed. Very high surface area-to-volume ratio. 64 different pesticides detected internationally.</span>
       </li>
       <li class="produce-item">
         <span class="num">12</span>
-        <span class="icon" aria-hidden="true">🥬</span>
+        <img class="icon" src="icons/kale-asian-greens.webp" alt="" width="56" height="56" loading="lazy">
         <span class="name">Kale &amp; Asian greens</span>
         <span class="badge badge-yes">Buy Organic</span>
         <span class="note">High pest pressure, systemic pesticide use documented. Limited AU-specific testing but biology identical to highest-risk leafy class. Tops EWG 2026 on toxicity weighting.</span>
