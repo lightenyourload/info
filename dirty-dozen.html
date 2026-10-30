@@ -65,6 +65,9 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .info-box ul{list-style:none;display:flex;flex-direction:column;gap:5px}
 .info-box li{font-size:12px;color:var(--ink);line-height:1.5;padding-left:14px;position:relative}
 .info-box li::before{content:'→';position:absolute;left:0;color:var(--muted);font-size:10px;top:1px}
+.info-box.tip{border-left-color:var(--clean)}
+.info-box.tip h4{color:var(--clean)}
+.info-box p{font-size:12px;color:var(--ink);line-height:1.5}
 
 /* ── ALSO WATCH ── */
 .also-watch{margin:16px 40px 0;padding:10px 14px;background:#f5f0e8;border-radius:3px;font-size:11.5px;color:var(--ink);line-height:1.6}
@@ -104,6 +107,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .info-box h4{font-size:13px;margin-bottom:14px}
 .info-box ul{gap:10px}
 .info-box li{font-size:16px;line-height:1.6;padding-left:22px}
+.info-box p{font-size:16px;line-height:1.6}
 .info-box li::before{font-size:13px;top:3px}
 .also-watch{margin:24px 48px 0;padding:16px 20px;font-size:15px;line-height:1.65}
 .guide-nav{margin:40px 48px 0;gap:16px}
@@ -169,6 +173,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   .info-box,.also-watch{margin:16px 0 0;padding:12px 16px;break-inside:avoid}
   .info-box h4{font-size:10px;margin-bottom:8px}
   .info-box li{font-size:11.5px}
+  .info-box p{font-size:11.5px}
   .page-footer{background:none;color:#555;border-top:1px solid #d0cdc8;margin-top:18px;padding:12px 0 0;font-size:9.5px}
   .page-footer span:last-child{color:#555}
   .page-footer a{color:inherit}
@@ -180,6 +185,10 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   .info-box h4{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;letter-spacing:0;text-transform:none;color:#1a1a1a;line-height:1.2;margin-bottom:14px;display:flex;align-items:center;gap:10px}
   .info-box ul{gap:10px}
   .info-box li{font-size:16px;line-height:1.65;color:#474747}
+  .info-box p{font-size:16px;line-height:1.65;color:#474747}
+  /* Tip callout: softer than the actions card */
+  .info-box.tip{background:#f1f8f4;border:1px solid var(--clean-mid);border-left:4px solid var(--clean);padding:20px 24px}
+  .info-box.tip h4{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--clean);margin-bottom:8px}
 }
 @media screen and (max-width:640px){
   .info-box{margin:24px 16px 0;padding:22px 18px 20px}
@@ -210,18 +219,18 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   <div class="page-header">
     <div class="kicker">Lighten Your Load<span class="kicker-sep"> · </span><span class="kicker-part">Australian Produce Guide</span></div>
     <h1>The Dirty Dozen AU</h1>
-    <p class="desc">The 12 Australian produce items with the highest evidence of pesticide contamination. Ranked approximately by strength of Australian-specific evidence - prioritise organic versions, especially for children and during pregnancy.</p>
+    <p class="desc">If you only switch a few things to organic, start here. These are the 12 fruits and vegetables with the strongest Australian evidence of pesticide residues, ranked by how solid that evidence is. If you're feeding kids or you're pregnant, they're the ones that matter most.</p>
     <a class="dl-jump" href="#download">Download &amp; print ↓</a>
   </div>
 
   <div class="info-box" style="--accent:var(--dirty)">
-    <h4><span class="gdot gdot-dirty" aria-hidden="true"></span>Prioritise Organic When…</h4>
+    <h4><span class="gdot gdot-dirty" aria-hidden="true"></span>Where to start</h4>
     <ul>
-      <li>Your children eat it regularly — children absorb more and eliminate pesticides less efficiently than adults</li>
-      <li>It's imported AND on this list — source countries may permit chemicals banned in Australia</li>
-      <li>You are pregnant — especially strawberries, leafy greens, and stone fruit</li>
-      <li>You eat it daily — start with your most frequent items first</li>
-      <li>Budget is limited — focus on items #1–6 where the AU evidence is strongest</li>
+      <li><strong>Your kids eat it a lot.</strong> Children take in more for their size and clear pesticides more slowly than adults.</li>
+      <li><strong>You're pregnant.</strong> Strawberries, leafy greens and stone fruit especially.</li>
+      <li><strong>You eat it every day.</strong> Your most frequent buys make the biggest difference.</li>
+      <li><strong>It's imported.</strong> Other countries may allow chemicals that are banned here.</li>
+      <li><strong>Money's tight.</strong> Focus on #1–6, where the Australian evidence is strongest.</li>
     </ul>
   </div>
 
@@ -319,7 +328,10 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     </ul>
   </div>
 
-
+  <div class="info-box tip">
+    <h4>Tip</h4>
+    <p><strong>Grow your own greens.</strong> Spinach, lettuce, kale and silverbeet are among the easiest things to grow in a pot or a patch, and they're some of the hardest to clean of residues. A few pots of greens takes a big item off this list.</p>
+  </div>
 
   <!-- DOWNLOAD + PAY WHAT YOU WANT (styles: download.css, behaviour: download.js) -->
   <section class="dl" id="download" style="--accent:var(--dirty)" data-stripe="https://donate.stripe.com/eVq14n8RN7KkeafaU41Nu00" data-guide="dirty-dozen">
