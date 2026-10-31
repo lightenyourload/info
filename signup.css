@@ -218,3 +218,13 @@
 .signup-chip { margin-top: 8px; font-size: 14px; line-height: 1.55; color: var(--su-muted); }
 .signup-chip a { color: var(--su-accent); text-decoration: underline; text-underline-offset: 2px; }
 .signup-wrap:not(.signup-wrap--dark) .signup-chip a { color: var(--su-ink); }
+
+/* Thank-you state: light green panel so it stands out */
+.signup.is-done {
+  background: #eaf4ec;
+  border: 1px solid #cfe5d4;
+  border-radius: 4px;
+  padding: 16px 18px;
+}
+.signup.is-done .signup-msg { margin-top: 0; font-weight: 600; }
+.signup-wrap--dark .signup.is-done { background: rgba(184,221,176,.12); border-color: rgba(184,221,176,.3); }
