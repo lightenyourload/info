@@ -685,6 +685,58 @@ a.hero-stat-row:nth-child(4) { --d: 1.8s; }
   max-width: 78ch;
 }
 
+.data-row {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  margin-top: 24px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--clean);
+  border-radius: 4px;
+}
+
+.data-row .data-age {
+  margin-top: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+}
+
+.data-row .data-age {
+  display: grid;
+  grid-template-columns: 34% 1fr;
+  padding: 0;
+}
+
+.data-age-img {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  object-fit: contain;
+  padding: 18px 0 18px 22px;
+  display: block;
+}
+
+.data-age-text { padding: 22px 26px; }
+
+.signup-wrap--aside {
+  padding: 22px 26px;
+  border-left: 1px solid var(--rule);
+}
+
+@media (max-width: 820px) {
+  .data-row { grid-template-columns: 1fr; }
+  .data-row .data-age { grid-template-columns: 1fr; }
+  .data-age-img { height: 190px; min-height: 0; object-fit: contain; object-position: center bottom; background: #fff; padding: 16px 0 0; margin-bottom: 0; }
+  .data-age-text { padding-top: 10px; }
+  .signup-wrap--aside {
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+    margin: 0 26px;
+    padding: 20px 0 22px;
+  }
+}
+
 .ai-note {
   margin-top: 24px;
   background: var(--surface);
@@ -1077,9 +1129,29 @@ footer {
     </div>
   </div>
 
-  <div class="data-age" id="data-age" data-reveal>
-    <h3>Why is some of this data over a decade old?</h3>
-    <p>Because Australia hasn't published comprehensive residue testing of fresh produce since. The last Total Diet Study to test for agricultural chemicals used food sampled in 2013–14, and national monitoring now covers only apples and pears among fresh produce. Where newer independent testing exists, such as Pesticide Action Australia's 2026 report, I use it.</p>
+  <div class="data-row">
+    <div class="data-age" id="data-age" data-reveal>
+      <img class="data-age-img" src="data-age-apple.webp" alt="A glossy fresh apple wearing an old $0.30 price sticker" width="720" height="720" loading="lazy">
+      <div class="data-age-text">
+        <h3>Why is some of this data over a decade old?</h3>
+        <p>Because Australia hasn't published comprehensive residue testing of fresh produce since. The last Total Diet Study to test for agricultural chemicals used food sampled in 2013–14, and national monitoring now covers only apples and pears among fresh produce. Where newer independent testing exists, such as Pesticide Action Australia's 2026 report, I use it.</p>
+      </div>
+    </div>
+    <!-- EMAIL SIGN-UP (styles: signup.css, behaviour + form settings: signup.js) -->
+    <div class="signup-wrap signup-wrap--aside" hidden>
+      <div class="signup-kicker">Stay in the loop</div>
+      <h3>Hear when guides are updated</h3>
+      <p class="signup-intro">An occasional email when new Australian data changes a guide or a new guide launches. A few times a year, no spam, unsubscribe any time.</p>
+      <form class="signup" data-location="home-data-age" novalidate>
+        <div class="signup-row">
+          <label class="signup-hp" aria-hidden="true">Leave blank <input class="signup-hp" type="text" tabindex="-1" autocomplete="off"></label>
+          <input type="email" name="email" required autocomplete="email" placeholder="Your email address" aria-label="Email address">
+          <button type="submit">Sign me up</button>
+        </div>
+        <p class="signup-msg" aria-live="polite"></p>
+        <p class="signup-small">I’ll never share your email. <a href="privacy.html">How I handle your details</a>.</p>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -1176,21 +1248,6 @@ FOOTER LINK COLUMNS
 <!-- FOOTER (dark) -->
 <footer>
 
-  <!-- EMAIL SIGN-UP (styles: signup.css, behaviour + form settings: signup.js) -->
-  <div class="signup-wrap signup-wrap--dark signup-wrap--footer" hidden>
-    <div class="signup-kicker">Stay in the loop</div>
-    <h3>Hear when guides are updated</h3>
-    <p class="signup-intro">An occasional email when new Australian data changes a guide or a new guide launches. A few times a year, no spam, unsubscribe any time.</p>
-    <form class="signup" data-location="home-footer" novalidate>
-      <div class="signup-row">
-        <label class="signup-hp" aria-hidden="true">Leave blank <input class="signup-hp" type="text" tabindex="-1" autocomplete="off"></label>
-        <input type="email" name="email" required autocomplete="email" placeholder="Your email address" aria-label="Email address">
-        <button type="submit">Sign me up</button>
-      </div>
-      <p class="signup-msg" aria-live="polite"></p>
-      <p class="signup-small">I’ll never share your email. <a href="privacy.html">How I handle your details</a>.</p>
-    </form>
-  </div>
   <div class="footer-brand">
     <h3>Lighten <span>Your Load</span></h3>
     <p>© 2026 · Shared under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a> · Last updated October 2026</p>
