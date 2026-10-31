@@ -134,3 +134,87 @@
 
 .signup-small a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .signup.is-done .signup-small { display: none; }
+
+/* ── Step 2: optional extras after the email is entered ── */
+.signup.is-step2 .signup-row { display: none; }
+.signup.is-step2 .signup-small { display: none; }
+
+.signup-extras { max-width: 520px; }
+
+.signup-extras-lead {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--su-ink);
+  margin-bottom: 12px;
+}
+
+.signup-q { border: 0; padding: 0; margin: 0 0 14px; }
+
+.signup-q legend,
+.signup-q-label {
+  display: block;
+  font-size: 14.5px;
+  color: var(--su-ink);
+  margin-bottom: 8px;
+}
+
+.signup-opts { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+
+.signup-opts label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14.5px;
+  color: var(--su-muted);
+  cursor: pointer;
+}
+
+.signup-opts input { accent-color: var(--su-accent); width: 16px; height: 16px; margin: 0; }
+
+.signup-postcode {
+  width: 8.5em;
+  padding: 10px 12px;
+  border: 1.5px solid var(--su-rule);
+  border-radius: 3px;
+  background: var(--su-field);
+  color: var(--su-ink);
+  font: inherit;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.signup-postcode:focus { outline: 2px solid var(--su-accent); outline-offset: 1px; border-color: var(--su-accent); }
+
+.signup-q-hint { font-size: 12.5px; color: var(--su-muted); margin-top: 6px; }
+
+.signup-actions { display: flex; gap: 10px; align-items: center; margin-top: 4px; }
+
+.signup-actions .signup-finish {
+  padding: 11px 22px;
+  border: 0;
+  border-radius: 3px;
+  background: var(--su-accent);
+  color: var(--su-btn-ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.signup-actions .signup-skip {
+  padding: 11px 8px;
+  border: 0;
+  background: none;
+  color: var(--su-muted);
+  font: inherit;
+  font-size: 14.5px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.signup-actions button:disabled { opacity: .6; cursor: default; }
+
+.signup-chip { margin-top: 8px; font-size: 14px; line-height: 1.55; color: var(--su-muted); }
+.signup-chip a { color: var(--su-accent); text-decoration: underline; text-underline-offset: 2px; }
+.signup-wrap:not(.signup-wrap--dark) .signup-chip a { color: var(--su-ink); }
