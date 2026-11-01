@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="analytics.js" async></script>
+<title>What can I do — Lighten Your Load</title>
+<!-- Link previews (Facebook, LinkedIn, Bluesky, X, messaging apps) -->
+<meta name="description" content="Simple steps from each guide, all in one place.">
+<link rel="canonical" href="https://lightenyourload.info/what-can-i-do.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lighten Your Load">
+<meta property="og:title" content="What can I do — Lighten Your Load">
+<meta property="og:description" content="Simple steps from each guide, all in one place.">
+<meta property="og:url" content="https://lightenyourload.info/what-can-i-do.html">
+<meta property="og:image" content="https://lightenyourload.info/og-home-2.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --dirty:#b5341a;--dirty-mid:#f4c4b8;
+  --tread:#5a3d9a;--tread-mid:#c4b4e8;
+  --clean:#2d6a4f;--clean-mid:#b7dfc9;--clean-lt:#eef7f2;
+  --gold:#b8ddb0;
+  --ink:#1a1a1a;--muted:#6b6b6b;--rule:#d0cdc8;--bg:#faf9f6;
+}
+@media print{body{background:white!important}}
+body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
+.site-nav{background:var(--ink);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100}
+.site-nav .logo{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:white;text-decoration:none}
+.site-nav .logo span{color:var(--gold)}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{font-size:12px;font-weight:500;color:#888;text-decoration:none;padding:6px 12px;border-radius:3px;transition:all .2s}
+.nav-links a:hover{color:white;background:rgba(255,255,255,.08)}
+.nav-links a.active-dirty{color:#f4c4b8;background:rgba(181,52,26,.25)}
+.nav-links a.active-tread{color:#c4b4e8;background:rgba(90,61,154,.25)}
+.nav-links a.active-clean{color:#b7dfc9;background:rgba(45,106,79,.25)}
+.page{background:var(--bg);max-width:860px;margin:0 auto;box-shadow:0 4px 32px rgba(0,0,0,.14)}
+.page-header{background:var(--clean);color:white;padding:32px 40px 28px}
+.page-header .kicker{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px}
+.page-header h1{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;line-height:1.1;margin-bottom:8px}
+.page-header .desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.6;max-width:540px}
+.caveat{margin:16px 40px 0;padding:10px 14px;border:1px solid var(--rule);border-left:3px solid var(--clean);font-size:11px;color:#1a4a2a;line-height:1.5}
+.caveat strong{color:var(--clean)}
+.list-section{padding:20px 40px 0}
+.produce-list{list-style:none;display:flex;flex-direction:column;gap:0}
+.produce-item{display:grid;grid-template-columns:24px 1fr auto;align-items:baseline;gap:6px;padding:8px 10px;border-radius:3px;border-bottom:1px solid var(--rule)}
+.produce-item:last-child{border-bottom:none}
+.produce-item:hover{background:rgba(0,0,0,.02)}
+.num{font-size:11px;font-weight:700;color:var(--clean);text-align:right;line-height:1.6;font-family:'DM Mono',monospace}
+.name{font-size:14px;font-weight:600;color:var(--ink);line-height:1.35}
+.badge{font-size:11px;font-weight:700;letter-spacing:.2px;padding:2px 7px;border-radius:2px;white-space:nowrap;line-height:1.5}
+.badge-ok{background:var(--clean-mid);color:#1a4a30}
+.badge-clean{background:var(--clean);color:white}
+.note{font-size:13px;color:var(--muted);grid-column:2/-1;margin-top:2px;line-height:1.4}
+.info-box{margin:16px 40px 0;border:1px solid var(--rule);border-left:3px solid var(--clean);padding:12px 14px}
+.info-box h4{font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--clean);margin-bottom:8px;font-family:'DM Mono',monospace}
+.info-box ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.info-box li{font-size:12px;color:var(--ink);line-height:1.5;padding-left:14px;position:relative}
+.info-box li::before{content:'→';position:absolute;left:0;color:var(--muted);font-size:10px;top:1px}
+.info-box.tip{border-left-color:#2d6a4f}
+.info-box.tip h4{color:#2d6a4f}
+.info-box.tip{display:flex;gap:18px;align-items:center}
+.tip-img{width:120px;height:120px;object-fit:contain;flex-shrink:0;display:block}
+.tip-body{flex:1;min-width:0}
+.info-box p{font-size:12px;color:var(--ink);line-height:1.5}
+.guide-nav{margin:20px 40px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.guide-nav-card{display:block;padding:14px 16px;border:1px solid var(--rule);border-radius:3px;text-decoration:none;transition:all .2s}
+.guide-nav-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.08);transform:translateY(-1px)}
+.guide-nav-card .card-kicker{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:4px}
+.guide-nav-card h3{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.guide-nav-card p{font-size:13px;color:var(--muted);line-height:1.4}
+.card-dirty .card-kicker{color:var(--dirty)}
+.card-tread .card-kicker{color:var(--tread)}
+.card-pantry .card-kicker{color:#8a6520}
+.page-footer{background:var(--ink);color:#bbb;padding:18px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;font-size:11px;letter-spacing:.3px;margin-top:20px;gap:6px}
+.page-footer span:last-child{color:#ccc;font-style:italic}
+
+/* ════ READABILITY LAYER (Oct 2026) — overrides the compact print-style rules above ════ */
+.page{max-width:880px}
+.page-header{padding:44px 48px 40px}
+.page-header .kicker{font-size:12px;color:rgba(255,255,255,.7)}
+.page-header h1{font-size:42px;margin-bottom:14px}
+.page-header .desc{font-size:17px;font-weight:400;color:rgba(255,255,255,.92);line-height:1.65;max-width:620px}
+.caveat{margin:28px 48px 0;padding:16px 20px;font-size:14.5px;line-height:1.65}
+.list-section{padding:12px 48px 0}
+.produce-item{grid-template-columns:28px 56px minmax(0,1fr) auto;align-items:start;column-gap:16px;row-gap:4px;padding:22px 4px;border-radius:0}
+.produce-item:hover{background:transparent}
+.num{grid-row:1;font-size:15px;line-height:1.5;padding-top:2px}
+.icon{grid-column:2;grid-row:1 / span 2;width:56px;height:56px;border-radius:8px;background:#efece4;display:flex;align-items:center;justify-content:center;font-size:30px;line-height:1;object-fit:contain;padding:3px}
+.name{grid-column:3;font-size:19px;font-weight:600;line-height:1.35}
+.name .sub-items,.name .sub-items .inline{font-size:15px;margin-top:3px}
+.badge{grid-column:4;grid-row:1;font-size:12px;padding:4px 10px;border-radius:3px}
+.note{grid-column:3 / -1;font-size:16px;color:#474747;line-height:1.65;margin-top:2px;max-width:62ch}
+.info-box{margin:32px 48px 0;padding:22px 24px}
+.info-box h4{font-size:13px;margin-bottom:14px}
+.info-box ul{gap:10px}
+.info-box li{font-size:16px;line-height:1.6;padding-left:22px}
+.info-box p{font-size:16px;line-height:1.6}
+.info-box li::before{font-size:13px;top:3px}
+.also-watch{margin:24px 48px 0;padding:16px 20px;font-size:15px;line-height:1.65}
+.guide-nav{margin:40px 48px 0;gap:16px}
+.guide-nav-card{padding:20px 22px}
+.guide-nav-card .card-kicker{font-size:11.5px;margin-bottom:8px}
+.guide-nav-card h3{font-size:20px;margin-bottom:6px}
+.guide-nav-card p{font-size:15px;line-height:1.55}
+.page-footer{padding:28px 48px;font-size:13px;line-height:1.7;margin-top:48px}
+.nav-links a{font-size:13px}
+
+@media (max-width:640px){
+  .site-nav{padding:0 12px}
+  .site-nav .logo{display:none}
+  .nav-links{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .nav-links a{white-space:nowrap;padding:6px 10px;font-size:12px}
+  .page-header{padding:32px 20px 28px}
+  .page-header h1{font-size:32px}
+  .page-header .desc{font-size:16px}
+  .caveat,.info-box,.also-watch{margin-left:16px;margin-right:16px}
+  .list-section{padding:4px 16px 0}
+  .produce-item{grid-template-columns:22px 48px minmax(0,1fr);column-gap:12px;row-gap:6px;padding:20px 0}
+  .icon{width:48px;height:48px;font-size:26px}
+  .name{font-size:18px}
+  .badge{grid-column:3;grid-row:2;justify-self:start}
+  .note{grid-column:3;font-size:15.5px}
+  .guide-nav{grid-template-columns:1fr;margin:32px 16px 0}
+  .page-footer{padding:24px 20px}
+}
+
+
+
+/* ════ BANNER ART (desktop only): produce cut-outs in the colour block ════ */
+.banner-art{display:none}
+@media screen and (min-width:900px){
+  .page-header{position:relative;overflow:hidden}
+  .page-header .desc{max-width:560px}
+  .banner-art{display:block;position:absolute;right:28px;top:50%;transform:translateY(-50%);width:250px;height:230px;pointer-events:none}
+  .banner-art img{position:absolute;height:auto;filter:drop-shadow(0 6px 10px rgba(0,0,0,.28))}
+  .banner-art .a1{width:204px;right:26px;top:4px;z-index:1}
+  .banner-art .a2{width:118px;right:0;top:122px;z-index:2}
+  .banner-art .a3{width:102px;right:140px;top:128px;z-index:3}
+}
+
+/* ════ PAGE BACKGROUND PHOTO (screen only). Swap the file to change it. ════ */
+@media screen {
+  body { background: rgb(10,22,14); }
+  body::before {
+    content: ''; position: fixed; inset: 0; z-index: -1;
+    background:
+      linear-gradient(rgba(10,22,14,.38), rgba(10,22,14,.38)),
+      url('bg-fill-your-basket.jpg') center / cover no-repeat;
+  }
+  .page { position: relative; }
+}
+
+/* ════ PRINT / PDF ════ */
+@page { size: A4; margin: 14mm 13mm 16mm; }
+@media print {
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:white!important}
+  .site-nav,.guide-nav,.dl,noscript{display:none!important}
+  .page{max-width:none;box-shadow:none;background:white}
+  .page-header{padding:22px 24px 20px;border-radius:4px}
+  .page-header h1{font-size:30px;margin-bottom:8px}
+  .page-header .desc{font-size:12.5px;max-width:none}
+  .caveat{margin:14px 0 0;padding:10px 14px;font-size:10.5px}
+  .list-section{padding:6px 0 0}
+  .produce-item{grid-template-columns:22px 40px minmax(0,1fr) auto;column-gap:12px;padding:10px 0;break-inside:avoid}
+  .num{font-size:11px}
+  .icon{width:40px;height:40px;font-size:22px;border-radius:6px}
+  .name{font-size:13.5px}
+  .name .sub-items,.name .sub-items .inline{font-size:11px}
+  .badge{font-size:9.5px;padding:2px 7px}
+  .note{font-size:11.5px;line-height:1.55;max-width:none;color:#3d3d3d}
+  .info-box,.also-watch{margin:16px 0 0;padding:12px 16px;break-inside:avoid}
+  .info-box h4{font-size:10px;margin-bottom:8px}
+  .info-box li{font-size:11.5px}
+  .info-box p{font-size:11.5px}
+  .tip-img{width:80px;height:80px}
+  .page-footer{background:none;color:#555;border-top:1px solid #d0cdc8;margin-top:18px;padding:12px 0 0;font-size:9.5px}
+  .page-footer span:last-child{color:#555}
+  .page-footer a{color:inherit}
+}
+.page-header .desc .nod{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;color:#fff}
+
+/* ════ ALPHABETICAL LISTS (no rank numbers) ════ */
+.list-order{font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:#6b6b6b;margin:20px 0 2px}
+.produce-list.alpha .produce-item{grid-template-columns:56px minmax(0,1fr) auto}
+.produce-list.alpha .icon{grid-column:1}
+.produce-list.alpha .name{grid-column:2}
+.produce-list.alpha .badge{grid-column:3}
+.produce-list.alpha .note{grid-column:2 / -1}
+@media (max-width:640px){
+  .produce-list.alpha .produce-item{grid-template-columns:48px minmax(0,1fr)}
+  .produce-list.alpha .badge{grid-column:2;grid-row:2}
+  .produce-list.alpha .note{grid-column:2}
+}
+@media print{
+  .produce-list.alpha .produce-item{grid-template-columns:40px minmax(0,1fr) auto}
+  .list-order{margin:12px 0 0;font-size:9.5px}
+}
+
+/* Guide actions box: styled like the Download & print card, and placed at the top of the guide (screen only) */
+@media screen {
+  .info-box{margin:32px 48px 0;padding:28px 28px 24px;background:#fff;border:1px solid var(--rule);border-top:4px solid var(--accent);border-radius:4px}
+  .info-box h4{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;letter-spacing:0;text-transform:none;color:#1a1a1a;line-height:1.2;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .info-box ul{gap:10px}
+  .info-box li{font-size:16px;line-height:1.65;color:#474747}
+  .info-box p{font-size:16px;line-height:1.65;color:#474747}
+  /* Tip callout: softer than the actions card */
+  .info-box.tip{background:#f1f8f4;border:1px solid #b7dfc9;border-left:4px solid #2d6a4f;padding:20px 24px;gap:24px}
+  .tip-img{width:150px;height:150px}
+  .info-box.tip h4{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#2d6a4f;margin-bottom:8px}
+}
+@media screen and (max-width:640px){
+  .info-box{margin:24px 16px 0;padding:22px 18px 20px}
+  .info-box.tip{flex-direction:column;align-items:stretch;gap:14px;padding:16px}
+  .tip-img{display:none}
+  .info-box h4{font-size:22px}
+}
+@media screen and (max-width:640px){.kicker-sep{display:none}.kicker-part{display:block;margin-top:2px}}
+</style>
+<link rel="stylesheet" href="download.css">
+<link rel="stylesheet" href="signup.css">
+<link rel="stylesheet" href="dots.css">
+<link rel="stylesheet" href="mobile-nav.css">
+<style>
+.page-header.wcid-header{background:var(--ink)}
+.wcid-guide{padding:8px 0 24px;border-bottom:1px solid var(--rule)}
+.wcid-guide:last-of-type{border-bottom:none}
+.wcid-head{margin:40px 48px 0;display:flex;align-items:center;gap:12px}
+.wcid-head h2{font-family:'Playfair Display',serif;font-size:30px;line-height:1.2;margin:0;color:var(--ink)}
+.wcid-head .gdot{width:12px;height:12px}
+.wcid-intro{margin:12px 48px 0;font-size:17px;line-height:1.65;color:#474747;max-width:62ch}
+.wcid-more{display:inline-block;margin:20px 48px 0;font-weight:600;font-size:15px;color:var(--accent);text-decoration:none}
+.wcid-more:hover{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:640px){.wcid-head,.wcid-intro,.wcid-more{margin-left:16px;margin-right:16px}.wcid-head h2{font-size:24px}}
+</style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="nav.css">
+</head>
+<body>
+
+<nav class="site-nav lyl-nav" aria-label="Main">
+  <a href="index.html" class="logo nav-logo lyl-brand"><img src="lyl-mark.svg" alt="" width="26" height="26"><span class="lyl-word">Lighten <span>Your Load</span></span></a>
+  <ul class="nav-links">
+    <li class="has-sub"><a href="index.html#guides">Guides</a>
+      <ul class="nav-sub">
+        <li><a href="dirty-dozen.html"><span class="gdot gdot-dirty" aria-hidden="true"></span>The Dirty Dozen AU</a></li>
+        <li><a href="tread-carefully.html"><span class="gdot gdot-tread" aria-hidden="true"></span>Tread Carefully</a></li>
+        <li><a href="fill-your-basket.html"><span class="gdot gdot-clean" aria-hidden="true"></span>Fill Your Basket</a></li>
+      </ul>
+    </li>
+    <li><a href="what-can-i-do.html" aria-current="page">What can I do</a></li>
+    <li><a href="index.html#why">Why LYL?</a></li>
+    <li><a href="resources.html">Resources</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <div class="page-header wcid-header">
+    <div class="kicker">Lighten Your Load<span class="kicker-sep"> · </span><span class="kicker-part">What can I do</span></div>
+    <h1>What can I do?</h1>
+    <p class="desc">Simple steps from each guide, all in one place.</p>
+  </div>
+
+  <section class="wcid-guide" id="dirty-dozen" style="--accent:var(--dirty)">
+    <div class="wcid-head"><span class="gdot gdot-dirty" aria-hidden="true"></span><h2>The Dirty Dozen AU</h2></div>
+    <p class="wcid-intro">If you only switch a few things to organic, start here. These are the 12 fruits and vegetables with the strongest Australian evidence of pesticide residues, ranked by how solid that evidence is. If you're feeding kids or you're pregnant, they're the ones that matter most.</p>
+  <div class="info-box" style="--accent:var(--dirty)">
+    <h4>Where to start</h4>
+    <ul>
+      <li><strong>You eat it every day.</strong> Your most frequent buys make the biggest difference.</li>
+      <li><strong>You're pregnant.</strong> Strawberries, leafy greens and stone fruit especially.</li>
+      <li><strong>Your kids eat it a lot.</strong> Children take in more for their size and clear pesticides more slowly than adults.</li>
+      <li><strong>It's imported.</strong> Other countries may allow chemicals that are banned here.</li>
+      <li><strong>Money's tight.</strong> Focus on #1–6, where the Australian evidence is strongest.</li>
+    </ul>
+  </div>
+
+  <div class="info-box tip">
+    <img class="tip-img" src="tip-raised-bed.webp" alt="Illustration of leafy greens growing in a raised garden bed" width="480" height="480" loading="lazy">
+    <div class="tip-body">
+    <h4>Tip</h4>
+    <p><strong>Grow your own greens.</strong> Spinach, lettuce, kale and silverbeet are among the easiest things to grow in a pot or a patch, and they're some of the hardest to clean of residues. A few pots of greens takes a big item off this list.</p>
+    </div>
+  </div>
+
+    <a class="wcid-more" href="dirty-dozen.html">See the full guide →</a>
+  </section>
+
+  <section class="wcid-guide" id="tread-carefully" style="--accent:var(--tread)">
+    <div class="wcid-head"><span class="gdot gdot-tread" aria-hidden="true"></span><h2>Tread Carefully</h2></div>
+    <p class="wcid-intro">Tread Carefully doesn’t mean avoid. For most of these, peeling, washing or buying from your local farmers markets makes a real difference. If your kids eat one every day, organic is worth considering.</p>
+  <div class="info-box" style="--accent:var(--tread)">
+    <h4>Where to start</h4>
+    <ul>
+      <li><strong>Peel potatoes and cucumbers.</strong> Peeling removes most surface residues.</li>
+      <li><strong>Buy Australian garlic and citrus.</strong> Imported versions carry a much higher chemical load.</li>
+      <li><strong>Buy local tomatoes.</strong> Queensland tomatoes sent interstate have to be treated with insecticide first. Local ones skip that step.</li>
+      <li><strong>Use ginger every day? Go organic.</strong> It takes up residues from the soil, so washing doesn’t help much.</li>
+      <li><strong>Choose frozen green beans.</strong> Blanching before freezing breaks down residues.</li>
+    </ul>
+  </div>
+
+  <div class="info-box tip">
+    <img class="tip-img" src="tip-market.webp" alt="Illustration of shoppers chatting with a grower at a farmers market stall" width="480" height="480" loading="lazy">
+    <div class="tip-body">
+    <h4>Tip</h4>
+    <p><strong>Get to know your growers.</strong> At farmers and growers markets you can ask the person who grew your food how they grow it and what they spray. Crop swaps and community gardens go a step further. Swap your spare zucchini for a neighbour’s tomatoes, and you’ll know exactly where your food came from.</p>
+    </div>
+  </div>
+
+    <a class="wcid-more" href="tread-carefully.html">See the full guide →</a>
+  </section>
+
+  <section class="wcid-guide" id="fill-your-basket" style="--accent:var(--clean)">
+    <div class="wcid-head"><span class="gdot gdot-clean" aria-hidden="true"></span><h2>Fill Your Basket</h2></div>
+    <p class="wcid-intro"><em class="nod">Cleaner by far:</em> the Australian produce with the lowest evidence of pesticide risk. Conventional versions are generally a reasonable choice, saving your organic budget for the Dirty Dozen.</p>
+  <div class="info-box" style="--accent:var(--clean)">
+    <h4>Where to start</h4>
+    <ul>
+      <li><strong>Check where it’s from.</strong> Australian-grown Dirty Dozen items are a better choice than imported ones.</li>
+      <li><strong>Soak, then rinse.</strong> A baking soda soak removes more surface residue than water alone.</li>
+      <li><strong>Ask at farmers markets.</strong> Many small Australian farms use organic methods without being certified.</li>
+      <li><strong>Grow your own.</strong> Put your effort into Dirty Dozen crops: strawberries, leafy greens, kale and berries.</li>
+    </ul>
+  </div>
+
+  <div class="info-box tip">
+    <img class="tip-img" src="tip-basket.webp" alt="Illustration of a basket full of colourful vegetables" width="480" height="480" loading="lazy">
+    <div class="tip-body">
+    <h4>Tip</h4>
+    <p><strong>Remember, eat the rainbow!</strong> More fresh produce is always better than less, and everything on this list carries lower residues than most. So fill your basket here, and save your organic dollars for the Dirty Dozen.</p>
+    </div>
+  </div>
+
+    <a class="wcid-more" href="fill-your-basket.html">See the full guide →</a>
+  </section>
+
+  <div class="page-footer">
+    <span>Sources: FSANZ ATDS · Friends of the Earth Melbourne (2012) · CHOICE · NRS · APVMA · EWG Shopper's Guide (2026) · Guardian AU FOI · <a href="https://pesticideaction.org.au/" style="color:inherit;text-decoration:underline;text-underline-offset:2px;opacity:.8" target="_blank" rel="noopener">Pesticide Action Australia</a> · <a href="resources.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px;opacity:.8">Full source list →</a></span>
+    <span>Lighten Your Load · lightenyourload.info · October 2026 · <a href="privacy.html" style="color:inherit">Privacy</a></span>
+  </div>
+
+</div>
+<script src="mobile-nav.js"></script>
+</body>
+</html>

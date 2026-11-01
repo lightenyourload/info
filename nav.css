@@ -1,0 +1,16 @@
+/* ════ Shared site nav: logo mark, Guides dropdown (desktop). Mobile uses mobile-nav.js ════ */
+.lyl-nav .lyl-brand { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; }
+.lyl-nav .lyl-brand img { width: 26px; height: 26px; display: block; }
+.lyl-nav .lyl-brand .lyl-word { color: #fff; }
+.lyl-nav .lyl-brand .lyl-word span { color: var(--gold, #b8ddb0); }
+.lyl-nav .nav-links { display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.lyl-nav .nav-links > li { position: relative; }
+.lyl-nav .nav-links a { font-size: 13px; font-weight: 500; color: #b5b5ae; text-decoration: none; padding: 8px 12px; border-radius: 4px; display: inline-flex; align-items: center; gap: 7px; letter-spacing: .2px; transition: color .15s, background .15s; }
+.lyl-nav .nav-links a:hover, .lyl-nav .nav-links a:focus-visible { color: #fff; background: rgba(255,255,255,.08); }
+.lyl-nav .nav-links a[aria-current="page"], .lyl-nav .nav-links .is-current > a { color: #fff; background: rgba(255,255,255,.12); }
+.lyl-nav .has-sub > a::after { content: ""; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); margin-left: 2px; }
+.lyl-nav .nav-sub { list-style: none; margin: 0; padding: 8px; position: absolute; top: 100%; left: 0; min-width: 210px; background: #1e1e1b; border: 1px solid #2c2c28; border-radius: 6px; box-shadow: 0 12px 30px rgba(0,0,0,.35); opacity: 0; visibility: hidden; transform: translateY(4px); transition: opacity .15s, transform .15s, visibility .15s; z-index: 200; }
+.lyl-nav .has-sub:hover .nav-sub, .lyl-nav .has-sub:focus-within .nav-sub { opacity: 1; visibility: visible; transform: none; }
+.lyl-nav .nav-sub a { display: flex; width: 100%; box-sizing: border-box; padding: 9px 12px; }
+.lyl-footer-mark { width: 30px; height: 30px; vertical-align: -8px; margin-right: 8px; }
+@media (max-width: 767px) { .lyl-nav .nav-sub { display: none; } }

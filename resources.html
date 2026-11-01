@@ -101,16 +101,26 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 </style>
 <link rel="stylesheet" href="dots.css">
 <link rel="stylesheet" href="mobile-nav.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="nav.css">
 </head>
 <body>
 
-<nav class="site-nav">
-  <a href="index.html" class="logo">Lighten <span>Your Load</span></a>
+<nav class="site-nav lyl-nav" aria-label="Main">
+  <a href="index.html" class="logo nav-logo lyl-brand"><img src="lyl-mark.svg" alt="" width="26" height="26"><span class="lyl-word">Lighten <span>Your Load</span></span></a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="dirty-dozen.html"><span class="gdot gdot-dirty" aria-hidden="true"></span>Dirty Dozen AU</a></li>
-    <li><a href="tread-carefully.html"><span class="gdot gdot-tread" aria-hidden="true"></span>Tread Carefully</a></li>
-    <li><a href="fill-your-basket.html"><span class="gdot gdot-clean" aria-hidden="true"></span>Fill Your Basket</a></li>
+    <li class="has-sub"><a href="index.html#guides">Guides</a>
+      <ul class="nav-sub">
+        <li><a href="dirty-dozen.html"><span class="gdot gdot-dirty" aria-hidden="true"></span>The Dirty Dozen AU</a></li>
+        <li><a href="tread-carefully.html"><span class="gdot gdot-tread" aria-hidden="true"></span>Tread Carefully</a></li>
+        <li><a href="fill-your-basket.html"><span class="gdot gdot-clean" aria-hidden="true"></span>Fill Your Basket</a></li>
+      </ul>
+    </li>
+    <li><a href="what-can-i-do.html">What can I do</a></li>
+    <li><a href="index.html#why">Why LYL?</a></li>
+    <li><a href="resources.html" aria-current="page">Resources</a></li>
   </ul>
 </nav>
 
