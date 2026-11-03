@@ -531,51 +531,19 @@ a.hero-stat-row:nth-child(4) { --d: 1.8s; }
 
 .principles-section .section-kicker { color: #8a8a82; margin-bottom: 28px; }
 
-/* "Why Lighten Your Load?" intro at the top of the Principles strip: text left, video right */
+/* "Why Lighten Your Load?" intro at the top of the Principles strip */
 .lyl-why { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 56px; align-items: start; }
 .lyl-why h2 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; line-height: 1.15; letter-spacing: -0.4px; color: var(--ink); margin-bottom: 20px; }
 .lyl-why p { font-size: 17px; font-weight: 400; line-height: 1.75; color: var(--ink-muted); margin-bottom: 16px; }
 .lyl-why-text p:last-child { margin-bottom: 0; }
 
-.lyl-video { margin: 64px 0 0; }
-.lyl-video-play, .lyl-video iframe {
-  display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 6px;
-}
-.lyl-video-play {
-  position: relative; cursor: pointer; text-align: left; padding: 22px 24px;
-  background:
-    radial-gradient(circle at 75% 30%, rgba(184,221,176,.18), transparent 60%),
-    linear-gradient(135deg, #2d6a4f 0%, #1e3d2f 100%);
-  color: #fff; font: inherit; box-shadow: 0 10px 28px rgba(20,21,16,.18);
-  display: flex; flex-direction: column; justify-content: flex-end; gap: 6px;
-  transition: transform .2s, box-shadow .2s;
-}
-.lyl-video-play:hover, .lyl-video-play:focus-visible { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(20,21,16,.26); }
-.lyl-video-play:focus-visible { outline: 2px solid var(--clean); outline-offset: 3px; }
-.lyl-video-icon {
-  position: absolute; top: 50%; left: 50%; width: 72px; height: 72px; margin: -46px 0 0 -36px;
-  border-radius: 50%; background: rgba(255,255,255,.95);
-}
-.lyl-video-icon::after {
-  content: ''; position: absolute; top: 50%; left: 54%; transform: translate(-50%, -50%);
-  border-style: solid; border-width: 13px 0 13px 21px; border-color: transparent transparent transparent #2d6a4f;
-}
-.lyl-video-title { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; line-height: 1.25; }
-.lyl-video-by { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: #b8ddb0; }
-.lyl-video figcaption { margin-top: 12px; font-size: 13.5px; line-height: 1.55; color: var(--ink-muted); }
-
 @media (max-width: 1000px) {
   .lyl-why { grid-template-columns: 1fr; gap: 32px; }
-  .lyl-video { margin-top: 0; max-width: 640px; }
 }
 @media (max-width: 767px) {
   .lyl-why h2 { font-size: 27px; }
   .lyl-why p { font-size: 16px; }
-  .lyl-video-title { font-size: 17px; }
-  .lyl-video-icon { width: 54px; height: 54px; top: 30%; margin: -27px 0 0 -27px; }
-  .lyl-video-icon::after { border-width: 10px 0 10px 16px; }
 }
-@media print { .lyl-video { display: none; } }
 
 .principles-grid {
   display: grid;
@@ -1419,21 +1387,6 @@ FOOTER LINK COLUMNS
 })();
 </script>
 <script src="signup.js"></script>
-<script>
-/* Video loads only when someone presses play (no YouTube cookies until then) */
-document.querySelectorAll('.lyl-video-play').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var id = btn.getAttribute('data-video');
-    var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
-    f.title = 'Going Organic: A Simple Choice that Can Change the World (Little Things Matter)';
-    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-    f.allowFullscreen = true;
-    btn.replaceWith(f);
-    if (typeof window.gtag === 'function') window.gtag('event', 'video_play', { video: 'going-organic-ltm' });
-  });
-});
-</script>
 <script src="mobile-nav.js"></script>
 <script>
 /* Drop chart: hover/focus tooltip */
