@@ -1,7 +1,7 @@
 /* Google Analytics 4 — loaded on every page.
    To change accounts, edit the Measurement ID below; nothing else needs touching. */
 (function () {
-  var ID = 'G-EZYCJ8Q5PJ';
+  var ID = 'G-2WZNSC7GPE';
 
   // Always provide gtag() so other scripts can send events safely,
   // even when analytics is off (placeholder ID, local preview, etc.).
