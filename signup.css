@@ -78,7 +78,7 @@
   flex: 0 0 auto;
   padding: 12px 22px;
   border: 0;
-  border-radius: 3px;
+  border-radius: 4px;
   background: var(--su-accent);
   color: var(--su-btn-ink);
   font: inherit;
@@ -192,7 +192,7 @@
 .signup-actions .signup-finish {
   padding: 11px 22px;
   border: 0;
-  border-radius: 3px;
+  border-radius: 4px;
   background: var(--su-accent);
   color: var(--su-btn-ink);
   font: inherit;
