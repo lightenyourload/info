@@ -1,130 +1,132 @@
-/* Download + pay-what-you-want.
-   Nothing is ever blocked: the PDF downloads whatever amount is chosen.
+/* Guide download box: three steps inside one box (no pop-up).
+   1. "Download the guides" button
+   2. Email (required) + optional postcode + optional Dirty Dozen question -> "Get the guides"
+      Sends ONE row to the Google Form/Sheet and starts the PDF download straight away.
+   3. Thank-you: link to the file in case the download didn't start, plus an optional chip-in
+      (plain links to Stripe in a new tab, so popup blockers never interfere).
 
-   How the Stripe tab opens without being caught by popup blockers:
-   while an amount above $0 is selected (and Stripe hasn't been opened yet),
-   the download links become ordinary links to Stripe (target=_blank), which
-   browsers always allow. The PDF itself is then downloaded alongside it.
-   With Free selected, or once Stripe has been opened, they are plain downloads. */
+   Someone who has already given their email on this browser skips step 2 next time.
+
+   Markup: <section class="dl" data-file="..." data-guide="..." data-stripe="..." [data-dd="no"]>
+   Settings below must match the Google Form (same form as signup.js). */
 (function () {
+  var FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScwsA_Ni6pqvLFX9ePs814MkHTpt4sXL-PeXkxrmZyTN8QK7Q/formResponse';
+  var ENTRY_EMAIL = 'entry.1127642381';
+  var ENTRY_DD = 'entry.1832093269';
+  var ENTRY_POSTCODE = 'entry.2083154826';
+  var REMEMBER_KEY = 'lyl_signed_up';
+
+  function remembered() {
+    try { return localStorage.getItem(REMEMBER_KEY) === '1'; } catch (e) { return false; }
+  }
+  function remember() {
+    try { localStorage.setItem(REMEMBER_KEY, '1'); } catch (e) {}
+  }
+  function track(name, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params);
+  }
+  function downloadFile(file) {
+    var a = document.createElement('a');
+    a.href = file;
+    a.setAttribute('download', '');
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () { a.remove(); }, 1000);
+  }
+
   document.querySelectorAll('.dl').forEach(function (box) {
-    var stripe = box.getAttribute('data-stripe');
+    var file = box.getAttribute('data-file');
     var guide = box.getAttribute('data-guide') || '';
-    var btn = box.querySelector('.dl-btn');
-    var note = box.querySelector('.dl-note');
-    var otherWrap = box.querySelector('.dl-other-wrap');
-    var otherInput = box.querySelector('.dl-other-input');
-    var radios = [].slice.call(box.querySelectorAll('input[type="radio"]'));
-    var links = [].slice.call(box.querySelectorAll('[data-dl]'));
-    var stripeOpened = false;
+    var stripe = box.getAttribute('data-stripe') || '';
+    var steps = {
+      start: box.querySelector('.dl-step--start'),
+      email: box.querySelector('.dl-step--email'),
+      done: box.querySelector('.dl-step--done')
+    };
+    var form = box.querySelector('.dl-form');
+    var emailInput = form.querySelector('input[type="email"]');
+    var pcInput = form.querySelector('.dl-postcode');
+    var trap = form.querySelector('.dl-hp');
+    var msg = form.querySelector('.dl-msg');
+    var listed = box.querySelector('.dl-listed');
 
-    links.forEach(function (a) { a.setAttribute('data-file', a.getAttribute('href')); });
+    if (box.getAttribute('data-dd') === 'no') {
+      var dd = form.querySelector('.dl-dd');
+      if (dd) dd.remove();
+    }
 
-    function selected() {
-      var r = radios.filter(function (x) { return x.checked; })[0];
-      if (!r) return 0;
-      if (r.value === 'other') {
-        var n = Math.round(Number(otherInput.value));
-        return n > 0 && n <= 1000 ? n : NaN;
+    // Fallback link and chip-in links
+    box.querySelectorAll('.dl-file-link').forEach(function (a) { a.href = file; });
+    box.querySelectorAll('[data-amount]').forEach(function (a) {
+      var amt = Number(a.getAttribute('data-amount'));
+      a.href = stripe + (amt > 0 ? '?__prefilled_amount=' + (amt * 100) + '&' : '?') +
+               'client_reference_id=' + encodeURIComponent(guide);
+      a.addEventListener('click', function () {
+        track('contribution_start', { guide: guide, value: amt || 0, currency: 'AUD' });
+      });
+    });
+
+    function show(name) {
+      Object.keys(steps).forEach(function (k) { steps[k].hidden = k !== name; });
+    }
+
+    function deliver(newSignup) {
+      downloadFile(file);
+      track('guide_download', { guide: guide, file_name: file, signed_up: newSignup ? 'new' : 'returning' });
+      if (listed) listed.hidden = !newSignup;
+      show('done');
+      steps.done.querySelector('.dl-done-title').focus();
+    }
+
+    [emailInput, pcInput].forEach(function (i) {
+      if (i) i.addEventListener('input', function () { msg.textContent = ''; });
+    });
+
+    box.querySelector('.dl-start-btn').addEventListener('click', function () {
+      if (remembered()) { deliver(false); return; }
+      show('email');
+      emailInput.focus();
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = emailInput.value.trim();
+      if (!email || !emailInput.checkValidity()) {
+        msg.textContent = 'Please enter a valid email address.';
+        emailInput.focus();
+        return;
       }
-      return Number(r.value);
-    }
+      var pc = pcInput ? pcInput.value.trim() : '';
+      if (pc && !/^\d{4}$/.test(pc)) {
+        msg.textContent = 'Postcodes are four digits. Leave it blank if you’d rather not say.';
+        pcInput.focus();
+        return;
+      }
+      if (trap && trap.value) return;   // bots fill the hidden field; people never see it
 
-    function stripeUrl(amt) {
-      return stripe + '?__prefilled_amount=' + (amt * 100) +
-             (guide ? '&client_reference_id=' + encodeURIComponent(guide) : '');
-    }
+      var body = new URLSearchParams();
+      body.append(ENTRY_EMAIL, email);
+      var picked = form.querySelector('.dl-dd input:checked');
+      if (picked) body.append(ENTRY_DD, picked.value);
+      if (pc) body.append(ENTRY_POSTCODE, pc);
 
-    function track(name, params) {
-      if (typeof window.gtag === 'function') window.gtag('event', name, params);
-    }
+      // Fire and forget, so the download starts inside the click (browsers allow that).
+      // sendBeacon survives the page being closed straight away; fetch is the fallback.
+      var sent = navigator.sendBeacon && navigator.sendBeacon(FORM_ACTION, body);
+      if (!sent) fetch(FORM_ACTION, { method: 'POST', mode: 'no-cors', body: body }).catch(function () {});
 
-    function downloadFile(file) {
-      var a = document.createElement('a');
-      a.href = file;
-      a.setAttribute('download', '');
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.click();
-      setTimeout(function () { a.remove(); }, 1000);
-    }
-
-    // point each link at Stripe or at its file, depending on the current choice
-    function setLinks() {
-      var amt = selected();
-      var toStripe = amt > 0 && stripe && !stripeOpened;
-      links.forEach(function (a) {
-        if (toStripe) {
-          a.href = stripeUrl(amt);
-          a.target = '_blank';
-          a.rel = 'noopener';
-          a.removeAttribute('download');
-        } else {
-          a.href = a.getAttribute('data-file');
-          a.removeAttribute('target');
-          a.removeAttribute('rel');
-          a.setAttribute('download', '');
-        }
-      });
-    }
-
-    function refresh() {
-      var other = radios.some(function (x) { return x.checked && x.value === 'other'; });
-      otherWrap.hidden = !other;
-      var amt = selected();
-      btn.textContent = isNaN(amt) ? 'Download' : amt > 0 ? 'Chip in $' + amt + ' & download' : 'Download free';
-      setLinks();
-    }
-
-    radios.forEach(function (r) {
-      r.addEventListener('change', function () {
-        refresh();
-        if (r.value === 'other' && r.checked) otherInput.focus();
-      });
-    });
-    otherInput.addEventListener('input', refresh);
-
-    links.forEach(function (a) {
-      a.addEventListener('click', function (e) {
-        var amt = selected();
-        if (isNaN(amt)) {
-          e.preventDefault();
-          note.classList.remove('is-thanks');
-          note.textContent = 'Please enter a whole-dollar amount between $1 and $1000, or choose Free.';
-          otherInput.focus();
-          return;
-        }
-        var file = a.getAttribute('data-file');
-        track('guide_download', {
-          guide: guide,
-          file_name: file,
-          download_type: a.classList.contains('dl-btn') ? 'guide_pdf' : 'pocket_cards',
-          amount_chosen: amt
-        });
-
-        if (a.getAttribute('target') === '_blank') {
-          track('contribution_start', { guide: guide, value: amt, currency: 'AUD' });
-          // the link itself opens Stripe; start the PDF download alongside it
-          downloadFile(a.getAttribute('data-file'));
-          stripeOpened = true;
-          setTimeout(setLinks, 0);   // later clicks are plain downloads
-          note.textContent = 'Thank you! Your download has started, and Stripe has opened in a new tab to complete your $' + amt + ' contribution. If you don\'t see it, ';
-          var retry = document.createElement('a');
-          retry.href = stripeUrl(amt);
-          retry.target = '_blank';
-          retry.rel = 'noopener';
-          retry.textContent = 'open Stripe here';
-          note.appendChild(retry);
-          note.appendChild(document.createTextNode('.'));
-        } else {
-          note.textContent = amt > 0
-            ? 'Your download has started. Thank you for supporting the research.'
-            : 'Your download has started. Thanks for reading, and feel free to share it.';
-        }
-        note.classList.add('is-thanks');
-      });
+      remember();
+      track('newsletter_signup', { location: guide, answered_dd: picked ? 'yes' : 'no', gave_postcode: pc ? 'yes' : 'no' });
+      msg.textContent = '';
+      deliver(true);
     });
 
-    refresh();
+    box.querySelector('.dl-back').addEventListener('click', function () {
+      show('start');
+      box.querySelector('.dl-start-btn').focus();
+    });
+
+    box.classList.add('is-ready');
   });
 })();

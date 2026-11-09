@@ -1,4 +1,5 @@
-/* ════ Download + pay-what-you-want block (shared by the guide pages) ════
+/* ════ Guide download box (shared by the guide pages) ════
+   Three steps inside one box: start -> email -> done (behaviour: download.js).
    Each page sets its accent colour on the section: style="--accent: var(--dirty)" */
 
 .dl {
@@ -9,6 +10,8 @@
   border-top: 4px solid var(--accent, #2d6a4f);
   border-radius: 4px;
 }
+
+.dl-step[hidden] { display: none; }
 
 .dl-kicker {
   font-family: 'DM Mono', monospace;
@@ -29,6 +32,8 @@
   margin-bottom: 10px;
 }
 
+.dl h2:focus { outline: none; }
+
 .dl-intro {
   font-size: 16px;
   line-height: 1.65;
@@ -37,93 +42,10 @@
   margin-bottom: 22px;
 }
 
-.dl-amounts {
-  border: 0;
-  margin: 0 0 20px;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-}
+.dl-intro a,
+.dl-small a { color: var(--accent, #2d6a4f); text-underline-offset: 3px; }
 
-.dl-amounts legend {
-  font-size: 13px;
-  font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 10px;
-  padding: 0;
-}
-
-.dl-amounts label { position: relative; cursor: pointer; }
-
-.dl-amounts input[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-}
-
-.dl-amounts label span {
-  display: inline-block;
-  min-width: 64px;
-  text-align: center;
-  padding: 10px 16px;
-  border: 1.5px solid var(--rule, #d0cdc8);
-  border-radius: 999px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #1a1a1a;
-  background: #faf9f6;
-  transition: border-color .15s, background .15s, color .15s;
-}
-
-.dl-amounts label:hover span { border-color: var(--accent, #2d6a4f); }
-
-.dl-amounts input:checked + span {
-  background: var(--accent, #2d6a4f);
-  border-color: var(--accent, #2d6a4f);
-  color: #fff;
-}
-
-.dl-amounts input:focus-visible + span {
-  outline: 2px solid var(--accent, #2d6a4f);
-  outline-offset: 2px;
-}
-
-.dl-other-wrap {
-  display: inline-flex;
-  align-items: center;
-  border: 1.5px solid var(--accent, #2d6a4f);
-  border-radius: 999px;
-  padding: 0 14px;
-  background: #fff;
-}
-
-.dl-other-wrap[hidden] { display: none; }
-
-.dl-other-wrap span { font-size: 15px; font-weight: 600; color: #474747; }
-
-.dl-other-input {
-  width: 72px;
-  border: 0;
-  padding: 10px 4px;
-  font: inherit;
-  font-size: 15px;
-  font-weight: 600;
-  background: transparent;
-  color: #1a1a1a;
-}
-
-.dl-other-input:focus { outline: none; }
-
-.dl-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 22px;
-}
-
+/* Buttons */
 .dl-btn {
   display: inline-flex;
   align-items: center;
@@ -131,32 +53,156 @@
   background: var(--accent, #2d6a4f);
   color: #fff;
   padding: 13px 24px;
+  border: 0;
   border-radius: 4px;
+  font: inherit;
   font-size: 15px;
   font-weight: 600;
   text-decoration: none;
+  cursor: pointer;
   transition: filter .2s;
 }
 
 .dl-btn:hover { filter: brightness(.9); }
+.dl-btn:focus-visible { outline: 2px solid var(--accent, #2d6a4f); outline-offset: 2px; }
 
-.dl-link {
-  font-size: 14.5px;
-  font-weight: 600;
-  color: var(--accent, #2d6a4f);
+.dl-back {
+  border: 0;
+  background: none;
+  padding: 8px 4px;
+  font: inherit;
+  font-size: 14px;
+  color: #6b6b6b;
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 2px;
+  cursor: pointer;
 }
 
-.dl-note {
-  margin-top: 16px;
-  font-size: 13.5px;
+.dl-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+}
+
+/* Email step */
+.dl-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.dl-field { display: flex; flex-direction: column; gap: 6px; }
+.dl-field--email { flex: 1 1 260px; min-width: 0; }
+.dl-field--pc { flex: 0 0 9.5em; }
+
+.dl-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.dl-label .dl-opt { font-weight: 400; color: #6b6b6b; }
+
+.dl-form input[type="email"],
+.dl-postcode {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--rule, #d0cdc8);
+  border-radius: 4px;
+  background: #fff;
+  color: #1a1a1a;
+  font: inherit;
+  font-size: 15px;
+}
+
+.dl-form input[type="email"]:focus,
+.dl-postcode:focus {
+  outline: 2px solid var(--accent, #2d6a4f);
+  outline-offset: 1px;
+  border-color: var(--accent, #2d6a4f);
+}
+
+.dl-dd {
+  border: 0;
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+.dl-dd legend { margin-bottom: 8px; padding: 0; }
+
+/* Pill choices (Dirty Dozen question) and chip-in amounts share one look */
+.dl-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.dl-pills label { position: relative; cursor: pointer; }
+
+.dl-pills input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.dl-pills label span,
+.dl-pills a {
+  display: inline-block;
+  min-width: 64px;
+  text-align: center;
+  padding: 9px 16px;
+  border: 1.5px solid var(--rule, #d0cdc8);
+  border-radius: 999px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #1a1a1a;
+  background: #faf9f6;
+  text-decoration: none;
+  transition: border-color .15s, background .15s, color .15s;
+}
+
+.dl-pills label:hover span,
+.dl-pills a:hover { border-color: var(--accent, #2d6a4f); }
+
+.dl-pills input:checked + span {
+  background: var(--accent, #2d6a4f);
+  border-color: var(--accent, #2d6a4f);
+  color: #fff;
+}
+
+.dl-pills input:focus-visible + span,
+.dl-pills a:focus-visible {
+  outline: 2px solid var(--accent, #2d6a4f);
+  outline-offset: 2px;
+}
+
+.dl-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.dl-msg {
+  min-height: 1em;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #a33a2a;
+}
+
+.dl-msg:empty { display: none; }
+
+.dl-small {
+  margin-top: 14px;
+  font-size: 13px;
   line-height: 1.6;
   color: #6b6b6b;
 }
 
-.dl-note.is-thanks { color: #1a1a1a; }
+/* Done step */
+.dl-chip {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule, #d0cdc8);
+}
 
+.dl-chip p { font-size: 15px; line-height: 1.6; color: #474747; margin-bottom: 12px; max-width: 62ch; }
+
+/* "Jump to download" link used in page headers */
 .dl-jump {
   display: inline-block;
   margin-top: 16px;
@@ -175,6 +221,7 @@
   .dl h2 { font-size: 22px; }
   .dl-intro { font-size: 15.5px; }
   .dl-btn { width: 100%; justify-content: center; }
+  .dl-field--pc { flex: 1 1 100%; }
 }
 
 @media print {

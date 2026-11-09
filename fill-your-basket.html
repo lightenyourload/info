@@ -224,7 +224,6 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 @media screen and (max-width:640px){.kicker-sep{display:none}.kicker-part{display:block;margin-top:2px}}
 </style>
 <link rel="stylesheet" href="download.css">
-<link rel="stylesheet" href="signup.css">
 <link rel="stylesheet" href="dots.css">
 <link rel="stylesheet" href="mobile-nav.css">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -326,42 +325,69 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     </div>
   </div>
 
-  <!-- DOWNLOAD + PAY WHAT YOU WANT (styles: download.css, behaviour: download.js) -->
-  <section class="dl" id="download" style="--accent:var(--clean)" data-stripe="https://donate.stripe.com/7sYcN76TS25C5qC1L03sI00" data-guide="fill-your-basket">
-    <div class="dl-kicker">Download &amp; print</div>
-    <h2>Take the guides shopping</h2>
-    <p class="dl-intro">All three produce guides (the Dirty Dozen AU, Tread Carefully and Fill Your Basket) in one printable PDF. If you value this information and can afford a contribution of any amount, I’d really appreciate it. In the spirit of Creative Commons, all downloadable guides will remain free.</p>
-    <fieldset class="dl-amounts">
-      <legend>Pay what you want (AUD)</legend>
-      <label><input type="radio" name="dl-amt" value="0" checked><span>Free</span></label>
-      <label><input type="radio" name="dl-amt" value="5"><span>$5</span></label>
-      <label><input type="radio" name="dl-amt" value="10"><span>$10</span></label>
-      <label><input type="radio" name="dl-amt" value="20"><span>$20</span></label>
-      <label><input type="radio" name="dl-amt" value="other"><span>Other</span></label>
-      <span class="dl-other-wrap" hidden><span>$</span><input class="dl-other-input" type="number" min="1" max="1000" step="1" inputmode="numeric" aria-label="Other amount in Australian dollars"></span>
-    </fieldset>
-    <div class="dl-actions">
-      <a class="dl-btn" href="LightenYourLoad-ProduceGuides-AU-Oct2026.pdf" download data-dl>Download</a>
-    </div>
-    <p class="dl-note" aria-live="polite">Contributions are handled securely by Stripe in a new tab. Your download starts either way.</p>
-    <noscript><p class="dl-note">Want to contribute? <a href="https://donate.stripe.com/7sYcN76TS25C5qC1L03sI00" target="_blank" rel="noopener">Chip in via Stripe</a>.</p></noscript>
-  </section>
+  <!-- GUIDE DOWNLOAD: start -> email -> done, all inside this box (styles: download.css, behaviour: download.js) -->
+  <section class="dl" id="download" style="--accent:var(--clean)" data-file="LightenYourLoad-ProduceGuides-AU-Oct2026.pdf" data-guide="fill-your-basket" data-stripe="https://donate.stripe.com/7sYcN76TS25C5qC1L03sI00">
 
-  <!-- EMAIL SIGN-UP (styles: signup.css, behaviour + form settings: signup.js) -->
-  <div class="signup-wrap signup-wrap--guide" style="--accent:var(--clean)" hidden>
-    <div class="signup-kicker">Stay in the loop</div>
-    <h3>Hear when guides are updated</h3>
-    <p class="signup-intro">An occasional email when new Australian data changes a guide or a new guide launches. A few times a year, no spam, unsubscribe any time.</p>
-    <form class="signup" data-location="fill-your-basket" novalidate>
-      <div class="signup-row">
-        <label class="signup-hp" aria-hidden="true">Leave blank <input class="signup-hp" type="text" tabindex="-1" autocomplete="off"></label>
-        <input type="email" name="email" required autocomplete="email" placeholder="Your email address" aria-label="Email address">
-        <button type="submit">Sign me up</button>
+    <div class="dl-step dl-step--start">
+      <div class="dl-kicker">Download &amp; print</div>
+      <h2>Take the guides shopping</h2>
+      <p class="dl-intro">All three produce guides (the Dirty Dozen AU, Tread Carefully and Fill Your Basket) in one printable PDF. Free, and in the spirit of Creative Commons it always will be.</p>
+      <div class="dl-actions">
+        <button type="button" class="dl-btn dl-start-btn">Download the guides</button>
       </div>
-      <p class="signup-msg" aria-live="polite"></p>
-      <p class="signup-small">I’ll never share your email. <a href="privacy.html">How I handle your details</a>.</p>
-    </form>
-  </div>
+      <noscript><p class="dl-small"><a href="LightenYourLoad-ProduceGuides-AU-Oct2026.pdf" download>Download the PDF</a></p></noscript>
+    </div>
+
+    <div class="dl-step dl-step--email" hidden>
+      <div class="dl-kicker">Nearly there</div>
+      <h2>Where should I send updates?</h2>
+      <p class="dl-intro">Pop in your email and your download starts straight away. I’ll only write when new Australian data changes a guide or a new one launches - a few times a year, and you can unsubscribe any time.</p>
+      <form class="dl-form" novalidate>
+        <label class="dl-hp" aria-hidden="true">Leave blank <input class="dl-hp" type="text" tabindex="-1" autocomplete="off"></label>
+        <div class="dl-fields">
+          <div class="dl-field dl-field--email">
+            <label class="dl-label" for="dl-email">Email</label>
+            <input id="dl-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+          </div>
+          <div class="dl-field dl-field--pc">
+            <label class="dl-label" for="dl-pc">Postcode <span class="dl-opt">(optional)</span></label>
+            <input id="dl-pc" class="dl-postcode" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" autocomplete="postal-code" placeholder="e.g. 2478">
+          </div>
+        </div>
+        <fieldset class="dl-dd">
+          <legend class="dl-label">Had you heard of the “Dirty Dozen” before? <span class="dl-opt">(optional)</span></legend>
+          <div class="dl-pills">
+            <label><input type="radio" name="dl-dd" value="Yes"><span>Yes</span></label>
+            <label><input type="radio" name="dl-dd" value="No"><span>No</span></label>
+            <label><input type="radio" name="dl-dd" value="Maybe"><span>Maybe</span></label>
+            <label><input type="radio" name="dl-dd" value="Only the 1967 war film!"><span>Only the 1967 war film!</span></label>
+          </div>
+        </fieldset>
+        <div class="dl-actions">
+          <button type="submit" class="dl-btn">Get the guides</button>
+          <button type="button" class="dl-back">Back</button>
+        </div>
+        <p class="dl-msg" aria-live="polite"></p>
+        <p class="dl-small">I’ll never share your email. <a href="privacy.html">How I handle your details</a>.</p>
+      </form>
+    </div>
+
+    <div class="dl-step dl-step--done" hidden>
+      <div class="dl-kicker">Thank you</div>
+      <h2 class="dl-done-title" tabindex="-1">Your download has started</h2>
+      <p class="dl-intro">If it didn’t, <a class="dl-file-link" href="LightenYourLoad-ProduceGuides-AU-Oct2026.pdf" download>download it here</a>.<span class="dl-listed"> You’re on the list, and I’ll be in touch when there’s something worth sharing.</span></p>
+      <div class="dl-chip">
+        <p>The guides are free for everyone. If you’d like to help keep them that way, you can chip in. Stripe opens in a new tab.</p>
+        <div class="dl-pills">
+          <a data-amount="5" target="_blank" rel="noopener">$5</a>
+          <a data-amount="10" target="_blank" rel="noopener">$10</a>
+          <a data-amount="20" target="_blank" rel="noopener">$20</a>
+          <a data-amount="0" target="_blank" rel="noopener">Other amount</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
 
 
   <div class="guide-nav">
@@ -384,7 +410,6 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 
 </div>
 <script src="download.js"></script>
-<script src="signup.js"></script>
 <script src="mobile-nav.js"></script>
 </body>
 </html>
