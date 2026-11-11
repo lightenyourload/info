@@ -59,7 +59,7 @@
       var pid = 'su-pc-' + n;
       var pq = el('div', { 'class': 'signup-q' });
       pq.appendChild(el('label', { 'for': pid, 'class': 'signup-q-label' }, 'Your postcode'));
-      pq.appendChild(el('input', { type: 'text', id: pid, 'class': 'signup-postcode', inputmode: 'numeric', maxlength: '4', pattern: '[0-9]{4}', autocomplete: 'postal-code', placeholder: 'e.g. 4000' }));
+      pq.appendChild(el('input', { type: 'text', id: pid, 'class': 'signup-postcode', inputmode: 'numeric', maxlength: '4', pattern: '[0-9]{4}', autocomplete: 'postal-code', placeholder: 'e.g. 2478' }));
       pq.appendChild(el('p', { 'class': 'signup-q-hint' }, 'So we can see where readers are, and connect people locally.'));
       box.appendChild(pq);
     }
@@ -115,8 +115,8 @@
           form.classList.add('is-done');
           msg.textContent = 'Thank you! You’re on the list. We’ll be in touch when there’s something worth sharing.';
           if (CHIP_IN_URL) {
-            var p = el('p', { 'class': 'signup-chip' }, 'The guides are free for everyone. If you’d like to help keep them that way, ');
-            var a = el('a', { href: CHIP_IN_URL, target: '_blank', rel: 'noopener' }, 'you can chip in here');
+            var p = el('p', { 'class': 'signup-chip' }, 'If you’d like to support the research, buy us a coffee ');
+            var a = el('a', { href: CHIP_IN_URL, target: '_blank', rel: 'noopener' }, 'here');
             p.appendChild(a);
             p.appendChild(document.createTextNode('.'));
             msg.after(p);
