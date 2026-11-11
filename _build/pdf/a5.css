@@ -1,0 +1,16 @@
+@page { size: A5; margin: 10mm 9.5mm 14mm; }
+@media print {
+  .page-header .desc{font-size:14.5px}
+  .note{font-size:13.5px;line-height:1.5}
+  .name{font-size:15.5px}
+  .name .sub-items,.name .sub-items .inline{font-size:12px}
+  .info-box li,.info-box p{font-size:13.5px}
+  .info-box h4{font-size:11.5px}
+  .badge{font-size:10.5px}
+  .num{font-size:12px}
+}
+@media print {
+  .produce-item{padding:8px 0;row-gap:2px}
+  .note{line-height:1.45}
+  .info-box li{line-height:1.45}
+}
