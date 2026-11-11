@@ -806,8 +806,8 @@ a.hero-stat-row:nth-child(4) { --d: 1.8s; }
 .load-big { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 76px; line-height: 1; letter-spacing: -2px; color: var(--clean); font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1; }
 .load-big span { font-size: .55em; }
 .load-hero .drop-title { margin-bottom: 6px; color: var(--clean); }
-.load-hero .drop-title { margin-bottom: 0; }
-.load-note { margin: 14px 0 0 !important; }
+.load-hero .drop-title { margin-bottom: 10px; }
+.load-hero .drop-desc { margin: 0 !important; }
 .load-grid { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 16px; align-items: center; }
 .load-lab { font-size: 13.5px; font-weight: 600; color: var(--ink); white-space: nowrap; }
 .load-blocks { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 5px; }
@@ -1140,6 +1140,7 @@ footer {
           <div class="load-big" aria-hidden="true">89<span>%</span></div>
           <div>
             <h3 id="drop-title" class="drop-title"><span class="sr-only">89% </span>lighter, after one week of organic food</h3>
+            <p class="drop-desc">Organophosphate pesticides measured in urine fell by 89% when 13 Australian adults switched to organic for 7 days.</p>
           </div>
         </div>
         <div class="load-grid" role="img" aria-label="Usual diet: 10 of 10 squares. After 7 days organic: just over 1 of 10 squares.">
@@ -1150,7 +1151,6 @@ footer {
           <div></div>
           <p class="load-key">Each square represents 10% of the pesticide load.</p>
         </div>
-        <p class="drop-desc load-note">Organophosphate pesticides measured in urine fell by 89% when 13 Australian adults switched to organic for 7 days.</p>
         <div class="load-us">
           <div class="load-us-big" aria-hidden="true">61<span>%</span></div>
           <p><strong>A US study of families found the same pattern.</strong> Pesticides fell 60.5% on average in just 6 days, and up to 95% for the insecticide malathion.</p>
