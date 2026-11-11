@@ -802,13 +802,17 @@ a.hero-stat-row:nth-child(4) { --d: 1.8s; }
 
 /* ── LOAD CHART: big number + red/green squares (Nov 2026) ── */
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.load-hero { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center; margin: 4px 0 20px; }
-.load-big { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 76px; line-height: 1; letter-spacing: -2px; color: var(--clean); font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1; }
+.load-grid { display: grid; grid-template-columns: 172px minmax(0, 1fr); gap: 0 18px; align-items: center; }
+.load-squares { display: contents; }
+.load-big { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 58px; line-height: 1; letter-spacing: -1.5px; color: var(--clean); font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1; }
 .load-big span { font-size: .55em; }
-.load-hero .drop-title { margin-bottom: 6px; color: var(--clean); }
-.load-hero .drop-title { margin-bottom: 10px; }
-.load-hero .drop-desc { margin: 0 !important; }
-.load-grid { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 16px; align-items: center; }
+.load-badge { background: var(--clean-lt); border-radius: 6px; padding: 14px 10px 12px; text-align: center; align-self: stretch; display: flex; flex-direction: column; justify-content: center; margin-bottom: 22px; }
+.load-badge-word { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 20px; line-height: 1.1; color: var(--clean); margin-top: 2px; }
+.load-head { margin-bottom: 22px; }
+.load-head .drop-title { color: var(--clean); margin-bottom: 10px; }
+.load-head .drop-desc { margin: 0 !important; }
+.load-grid > .load-lab, .load-grid .load-squares > .load-lab { margin: 4px 0; }
+.load-squares > .load-blocks { margin: 4px 0; }
 .load-lab { font-size: 13.5px; font-weight: 600; color: var(--ink); white-space: nowrap; }
 .load-blocks { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 5px; }
 .load-blocks i { display: block; aspect-ratio: 1; border-radius: 4px; background: var(--dirty); }
@@ -826,8 +830,10 @@ a.hero-stat-row:nth-child(4) { --d: 1.8s; }
 .load-detail summary::-webkit-details-marker { display: none; }
 .load-detail[open] summary { margin-bottom: 14px; }
 @media (max-width: 600px) {
-  .load-big { font-size: 60px; }
-  .load-grid { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .load-grid { grid-template-columns: minmax(0, 1fr); }
+  .load-badge { flex-direction: row; align-items: baseline; justify-content: flex-start; gap: 10px; padding: 12px 16px; margin-bottom: 14px; }
+  .load-big { font-size: 50px; }
+  .load-head { margin-bottom: 18px; }
   .load-key { grid-column: 1; }
   .load-blocks { gap: 4px; }
 }
@@ -1136,20 +1142,20 @@ footer {
       </div>
       <figure class="lyl-chart" aria-labelledby="drop-title">
         <div class="drop-kicker">What the studies found</div>
-        <div class="load-hero">
-          <div class="load-big" aria-hidden="true">89<span>%</span></div>
-          <div>
-            <h3 id="drop-title" class="drop-title"><span class="sr-only">89% </span>lighter, after one week of organic food</h3>
+        <div class="load-grid">
+          <div class="load-badge" aria-hidden="true"><div class="load-big">89<span>%</span></div><div class="load-badge-word">lighter</div></div>
+          <div class="load-head">
+            <h3 id="drop-title" class="drop-title"><span class="sr-only">89% lighter: </span>After one week of organic food</h3>
             <p class="drop-desc">Organophosphate pesticides measured in urine fell by 89% when 13 Australian adults switched to organic for 7 days.</p>
           </div>
-        </div>
-        <div class="load-grid" role="img" aria-label="Usual diet: 10 of 10 squares. After 7 days organic: just over 1 of 10 squares.">
+          <div class="load-squares" role="img" aria-label="Usual diet: 10 of 10 squares. After 7 days organic: just over 1 of 10 squares.">
           <div class="load-lab">Usual diet</div>
           <div class="load-blocks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
           <div class="load-lab">After 7 days organic</div>
           <div class="load-blocks after"><i class="on"></i><i class="part"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
           <div></div>
           <p class="load-key">Each square represents 10% of the pesticide load.</p>
+          </div>
         </div>
         <div class="load-us">
           <div class="load-us-big" aria-hidden="true">61<span>%</span></div>
