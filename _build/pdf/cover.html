@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<!-- Cover page (page 1) of the A5 guide booklet. Fonts are supplied by build.py. -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=DM+Sans&family=DM+Mono" rel="stylesheet">
+<style>
+@page { size: A5; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 148mm; height: 210mm; }
+body { position: relative; font-family: 'DM Sans', sans-serif; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.wrap { padding: 38pt 40pt 0; }
+
+.brand { display: flex; align-items: center; gap: 7pt; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15pt; letter-spacing: -.1pt; }
+.brand img { width: 20pt; height: 20pt; display: block; }
+.brand span { color: #2d6a4f; }
+
+.kicker { margin-top: 58pt; font-family: 'DM Mono', monospace; font-size: 8pt; letter-spacing: 1.7pt; text-transform: uppercase; color: #2d6a4f; }
+h1 { margin-top: 14pt; font-family: 'Playfair Display', serif; font-weight: 400; font-size: 27pt; line-height: 1.1; letter-spacing: -.4pt; white-space: nowrap; }
+.lede { margin-top: 16pt; font-size: 8.6pt; line-height: 1.75; color: #474747; max-width: 320pt; }
+
+.list { margin-top: 26pt; border-top: .75pt solid #d0cdc8; }
+.row { display: grid; grid-template-columns: 22pt 1fr auto; align-items: center; padding: 10pt 0 9pt; border-bottom: .75pt solid #d0cdc8; }
+.dot { width: 7pt; height: 7pt; border-radius: 50%; }
+.name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 12.5pt; line-height: 1.2; }
+.sub { margin-top: 3pt; font-size: 7.3pt; color: #6b6b6b; }
+.pg { font-family: 'DM Mono', monospace; font-size: 8.5pt; letter-spacing: 1pt; color: #73726c; }
+
+.foot { position: absolute; left: 40pt; right: 40pt; bottom: 44pt; }
+.url { font-family: 'DM Mono', monospace; font-size: 9pt; color: #2d6a4f; margin-bottom: 12pt; }
+.small { font-size: 5.9pt; line-height: 1.6; color: #555; }
+.small strong { color: #1a1a1a; }
+
+.stripe { position: absolute; left: 0; right: 0; bottom: 0; height: 11pt; display: flex; }
+.stripe i { flex: 1; }
+</style></head>
+<body>
+<div class="wrap">
+  <div class="brand"><img src="../../lyl-mark.svg" alt=""><div>Lighten <span>Your Load</span></div></div>
+
+  <div class="kicker">Australian Produce Guides · October 2026</div>
+  <h1>What’s on the food we eat?</h1>
+  <p class="lede">Three free guides to pesticide residues in Australian fruit and vegetables, built from the best available Australian data and clearly labelled where it runs out.</p>
+
+  <div class="list">
+    <div class="row"><span class="dot" style="background:#b5341a"></span><div><div class="name">The Dirty Dozen AU</div><div class="sub">Highest evidence of residues — prioritise organic</div></div><span class="pg">p. 2</span></div>
+    <div class="row"><span class="dot" style="background:#5a3d9a"></span><div><div class="name">Tread Carefully</div><div class="sub">Not Dirty Dozen, but worth knowing</div></div><span class="pg">p. 4</span></div>
+    <div class="row"><span class="dot" style="background:#2d6a4f"></span><div><div class="name">Fill Your Basket</div><div class="sub">Lowest evidence of residues — conventional is generally a reasonable choice</div></div><span class="pg">p. 6</span></div>
+  </div>
+</div>
+
+<div class="foot">
+  <div class="url">lightenyourload.info</div>
+  <p class="small"><strong>General information only</strong>, not medical or dietary advice. Talk to a qualified health professional about your own diet.<br>
+  Rankings are informed estimates based on available evidence; sources are listed in each guide and in full on the website.<br>
+  © 2026 Lighten Your Load · Shared under CC BY-NC 4.0: free to share and print for non-commercial use, with credit.</p>
+</div>
+
+<div class="stripe"><i style="background:#b5341a"></i><i style="background:#5a3d9a"></i><i style="background:#2d6a4f"></i></div>
+</body></html>

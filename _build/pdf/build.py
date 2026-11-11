@@ -4,7 +4,7 @@
 What it does
   1. Prints the three guide pages (Dirty Dozen AU, Tread Carefully, Fill Your Basket)
      to A5 with headless Chrome, using each page's own print styles plus a5.css.
-  2. Puts the fixed cover (cover.pdf) in front.
+  2. Prints the cover (cover.html) in front.
   3. Stamps "page N of 8" at the foot of each guide page.
   4. Adds the "About the data" note (note.html) under the last guide's content.
 
@@ -15,7 +15,7 @@ Needs: Python packages playwright, pypdf, pypdfium2, reportlab, numpy, pillow;
 a Chrome/Chromium browser; and Node/npm (to fetch the site fonts once).
 This folder starts with "_" so GitHub Pages doesn't publish it.
 
-Page-count check: the cover's contents list says p. 2 / p. 4 / p. 6, so the guides
+Page-count check: the cover's contents list (cover.html) says p. 2 / p. 4 / p. 6, so the guides
 must come out as 2 + 2 + 3 pages. The script stops if they don't; tweak a5.css
 (spacing or text sizes) until they do.
 """
@@ -114,6 +114,13 @@ async def render(tmp, fonts):
             await page.pdf(path=os.path.join(tmp, f'{g}.pdf'), format='A5', print_background=True,
                            scale=SCALE, prefer_css_page_size=True)
 
+        # Cover (page 1)
+        await page.goto('file://' + os.path.join(HERE, 'cover.html'))
+        await page.evaluate('document.fonts.ready')
+        await page.wait_for_timeout(300)
+        await page.pdf(path=os.path.join(tmp, 'cover.pdf'), format='A5', print_background=True,
+                       prefer_css_page_size=True)
+
         # "About the data" note, placed just under the last guide's content
         top = content_bottom(os.path.join(tmp, GUIDES[-1] + '.pdf')) + 22
         await page.goto('file://' + os.path.join(HERE, 'note.html'))
@@ -154,7 +161,7 @@ def main():
         print('Warning: little room left on the last page for the "About the data" note - check it.')
 
     out = pypdf.PdfWriter()
-    out.add_page(pypdf.PdfReader(os.path.join(HERE, 'cover.pdf')).pages[0])
+    out.add_page(pypdf.PdfReader(os.path.join(tmp, 'cover.pdf')).pages[0])
     n = 2
     for g in GUIDES:
         for pg in pypdf.PdfReader(os.path.join(tmp, g + '.pdf')).pages:

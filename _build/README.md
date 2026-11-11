@@ -16,7 +16,7 @@ Run it from the repo root after any change to the Dirty Dozen AU, Tread Carefull
 |---|---|
 | `build.py` | The build: prints the three guides to A5, adds the cover, page numbers and the "About the data" note |
 | `a5.css` | Print tweaks for A5 (margins, text sizes, spacing). Adjust here if the page count changes |
-| `cover.pdf` | The cover page (page 1). Its contents list says p. 2 / 4 / 6, so the guides must stay 2 + 2 + 3 pages |
+| `cover.html` | The cover page (page 1). Its contents list says p. 2 / 4 / 6, so the guides must stay 2 + 2 + 3 pages |
 | `note.html` | The "About the data" box at the end of page 8 |
 
 The script stops without touching the live PDF if the guides don't come out as 2 + 2 + 3 pages.
