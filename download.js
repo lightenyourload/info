@@ -8,7 +8,9 @@
    Someone who has already given their email on this browser skips step 2 next time.
 
    Markup: <section class="dl" data-file="..." data-guide="..." data-stripe="..." [data-dd="no"]>
-   Settings below must match the Google Form (same form as signup.js). */
+   Settings below must match the Google Form (same form as signup.js).
+   The Dirty Dozen answers in the pages' HTML must match the form's options exactly,
+   or Google silently rejects the whole response. */
 (function () {
   var FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScwsA_Ni6pqvLFX9ePs814MkHTpt4sXL-PeXkxrmZyTN8QK7Q/formResponse';
   var ENTRY_EMAIL = 'entry.1127642381';

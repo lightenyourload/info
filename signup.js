@@ -7,14 +7,14 @@
    FORM_ACTION     the form's ".../formResponse" URL
    ENTRY_EMAIL     the Email question's field name
    ENTRY_DD        "Had you heard of the Dirty Dozen before?" (must stay OPTIONAL in the form)
-   DD_OPTIONS      must match the form's options character for character
+   DD_OPTIONS      must match the form's options character for character (shown on the site as written)
    ENTRY_POSTCODE  postcode question (short answer, OPTIONAL). Leave '' to hide the field.
    CHIP_IN_URL     shown after sign-up; leave '' to hide */
 (function () {
   var FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLScwsA_Ni6pqvLFX9ePs814MkHTpt4sXL-PeXkxrmZyTN8QK7Q/formResponse';
   var ENTRY_EMAIL = 'entry.1127642381';
   var ENTRY_DD = 'entry.1832093269';
-  var DD_OPTIONS = ['Yes', 'No', 'Maybe', 'Only the 1967 war film!'];
+  var DD_OPTIONS = ['Yes', 'No', 'Not sure', 'Only the 1967 war film!'];
   var ENTRY_POSTCODE = 'entry.2083154826';
   var CHIP_IN_URL = 'https://donate.stripe.com/bJe14p7XW8u0g5ggFU3sI01';
 
