@@ -1,5 +1,8 @@
-"""Rebuild the printable A5 guide booklet:
-    LightenYourLoad-ProduceGuides-AU-Oct2026.pdf  (8 pages)
+"""Rebuild the printable PDFs:
+    LightenYourLoad-ProduceGuides-AU-Oct2026.pdf  A5 booklet of all three guides (8 pages)
+    LightenYourLoad-DirtyDozenAU-A4.pdf           \
+    LightenYourLoad-TreadCarefully-A4.pdf          > one guide each, 2 A4 pages, no cover (a4.css)
+    LightenYourLoad-FillYourBasket-A4.pdf         /
 
 What it does
   1. Prints the three guide pages (Dirty Dozen AU, Tread Carefully, Fill Your Basket)
@@ -23,7 +26,10 @@ import asyncio, base64, io, os, shutil, subprocess, sys, tempfile, threading
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 
+import re
+
 import numpy as np
+import pdfplumber
 import pypdf
 import pypdfium2
 from playwright.async_api import async_playwright
@@ -37,6 +43,52 @@ EXPECTED_PAGES = [2, 2, 3]
 SCALE = 0.72          # print the A4-designed print styles down onto A5
 TOTAL = 8
 PORT = 8799
+A4_FILES = {'dirty-dozen': ('LightenYourLoad-DirtyDozenAU-A4.pdf', 'The Dirty Dozen AU'),
+            'tread-carefully': ('LightenYourLoad-TreadCarefully-A4.pdf', 'Tread Carefully'),
+            'fill-your-basket': ('LightenYourLoad-FillYourBasket-A4.pdf', 'Fill Your Basket')}
+
+# A4 page prep: guide colour, leaf in the footer, "Where to start" moved below the list.
+A4_PREP = r"""
+(() => {
+  const h = document.querySelector('.page-header');
+  const g = getComputedStyle(h).backgroundColor;
+  const m = g.match(/\d+/g).map(Number);
+  document.documentElement.style.setProperty('--g', g);
+  document.documentElement.style.setProperty('--g-lt', `rgba(${m[0]},${m[1]},${m[2]},.07)`);
+  const f = document.querySelector('.page-footer span:last-child');
+  if (f && !f.querySelector('.pdf-leaf')) f.insertAdjacentHTML('afterbegin', '<img class="pdf-leaf" src="lyl-mark.svg" alt="">');
+  const start = [...document.querySelectorAll('.info-box')].find(b => /where to start/i.test(b.querySelector('h4')?.textContent || ''));
+  const tip = document.querySelector('.info-box.tip');
+  const list = document.querySelector('.produce-list');
+  if (start) { if (tip) tip.before(start); else (list.closest('.list-section') || list).after(start); }
+  return [...document.querySelectorAll('.produce-list .name')].map(n => n.childNodes[0].textContent.trim());
+})()
+"""
+# Drop the page's own @page rules so a4.css sets the margins (run before adding a4.css)
+A4_DROP_PAGE_RULES = """() => { for (const sh of document.styleSheets) { let r; try { r = sh.cssRules; } catch (e) { continue; }
+  for (let i = r.length - 1; i >= 0; i--) if (r[i] instanceof CSSPageRule) sh.deleteRule(i); } }"""
+A4_MARK_TOPS = "t => document.querySelectorAll('.produce-list .produce-item').forEach(li => { const n = li.querySelector('.name').childNodes[0].textContent.trim(); if (t.includes(n)) li.classList.add('col-top'); })"
+
+
+def column_tops(pdf, names):
+    """Names of the item at the top of each column on each page (so no divider line floats there)."""
+    tops = set()
+    with pdfplumber.open(pdf) as doc:
+        for page in doc.pages:
+            mid = page.width / 2
+            lines = {}
+            for w in page.extract_words(keep_blank_chars=True):
+                lines.setdefault((round(w['top']), w['x0'] < mid), []).append(w)
+            found = {True: [], False: []}
+            for (top, left), ws in lines.items():
+                text = re.sub(r'^\d+\s+', '', ' '.join(x['text'] for x in sorted(ws, key=lambda x: x['x0'])).strip())
+                for n in names:
+                    if text.startswith(n):
+                        found[left].append((top, n))
+            for side in found:
+                if found[side]:
+                    tops.add(min(found[side])[1])
+    return list(tops)
 
 
 def find_chrome():
@@ -114,6 +166,23 @@ async def render(tmp, fonts):
             await page.pdf(path=os.path.join(tmp, f'{g}.pdf'), format='A5', print_background=True,
                            scale=SCALE, prefer_css_page_size=True)
 
+        # One-guide A4 PDFs: two passes, the second marks the items at the top of each column
+        a4css = open(os.path.join(HERE, 'a4.css')).read()
+        for g, (fname, _) in A4_FILES.items():
+            tops = []
+            for _pass in (1, 2):
+                await page.goto(f'http://127.0.0.1:{PORT}/{g}.html', wait_until='networkidle')
+                await page.evaluate(A4_DROP_PAGE_RULES)
+                await page.add_style_tag(content=a4css)
+                names = await page.evaluate(A4_PREP)
+                await page.evaluate(A4_MARK_TOPS, tops)
+                await page.evaluate("document.querySelectorAll('img[loading=lazy]').forEach(i => i.loading = 'eager')")
+                await page.evaluate('document.fonts.ready')
+                await page.wait_for_timeout(800)
+                out = os.path.join(tmp, 'a4-' + g + '.pdf')
+                await page.pdf(path=out, print_background=True, prefer_css_page_size=True)
+                tops = column_tops(out, names)
+
         # Cover (page 1)
         await page.goto('file://' + os.path.join(HERE, 'cover.html'))
         await page.evaluate('document.fonts.ready')
@@ -172,8 +241,20 @@ def main():
     out.add_metadata({'/Title': 'Lighten Your Load — Australian Produce Guides (A5)',
                       '/Author': 'Lighten Your Load'})
     out.write(OUT)
-    shutil.rmtree(tmp, ignore_errors=True)
     print(f'Wrote {OUT} ({len(out.pages)} pages)')
+
+    for g, (fname, name) in A4_FILES.items():
+        r = pypdf.PdfReader(os.path.join(tmp, 'a4-' + g + '.pdf'))
+        if len(r.pages) != 2:
+            print(f'Warning: {name} A4 came out at {len(r.pages)} pages (expected 2) - not written. Adjust a4.css.')
+            continue
+        w = pypdf.PdfWriter()
+        for pg in r.pages:
+            w.add_page(pg)
+        w.add_metadata({'/Title': f'{name} - Lighten Your Load (A4)', '/Author': 'Lighten Your Load'})
+        w.write(os.path.join(ROOT, fname))
+        print(f'Wrote {fname} (2 pages)')
+    shutil.rmtree(tmp, ignore_errors=True)
 
 
 if __name__ == '__main__':

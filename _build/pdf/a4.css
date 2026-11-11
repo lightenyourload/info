@@ -1,0 +1,55 @@
+/* Single-guide A4 PDFs (2 pages each, printed double-sided). Larger text than the A5 booklet.
+   build.py sets --g to the guide's colour, moves "Where to start" below the list,
+   and marks the item at the top of each column (.col-top) so no rule floats there. */
+@page { size: A4; margin: 22mm 13mm 14mm; }
+@page :first { margin-top: 24mm; }
+@media print {
+  /* Header: no colour block; the title carries the guide colour; produce photos on the right */
+  .page-header { background: none !important; color: #1a1a1a; padding: 0 200px 14px 0 !important; position: relative; border-radius: 0 !important; min-height: 120px; border-bottom: 2px solid var(--g); }
+  .page-header .kicker { color: #6b6b6b !important; font-size: 10.5px; }
+  .page-header h1 { font-size: 34px; color: var(--g); margin-bottom: 8px; }
+  .page-header .desc { font-size: 14.5px; color: #3d3d3d !important; font-weight: 400; max-width: none !important; }
+  .page-header .desc .nod { color: var(--g) !important; }
+  .banner-art { display: block !important; position: absolute; right: 0; top: -6px; width: 190px; height: 130px; }
+  .banner-art img { position: absolute; height: auto; }
+  .banner-art .a1 { width: 84px; right: 92px; top: 60px; z-index: 3; }
+  .banner-art .a2 { width: 70px; right: 26px; top: 72px; z-index: 2; }
+  .banner-art .a3 { width: 126px; right: 8px; top: 4px; z-index: 1; }
+
+  /* Leaf mark at the start of the footer's site line */
+  .page-footer span:last-child { display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+  .pdf-leaf { width: 14px; height: 14px; display: inline-block; }
+
+  /* List text */
+  .name { font-size: 15.5px; }
+  .name .sub-items, .name .sub-items .inline { font-size: 12px; }
+  .note { font-size: 13.5px; line-height: 1.45; }
+  .badge { font-size: 11px; }
+  .num { font-size: 12.5px; }
+
+  /* Two columns for every guide, reading down each column */
+  .list-section { padding-top: 20px; }
+  .produce-list { display: block !important; column-count: 2; column-gap: 26px; }
+  .produce-list .produce-item { break-inside: avoid; display: grid; grid-template-columns: 46px minmax(0, 1fr) !important; column-gap: 10px; row-gap: 2px; padding: 9px 0 !important; border-bottom: 0 !important; border-top: 1px solid #d0cdc8; }
+  .produce-list .produce-item:first-child, .produce-list .produce-item.col-top { border-top-color: transparent; }
+  .produce-list .icon { width: 46px !important; height: 46px !important; grid-column: 1 !important; grid-row: 1 / span 3 !important; align-self: start; }
+  .produce-list .name, .produce-list .note { grid-column: 2 !important; grid-row: auto !important; }
+  .produce-list .badge { grid-column: 2 !important; grid-row: auto !important; justify-self: start; margin: 2px 0 3px; }
+  .produce-list .num { position: absolute; }
+  .produce-list .produce-item { position: relative; }
+  .produce-list:not(.alpha) .produce-item { grid-template-columns: 18px 46px minmax(0, 1fr) !important; }
+  .produce-list:not(.alpha) .num { position: static; grid-column: 1; grid-row: 1; }
+  .produce-list:not(.alpha) .icon { grid-column: 2 !important; }
+  .produce-list:not(.alpha) .name, .produce-list:not(.alpha) .note, .produce-list:not(.alpha) .badge { grid-column: 3 !important; }
+
+  /* Where to start + tip: soft tinted panels, no boxes */
+  .info-box { border: 0 !important; border-radius: 6px !important; padding: 16px 18px !important; margin: 24px 0 0 !important; background: var(--g-lt); break-inside: avoid; }
+  .info-box h4 { font-family: 'Playfair Display', serif !important; font-size: 17px !important; letter-spacing: 0 !important; text-transform: none !important; color: var(--g) !important; margin-bottom: 8px !important; }
+  .info-box ul { display: grid !important; grid-template-columns: 1fr 1fr; gap: 6px 22px !important; }
+  .info-box li { font-size: 12.5px !important; line-height: 1.45 !important; padding-left: 13px !important; }
+  .info-box li::before { content: '' !important; width: 6px; height: 6px; border-radius: 50%; background: var(--g); top: 6px !important; }
+  .info-box.tip { background: #eef4ef; }
+  .info-box.tip h4 { color: #2d6a4f !important; }
+  .info-box.tip p { font-size: 12.5px !important; line-height: 1.45 !important; }
+  .tip-img { width: 80px !important; height: 80px !important; }
+}

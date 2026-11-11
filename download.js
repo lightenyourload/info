@@ -74,6 +74,14 @@
     }
 
     // Fallback link and chip-in links
+    var bundle = box.getAttribute('data-bundle');
+    box.querySelectorAll('.dl-bundle-link').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        downloadFile(bundle || a.getAttribute('href'));
+        track('guide_download', { guide: 'all-three-booklet', file_name: bundle, signed_up: 'bundle' });
+      });
+    });
     box.querySelectorAll('.dl-file-link').forEach(function (a) {
       a.href = file;
       a.addEventListener('click', function (e) { e.preventDefault(); downloadFile(file); });
