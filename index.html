@@ -799,6 +799,38 @@ a.hero-stat-row:nth-child(4) { --d: 1.8s; }
 }
 
 
+
+/* ── LOAD CHART: big number + red/green squares (Nov 2026) ── */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.load-hero { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center; margin: 4px 0 20px; }
+.load-big { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 76px; line-height: .9; letter-spacing: -2px; color: var(--clean); }
+.load-big span { font-size: .55em; }
+.load-hero .drop-title { margin-bottom: 6px; }
+.load-hero .drop-desc { margin-bottom: 0 !important; }
+.load-grid { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 16px; align-items: center; }
+.load-lab { font-size: 13.5px; font-weight: 600; color: var(--ink); white-space: nowrap; }
+.load-blocks { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 5px; }
+.load-blocks i { display: block; aspect-ratio: 1; border-radius: 4px; background: var(--dirty); }
+.load-blocks.after i { background: var(--clean-lt); box-shadow: inset 0 0 0 1.5px #b7cdbf; }
+.load-blocks.after i.on { background: var(--clean); box-shadow: none; }
+.load-blocks.after i.part { background: linear-gradient(90deg, var(--clean) 0 10%, var(--clean-lt) 10%); }
+.load-key { grid-column: 2; font-size: 12.5px !important; font-weight: 600; color: var(--clean) !important; margin: 2px 0 0 !important; line-height: 1.4 !important; }
+.load-us { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--rule); }
+.load-us-big { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 38px; line-height: 1; color: var(--clean); }
+.load-us-big span { font-size: .6em; }
+.load-us p { font-size: 14px !important; line-height: 1.55 !important; color: var(--ink-muted); margin: 0 !important; }
+.load-us strong { color: var(--ink); }
+.load-detail { margin-top: 12px; }
+.load-detail summary { cursor: pointer; font-size: 13.5px; color: var(--clean); text-decoration: underline; text-underline-offset: 3px; list-style: none; display: inline-block; }
+.load-detail summary::-webkit-details-marker { display: none; }
+.load-detail[open] summary { margin-bottom: 14px; }
+@media (max-width: 600px) {
+  .load-big { font-size: 60px; }
+  .load-grid { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .load-key { grid-column: 1; }
+  .load-blocks { gap: 4px; }
+}
+
 /* ── PESTICIDE DROP CHART (replaces video) ── */
 .lyl-chart { margin: 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 28px 28px 22px; position: relative; }
 .drop-kicker { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--clean); margin-bottom: 8px; }
@@ -1103,20 +1135,28 @@ footer {
       </div>
       <figure class="lyl-chart" aria-labelledby="drop-title">
         <div class="drop-kicker">What the studies found</div>
-        <h3 id="drop-title" class="drop-title">Results of eating organic for about a week</h3>
-        <p class="drop-desc">How much the pesticides measured in urine dropped, compared with the same people on their usual diet.</p>
-        <div class="drop-group">
-          <div class="drop-study"><strong>Australia</strong> · 13 adults · 7 days</div>
-          <ul class="drop-list">
-        <li class="drop-row" tabindex="0" data-tip="Australia, 13 adults, 7 days: Organophosphate insecticides (all measured) down 89%">
-          <span class="drop-label">Organophosphate insecticides <span class="drop-sub">all measured</span></span>
-          <span class="drop-track"><span class="drop-bar" style="--v:89%"></span></span>
-          <span class="drop-val">−89%</span>
-        </li>
-          </ul>
+        <div class="load-hero">
+          <div class="load-big" aria-hidden="true">89<span>%</span></div>
+          <div>
+            <h3 id="drop-title" class="drop-title"><span class="sr-only">89% </span>lighter, after one week of organic food</h3>
+            <p class="drop-desc">Organophosphate pesticides measured in urine fell by 89% when 13 Australian adults switched to organic for 7 days.</p>
+          </div>
         </div>
-        <div class="drop-group">
-          <div class="drop-study"><strong>United States</strong> · 16 adults and children · 6 days</div>
+        <div class="load-grid" role="img" aria-label="Usual diet: 10 of 10 squares. After 7 days organic: just over 1 of 10 squares.">
+          <div class="load-lab">Usual diet</div>
+          <div class="load-blocks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="load-lab">After 7 days organic</div>
+          <div class="load-blocks after"><i class="on"></i><i class="part"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div></div>
+          <p class="load-key">Each square represents 10% of the pesticide load.</p>
+        </div>
+        <div class="load-us">
+          <div class="load-us-big" aria-hidden="true">61<span>%</span></div>
+          <p><strong>A US study of families found the same pattern.</strong> Pesticides fell 60.5% on average in just 6 days, and up to 95% for the insecticide malathion.</p>
+        </div>
+        <details class="load-detail">
+          <summary>See the chemical-by-chemical detail →</summary>
+          <div class="drop-study"><strong>United States</strong> · 16 adults and children · 6 days · drop in each pesticide measured</div>
           <ul class="drop-list">
         <li class="drop-row" tabindex="0" data-tip="United States, 16 people, 6 days: Malathion (organophosphate) down 95%">
           <span class="drop-label">Malathion <span class="drop-sub">organophosphate</span></span>
@@ -1150,7 +1190,7 @@ footer {
         </li>
           </ul>
           <p class="drop-avg">Average across everything measured: <strong>down 60.5%</strong></p>
-        </div>
+        </details>
         <figcaption>Sources: <a href="https://doi.org/10.1016/j.envres.2014.03.021" target="_blank" rel="noopener">Oates et al., <em>Environmental Research</em>, 2014</a> (RMIT University) · <a href="https://foe.org/wp-content/uploads/2019/01/OrganicForAll_report_Final.pdf" target="_blank" rel="noopener">Hyland et al., <em>Environmental Research</em>, 2019</a> (UC Berkeley; summary by Friends of the Earth US). Small studies, so treat the exact figures as indicative.</figcaption>
         <div class="drop-tip" role="tooltip" hidden></div>
       </figure>
