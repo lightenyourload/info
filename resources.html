@@ -87,6 +87,18 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .page-footer{background:var(--ink);color:#bbb;padding:18px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;font-size:11px;letter-spacing:.3px;margin-top:28px;gap:6px}
 .page-footer span:last-child{color:#ccc;font-style:italic}
 
+/* ════ HEADER + WIDTH: match the other pages' readability layer ════ */
+.page{max-width:880px}
+.page-header{padding:44px 48px 40px}
+.page-header .kicker{font-size:12px;color:rgba(255,255,255,.7)}
+.page-header h1{font-size:42px;margin-bottom:14px}
+.page-header .desc{font-size:17px;font-weight:400;color:rgba(255,255,255,.92);line-height:1.65;max-width:620px}
+@media (max-width:640px){
+  .page-header{padding:32px 20px 28px}
+  .page-header h1{font-size:32px}
+  .page-header .desc{font-size:16px}
+}
+
 /* ════ PAGE BACKGROUND PHOTO (screen only). Swap the file to change it. ════ */
 @media screen {
   body { background: rgb(28,22,16); }
