@@ -16,7 +16,7 @@
   var ENTRY_DD = 'entry.1832093269';
   var DD_OPTIONS = ['Yes', 'No', 'Maybe', 'Only the 1967 war film!'];
   var ENTRY_POSTCODE = 'entry.2083154826';
-  var CHIP_IN_URL = 'https://donate.stripe.com/7sYcN76TS25C5qC1L03sI00';
+  var CHIP_IN_URL = 'https://donate.stripe.com/bJe14p7XW8u0g5ggFU3sI01';
 
   var ready = /^https:\/\/docs\.google\.com\/forms\/.+\/formResponse$/.test(FORM_ACTION) && /^entry\.\d+$/.test(ENTRY_EMAIL);
   var hasPostcode = /^entry\.\d+$/.test(ENTRY_POSTCODE);
