@@ -132,7 +132,12 @@
 
 .dl-dd legend { margin-bottom: 8px; padding: 0; }
 
-/* Pill choices (Dirty Dozen question) and chip-in amounts share one look */
+/* Dirty Dozen question: plain radio buttons, matching the homepage sign-up */
+.dl-radios { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.dl-radios label { display: inline-flex; align-items: center; gap: 6px; font-size: 14.5px; color: #5a5a5a; cursor: pointer; }
+.dl-radios input { accent-color: var(--accent, #2d6a4f); width: 16px; height: 16px; margin: 0; }
+
+/* Pill buttons (chip-in amounts) */
 .dl-pills { display: flex; flex-wrap: wrap; gap: 8px; }
 
 .dl-pills label { position: relative; cursor: pointer; }
