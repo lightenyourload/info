@@ -25,14 +25,29 @@
   function track(name, params) {
     if (typeof window.gtag === 'function') window.gtag('event', name, params);
   }
-  function downloadFile(file) {
+  // Save the PDF straight to the reader's downloads rather than opening it in a tab.
+  // Fetching it as a blob makes browsers that open PDFs inline (Chrome, Edge, Safari) save it instead.
+  // If that fails for any reason, fall back to a plain download link.
+  function clickLink(href, name) {
     var a = document.createElement('a');
-    a.href = file;
-    a.setAttribute('download', '');
+    a.href = href;
+    a.setAttribute('download', name || '');
     a.style.display = 'none';
     document.body.appendChild(a);
     a.click();
     setTimeout(function () { a.remove(); }, 1000);
+  }
+  function downloadFile(file) {
+    var name = file.split('/').pop();
+    if (!window.fetch || !window.URL || !URL.createObjectURL) { clickLink(file, name); return; }
+    fetch(file)
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.blob(); })
+      .then(function (blob) {
+        var url = URL.createObjectURL(new Blob([blob], { type: 'application/octet-stream' }));
+        clickLink(url, name);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
+      })
+      .catch(function () { clickLink(file, name); });
   }
 
   document.querySelectorAll('.dl').forEach(function (box) {
@@ -57,7 +72,10 @@
     }
 
     // Fallback link and chip-in links
-    box.querySelectorAll('.dl-file-link').forEach(function (a) { a.href = file; });
+    box.querySelectorAll('.dl-file-link').forEach(function (a) {
+      a.href = file;
+      a.addEventListener('click', function (e) { e.preventDefault(); downloadFile(file); });
+    });
     box.querySelectorAll('[data-amount]').forEach(function (a) {
       var amt = Number(a.getAttribute('data-amount'));
       a.href = stripe + (amt > 0 ? '?__prefilled_amount=' + (amt * 100) + '&' : '?') +
