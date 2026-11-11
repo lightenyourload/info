@@ -512,6 +512,21 @@ a.hero-stat-row:nth-child(4) { --d: 1.8s; }
 .action-clean   { color: var(--clean); }
 .action-coming  { color: var(--ink-muted); }
 
+/* "View guide" as a small coloured button. The negative margin cancels the
+   button's vertical padding, so the card footer keeps its original height. */
+.action-dirty, .action-tread, .action-clean {
+  color: #fff;
+  padding: 7px 14px;
+  margin: -7px 0;
+  border-radius: 4px;
+  font-size: 12.5px;
+  transition: filter .2s;
+}
+.action-dirty { background: var(--dirty); }
+.action-tread { background: var(--tread); }
+.action-clean { background: var(--clean); }
+.guide-card:hover .guide-action:not(.action-coming) { filter: brightness(.88); }
+
 .card-coming {
   opacity: .65;
   cursor: default;
