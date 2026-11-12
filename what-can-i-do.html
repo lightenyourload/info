@@ -237,6 +237,16 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .berry-fig{margin:32px auto 0;max-width:380px;padding:0 16px}
 .berry-fig img{width:100%;height:auto;display:block;border:1px solid var(--rule);border-radius:4px}
 .wcid-guide .info-box li::before{content:"•";font-size:18px;line-height:1;top:5px;color:var(--accent,var(--muted))}
+.cite{color:var(--muted);font-size:.9em;white-space:normal}
+sup.ref{font-size:.65em;line-height:0;margin-left:1px}
+sup.ref a{color:var(--muted);text-decoration:none;font-weight:600}
+sup.ref a:hover{color:var(--ink);text-decoration:underline}
+.wcid-refs{margin:40px 48px 48px;padding-top:24px;border-top:1px solid var(--rule)}
+.wcid-refs h2{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.wcid-refs ul.apa{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.wcid-refs li{font-size:13px;line-height:1.6;color:#555;padding-left:2em;text-indent:-2em;overflow-wrap:anywhere}
+.wcid-refs a{color:inherit;text-underline-offset:2px}
+@media(max-width:700px){.wcid-refs{margin:32px 16px 40px}}
 .wash-img{float:right;width:200px;height:200px;object-fit:cover;margin:0 0 12px 24px;border-radius:4px;display:block}
 @media(max-width:700px){.wash-img{float:none;width:100%;height:200px;margin:0 0 14px}}
 .wash-ph{float:right;width:200px;height:200px;margin:0 0 12px 24px;border:2px dashed var(--rule);border-radius:4px;display:flex;align-items:center;justify-content:center;text-align:center;font:12px/1.4 'DM Mono',monospace;color:var(--muted);padding:10px;background:#faf9f6}
@@ -284,7 +294,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 
   <section class="wcid-guide" id="how-to-wash" style="--accent:var(--ink)">
     <div class="wcid-head"><h2>How to wash your fruit and veg</h2></div>
-    <p class="wcid-intro">Washing won’t turn a sprayed strawberry organic, but it’s free, it takes a minute, and it shifts more than you’d think. A 2026 review of nearly 50 studies found a plain rinse removes around a third of surface residues on average, and a soak in bicarbonate of soda or vinegar about half.</p>
+    <p class="wcid-intro">Washing won’t turn a sprayed strawberry organic, but it’s free, it takes a minute, and it shifts more than you’d think. A 2026 review of nearly 50 studies found a plain rinse removes around a third of surface residues on average, and a soak in bicarbonate of soda or vinegar about half <span class="cite">(de Montagnac et al., 2026)</span>.</p>
 
   <div class="info-box" style="--accent:var(--ink)">
     <h4>The everyday rinse</h4>
@@ -295,7 +305,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
       <li><strong>Hands first.</strong> Then rub each piece under cool running water for at least 20 seconds.</li>
       <li><strong>Scrub anything firm.</strong> Potatoes, carrots, apples, cucumbers, pumpkin. A clean veg brush does the job.</li>
       <li><strong>Skip the soap.</strong> Detergent isn’t made to be eaten, and food safety authorities advise against it. Water is enough for an everyday wash.</li>
-      <li><strong>Wash organic too.</strong> Organic means fewer synthetic sprays, not no soil or bugs.</li>
+      <li><strong>Wash organic too.</strong> Organic means fewer synthetic sprays, not no soil or bugs <span class="cite">(Better Health Channel, n.d.)</span>.</li>
     </ul>
   </div>
 
@@ -305,8 +315,8 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     
     <p>For strawberries, grapes, apples, leafy greens and anything else on the Dirty Dozen, a soak is worth the extra ten minutes.</p>
     <ul class="wash-steps" style="margin-top:12px">
-      <li><strong>Bi-carb:</strong> 2 teaspoons in a litre of cool water. That’s the strength used in a 2017 apple study, where it beat both tap water and the bleach wash used commercially.</li>
-      <li><strong>Or vinegar:</strong> 1 part white vinegar to 3 parts water. Rinse well afterwards, unless you like your salad tasting like hot chips.</li>
+      <li><strong>Bi-carb:</strong> 2 teaspoons in a litre of cool water. That’s the strength used in a 2017 apple study, where it beat both tap water and the bleach wash used commercially <span class="cite">(Yang et al., 2017)</span>.</li>
+      <li><strong>Or vinegar:</strong> 1 part white vinegar to 3 parts water <span class="cite">(de Montagnac et al., 2026)</span>. Rinse well afterwards, unless you like your salad tasting like hot chips.</li>
       <li><strong>Soak for 10-15 minutes.</strong> Berries about 10, so they don’t go soggy.</li>
       <li><strong>Lift, don’t pour.</strong> Lift the produce out so the grit stays in the bowl, then give it a final rinse under the tap.</li>
       <li><strong>Pick one, not both.</strong> Bi-carb and vinegar cancel each other out.</li>
@@ -318,10 +328,10 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     <img class="wash-img" src="wash-fruit-citrus.webp" alt="Hands rinsing an orange over a bowl of citrus fruit in water" width="480" height="480" loading="lazy">
     <ul class="wash-steps">
       <li><strong>Berries.</strong> Wash only what you’re about to eat. A colander sitting in a bowl makes the soak and lift easy. <a href="#berries">See the berry guide ↓</a></li>
-      <li><strong>Citrus.</strong> If a recipe calls for zest, scrub the skin well first, or use organic. Australian packers often add fungicide to the wax coating to stop mould in storage.</li>
+      <li><strong>Citrus.</strong> If a recipe calls for zest, scrub the skin well first, or use organic. Australian packers often add fungicide to the wax coating to stop mould in storage <span class="cite">(Australian Pesticides and Veterinary Medicines Authority [APVMA], n.d.; Cunningham et al., 2007)</span>.</li>
       <li><strong>Firm fruit (eg. apples, pears).</strong> Scrub under running water with a clean brush.</li>
       <li><strong>Grapes.</strong> Keep them on the stem, soak in a colander, then lift and rinse. Pick them off as you eat them.</li>
-      <li><strong>Rockmelon.</strong> Scrub the rind before you cut it. The knife can carry whatever’s on the skin into the flesh.</li>
+      <li><strong>Rockmelon.</strong> Scrub the rind before you cut it. The knife can carry whatever’s on the skin into the flesh <span class="cite">(CSIRO, 2018)</span>.</li>
       <li><strong>Soft fruit (eg. stone fruit, tomatoes).</strong> Too soft to scrub - rub gently with your fingers under running water, or soak.</li>
     </ul>
   </div>
@@ -334,17 +344,17 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
       <li><strong>Capsicum.</strong> Rinse well, paying attention to the stem end.</li>
       <li><strong>Celery.</strong> Separate the stalks and wash the base of each one, where dirt collects.</li>
       <li><strong>Garlic and ginger.</strong> Peel them. Washing doesn’t do much for ginger, so if you use it every day, go organic.</li>
-      <li><strong>Leafy greens.</strong> Remove the outer leaves, separate the rest, then soak and swish. A salad spinner dries them in seconds.</li>
-      <li><strong>Potatoes, cucumbers and carrots.</strong> Peel them. Peeling removes more residue than any wash, though you lose some fibre with the skin.</li>
+      <li><strong>Leafy greens.</strong> Remove the outer leaves <span class="cite">(NSW Food Authority, 2023)</span>, separate the rest, then soak and swish. A salad spinner dries them in seconds.</li>
+      <li><strong>Potatoes, cucumbers and carrots.</strong> Peel them. Peeling removes more residue than any wash, though you lose some fibre with the skin <span class="cite">(Keikotlhaile et al., 2010)</span>.</li>
     </ul>
-    <p class="wash-note"><strong>Cooking?</strong> Blanching and boiling bring residues down further, which is why frozen beans make our Tread Carefully list.</p>
+    <p class="wash-note"><strong>Cooking?</strong> Blanching and boiling bring residues down further, which is why frozen beans make our Tread Carefully list <span class="cite">(Keikotlhaile et al., 2010)</span>.</p>
   </div>
 
   <div class="wash-ph wash-ph-wide" id="berries" aria-hidden="true">BERRY INFOGRAPHIC</div>
 
   <div class="info-box caution" style="--accent:var(--dirty)">
     <h4>What washing can’t do</h4>
-    <p>Washing only reaches the surface. Some pesticides are designed to move through the whole plant, and others soak in through the skin. In the 2017 apple study, a fungicide had travelled 80 micrometres into the fruit (about the thickness of a sheet of paper), where no wash could reach it.</p>
+    <p>Washing only reaches the surface. Some pesticides are designed to move through the whole plant, and others soak in through the skin. In the 2017 apple study, a fungicide had travelled 80 micrometres into the fruit (about the thickness of a sheet of paper), where no wash could reach it <span class="cite">(Yang et al., 2017)</span>.</p>
     <p class="wash-note">That’s why washing is your daily habit, and the guides are your shopping list.</p>
   </div>
 
@@ -355,6 +365,21 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     <p><strong>Grow your own greens.</strong> Spinach, lettuce, kale and silverbeet are among the easiest things to grow in a pot or a patch, and they're some of the hardest to clean of residues. A few pots of greens takes a big item off the Dirty Dozen.</p>
     </div>
   </div>
+  </section>
+
+
+  <section class="wcid-refs" aria-labelledby="refs-title">
+    <h2 id="refs-title">References</h2>
+    <ul class="apa">
+      <li>Australian Pesticides and Veterinary Medicines Authority. (n.d.). <em>Deccozil EC fungicide</em> [Product label]. <a href="https://elabels.apvma.gov.au/50077ELBL.pdf">https://elabels.apvma.gov.au/50077ELBL.pdf</a></li>
+      <li>Better Health Channel. (n.d.). <em>Food, pesticides and other chemicals</em>. Victorian Government. <a href="https://www.betterhealth.vic.gov.au/health/HealthyLiving/food-pesticides-and-other-chemicals">https://www.betterhealth.vic.gov.au/health/HealthyLiving/food-pesticides-and-other-chemicals</a></li>
+      <li>CSIRO. (2018, March). <em>Listeria in rockmelons: What you need to know</em>. <a href="https://www.csiro.au/en/news/All/Articles/2018/March/listeria-in-rockmelons-what-you-need-to-know">https://www.csiro.au/en/news/All/Articles/2018/March/listeria-in-rockmelons-what-you-need-to-know</a></li>
+      <li>Cunningham, N. M., Steciuk, K. A., &amp; Taverner, P. D. (2007). <em>The effect of postharvest applications of imazalil in wax on decay and sporulation caused by Penicillium digitatum on late picked navel oranges</em> [Conference abstract]. Australasian Postharvest Conference, Terrigal, NSW, Australia. <a href="https://www.phtnet.org/research/download/pdf/md188.pdf">https://www.phtnet.org/research/download/pdf/md188.pdf</a></li>
+      <li>de Montagnac, D., et al. (2026). Reducing pesticide residues on produce: A scoping review of household produce washing methods. <em>Frontiers in Environmental Health</em>, Article 1768399. <a href="https://doi.org/10.3389/fenvh.2026.1768399">https://doi.org/10.3389/fenvh.2026.1768399</a></li>
+      <li>Keikotlhaile, B. M., Spanoghe, P., &amp; Steurbaut, W. (2010). Effects of food processing on pesticide residues in fruits and vegetables: A meta-analysis approach. <em>Food and Chemical Toxicology, 48</em>(1), 1–6. <a href="https://doi.org/10.1016/j.fct.2009.10.031">https://doi.org/10.1016/j.fct.2009.10.031</a></li>
+      <li>NSW Food Authority. (2023). <em>Fresh cut fruit and vegetables</em> [Fact sheet]. NSW Government. <a href="https://www.foodauthority.nsw.gov.au/media/1316">https://www.foodauthority.nsw.gov.au/media/1316</a></li>
+      <li>Yang, T., Doherty, J., Zhao, B., Kinchla, A. J., Clark, J. M., &amp; He, L. (2017). Effectiveness of commercial and homemade washing agents in removing pesticide residues on and in apples. <em>Journal of Agricultural and Food Chemistry, 65</em>(44), 9744–9752. <a href="https://doi.org/10.1021/acs.jafc.7b03118">https://doi.org/10.1021/acs.jafc.7b03118</a></li>
+    </ul>
   </section>
 
   <div class="page-footer">
