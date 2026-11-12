@@ -230,6 +230,18 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 <style>
 .page-header.wcid-header{background:var(--ink)}
 .wcid-guide{padding:8px 0 24px;border-bottom:1px solid var(--rule)}
+.wash-steps li strong{color:var(--ink)}
+.wcid-guide .info-box.caution{background:#fdf3f0;border:1px solid var(--dirty-mid);border-left:4px solid var(--dirty);border-top:1px solid var(--dirty-mid)}
+.wash-note{font-size:14px!important;color:var(--muted)!important;margin-top:12px}
+.wash-steps a{color:var(--clean);text-underline-offset:2px}
+.berry-fig{margin:32px auto 0;max-width:380px;padding:0 16px}
+.berry-fig img{width:100%;height:auto;display:block;border:1px solid var(--rule);border-radius:4px}
+.wcid-guide .info-box li::before{content:"•";font-size:18px;line-height:1;top:5px;color:var(--accent,var(--muted))}
+.wash-img{float:right;width:200px;height:200px;object-fit:cover;margin:0 0 12px 24px;border-radius:4px;display:block}
+@media(max-width:700px){.wash-img{float:none;width:100%;height:200px;margin:0 0 14px}}
+.wash-ph{float:right;width:200px;height:200px;margin:0 0 12px 24px;border:2px dashed var(--rule);border-radius:4px;display:flex;align-items:center;justify-content:center;text-align:center;font:12px/1.4 'DM Mono',monospace;color:var(--muted);padding:10px;background:#faf9f6}
+.wash-ph-wide{float:none;width:auto;height:320px;margin:32px 48px 0}
+@media(max-width:700px){.wash-ph{float:none;width:100%;height:120px;margin:0 0 14px}.wash-ph-wide{margin:24px 16px 0;height:220px}}
 .wcid-guide:last-of-type{border-bottom:none}
 .wcid-head{margin:40px 48px 0;display:flex;align-items:center;gap:12px}
 .wcid-head h2{font-family:'Playfair Display',serif;font-size:30px;line-height:1.2;margin:0;color:var(--ink)}
@@ -266,8 +278,76 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   <div class="page-header wcid-header">
     <div class="kicker">Lighten Your Load<span class="kicker-sep"> · </span><span class="kicker-part">What can I do</span></div>
     <h1>What can I do?</h1>
-    <p class="desc">Simple steps from each guide, all in one place.</p>
+    <p class="desc">How to wash your produce, plus simple steps from each guide, all in one place.</p>
   </div>
+
+
+  <section class="wcid-guide" id="how-to-wash" style="--accent:var(--ink)">
+    <div class="wcid-head"><h2>How to wash your fruit and veg</h2></div>
+    <p class="wcid-intro">Washing won’t turn a sprayed strawberry organic, but it’s free, it takes a minute, and it shifts more than you’d think. A 2026 review of nearly 50 studies found a plain rinse removes around a third of surface residues on average, and a soak in bicarbonate of soda or vinegar about half.</p>
+
+  <div class="info-box" style="--accent:var(--ink)">
+    <h4>The everyday rinse</h4>
+    <img class="wash-img" src="wash-rinse-veg.webp" alt="Capsicum, cucumbers, celery, a carrot and broccoli being rinsed under running water in a sink" width="480" height="480" loading="lazy">
+    
+    <ul class="wash-steps">
+      <li><strong>Wash just before you eat or cook it.</strong> Not when you unpack the shopping - damp produce spoils faster in the fridge.</li>
+      <li><strong>Hands first.</strong> Then rub each piece under cool running water for at least 20 seconds.</li>
+      <li><strong>Scrub anything firm.</strong> Potatoes, carrots, apples, cucumbers, pumpkin. A clean veg brush does the job.</li>
+      <li><strong>Skip the soap.</strong> Detergent isn’t made to be eaten, and food safety authorities advise against it. Water is enough for an everyday wash.</li>
+      <li><strong>Wash organic too.</strong> Organic means fewer synthetic sprays, not no soil or bugs.</li>
+    </ul>
+  </div>
+
+  <div class="info-box" style="--accent:var(--dirty)">
+    <h4>How to Soak the Dirty Dozen</h4>
+    <img class="wash-img" src="wash-soak-strawberries.webp" alt="Strawberries soaking in water in a colander set inside a bowl" width="480" height="480" loading="lazy">
+    
+    <p>For strawberries, grapes, apples, leafy greens and anything else on the Dirty Dozen, a soak is worth the extra ten minutes.</p>
+    <ul class="wash-steps" style="margin-top:12px">
+      <li><strong>Bi-carb:</strong> 2 teaspoons in a litre of cool water. That’s the strength used in a 2017 apple study, where it beat both tap water and the bleach wash used commercially.</li>
+      <li><strong>Or vinegar:</strong> 1 part white vinegar to 3 parts water. Rinse well afterwards, unless you like your salad tasting like hot chips.</li>
+      <li><strong>Soak for 10-15 minutes.</strong> Berries about 10, so they don’t go soggy.</li>
+      <li><strong>Lift, don’t pour.</strong> Lift the produce out so the grit stays in the bowl, then give it a final rinse under the tap.</li>
+      <li><strong>Pick one, not both.</strong> Bi-carb and vinegar cancel each other out.</li>
+    </ul>
+  </div>
+
+  <div class="info-box" style="--accent:var(--clean)">
+    <h4>Fruit</h4>
+    <img class="wash-img" src="wash-fruit-citrus.webp" alt="Hands rinsing an orange over a bowl of citrus fruit in water" width="480" height="480" loading="lazy">
+    <ul class="wash-steps">
+      <li><strong>Berries.</strong> Wash only what you’re about to eat. A colander sitting in a bowl makes the soak and lift easy. <a href="#berries">See the berry guide ↓</a></li>
+      <li><strong>Citrus.</strong> If a recipe calls for zest, scrub the skin well first, or use organic. Australian packers often add fungicide to the wax coating to stop mould in storage.</li>
+      <li><strong>Firm fruit (eg. apples, pears).</strong> Scrub under running water with a clean brush.</li>
+      <li><strong>Grapes.</strong> Keep them on the stem, soak in a colander, then lift and rinse. Pick them off as you eat them.</li>
+      <li><strong>Rockmelon.</strong> Scrub the rind before you cut it. The knife can carry whatever’s on the skin into the flesh.</li>
+      <li><strong>Soft fruit (eg. stone fruit, tomatoes).</strong> Too soft to scrub - rub gently with your fingers under running water, or soak.</li>
+    </ul>
+  </div>
+
+  <div class="info-box" style="--accent:var(--clean)">
+    <h4>Veg</h4>
+    <div class="wash-ph" aria-hidden="true">IMAGE<br>veg</div>
+    <ul class="wash-steps">
+      <li><strong>Broccoli and broccolini.</strong> Soak head-down, so the water gets into the florets.</li>
+      <li><strong>Capsicum.</strong> Rinse well, paying attention to the stem end.</li>
+      <li><strong>Celery.</strong> Separate the stalks and wash the base of each one, where dirt collects.</li>
+      <li><strong>Garlic and ginger.</strong> Peel them. Washing doesn’t do much for ginger, so if you use it every day, go organic.</li>
+      <li><strong>Leafy greens.</strong> Remove the outer leaves, separate the rest, then soak and swish. A salad spinner dries them in seconds.</li>
+      <li><strong>Potatoes, cucumbers and carrots.</strong> Peel them. Peeling removes more residue than any wash, though you lose some fibre with the skin.</li>
+    </ul>
+    <p class="wash-note"><strong>Cooking?</strong> Blanching and boiling bring residues down further, which is why frozen beans make our Tread Carefully list.</p>
+  </div>
+
+  <div class="wash-ph wash-ph-wide" id="berries" aria-hidden="true">BERRY INFOGRAPHIC</div>
+
+  <div class="info-box caution" style="--accent:var(--dirty)">
+    <h4>What washing can’t do</h4>
+    <p>Washing only reaches the surface. Some pesticides are designed to move through the whole plant, and others soak in through the skin. In the 2017 apple study, a fungicide had travelled 80 micrometres into the fruit (about the thickness of a sheet of paper), where no wash could reach it.</p>
+    <p class="wash-note">That’s why washing is your daily habit, and the guides are your shopping list.</p>
+  </div>
+  </section>
 
   <section class="wcid-guide" id="dirty-dozen" style="--accent:var(--dirty)">
     <div class="wcid-head"><span class="gdot gdot-dirty" aria-hidden="true"></span><h2>The Dirty Dozen AU</h2></div>
@@ -326,7 +406,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     <h4>Where to start</h4>
     <ul>
       <li><strong>Check where it’s from.</strong> Australian-grown Dirty Dozen items are a better choice than imported ones.</li>
-      <li><strong>Soak, then rinse.</strong> A baking soda soak removes more surface residue than water alone.</li>
+      <li><strong>Soak, then rinse.</strong> A bi-carb soak removes more surface residue than water alone. <a href="#how-to-wash">How to wash →</a></li>
       <li><strong>Ask at farmers markets.</strong> Many small Australian farms use organic methods without being certified.</li>
       <li><strong>Grow your own.</strong> Put your effort into Dirty Dozen crops: strawberries, leafy greens, kale and berries.</li>
     </ul>
@@ -344,7 +424,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   </section>
 
   <div class="page-footer">
-    <span>Sources: FSANZ ATDS · Friends of the Earth Melbourne (2012) · CHOICE · NRS · APVMA · EWG Shopper's Guide (2026) · Guardian AU FOI · Pesticide Action Australia · <a href="resources.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px;opacity:.8">Full source list →</a></span>
+    <span>Sources: FSANZ ATDS · NSW Food Authority · Better Health Channel (Vic) · Yang et al. (2017) · de Montagnac et al. (2026) · Keikotlhaile et al. (2010) · APVMA · CSIRO · Friends of the Earth Melbourne (2012) · CHOICE · NRS · APVMA · EWG Shopper's Guide (2026) · Guardian AU FOI · Pesticide Action Australia · <a href="resources.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px;opacity:.8">Full source list →</a></span>
     <span>Lighten Your Load · lightenyourload.info · October 2026 · <a href="privacy.html" style="color:inherit">Privacy</a></span>
   </div>
 
