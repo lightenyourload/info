@@ -67,6 +67,11 @@ A4_PREP = r"""
 # Drop the page's own @page rules so a4.css sets the margins (run before adding a4.css)
 A4_DROP_PAGE_RULES = """() => { for (const sh of document.styleSheets) { let r; try { r = sh.cssRules; } catch (e) { continue; }
   for (let i = r.length - 1; i >= 0; i--) if (r[i] instanceof CSSPageRule) sh.deleteRule(i); } }"""
+# Links in the PDFs must point at the live site, not the local build server
+ABSOLUTE_LINKS = """() => document.querySelectorAll('a[href]').forEach(a => {
+  const u = new URL(a.href, location.href);
+  if (u.hostname === '127.0.0.1' || u.hostname === 'localhost') a.href = 'https://lightenyourload.info' + u.pathname + u.hash;
+})"""
 A4_MARK_TOPS = "t => document.querySelectorAll('.produce-list .produce-item').forEach(li => { const n = li.querySelector('.name').childNodes[0].textContent.trim(); if (t.includes(n)) li.classList.add('col-top'); })"
 
 
@@ -160,6 +165,7 @@ async def render(tmp, fonts):
         for g in GUIDES:
             await page.goto(f'http://127.0.0.1:{PORT}/{g}.html', wait_until='networkidle')
             await page.add_style_tag(content=a5)
+            await page.evaluate(ABSOLUTE_LINKS)
             await page.evaluate("document.querySelectorAll('img[loading=lazy]').forEach(i => i.loading = 'eager')")
             await page.evaluate('document.fonts.ready')
             await page.wait_for_timeout(800)
@@ -175,6 +181,7 @@ async def render(tmp, fonts):
                 await page.evaluate(A4_DROP_PAGE_RULES)
                 await page.add_style_tag(content=a4css)
                 names = await page.evaluate(A4_PREP)
+                await page.evaluate(ABSOLUTE_LINKS)
                 await page.evaluate(A4_MARK_TOPS, tops)
                 await page.evaluate("document.querySelectorAll('img[loading=lazy]').forEach(i => i.loading = 'eager')")
                 await page.evaluate('document.fonts.ready')
