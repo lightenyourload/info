@@ -53,8 +53,10 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 
 /* Source entries */
 .source-list{display:flex;flex-direction:column;gap:0}
-.source-group{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--ink);margin:26px 0 2px}
+.source-group{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff;background:#1a1a1a;padding:9px 14px;margin:28px 0 0}
 .source-group:first-child{margin-top:0}
+.source-entry:has(+ .source-group){border-bottom:0}
+.section h2:has(+ .source-list){border-bottom:0;padding-bottom:0}
 .source-entry{padding:14px 0;border-bottom:1px solid var(--rule)}
 .source-entry:last-child{border-bottom:none}
 .source-name{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px}
