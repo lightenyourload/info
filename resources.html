@@ -75,14 +75,6 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .tag-tct{background:#c4b4e8;color:#2a1a5a}
 .tag-ll{background:#b7dfc9;color:#1a4a30}
 
-/* Further reading */
-.reading-list{display:flex;flex-direction:column;gap:10px}
-.reading-item{display:flex;align-items:baseline;gap:12px;padding:12px 14px;border:1px solid var(--rule);border-radius:3px;text-decoration:none;transition:all .2s}
-.reading-item:hover{box-shadow:0 2px 10px rgba(0,0,0,.06);border-color:#bbb}
-.reading-item .r-arrow{font-size:14px;color:var(--res);flex-shrink:0}
-.reading-item .r-body{}
-.reading-item .r-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px}
-.reading-item .r-desc{font-size:12px;color:var(--muted);line-height:1.5}
 
 .page-footer{background:var(--ink);color:#bbb;padding:18px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;font-size:11px;letter-spacing:.3px;margin-top:28px;gap:6px}
 .page-footer span:last-child{color:#ccc;font-style:italic}
@@ -104,9 +96,6 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .source-meta{font-size:11.5px;margin-bottom:7px}
 .source-desc{font-size:16px;line-height:1.65;color:#474747;max-width:68ch}
 .tag{font-size:11px;padding:3px 8px}
-.reading-item{padding:16px 18px}
-.reading-item .r-title{font-size:17px;margin-bottom:4px}
-.reading-item .r-desc{font-size:15px;line-height:1.55}
 .page-footer{padding:28px 48px;font-size:13px;line-height:1.7;margin-top:48px}
 .nav-links a{font-size:13px}
 @media (max-width:640px){
@@ -157,7 +146,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 <div class="page">
 
   <div class="page-header">
-    <div class="kicker">Lighten Your Load · Sources &amp; Further Reading</div>
+    <div class="kicker">Lighten Your Load · Sources</div>
     <h1>Resources</h1>
     <p class="desc">The data behind these guides comes from Australian government monitoring, independent research, and advocacy organisations. Here's what we used and where to go next.</p>
   </div>
@@ -194,7 +183,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
       <div class="source-entry">
         <div class="source-name"><a href="https://www.choice.com.au/food-and-drink/food-warnings-and-safety/pesticides/articles/strawberries-test-reveals-health-concerns" target="_blank" rel="noopener">CHOICE Australia ↗</a></div>
         <div class="source-meta">CHOICE · Consumer advocacy</div>
-        <div class="source-desc">Australia's leading independent consumer organisation. CHOICE has conducted and published investigations into pesticide residues in Australian-bought produce, including testing of imported garlic and other high-risk items. Used to supplement government data with independent consumer-focused findings.</div>
+        <div class="source-desc">Australia's leading independent consumer organisation. CHOICE has conducted and published investigations into pesticide residues in Australian-bought produce, including testing of imported garlic and other high-risk items, and its 2008 test of strawberries from 31 growers (published with an explainer on residues and maximum residue limits in 2014). Used to supplement government data with independent consumer-focused findings.</div>
         <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span><span class="tag tag-tct">Tread Carefully</span><span class="tag tag-ll">Fill Your Basket</span></div>
       </div>
 
@@ -208,7 +197,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
       <div class="source-entry">
         <div class="source-name"><a href="https://www.apvma.gov.au/news-and-publications/news/suspension-of-specific-dimethoate-products-251111" target="_blank" rel="noopener">APVMA — Australian Pesticides and Veterinary Medicines Authority ↗</a></div>
         <div class="source-meta">Federal regulator · Approval &amp; review data</div>
-        <div class="source-desc">The federal body responsible for approving and reviewing agricultural chemicals in Australia. APVMA's suspension decisions — such as the 2025 dimethoate review affecting blueberries, raspberries and blackberries — are cited directly in the Dirty Dozen guide.</div>
+        <div class="source-desc">The federal body responsible for approving and reviewing agricultural chemicals in Australia. Its November 2025 decision to suspend dimethoate products for use on blueberries, raspberries and blackberries is cited directly in the Dirty Dozen guide.</div>
         <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span><span class="tag tag-tct">Tread Carefully</span><span class="tag tag-ll">Fill Your Basket</span></div>
       </div>
 
@@ -227,8 +216,8 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
       </div>
 
       <div class="source-entry">
-        <div class="source-name"><a href="https://www.sbs.com.au/news/article/are-your-blueberries-safe/tf1nqutcv" target="_blank" rel="noopener">Southern Cross University — Dimethoate research (2025) ↗</a></div>
-        <div class="source-meta">Southern Cross University · Academic research (link: SBS News coverage) · Dirty Dozen specific</div>
+        <div class="source-name"><a href="https://www.sbs.com.au/news/article/are-your-blueberries-safe/tf1nqutcv" target="_blank" rel="noopener">Southern Cross University berry testing (2025), reported by SBS News ↗</a></div>
+        <div class="source-meta">Southern Cross University · Independent testing by Prof. Kirsten Benkendorff · Link: SBS News coverage · Dirty Dozen specific</div>
         <div class="source-desc">2025 research from Southern Cross University finding dimethoate residues in Australian blueberries at levels that could exceed safe daily intake estimates if eaten daily. A key piece of AU-specific evidence cited in the Dirty Dozen blueberry entry and context for the APVMA suspension proposal.</div>
         <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span></div>
       </div>
@@ -243,69 +232,6 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     </div>
   </div>
 
-  <!-- FURTHER READING -->
-  <div class="section" style="margin-top:28px;padding-bottom:4px">
-    <h2>Further Reading</h2>
-    <div class="reading-list">
-
-      <a href="https://pesticideaction.org.au/" class="reading-item" target="_blank" rel="noopener">
-        <span class="r-arrow">↗</span>
-        <div class="r-body">
-          <div class="r-title">Pesticide Action Australia</div>
-          <div class="r-desc">Campaigns, research summaries and policy updates on pesticide use in Australia.</div>
-        </div>
-      </a>
-
-      <a href="https://www.foodstandards.gov.au/science-data/monitoring-safety/australian-total-diet-study" class="reading-item" target="_blank" rel="noopener">
-        <span class="r-arrow">↗</span>
-        <div class="r-body">
-          <div class="r-title">FSANZ — Australian Total Diet Study</div>
-          <div class="r-desc">FSANZ's page for the Australian Total Diet Study, with reports from each round, including the pesticide residue rounds.</div>
-        </div>
-      </a>
-
-      <a href="https://www.ewg.org/foodnews/full-list.php" class="reading-item" target="_blank" rel="noopener">
-        <span class="r-arrow">↗</span>
-        <div class="r-body">
-          <div class="r-title">EWG Full Pesticide Residue List (2026)</div>
-          <div class="r-desc">The complete Environmental Working Group ranking of 46 fruits and vegetables by pesticide load. US data — use as context, not a direct AU equivalent.</div>
-        </div>
-      </a>
-
-      <a href="https://www.apvma.gov.au/news-and-publications/news/suspension-of-specific-dimethoate-products-251111" class="reading-item" target="_blank" rel="noopener">
-        <span class="r-arrow">↗</span>
-        <div class="r-body">
-          <div class="r-title">APVMA — Dimethoate suspended on berries (November 2025)</div>
-          <div class="r-desc">The APVMA's decision to suspend dimethoate products for use on blueberries, raspberries and blackberries.</div>
-        </div>
-      </a>
-
-      <a href="https://www.choice.com.au/food-and-drink/food-warnings-and-safety/pesticides/articles/strawberries-test-reveals-health-concerns" class="reading-item" target="_blank" rel="noopener">
-        <span class="r-arrow">↗</span>
-        <div class="r-body">
-          <div class="r-title">CHOICE — Strawberries test reveals pesticide health concerns</div>
-          <div class="r-desc">CHOICE's 2008 test of strawberries from 31 growers, with its explainer on residues and maximum residue limits (published 2014).</div>
-        </div>
-      </a>
-
-      <a href="https://www.theguardian.com/environment/2023/jan/12/australias-self-regulating-pesticide-monitoring-system-picked-up-far-fewer-violations-than-government-study" class="reading-item" target="_blank" rel="noopener">
-        <span class="r-arrow">↗</span>
-        <div class="r-body">
-          <div class="r-title">The Guardian AU — Australia's self-regulating pesticide monitoring regime picked up far fewer violations than government study</div>
-          <div class="r-desc">The unpublished 2013 federal pilot study, revealed under FOI in 2023: dimethoate at up to 90× the limit in strawberries, and unacceptable fenthion levels in peaches and an apricot.</div>
-        </div>
-      </a>
-
-      <a href="https://www.sbs.com.au/news/article/are-your-blueberries-safe/tf1nqutcv" class="reading-item" target="_blank" rel="noopener">
-        <span class="r-arrow">↗</span>
-        <div class="r-body">
-          <div class="r-title">SBS News — Are your blueberries safe?</div>
-          <div class="r-desc">Coverage of Southern Cross University's 2025 berry testing (Prof. Kirsten Benkendorff), the APVMA's response and the questions it raised about how chemicals are regulated.</div>
-        </div>
-      </a>
-
-    </div>
-  </div>
 
   <div class="page-footer">
     <span>Sources: FSANZ ATDS · Friends of the Earth Melbourne (2012) · CHOICE · NRS · APVMA · EWG Shopper's Guide (2026) · Guardian AU FOI · Southern Cross University (2025) · Hort Innovation (2025) · <a href="https://pesticideaction.org.au/" style="color:inherit;text-decoration:underline;text-underline-offset:2px;opacity:.8" target="_blank" rel="noopener">Pesticide Action Australia</a></span>
