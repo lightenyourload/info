@@ -45,13 +45,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .page-header h1{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;line-height:1.1;margin-bottom:8px}
 .page-header .desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.6;max-width:560px}
 
-/* PAA callout */
-.paa-callout{margin:24px 40px 0;border:1px solid var(--rule);border-left:4px solid #2d6a4f;padding:20px 24px;background:#f2f8f5;display:flex;gap:20px;align-items:flex-start}
-.paa-callout .paa-icon{font-size:32px;flex-shrink:0;line-height:1}
-.paa-callout h3{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:6px}
-.paa-callout p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:10px}
-.paa-callout a.paa-link{display:inline-flex;align-items:center;gap:6px;background:#2d6a4f;color:white;padding:9px 18px;border-radius:4px;font-size:13px;font-weight:600;text-decoration:none;transition:background .2s}
-.paa-callout a.paa-link:hover{background:#245a40}
+
 
 /* Section headings */
 .section{padding:28px 40px 0}
@@ -87,10 +81,6 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .page-header .kicker{font-size:12px;color:rgba(255,255,255,.7)}
 .page-header h1{font-size:42px;margin-bottom:14px}
 .page-header .desc{font-size:17px;font-weight:400;color:rgba(255,255,255,.92);line-height:1.65;max-width:620px}
-.paa-callout{margin:32px 48px 0;padding:22px 24px}
-.paa-callout h3{font-size:20px;margin-bottom:8px}
-.paa-callout p{font-size:16px;line-height:1.65;margin-bottom:14px}
-.paa-callout a.paa-link{font-size:14.5px;padding:11px 20px}
 .section{padding:36px 48px 0}
 .section h2{font-size:12px;margin-bottom:20px}
 .source-entry{padding:18px 0}
@@ -101,8 +91,7 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 .page-footer{padding:28px 48px;font-size:13px;line-height:1.7;margin-top:48px}
 .nav-links a{font-size:13px}
 @media (max-width:640px){
-  .paa-callout{margin:24px 16px 0;padding:18px;flex-direction:column;gap:12px}
-  .section{padding:28px 16px 0}
+    .section{padding:28px 16px 0}
   .page-footer{padding:24px 20px}
   .page-header{padding:32px 20px 28px}
   .page-header h1{font-size:32px}
@@ -153,16 +142,6 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
     <p class="desc">The data behind these guides comes from Australian government monitoring, independent research, and advocacy organisations. Here's what we used and where to go next.</p>
   </div>
 
-  <!-- PAA CALLOUT -->
-  <div class="paa-callout">
-    <div class="paa-icon">🌿</div>
-    <div>
-      <h3>Pesticide Action Australia</h3>
-      <p>The peak body advocating for the reduction of pesticide use in Australia. PAA monitors government policy, supports independent research, and campaigns for safer food systems. Their 2026 report with independent testing has helped us immensely in confirming the data in these guides.</p>
-      <a href="https://pesticideaction.org.au/residuereport26/" class="paa-link" target="_blank" rel="noopener">Read Australia's Residue Report 2026 here ↗</a>
-    </div>
-  </div>
-
   <!-- SOURCES -->
   <div class="section" style="margin-top:8px">
     <h2>Data Sources</h2>
@@ -198,6 +177,12 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
         <div class="source-name"><a href="https://archive.foe.org.au/sites/default/files/TheDoseMakesThePoisonFeb2012_0.pdf" target="_blank" rel="noopener">Friends of the Earth Melbourne — The Dose Makes the Poison (2012) ↗</a></div>
         <div class="source-meta">Friends of the Earth Melbourne · compiled by Anthony Amis · Independent research</div>
         <div class="source-desc">A landmark independent analysis of 12 years of FSANZ ATDS data (2000–2011) identifying which produce items carried the highest detection rates and chemical loads in Australia. One of the few systematic AU-specific rankings available and a foundational source for the Dirty Dozen and Tread Carefully.</div>
+        <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span><span class="tag tag-tct">Tread Carefully</span><span class="tag tag-ll">Fill Your Basket</span></div>
+      </div>
+      <div class="source-entry">
+        <div class="source-name"><a href="https://pesticideaction.org.au/residuereport26/" target="_blank" rel="noopener">Pesticide Action Australia — Australia's Residue Report 2026 ↗</a></div>
+        <div class="source-meta">Pesticide Action Australia · Advocacy and independent testing</div>
+        <div class="source-desc">The peak body advocating for the reduction of pesticide use in Australia. PAA monitors government policy, supports independent research, and campaigns for safer food systems. Their 2026 report with independent testing has helped us immensely in confirming the data in these guides.</div>
         <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span><span class="tag tag-tct">Tread Carefully</span><span class="tag tag-ll">Fill Your Basket</span></div>
       </div>
       <div class="source-entry">
