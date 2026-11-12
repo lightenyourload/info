@@ -59,6 +59,8 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
 
 /* Source entries */
 .source-list{display:flex;flex-direction:column;gap:0}
+.source-group{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--ink);margin:26px 0 2px}
+.source-group:first-child{margin-top:0}
 .source-entry{padding:14px 0;border-bottom:1px solid var(--rule)}
 .source-entry:last-child{border-bottom:none}
 .source-name{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px}
@@ -165,28 +167,19 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
   <div class="section" style="margin-top:8px">
     <h2>Data Sources</h2>
     <div class="source-list">
-
+      <h3 class="source-group">Government</h3>
+      <div class="source-entry">
+        <div class="source-name"><a href="https://www.apvma.gov.au/news-and-publications/news/suspension-of-specific-dimethoate-products-251111" target="_blank" rel="noopener">APVMA — Australian Pesticides and Veterinary Medicines Authority ↗</a></div>
+        <div class="source-meta">Federal regulator · Approval &amp; review data</div>
+        <div class="source-desc">The federal body responsible for approving and reviewing agricultural chemicals in Australia. Its November 2025 decision to suspend dimethoate products for use on blueberries, raspberries and blackberries is cited directly in the Dirty Dozen guide.</div>
+        <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span><span class="tag tag-tct">Tread Carefully</span><span class="tag tag-ll">Fill Your Basket</span></div>
+      </div>
       <div class="source-entry">
         <div class="source-name"><a href="https://www.foodstandards.gov.au/science-data/monitoring-safety/australian-total-diet-study" target="_blank" rel="noopener">FSANZ Australian Total Diet Study (ATDS) ↗</a></div>
         <div class="source-meta">Food Standards Australia New Zealand · Government monitoring</div>
         <div class="source-desc">The primary Australian government program that measures dietary exposure to pesticide residues. Analyses a market basket of commonly eaten foods to estimate actual consumer exposure. Used as the baseline for Australian-specific residue data across all three guides.</div>
         <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span><span class="tag tag-tct">Tread Carefully</span><span class="tag tag-ll">Fill Your Basket</span></div>
       </div>
-
-      <div class="source-entry">
-        <div class="source-name"><a href="https://archive.foe.org.au/sites/default/files/TheDoseMakesThePoisonFeb2012_0.pdf" target="_blank" rel="noopener">Friends of the Earth Melbourne — The Dose Makes the Poison (2012) ↗</a></div>
-        <div class="source-meta">Friends of the Earth Melbourne · compiled by Anthony Amis · Independent research</div>
-        <div class="source-desc">A landmark independent analysis of 12 years of FSANZ ATDS data (2000–2011) identifying which produce items carried the highest detection rates and chemical loads in Australia. One of the few systematic AU-specific rankings available and a foundational source for the Dirty Dozen and Tread Carefully.</div>
-        <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span><span class="tag tag-tct">Tread Carefully</span><span class="tag tag-ll">Fill Your Basket</span></div>
-      </div>
-
-      <div class="source-entry">
-        <div class="source-name"><a href="https://www.choice.com.au/food-and-drink/food-warnings-and-safety/pesticides/articles/strawberries-test-reveals-health-concerns" target="_blank" rel="noopener">CHOICE Australia ↗</a></div>
-        <div class="source-meta">CHOICE · Consumer advocacy</div>
-        <div class="source-desc">Australia's leading independent consumer organisation. CHOICE has conducted and published investigations into pesticide residues in Australian-bought produce, including testing of imported garlic and other high-risk items, and its 2008 test of strawberries from 31 growers (published with an explainer on residues and maximum residue limits in 2014). Used to supplement government data with independent consumer-focused findings.</div>
-        <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span><span class="tag tag-tct">Tread Carefully</span><span class="tag tag-ll">Fill Your Basket</span></div>
-      </div>
-
       <div class="source-entry">
         <div class="source-name"><a href="https://www.agriculture.gov.au/agriculture-land/farm-food-drought/food/nrs" target="_blank" rel="noopener">National Residue Survey (NRS) ↗</a></div>
         <div class="source-meta">Australian Department of Agriculture · Government monitoring</div>
@@ -194,27 +187,19 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
         <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span><span class="tag tag-tct">Tread Carefully</span><span class="tag tag-ll">Fill Your Basket</span></div>
       </div>
 
+      <h3 class="source-group">Independent research and testing</h3>
       <div class="source-entry">
-        <div class="source-name"><a href="https://www.apvma.gov.au/news-and-publications/news/suspension-of-specific-dimethoate-products-251111" target="_blank" rel="noopener">APVMA — Australian Pesticides and Veterinary Medicines Authority ↗</a></div>
-        <div class="source-meta">Federal regulator · Approval &amp; review data</div>
-        <div class="source-desc">The federal body responsible for approving and reviewing agricultural chemicals in Australia. Its November 2025 decision to suspend dimethoate products for use on blueberries, raspberries and blackberries is cited directly in the Dirty Dozen guide.</div>
+        <div class="source-name"><a href="https://www.choice.com.au/food-and-drink/food-warnings-and-safety/pesticides/articles/strawberries-test-reveals-health-concerns" target="_blank" rel="noopener">CHOICE Australia ↗</a></div>
+        <div class="source-meta">CHOICE · Consumer advocacy</div>
+        <div class="source-desc">Australia's leading independent consumer organisation. CHOICE has conducted and published investigations into pesticide residues in Australian-bought produce, including testing of imported garlic and other high-risk items, and its 2008 test of strawberries from 31 growers (published with an explainer on residues and maximum residue limits in 2014). Used to supplement government data with independent consumer-focused findings.</div>
         <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span><span class="tag tag-tct">Tread Carefully</span><span class="tag tag-ll">Fill Your Basket</span></div>
       </div>
-
       <div class="source-entry">
-        <div class="source-name"><a href="https://www.ewg.org/foodnews/full-list.php" target="_blank" rel="noopener">EWG Shopper's Guide to Pesticides in Produce (2026) ↗</a></div>
-        <div class="source-meta">Environmental Working Group (US) · Annual report</div>
-        <div class="source-desc">The US Environmental Working Group's annual analysis of USDA pesticide testing data, producing the widely-cited Dirty Dozen and Clean Fifteen lists. Used in these guides as international comparative data and specifically for chemicals such as PFAS (bifenthrin, fludioxonil) where AU-specific data is absent. US rankings are not directly applicable to Australia but provide relevant context where AU data gaps exist.</div>
+        <div class="source-name"><a href="https://archive.foe.org.au/sites/default/files/TheDoseMakesThePoisonFeb2012_0.pdf" target="_blank" rel="noopener">Friends of the Earth Melbourne — The Dose Makes the Poison (2012) ↗</a></div>
+        <div class="source-meta">Friends of the Earth Melbourne · compiled by Anthony Amis · Independent research</div>
+        <div class="source-desc">A landmark independent analysis of 12 years of FSANZ ATDS data (2000–2011) identifying which produce items carried the highest detection rates and chemical loads in Australia. One of the few systematic AU-specific rankings available and a foundational source for the Dirty Dozen and Tread Carefully.</div>
         <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span><span class="tag tag-tct">Tread Carefully</span><span class="tag tag-ll">Fill Your Basket</span></div>
       </div>
-
-      <div class="source-entry">
-        <div class="source-name"><a href="https://www.theguardian.com/environment/2023/jan/12/australias-self-regulating-pesticide-monitoring-system-picked-up-far-fewer-violations-than-government-study" target="_blank" rel="noopener">The Guardian Australia — FOI investigation ↗</a></div>
-        <div class="source-meta">The Guardian AU · Investigative journalism · FOI documents</div>
-        <div class="source-desc">Freedom of Information documents obtained by The Guardian Australia revealing an unpublished 2013 pilot study by the federal agriculture department, including detections of fenthion at unacceptable levels in peaches and dimethoate up to 90× the MRL in strawberries (2013 data). This reporting uncovered data the government had not proactively disclosed.</div>
-        <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span><span class="tag tag-tct">Tread Carefully</span><span class="tag tag-ll">Fill Your Basket</span></div>
-      </div>
-
       <div class="source-entry">
         <div class="source-name"><a href="https://www.sbs.com.au/news/article/are-your-blueberries-safe/tf1nqutcv" target="_blank" rel="noopener">Southern Cross University berry testing (2025), reported by SBS News ↗</a></div>
         <div class="source-meta">Southern Cross University · Independent testing by Prof. Kirsten Benkendorff · Link: SBS News coverage · Dirty Dozen specific</div>
@@ -222,11 +207,26 @@ body{font-family:'DM Sans',sans-serif;background:#d4e8d0;padding:0;margin:0}
         <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span></div>
       </div>
 
+      <h3 class="source-group">Industry</h3>
       <div class="source-entry">
         <div class="source-name">Hort Innovation — Residue and production data (2025)</div>
         <div class="source-meta">Hort Innovation · Industry body · Tread Carefully specific</div>
         <div class="source-desc">Australia's horticulture industry research and development body. Hort Innovation data on production practices and residue profiles for specific vegetable and citrus categories informs context in the Tread Carefully guide, particularly for snow peas and domestic growing practices.</div>
         <div class="source-tags"><span class="tag tag-tct">Tread Carefully</span></div>
+      </div>
+
+      <h3 class="source-group">International and media</h3>
+      <div class="source-entry">
+        <div class="source-name"><a href="https://www.ewg.org/foodnews/full-list.php" target="_blank" rel="noopener">EWG Shopper's Guide to Pesticides in Produce (2026) ↗</a></div>
+        <div class="source-meta">Environmental Working Group (US) · Annual report</div>
+        <div class="source-desc">The US Environmental Working Group's annual analysis of USDA pesticide testing data, producing the widely-cited Dirty Dozen and Clean Fifteen lists. Used in these guides as international comparative data and specifically for chemicals such as PFAS (bifenthrin, fludioxonil) where AU-specific data is absent. US rankings are not directly applicable to Australia but provide relevant context where AU data gaps exist.</div>
+        <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span><span class="tag tag-tct">Tread Carefully</span><span class="tag tag-ll">Fill Your Basket</span></div>
+      </div>
+      <div class="source-entry">
+        <div class="source-name"><a href="https://www.theguardian.com/environment/2023/jan/12/australias-self-regulating-pesticide-monitoring-system-picked-up-far-fewer-violations-than-government-study" target="_blank" rel="noopener">The Guardian Australia — FOI investigation ↗</a></div>
+        <div class="source-meta">The Guardian AU · Investigative journalism · FOI documents</div>
+        <div class="source-desc">Freedom of Information documents obtained by The Guardian Australia revealing an unpublished 2013 pilot study by the federal agriculture department, including detections of fenthion at unacceptable levels in peaches and dimethoate up to 90× the MRL in strawberries (2013 data). This reporting uncovered data the government had not proactively disclosed.</div>
+        <div class="source-tags"><span class="tag tag-dd">Dirty Dozen AU</span><span class="tag tag-tct">Tread Carefully</span><span class="tag tag-ll">Fill Your Basket</span></div>
       </div>
 
     </div>
